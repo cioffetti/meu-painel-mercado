@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Financeiro 2.0</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --up-color: #4caf50;
+            --down-color: #f44336;
+            --neutral-color: #9e9e9e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { margin-bottom: 30px; font-size: 1.8rem; text-align: center; }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.2s;
+            border: 1px solid #333;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card-header { display: flex; justify-content: space-between; align-items: center; }
+        .asset-name { font-size: 1.2rem; font-weight: 600; }
+        .asset-ticker { font-size: 0.9rem; color: var(--text-muted); background: #333; padding: 2px 8px; border-radius: 4px;}
+        
+        .price { font-size: 2rem; font-weight: bold; margin: 5px 0; }
+        .variation { font-size: 1rem; font-weight: 500; display: flex; align-items: center; gap: 5px; }
+
+        .up { color: var(--up-color); }
+        .down { color: var(--down-color); }
+        .neutral { color: var(--neutral-color); }
+
+        .chart-container {
+            width: 100%;
+            height: 60px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Visão Geral de Mercado</h1>
+
+    <div class="dashboard" id="dashboard">
+        </div>
+
+    <script>
+        const assets = [
+            { id: 'USD', name: 'Dólar', ticker: 'USD/BRL' },
+            { id: 'EUR', name: 'Euro', ticker: 'EUR/BRL' },
+            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC/BRL' },
+            { id: 'XAU', name: 'Ouro', ticker: 'XAU/USD' },
+            { id: 'OIL', name: 'Petróleo', ticker: 'BRENT' }
+        ];
+
+        const dashboard = document.getElementById('dashboard');
+        const charts = {}; // Guardar os gráficos para atualizá-los depois
+
+        // Renderiza o esqueleto dos cartões com o espaço do gráfico
+        function renderCards() {
+            assets.forEach(asset => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="asset-name">${asset.name}</span>
+                        <span class="asset-ticker">${asset.ticker}</span>
+                    </div>
+                    <div class="price" id="price-${asset.id}">Carregando...</div>
+                    <div class="variation" id="var-${asset.id}">--</div>
+                    <div class="chart-container">
+                        <canvas id="chart-${asset.id}"></canvas>
+                    </div>
+                `;
+                dashboard.appendChild(card);
+            });
+        }
+
+        // Cria ou atualiza o minigráfico
+        function drawChart(id, currentPrice, isUp) {
+            const ctx = document.getElementById(`chart-${id}`).getContext('2d');
+            const color = isUp ? '#4caf50' : '#f44336';
+            
+            // Gerando um histórico visual simulado baseado no preço atual para dar o efeito de "tendência"
+            const mockData = [
+                currentPrice * 0.98, currentPrice * 0.99, currentPrice * 1.01, 
+                currentPrice * 0.99, currentPrice * 1.02, currentPrice * 0.99, currentPrice
+            ];
+
+            if (charts[id]) { charts[id].destroy(); } // Limpa o gráfico antigo se existir
+
+            charts[id] = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', 'Hoje'],
+                    datasets: [{
+                        data: mockData,
+                        borderColor: color,
+                        borderWidth: 2,
+                        tension: 0.4, // Deixa a linha curvada e suave
+                        pointRadius: 0 // Esconde as bolinhas do gráfico
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                    scales: { x: { display: false }, y: { display: false } }
+                }
+            });
+        }
+
+        function updateCardUI(id, currentPrice, previousPrice, prefix = 'R$') {
+            const priceEl = document.getElementById(`price-${id}`);
+            const varEl = document.getElementById(`var-${id}`);
+            
+            const variationValue = currentPrice - previousPrice;
+            const variationPct = (variationValue / previousPrice) * 100;
+            const isUp = variationValue >= 0;
+
+            priceEl.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+            if (variationValue > 0) {
+                varEl.innerHTML = `▲ +${variationPct.toFixed(2)}%`;
+                varEl.className = 'variation up';
+            } else if (variationValue < 0) {
+                varEl.innerHTML = `▼ ${variationPct.toFixed(2)}%`;
+                varEl.className = 'variation down';
+            } else {
+                varEl.innerHTML = `▬ 0.00%`;
+                varEl.className = 'variation neutral';
+            }
+
+            drawChart(id, currentPrice, isUp);
+        }
+
+        async function fetchRealData() {
+            try {
+                // Mudamos BTC-BRL para BTC-USD na URL
+                const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-USD');
+                const data = await response.json();
+                
+                updateCardUI('USD', parseFloat(data.USDBRL.ask), parseFloat(data.USDBRL.ask) - parseFloat(data.USDBRL.varBid));
+                updateCardUI('EUR', parseFloat(data.EURBRL.ask), parseFloat(data.EURBRL.ask) - parseFloat(data.EURBRL.varBid));
+                
+                // Atualizamos para puxar BTCUSD e adicionamos o prefixo 'US$' no final
+                updateCardUI('BTC', parseFloat(data.BTCUSD.ask), parseFloat(data.BTCUSD.ask) - parseFloat(data.BTCUSD.varBid), 'US$');
+            } catch (error) { console.error(error); }
+        }
+
+       async function fetchBackendCommodities() {
+            try {
+                // Aqui o seu site "bate na porta" do seu servidor Node.js
+                const response = await fetch('https://api-financeira-8yu7.onrender.com/api/commodities');
+                const data = await response.json();
+
+                // Atualizando os cards com os dados que vieram do backend
+                updateCardUI('XAU', data.ouro.atual, data.ouro.fechamentoAnterior, 'US$');
+                updateCardUI('OIL', data.petroleo.atual, data.petroleo.fechamentoAnterior, 'US$');
+            } catch (error) { 
+                console.error("Erro ao conectar com o backend:", error); 
+                // Se o servidor estiver desligado, ele avisa visualmente
+                document.getElementById('price-XAU').innerHTML = "Erro de conexão";
+                document.getElementById('price-OIL').innerHTML = "Erro de conexão";
+            }
+        }
+
+        function init() {
+            renderCards();
+            fetchRealData();
+            fetchBackendCommodities(); // Chama o backend na primeira vez
+            setInterval(() => {
+               fetchRealData();
+               fetchBackendCommodities(); // Chama o backend a cada 30 segundos
+            }, 30000);
+        }
+
+        init();
+    </script>
+</body>
+</html>
