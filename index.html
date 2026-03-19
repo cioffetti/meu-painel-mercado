@@ -167,44 +167,30 @@
             drawChart(id, currentPrice, isUp);
         }
 
-       async function fetchRealData() {
-            try {
-                const response = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-USD');
-                const data = await response.json();
-                
-                // Adicionamos o 'R$' e o número 3 no final para forçar 3 casas decimais
-                updateCardUI('USD', parseFloat(data.USDBRL.ask), parseFloat(data.USDBRL.ask) - parseFloat(data.USDBRL.varBid), 'R$', 3);
-                updateCardUI('EUR', parseFloat(data.EURBRL.ask), parseFloat(data.EURBRL.ask) - parseFloat(data.EURBRL.varBid), 'R$', 3);
-                
-                // O Bitcoin continua com 2 casas decimais
-                updateCardUI('BTC', parseFloat(data.BTCUSD.ask), parseFloat(data.BTCUSD.ask) - parseFloat(data.BTCUSD.varBid), 'US$', 2);
-            } catch (error) { console.error(error); }
-        }
-
        async function fetchBackendCommodities() {
             try {
-                // Aqui o seu site "bate na porta" do seu servidor Node.js
+                // ATENÇÃO: Confirme se este é o seu link correto do Render
                 const response = await fetch('https://api-financeira-8yu7.onrender.com/api/commodities');
                 const data = await response.json();
 
-                // Atualizando os cards com os dados que vieram do backend
-                updateCardUI('XAU', data.ouro.atual, data.ouro.fechamentoAnterior, 'US$');
-                updateCardUI('OIL', data.petroleo.atual, data.petroleo.fechamentoAnterior, 'US$');
+                // Atualizando todos os cartões com os dados do SEU servidor
+                updateCardUI('USD', data.dolar.atual, data.dolar.fechamentoAnterior, 'R$', 3);
+                updateCardUI('EUR', data.euro.atual, data.euro.fechamentoAnterior, 'R$', 3);
+                updateCardUI('BTC', data.bitcoin.atual, data.bitcoin.fechamentoAnterior, 'US$', 2);
+                updateCardUI('XAU', data.ouro.atual, data.ouro.fechamentoAnterior, 'US$', 2);
+                updateCardUI('OIL', data.petroleo.atual, data.petroleo.fechamentoAnterior, 'US$', 2);
             } catch (error) { 
                 console.error("Erro ao conectar com o backend:", error); 
-                // Se o servidor estiver desligado, ele avisa visualmente
-                document.getElementById('price-XAU').innerHTML = "Erro de conexão";
-                document.getElementById('price-OIL').innerHTML = "Erro de conexão";
             }
         }
 
         function init() {
             renderCards();
-            fetchRealData();
-            fetchBackendCommodities(); // Chama o backend na primeira vez
-            setInterval(() => {
-               fetchRealData();
-               fetchBackendCommodities(); // Chama o backend a cada 30 segundos
+            fetchBackendCommodities(); // Chama o backend logo ao abrir o site
+
+            // O ecrã atualiza a cada 30 segundos, mas o servidor só vai ao Yahoo a cada 5 minutos
+            setInterval(() => { 
+                fetchBackendCommodities(); 
             }, 30000);
         }
 
