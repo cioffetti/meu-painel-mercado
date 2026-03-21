@@ -7,12 +7,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --bg-color: #0b0b0c; /* Mais escuro, como no exemplo */
+            --bg-color: #0b0b0c;
             --card-bg: #1e1e1f;
             --text-main: #ffffff;
             --text-muted: #8e9196;
-            --up-color: #1a7f37; /* Verde mais sóbrio */
-            --down-color: #c93e36; /* Vermelho mais sóbrio */
+            --up-color: #1a7f37;
+            --down-color: #c93e36;
             --neutral-color: #9e9e9e;
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -32,7 +32,7 @@
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Cartões maiores para o gráfico */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
             width: 100%;
             max-width: 1400px;
@@ -68,10 +68,9 @@
         .down { color: var(--down-color); }
         .neutral { color: var(--neutral-color); }
 
-        /* Contêiner principal para o gráfico de 30 dias */
         .main-chart-container {
             width: 100%;
-            height: 250px; /* Gráfico maior */
+            height: 250px;
             margin-top: 10px;
         }
     </style>
@@ -94,7 +93,6 @@
 
         const dashboard = document.getElementById('dashboard');
 
-        // Renderiza o esqueleto dos cartões com o espaço do gráfico maior
         function renderCards() {
             assets.forEach(asset => {
                 const card = document.createElement('div');
@@ -129,17 +127,15 @@
             const variation30d = currentPrice - startPrice;
             const isUp30d = variation30d >= 0;
 
-            // Cores baseadas na variação de 30 dias, como no exemplo
-            const color = isUp30d ? '#1a7f37' : '#c93e36'; // Verde sóbrio / Vermelho sóbrio
+            const color = isUp30d ? '#1a7f37' : '#c93e36'; 
             
             // Preparando dados para Chart.js
             const labels = historicalData.map(item => item.data);
             const prices = historicalData.map(item => item.preco);
 
-            // Gradiente para o preenchimento da área
             const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-            gradient.addColorStop(0, color); // Cor sólida no topo
-            gradient.addColorStop(1, '#0b0b0c'); // Fundo escuro na base
+            gradient.addColorStop(0, color); 
+            gradient.addColorStop(1, '#0b0b0c'); 
 
             new Chart(ctx, {
                 type: 'line',
@@ -148,39 +144,54 @@
                     datasets: [{
                         label: `Preço 30 Dias (${assetDetails.name})`,
                         data: prices,
-                        borderColor: color, // Cor da linha
+                        borderColor: color,
                         borderWidth: 2,
-                        tension: 0.1, // Linhas mais retas e financeiras
-                        pointRadius: 0, // Sem bolinhas
-                        fill: true, // Preenche a área
-                        backgroundColor: gradient // Gradiente para o preenchimento, como no exemplo
+                        tension: 0.1,
+                        pointRadius: 0, 
+                        fill: true,
+                        backgroundColor: gradient
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    // AJUSTE 1: Configuração de Interação
+                    // Melhora a sensibilidade do mouse para o ponto mais próximo (igual ao exemplo)
+                    interaction: {
+                        intersect: false, // Não precisa estar exatamente em cima do ponto
+                        mode: 'index'     // Seleciona o ponto pelo eixo horizontal (data)
+                    },
                     plugins: {
-                        legend: { display: false }, // Sem legenda superior
+                        legend: { display: false }, 
+                        // AJUSTE 2: Configuração do Tooltip (Legenda ao passar o mouse)
                         tooltip: {
-                            backgroundColor: '#1e1e1f',
+                            enabled: true, // MUDADO DE 'false' PARA 'true'
+                            backgroundColor: '#1a1a1b', // Cor de fundo escura como no exemplo
                             titleColor: '#fff',
                             bodyColor: '#fff',
-                            borderColor: '#333336',
+                            borderColor: '#444',
                             borderWidth: 1,
-                            displayColors: false,
                             callbacks: {
+                                // Título mostra a data (Já está no formato YYYY-MM-DD do servidor)
+                                title: (context) => {
+                                    return context[0].label;
+                                },
+                                // Rótulo mostra o preço com o prefixo correto (R$ ou US$)
                                 label: (context) => {
-                                    return `${assetDetails.prefix || 'R$'} ${parseFloat(context.raw).toFixed(assetDetails.decimals)}`;
+                                    const price = context.parsed.y;
+                                    const prefix = assetDetails.prefix || 'R$';
+                                    const decimals = assetDetails.decimals;
+                                    return ` ${prefix} ${price.toFixed(decimals)}`;
                                 }
                             }
                         }
                     },
                     scales: {
-                        x: { display: false }, // Esconde eixo X, rótulos de data
+                        x: { display: false }, 
                         y: { 
                             display: true, 
-                            ticks: { display: false }, // Esconde rótulos de preço
-                            grid: { display: false } // Sem linhas de grade, visual limpo como no exemplo
+                            ticks: { display: false }, 
+                            grid: { display: false } 
                         }
                     }
                 }
@@ -222,21 +233,17 @@
             } catch (error) { console.error(`Erro ao buscar histórico de ${ticker}:`, error); }
         }
 
-        // Função principal que orquestra tudo
         async function fetchBackendData() {
             try {
-                // Busca os preços atuais
                 const responseCurrent = await fetch('https://api-financeira-8yu7.onrender.com/api/commodities');
                 const currentData = await responseCurrent.json();
 
-                // Atualiza o resumo de preço no topo dos cartões
                 updateCardUI('USD', currentData.dolar.atual, currentData.dolar.fechamentoAnterior, 'R$', 3);
                 updateCardUI('EUR', currentData.euro.atual, currentData.euro.fechamentoAnterior, 'R$', 3);
                 updateCardUI('BTC', currentData.bitcoin.atual, currentData.bitcoin.fechamentoAnterior, 'US$', 2);
                 updateCardUI('XAU', currentData.ouro.atual, currentData.ouro.fechamentoAnterior, 'US$', 2);
                 updateCardUI('OIL', currentData.petroleo.atual, currentData.petroleo.fechamentoAnterior, 'US$', 2);
 
-                // Orquestra a busca e o desenho dos 5 gráficos de 30 dias
                 fetchHistoricalData('USD', 'BRL=X', { name: 'Dólar', prefix: 'R$', decimals: 3 });
                 fetchHistoricalData('EUR', 'EURBRL=X', { name: 'Euro', prefix: 'R$', decimals: 3 });
                 fetchHistoricalData('BTC', 'BTC-USD', { name: 'Bitcoin', prefix: 'US$', decimals: 2 });
@@ -248,10 +255,7 @@
 
         function init() {
             renderCards();
-            fetchBackendData(); // Chama tudo logo ao abrir o site
-
-            // O ecrã atualiza os preços atuais a cada 30 segundos
-            // O histórico de 30 dias só é buscado uma vez ao carregar a página
+            fetchBackendData(); 
             setInterval(() => { fetchBackendData(); }, 30000);
         }
 
