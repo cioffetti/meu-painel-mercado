@@ -6,14 +6,16 @@
     <title>Terminal Financeiro Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff;
-            --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
-        h1 { margin-bottom: 20px; font-size: 2rem; }
+        :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
+        
+        /* BARRA DE PESQUISA */
+        .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
+        h1 { margin: 0; font-size: 2rem; }
+        .search-box { display: flex; gap: 10px; }
+        .search-box input { padding: 10px 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1b; color: #fff; font-size: 1rem; width: 250px; }
+        .search-box button { padding: 10px 20px; border-radius: 8px; border: none; background: #1a7f37; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .search-box button:hover { background: #21a045; }
 
         .tabs { display: flex; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid #333336; padding-bottom: 10px; width: 100%; max-width: 1400px; overflow-x: auto; }
         .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; font-weight: 600; cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.2s; white-space: nowrap; }
@@ -21,6 +23,7 @@
         .tab-btn.active { color: #fff; background-color: #333336; border-bottom: 3px solid #1a7f37; }
 
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1400px; }
+        .section-title { width: 100%; max-width: 1400px; font-size: 1.5rem; color: var(--text-muted); margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px;}
         
         .card { background-color: var(--card-bg); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #333336; cursor: pointer; transition: transform 0.2s; }
         .card:hover { transform: translateY(-5px); border-color: #555; }
@@ -29,27 +32,42 @@
         .asset-ticker { font-size: 0.8rem; color: var(--text-muted); }
         .price { font-size: 1.6rem; font-weight: 800; margin: 0; text-align: right; }
         .variation { font-size: 0.9rem; font-weight: 600; text-align: right; }
-        .up { color: var(--up-color); } .down { color: var(--down-color); } .neutral { color: var(--text-muted); }
+        .up { color: var(--up-color); } .down { color: var(--down-color); }
         .mini-chart { width: 100%; height: 80px; margin-top: 10px; }
 
-        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
-        .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; }
+        /* MODAL E INDICADORES */
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; overflow-y: auto; }
+        .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; margin: 40px 0; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .close-btn { font-size: 1.5rem; color: var(--text-muted); cursor: pointer; border: none; background: none; }
-        .close-btn:hover { color: #fff; }
         .timeframe-buttons { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #333336; padding-bottom: 10px; }
         .time-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; padding: 5px 10px; border-radius: 4px; }
-        .time-btn:hover, .time-btn.active { color: #fff; background-color: #333336; }
-        .detailed-chart { width: 100%; height: 400px; }
+        .time-btn.active { color: #fff; background-color: #333336; }
+        .detailed-chart { width: 100%; height: 350px; margin-bottom: 20px;}
+
+        /* GRID DE INDICADORES (NOVIDADE) */
+        .indicadores-container { background: #151516; border: 1px solid #333; border-radius: 8px; padding: 15px; margin-top: 20px;}
+        .indicadores-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #ccc; border-bottom: 1px solid #333; padding-bottom: 5px;}
+        .indicadores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; }
+        .ind-box { display: flex; flex-direction: column; }
+        .ind-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;}
+        .ind-value { font-size: 1.2rem; font-weight: bold; color: #fff; margin-top: 2px;}
+        .loading-ind { color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
     </style>
 </head>
 <body>
 
-    <h1>Terminal Financeiro Pro</h1>
+    <div class="top-bar">
+        <h1>Terminal Financeiro Pro</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Buscar ativo (Ex: PETR4, AAPL)" onkeypress="if(event.key === 'Enter') searchAsset()">
+            <button onclick="searchAsset()">Buscar</button>
+        </div>
+    </div>
     
     <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('geral', this)">Visão Geral</button>
-        <button class="tab-btn" onclick="switchTab('brasil', this)">Ações Brasil</button>
+        <button class="tab-btn" onclick="switchTab('destaques', this)">🔥 Altas e Baixas</button> <button class="tab-btn" onclick="switchTab('brasil', this)">Ações Brasil</button>
         <button class="tab-btn" onclick="switchTab('intl', this)">Ações Internacionais</button>
     </div>
 
@@ -68,19 +86,24 @@
                 <button class="time-btn" onclick="loadDetailedData('5y', '1wk', this)">5 A</button>
             </div>
             <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
+
+            <div class="indicadores-container">
+                <div class="indicadores-title">Indicadores Fundamentalistas</div>
+                <div class="indicadores-grid" id="indicadores-grid">
+                    <div class="loading-ind">Carregando indicadores...</div>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // SEU LINK DO RENDER AQUI
-        const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
+        const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com'; // COLOQUE SEU LINK DO RENDER AQUI
 
         const ativosGerais = [
             { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
             { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
-            { id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },
-            { id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }
+            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' }
         ];
 
         const listaBrasilRaw = ['AGRO3', 'AMOB3', 'BBAS3', 'BBDC3', 'BBSE3', 'BRSR6', 'B3SA3', 'CMIG3', 'CXSE3', 'EGIE3', 'EQTL3', 'ETHE11', 'EZTC3', 'FLRY3', 'GMAT3', 'GOLD11', 'ITSA4', 'KEPL3', 'KLBN3', 'LEVE3', 'MBRF3', 'PETR3', 'PRIO3', 'PSSA3', 'QBTC11', 'QSOL11', 'RAIZ4', 'RANI3', 'SAPR4', 'SBFG3', 'SMTO3', 'SOJA3', 'SUZB3', 'TAEE11', 'TTEN3', 'VAMO3', 'VIVT3', 'WEGE3'];
@@ -95,19 +118,9 @@
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
-        async function switchTab(tabName, btnElement) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-            currentTab = tabName;
-            
-            const ativosDaAba = categorias[tabName];
-            const dashboard = document.getElementById('dashboard');
-            dashboard.innerHTML = ''; 
-
-            Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
-            miniCharts = {};
-
-            ativosDaAba.forEach(asset => {
+        // GERA OS CARTÕES VAZIOS
+        function buildCards(ativos, container) {
+            ativos.forEach(asset => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.onclick = () => openModal(asset);
@@ -118,79 +131,143 @@
                     </div>
                     <div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>
                 `;
-                dashboard.appendChild(card);
+                container.appendChild(card);
             });
+        }
 
-            // Tentativa 1: Busca em Lote Rápida
+        // LÓGICA DAS ABAS (Incluindo a nova aba Destaques)
+        async function switchTab(tabName, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+            currentTab = tabName;
+            
+            const dashboard = document.getElementById('dashboard');
+            dashboard.innerHTML = ''; 
+            Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
+            miniCharts = {};
+
+            // SE FOR A ABA DE DESTAQUES (ALTAS E BAIXAS)
+            if(tabName === 'destaques') {
+                dashboard.innerHTML = '<div class="section-title">Analisando o mercado...</div>';
+                const todosAtivos = [...ativosBrasil, ...ativosIntl];
+                const tickersString = todosAtivos.map(a => a.ticker).join(',');
+                
+                try {
+                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
+                    const cotacoes = await res.json();
+                    
+                    // Calcula variação de todos e ordena
+                    let ativosComVariacao = todosAtivos.map(asset => {
+                        const dados = cotacoes[asset.ticker];
+                        if(!dados || !dados.fechamentoAnterior) return null;
+                        const varPct = ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100;
+                        return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
+                    }).filter(a => a !== null);
+
+                    ativosComVariacao.sort((a, b) => b.varPct - a.varPct); // Maior para menor
+
+                    const maioresAltas = ativosComVariacao.slice(0, 5);
+                    const maioresBaixas = ativosComVariacao.slice(-5).reverse();
+
+                    dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
+                    const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard';
+                    buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
+                    
+                    dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
+                    const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard';
+                    buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
+
+                    // Preenche os dados
+                    [...maioresAltas, ...maioresBaixas].forEach(asset => {
+                        updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals);
+                        fetchMiniChart(asset, 'destaques');
+                    });
+                } catch (e) { dashboard.innerHTML = 'Erro ao carregar destaques.'; }
+                return;
+            }
+
+            // SE FOR AS ABAS NORMAIS (Geral, Brasil, Intl)
+            const ativosDaAba = categorias[tabName];
+            buildCards(ativosDaAba, dashboard);
+
             const tickersString = ativosDaAba.map(a => a.ticker).join(',');
             try {
                 const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
                 const cotacoesAtuais = await resCotacoes.json();
-
                 ativosDaAba.forEach(asset => {
-                    const dadosAtivo = cotacoesAtuais[asset.ticker];
-                    if(dadosAtivo && dadosAtivo.atual) {
-                        updateCardUI(asset.id, dadosAtivo.atual, dadosAtivo.fechamentoAnterior, asset.prefix, asset.decimals);
-                    }
+                    if(cotacoesAtuais[asset.ticker]) updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals);
                 });
-            } catch (e) { console.warn("Lote atrasou, acionando Fallback visual..."); }
+            } catch (e) {}
 
-            // Passo 2: Carregamento em Cascata (Lazy Load) com FALLBACK INCLUSO
-            for (const asset of ativosDaAba) {
-                try {
-                    const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
-                    const histData = await resHist.json();
-                    
-                    if(histData.historico && currentTab === tabName) { 
-                        drawMiniChart(asset.id, histData.historico, asset);
-                        
-                        // 🛡️ SISTEMA DE SEGURANÇA (FALLBACK): 
-                        // Se o preço principal estiver vazio (---), usamos o preço do próprio gráfico!
-                        const elPrice = document.getElementById(`price-${asset.id}`);
-                        if (elPrice && elPrice.innerText === '---') {
-                            const arrayPrecos = histData.historico;
-                            const precoAtual = parseFloat(arrayPrecos[arrayPrecos.length - 1].preco);
-                            const precoAnterior = arrayPrecos.length > 1 ? parseFloat(arrayPrecos[arrayPrecos.length - 2].preco) : precoAtual;
-                            
-                            updateCardUI(asset.id, precoAtual, precoAnterior, asset.prefix, asset.decimals);
-                        }
+            ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
+        }
+
+        async function fetchMiniChart(asset, targetTab) {
+            try {
+                const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
+                const histData = await resHist.json();
+                if(histData.historico && currentTab === targetTab) { 
+                    drawMiniChart(asset.id, histData.historico, asset);
+                    const elPrice = document.getElementById(`price-${asset.id}`);
+                    if (elPrice && elPrice.innerText === '---') {
+                        const precos = histData.historico;
+                        updateCardUI(asset.id, parseFloat(precos[precos.length-1].preco), parseFloat(precos[precos.length-2]?.preco || precos[precos.length-1].preco), asset.prefix, asset.decimals);
                     }
-                } catch (e) { console.error("Erro no gráfico:", e); }
-            }
+                }
+            } catch (e) { }
         }
 
-        function drawMiniChart(id, historicalData, assetDetails) {
-            const canvas = document.getElementById(`mini-chart-${id}`);
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
+        // --- SISTEMA DE BUSCA ---
+        function searchAsset() {
+            let ticker = document.getElementById('searchInput').value.trim().toUpperCase();
+            if(!ticker) return;
             
-            const gradient = ctx.createLinearGradient(0, 0, 0, 80);
-            gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
+            // Inteligência artificial simples: Se for 4 letras e 1 número (ex: PETR4), adiciona .SA
+            if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; }
 
-            miniCharts[id] = new Chart(ctx, {
-                type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
-            });
+            const assetBusca = { 
+                id: 'BUSCA', name: ticker.replace('.SA', ''), ticker: ticker, 
+                decimals: 2, prefix: ticker.includes('.SA') ? 'R$' : 'US$' 
+            };
+            openModal(assetBusca); // Abre o modal direto com o resultado
         }
 
-        function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
-            const elPrice = document.getElementById(`price-${id}`);
-            const elVar = document.getElementById(`var-${id}`);
-            if(!elPrice || !elVar) return;
-            const varValue = currentPrice - previousPrice;
-            const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
+        // --- INDICADORES FUNDAMENTALISTAS (A MÁGICA) ---
+        async function fetchIndicadores(ticker) {
+            const grid = document.getElementById('indicadores-grid');
+            grid.innerHTML = '<div class="loading-ind">Calculando indicadores pelo Yahoo Finance...</div>';
             
-            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
-            elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`;
-            elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
+            try {
+                const res = await fetch(`${URL_BACKEND}/api/indicadores/${ticker}`);
+                const data = await res.json();
+
+                // Formatadores de texto
+                const fmtNum = (num, sufixo='') => num !== null && num !== undefined ? parseFloat(num).toFixed(2) + sufixo : '-';
+                const fmtPct = (num) => num !== null && num !== undefined ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
+                
+                // Monta a Tabela (Igual a imagem que você enviou)
+                grid.innerHTML = `
+                    <div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fmtNum(data.pl)}</span></div>
+                    <div class="ind-box"><span class="ind-label">P/VP</span><span class="ind-value">${fmtNum(data.pvp)}</span></div>
+                    <div class="ind-box"><span class="ind-label">Div. Yield (D.Y)</span><span class="ind-value">${fmtPct(data.dy)}</span></div>
+                    <div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div>
+                    <div class="ind-box"><span class="ind-label">ROA</span><span class="ind-value">${fmtPct(data.roa)}</span></div>
+                    <div class="ind-box"><span class="ind-label">Margem Líquida</span><span class="ind-value">${fmtPct(data.margemLiquida)}</span></div>
+                    <div class="ind-box"><span class="ind-label">Dív. Líquida / PL</span><span class="ind-value">${fmtPct(data.dividaPL / 100)}</span></div>
+                `;
+            } catch(e) { grid.innerHTML = '<div class="loading-ind">Indicadores não disponíveis para este ativo.</div>'; }
         }
 
+        // --- MANUTENÇÃO DO MODAL ---
         function openModal(asset) {
             currentAssetObj = asset;
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
+            
+            // Carrega o gráfico
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
+            // Carrega os indicadores
+            fetchIndicadores(asset.ticker);
         }
 
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
@@ -202,16 +279,38 @@
                 const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`);
                 const data = await response.json();
                 drawDetailedChart(data.historico);
-            } catch (error) { console.error(error); }
+            } catch (error) {}
         }
 
+        // Funções de desenho de Gráficos (Mantidas iguais para manter seu layout perfeito)
+        function drawMiniChart(id, historicalData, assetDetails) {
+            const canvas = document.getElementById(`mini-chart-${id}`);
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
+            const gradient = ctx.createLinearGradient(0, 0, 0, 80);
+            gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
+            miniCharts[id] = new Chart(ctx, {
+                type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
+            });
+        }
+        function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
+            const elPrice = document.getElementById(`price-${id}`);
+            const elVar = document.getElementById(`var-${id}`);
+            if(!elPrice || !elVar) return;
+            const varValue = currentPrice - previousPrice;
+            const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
+            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
+            elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`;
+            elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
+        }
         function drawDetailedChart(historicalData) {
             const ctx = document.getElementById('modalChartCanvas').getContext('2d');
             const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
             if(detailedChartInstance) detailedChartInstance.destroy(); 
             const gradient = ctx.createLinearGradient(0, 0, 0, 400);
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
-
             detailedChartInstance = new Chart(ctx, {
                 type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
                 options: {
