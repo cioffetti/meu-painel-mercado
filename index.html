@@ -15,7 +15,6 @@
         body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
         h1 { margin-bottom: 20px; font-size: 2rem; }
 
-        /* --- ESTILOS DAS ABAS --- */
         .tabs { display: flex; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid #333336; padding-bottom: 10px; width: 100%; max-width: 1400px; overflow-x: auto; }
         .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; font-weight: 600; cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.2s; white-space: nowrap; }
         .tab-btn:hover { color: #fff; background-color: #2a2a2c; }
@@ -33,7 +32,6 @@
         .up { color: var(--up-color); } .down { color: var(--down-color); } .neutral { color: var(--text-muted); }
         .mini-chart { width: 100%; height: 80px; margin-top: 10px; }
 
-        /* Modal (Mantido do passo anterior) */
         .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
         .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -77,7 +75,6 @@
         // SEU LINK DO RENDER AQUI
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
-        // Geração inteligente das listas de ativos
         const ativosGerais = [
             { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
             { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
@@ -98,7 +95,6 @@
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
-        // RENDERIZAÇÃO DA ABA ATUAL
         async function switchTab(tabName, btnElement) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
@@ -108,11 +104,9 @@
             const dashboard = document.getElementById('dashboard');
             dashboard.innerHTML = ''; 
 
-            // Limpa os gráficos antigos da memória para o site não ficar lento
             Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
             miniCharts = {};
 
-            // Cria os cartões vazios
             ativosDaAba.forEach(asset => {
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -127,37 +121,47 @@
                 dashboard.appendChild(card);
             });
 
-            // Passo 1: Busca o preço atual de TODOS os ativos da aba de uma vez só (Rota Lote)
+            // Tentativa 1: Busca em Lote Rápida
             const tickersString = ativosDaAba.map(a => a.ticker).join(',');
             try {
                 const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
                 const cotacoesAtuais = await resCotacoes.json();
 
-                // Atualiza os preços na tela imediatamente
                 ativosDaAba.forEach(asset => {
                     const dadosAtivo = cotacoesAtuais[asset.ticker];
                     if(dadosAtivo && dadosAtivo.atual) {
                         updateCardUI(asset.id, dadosAtivo.atual, dadosAtivo.fechamentoAnterior, asset.prefix, asset.decimals);
                     }
                 });
-            } catch (e) { console.error("Erro ao buscar lote:", e); }
+            } catch (e) { console.warn("Lote atrasou, acionando Fallback visual..."); }
 
-            // Passo 2: Carregamento em Cascata (Lazy Load) dos minigráficos para não travar o servidor
+            // Passo 2: Carregamento em Cascata (Lazy Load) com FALLBACK INCLUSO
             for (const asset of ativosDaAba) {
                 try {
                     const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
                     const histData = await resHist.json();
+                    
                     if(histData.historico && currentTab === tabName) { 
                         drawMiniChart(asset.id, histData.historico, asset);
+                        
+                        // 🛡️ SISTEMA DE SEGURANÇA (FALLBACK): 
+                        // Se o preço principal estiver vazio (---), usamos o preço do próprio gráfico!
+                        const elPrice = document.getElementById(`price-${asset.id}`);
+                        if (elPrice && elPrice.innerText === '---') {
+                            const arrayPrecos = histData.historico;
+                            const precoAtual = parseFloat(arrayPrecos[arrayPrecos.length - 1].preco);
+                            const precoAnterior = arrayPrecos.length > 1 ? parseFloat(arrayPrecos[arrayPrecos.length - 2].preco) : precoAtual;
+                            
+                            updateCardUI(asset.id, precoAtual, precoAnterior, asset.prefix, asset.decimals);
+                        }
                     }
                 } catch (e) { console.error("Erro no gráfico:", e); }
             }
         }
 
-        // --- FUNÇÕES DE INTERFACE (Mantidas e Otimizadas) ---
         function drawMiniChart(id, historicalData, assetDetails) {
             const canvas = document.getElementById(`mini-chart-${id}`);
-            if(!canvas) return; // Proteção se mudar de aba rápido
+            if(!canvas) return;
             const ctx = canvas.getContext('2d');
             const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
             
@@ -218,7 +222,6 @@
             });
         }
 
-        // Inicia carregando a primeira aba
         switchTab('geral', document.querySelector('.tab-btn'));
     </script>
 </body>
