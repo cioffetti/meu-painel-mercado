@@ -9,7 +9,6 @@
         :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
         
-        /* BARRA DE PESQUISA */
         .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         h1 { margin: 0; font-size: 2rem; }
         .search-box { display: flex; gap: 10px; }
@@ -35,7 +34,6 @@
         .up { color: var(--up-color); } .down { color: var(--down-color); }
         .mini-chart { width: 100%; height: 80px; margin-top: 10px; }
 
-        /* MODAL E INDICADORES */
         .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; overflow-y: auto; }
         .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; margin: 40px 0; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -45,7 +43,6 @@
         .time-btn.active { color: #fff; background-color: #333336; }
         .detailed-chart { width: 100%; height: 350px; margin-bottom: 20px;}
 
-        /* GRID DE INDICADORES (NOVIDADE) */
         .indicadores-container { background: #151516; border: 1px solid #333; border-radius: 8px; padding: 15px; margin-top: 20px;}
         .indicadores-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; color: #ccc; border-bottom: 1px solid #333; padding-bottom: 5px;}
         .indicadores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; }
@@ -67,7 +64,8 @@
     
     <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('geral', this)">Visão Geral</button>
-        <button class="tab-btn" onclick="switchTab('destaques', this)">🔥 Altas e Baixas</button> <button class="tab-btn" onclick="switchTab('brasil', this)">Ações Brasil</button>
+        <button class="tab-btn" onclick="switchTab('destaques', this)">🔥 Altas e Baixas</button>
+        <button class="tab-btn" onclick="switchTab('brasil', this)">Ações Brasil</button>
         <button class="tab-btn" onclick="switchTab('intl', this)">Ações Internacionais</button>
     </div>
 
@@ -98,12 +96,15 @@
     </div>
 
     <script>
-        const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com'; // COLOQUE SEU LINK DO RENDER AQUI
+        const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com'; // SEU LINK DO RENDER
 
+        // CORREÇÃO: Ouro e Petróleo de volta à casa!
         const ativosGerais = [
             { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
             { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' }
+            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
+            { id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },
+            { id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }
         ];
 
         const listaBrasilRaw = ['AGRO3', 'AMOB3', 'BBAS3', 'BBDC3', 'BBSE3', 'BRSR6', 'B3SA3', 'CMIG3', 'CXSE3', 'EGIE3', 'EQTL3', 'ETHE11', 'EZTC3', 'FLRY3', 'GMAT3', 'GOLD11', 'ITSA4', 'KEPL3', 'KLBN3', 'LEVE3', 'MBRF3', 'PETR3', 'PRIO3', 'PSSA3', 'QBTC11', 'QSOL11', 'RAIZ4', 'RANI3', 'SAPR4', 'SBFG3', 'SMTO3', 'SOJA3', 'SUZB3', 'TAEE11', 'TTEN3', 'VAMO3', 'VIVT3', 'WEGE3'];
@@ -118,7 +119,6 @@
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
-        // GERA OS CARTÕES VAZIOS
         function buildCards(ativos, container) {
             ativos.forEach(asset => {
                 const card = document.createElement('div');
@@ -135,7 +135,6 @@
             });
         }
 
-        // LÓGICA DAS ABAS (Incluindo a nova aba Destaques)
         async function switchTab(tabName, btnElement) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             if(btnElement) btnElement.classList.add('active');
@@ -146,9 +145,8 @@
             Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
             miniCharts = {};
 
-            // SE FOR A ABA DE DESTAQUES (ALTAS E BAIXAS)
             if(tabName === 'destaques') {
-                dashboard.innerHTML = '<div class="section-title">Analisando o mercado...</div>';
+                dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
                 const todosAtivos = [...ativosBrasil, ...ativosIntl];
                 const tickersString = todosAtivos.map(a => a.ticker).join(',');
                 
@@ -156,7 +154,6 @@
                     const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
                     const cotacoes = await res.json();
                     
-                    // Calcula variação de todos e ordena
                     let ativosComVariacao = todosAtivos.map(asset => {
                         const dados = cotacoes[asset.ticker];
                         if(!dados || !dados.fechamentoAnterior) return null;
@@ -164,7 +161,12 @@
                         return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
                     }).filter(a => a !== null);
 
-                    ativosComVariacao.sort((a, b) => b.varPct - a.varPct); // Maior para menor
+                    if (ativosComVariacao.length === 0) {
+                        dashboard.innerHTML = '<div class="section-title">Dados indisponíveis no momento. Tente novamente mais tarde.</div>';
+                        return;
+                    }
+
+                    ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
 
                     const maioresAltas = ativosComVariacao.slice(0, 5);
                     const maioresBaixas = ativosComVariacao.slice(-5).reverse();
@@ -177,16 +179,14 @@
                     const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard';
                     buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
 
-                    // Preenche os dados
                     [...maioresAltas, ...maioresBaixas].forEach(asset => {
                         updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals);
                         fetchMiniChart(asset, 'destaques');
                     });
-                } catch (e) { dashboard.innerHTML = 'Erro ao carregar destaques.'; }
+                } catch (e) { dashboard.innerHTML = '<div class="section-title">Erro ao carregar destaques. Tente novamente.</div>'; }
                 return;
             }
 
-            // SE FOR AS ABAS NORMAIS (Geral, Brasil, Intl)
             const ativosDaAba = categorias[tabName];
             buildCards(ativosDaAba, dashboard);
 
@@ -217,35 +217,30 @@
             } catch (e) { }
         }
 
-        // --- SISTEMA DE BUSCA ---
         function searchAsset() {
             let ticker = document.getElementById('searchInput').value.trim().toUpperCase();
             if(!ticker) return;
-            
-            // Inteligência artificial simples: Se for 4 letras e 1 número (ex: PETR4), adiciona .SA
             if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; }
 
             const assetBusca = { 
                 id: 'BUSCA', name: ticker.replace('.SA', ''), ticker: ticker, 
                 decimals: 2, prefix: ticker.includes('.SA') ? 'R$' : 'US$' 
             };
-            openModal(assetBusca); // Abre o modal direto com o resultado
+            openModal(assetBusca); 
         }
 
-        // --- INDICADORES FUNDAMENTALISTAS (A MÁGICA) ---
         async function fetchIndicadores(ticker) {
             const grid = document.getElementById('indicadores-grid');
-            grid.innerHTML = '<div class="loading-ind">Calculando indicadores pelo Yahoo Finance...</div>';
+            grid.innerHTML = '<div class="loading-ind">Buscando indicadores no mercado...</div>';
             
             try {
                 const res = await fetch(`${URL_BACKEND}/api/indicadores/${ticker}`);
                 const data = await res.json();
 
-                // Formatadores de texto
-                const fmtNum = (num, sufixo='') => num !== null && num !== undefined ? parseFloat(num).toFixed(2) + sufixo : '-';
-                const fmtPct = (num) => num !== null && num !== undefined ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
+                // CORREÇÃO: Formatação matemática segura para evitar "NaN%"
+                const fmtNum = (num, sufixo='') => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) + sufixo : '-';
+                const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
                 
-                // Monta a Tabela (Igual a imagem que você enviou)
                 grid.innerHTML = `
                     <div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fmtNum(data.pl)}</span></div>
                     <div class="ind-box"><span class="ind-label">P/VP</span><span class="ind-value">${fmtNum(data.pvp)}</span></div>
@@ -253,20 +248,16 @@
                     <div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div>
                     <div class="ind-box"><span class="ind-label">ROA</span><span class="ind-value">${fmtPct(data.roa)}</span></div>
                     <div class="ind-box"><span class="ind-label">Margem Líquida</span><span class="ind-value">${fmtPct(data.margemLiquida)}</span></div>
-                    <div class="ind-box"><span class="ind-label">Dív. Líquida / PL</span><span class="ind-value">${fmtPct(data.dividaPL / 100)}</span></div>
+                    <div class="ind-box"><span class="ind-label">Dív. Líquida / PL</span><span class="ind-value">${fmtPct(data.dividaPL ? data.dividaPL / 100 : null)}</span></div>
                 `;
             } catch(e) { grid.innerHTML = '<div class="loading-ind">Indicadores não disponíveis para este ativo.</div>'; }
         }
 
-        // --- MANUTENÇÃO DO MODAL ---
         function openModal(asset) {
             currentAssetObj = asset;
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
-            
-            // Carrega o gráfico
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
-            // Carrega os indicadores
             fetchIndicadores(asset.ticker);
         }
 
@@ -282,7 +273,6 @@
             } catch (error) {}
         }
 
-        // Funções de desenho de Gráficos (Mantidas iguais para manter seu layout perfeito)
         function drawMiniChart(id, historicalData, assetDetails) {
             const canvas = document.getElementById(`mini-chart-${id}`);
             if(!canvas) return;
