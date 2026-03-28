@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Financeiro Pro</title>
+    <title>Terminal Financeiro Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
@@ -13,46 +13,48 @@
         }
 
         body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
-        h1 { margin-bottom: 30px; font-size: 2rem; }
+        h1 { margin-bottom: 20px; font-size: 2rem; }
 
-        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1400px; }
+        /* --- ESTILOS DAS ABAS --- */
+        .tabs { display: flex; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid #333336; padding-bottom: 10px; width: 100%; max-width: 1400px; overflow-x: auto; }
+        .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; font-weight: 600; cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.2s; white-space: nowrap; }
+        .tab-btn:hover { color: #fff; background-color: #2a2a2c; }
+        .tab-btn.active { color: #fff; background-color: #333336; border-bottom: 3px solid #1a7f37; }
+
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1400px; }
         
-        /* Agora os cartões têm um cursor de clique */
-        .card { background-color: var(--card-bg); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #333336; cursor: pointer; transition: transform 0.2s; }
+        .card { background-color: var(--card-bg); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #333336; cursor: pointer; transition: transform 0.2s; }
         .card:hover { transform: translateY(-5px); border-color: #555; }
-
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .asset-name { font-size: 1.4rem; font-weight: 700; }
-        .asset-ticker { font-size: 0.9rem; color: var(--text-muted); }
-        .price { font-size: 2rem; font-weight: 800; margin: 0; text-align: right; }
-        .variation { font-size: 1rem; font-weight: 600; text-align: right; }
+        .asset-name { font-size: 1.2rem; font-weight: 700; }
+        .asset-ticker { font-size: 0.8rem; color: var(--text-muted); }
+        .price { font-size: 1.6rem; font-weight: 800; margin: 0; text-align: right; }
+        .variation { font-size: 0.9rem; font-weight: 600; text-align: right; }
         .up { color: var(--up-color); } .down { color: var(--down-color); } .neutral { color: var(--text-muted); }
+        .mini-chart { width: 100%; height: 80px; margin-top: 10px; }
 
-        .mini-chart { width: 100%; height: 100px; margin-top: 10px; }
-
-        /* --- ESTILOS DO MODAL (NOVIDADE) --- */
-        .modal-overlay {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background-color: var(--card-bg); padding: 30px; border-radius: 12px;
-            width: 90%; max-width: 900px; border: 1px solid #333336;
-        }
+        /* Modal (Mantido do passo anterior) */
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; }
+        .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .close-btn { font-size: 1.5rem; color: var(--text-muted); cursor: pointer; border: none; background: none; }
         .close-btn:hover { color: #fff; }
-        
         .timeframe-buttons { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #333336; padding-bottom: 10px; }
         .time-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; padding: 5px 10px; border-radius: 4px; }
         .time-btn:hover, .time-btn.active { color: #fff; background-color: #333336; }
-
         .detailed-chart { width: 100%; height: 400px; }
     </style>
 </head>
 <body>
 
-    <h1>Visão Geral de Mercado Pro</h1>
+    <h1>Terminal Financeiro Pro</h1>
+    
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('geral', this)">Visão Geral</button>
+        <button class="tab-btn" onclick="switchTab('brasil', this)">Ações Brasil</button>
+        <button class="tab-btn" onclick="switchTab('intl', this)">Ações Internacionais</button>
+    </div>
+
     <div class="dashboard" id="dashboard"></div>
 
     <div class="modal-overlay" id="modal">
@@ -61,22 +63,22 @@
                 <h2 id="modal-title">Detalhes do Ativo</h2>
                 <button class="close-btn" onclick="closeModal()">✖</button>
             </div>
-            
             <div class="timeframe-buttons">
                 <button class="time-btn" onclick="loadDetailedData('1mo', '1d', this)">1 M</button>
                 <button class="time-btn" onclick="loadDetailedData('6mo', '1d', this)">6 M</button>
                 <button class="time-btn active" onclick="loadDetailedData('1y', '1d', this)">1 A</button>
                 <button class="time-btn" onclick="loadDetailedData('5y', '1wk', this)">5 A</button>
             </div>
-
-            <div class="detailed-chart">
-                <canvas id="modalChartCanvas"></canvas>
-            </div>
+            <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
         </div>
     </div>
 
     <script>
-        const assets = [
+        // SEU LINK DO RENDER AQUI
+        const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
+
+        // Geração inteligente das listas de ativos
+        const ativosGerais = [
             { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
             { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
             { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
@@ -84,161 +86,140 @@
             { id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }
         ];
 
-        let miniCharts = {}; // Guarda os gráficos pequenos
-        let detailedChartInstance = null; // Guarda o gráfico grande
-        let currentAssetObj = null; // Guarda o ativo aberto no momento
+        const listaBrasilRaw = ['AGRO3', 'AMOB3', 'BBAS3', 'BBDC3', 'BBSE3', 'BRSR6', 'B3SA3', 'CMIG3', 'CXSE3', 'EGIE3', 'EQTL3', 'ETHE11', 'EZTC3', 'FLRY3', 'GMAT3', 'GOLD11', 'ITSA4', 'KEPL3', 'KLBN3', 'LEVE3', 'MBRF3', 'PETR3', 'PRIO3', 'PSSA3', 'QBTC11', 'QSOL11', 'RAIZ4', 'RANI3', 'SAPR4', 'SBFG3', 'SMTO3', 'SOJA3', 'SUZB3', 'TAEE11', 'TTEN3', 'VAMO3', 'VIVT3', 'WEGE3'];
+        const ativosBrasil = listaBrasilRaw.map(ticker => ({ id: ticker, name: ticker, ticker: `${ticker}.SA`, decimals: 2, prefix: 'R$' }));
 
-        function renderCards() {
+        const listaIntlRaw = ['GOOGL', 'AMZN', 'NVDA', 'TSM', 'ASML', 'AVGO', 'IRS', 'TSLA', 'MU', 'VZ', 'T', 'HD', 'SHOP', 'DIS', 'SPG', 'ANET', 'ICE', 'KO', 'EQNR', 'EPR', 'WFC', 'VICI', 'O', 'CPRT', 'ASX', 'CEPU', 'NVO', 'PLTR', 'JBL', 'QCOM', 'AAPL', 'MSFT', 'BAC', 'ORCL', 'EQT', 'MNST', 'CVS', 'HUYA', 'GPC', 'PFE', 'ROKU', 'DIBS', 'LEG', 'MBUU', 'FVRR'];
+        const ativosIntl = listaIntlRaw.map(ticker => ({ id: ticker, name: ticker, ticker: ticker, decimals: 2, prefix: 'US$' }));
+
+        const categorias = { geral: ativosGerais, brasil: ativosBrasil, intl: ativosIntl };
+        let currentTab = 'geral';
+        let miniCharts = {}; 
+        let detailedChartInstance = null; 
+        let currentAssetObj = null; 
+
+        // RENDERIZAÇÃO DA ABA ATUAL
+        async function switchTab(tabName, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            currentTab = tabName;
+            
+            const ativosDaAba = categorias[tabName];
             const dashboard = document.getElementById('dashboard');
-            assets.forEach(asset => {
+            dashboard.innerHTML = ''; 
+
+            // Limpa os gráficos antigos da memória para o site não ficar lento
+            Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
+            miniCharts = {};
+
+            // Cria os cartões vazios
+            ativosDaAba.forEach(asset => {
                 const card = document.createElement('div');
                 card.className = 'card';
-                // Adicionamos o evento de clique para abrir o modal
                 card.onclick = () => openModal(asset);
                 card.innerHTML = `
                     <div class="card-header">
-                        <div>
-                            <div class="asset-name">${asset.name}</div>
-                            <div class="asset-ticker">${asset.ticker}</div>
-                        </div>
-                        <div>
-                            <div class="price" id="price-${asset.id}">---</div>
-                            <div class="variation" id="var-${asset.id}">--</div>
-                        </div>
+                        <div><div class="asset-name">${asset.name}</div><div class="asset-ticker">${asset.ticker}</div></div>
+                        <div><div class="price" id="price-${asset.id}">---</div><div class="variation" id="var-${asset.id}">--</div></div>
                     </div>
                     <div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>
                 `;
                 dashboard.appendChild(card);
             });
+
+            // Passo 1: Busca o preço atual de TODOS os ativos da aba de uma vez só (Rota Lote)
+            const tickersString = ativosDaAba.map(a => a.ticker).join(',');
+            try {
+                const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
+                const cotacoesAtuais = await resCotacoes.json();
+
+                // Atualiza os preços na tela imediatamente
+                ativosDaAba.forEach(asset => {
+                    const dadosAtivo = cotacoesAtuais[asset.ticker];
+                    if(dadosAtivo && dadosAtivo.atual) {
+                        updateCardUI(asset.id, dadosAtivo.atual, dadosAtivo.fechamentoAnterior, asset.prefix, asset.decimals);
+                    }
+                });
+            } catch (e) { console.error("Erro ao buscar lote:", e); }
+
+            // Passo 2: Carregamento em Cascata (Lazy Load) dos minigráficos para não travar o servidor
+            for (const asset of ativosDaAba) {
+                try {
+                    const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
+                    const histData = await resHist.json();
+                    if(histData.historico && currentTab === tabName) { 
+                        drawMiniChart(asset.id, histData.historico, asset);
+                    }
+                } catch (e) { console.error("Erro no gráfico:", e); }
+            }
         }
 
-        // Função para desenhar os gráficos pequenos dos cartões
+        // --- FUNÇÕES DE INTERFACE (Mantidas e Otimizadas) ---
         function drawMiniChart(id, historicalData, assetDetails) {
-            const ctx = document.getElementById(`mini-chart-${id}`).getContext('2d');
+            const canvas = document.getElementById(`mini-chart-${id}`);
+            if(!canvas) return; // Proteção se mudar de aba rápido
+            const ctx = canvas.getContext('2d');
             const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
             
-            if(miniCharts[id]) miniCharts[id].destroy();
-
-            const gradient = ctx.createLinearGradient(0, 0, 0, 100);
+            const gradient = ctx.createLinearGradient(0, 0, 0, 80);
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
 
             miniCharts[id] = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: historicalData.map(item => item.data),
-                    datasets: [{
-                        data: historicalData.map(item => item.preco),
-                        borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false }, tooltip: { enabled: false } }, // Sem tooltip nos cards pequenos
-                    scales: { x: { display: false }, y: { display: false } }
-                }
+                type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
             });
         }
 
         function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
+            const elPrice = document.getElementById(`price-${id}`);
+            const elVar = document.getElementById(`var-${id}`);
+            if(!elPrice || !elVar) return;
             const varValue = currentPrice - previousPrice;
-            const varPct = (varValue / previousPrice) * 100;
-            document.getElementById(`price-${id}`).innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals })}`;
-            const varEl = document.getElementById(`var-${id}`);
-            varEl.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${varPct.toFixed(2)}%`;
-            varEl.className = varValue >= 0 ? 'variation up' : 'variation down';
+            const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
+            
+            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
+            elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`;
+            elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
         }
-
-        async function fetchInitialData() {
-            try {
-                // ATENÇÃO: Confirme se este é o seu link correto do Render
-                const urlBackend = 'https://api-financeira-8yu7.onrender.com';
-                
-                const resCurrent = await fetch(`${urlBackend}/api/commodities`);
-                const currentData = await resCurrent.json();
-
-                for (const asset of assets) {
-                    const ativoAjustado = currentData[asset.name.toLowerCase().replace('ó','o').replace('é','e')] || currentData[asset.id.toLowerCase()];
-                    if(ativoAjustado) updateCardUI(asset.id, ativoAjustado.atual, ativoAjustado.fechamentoAnterior, asset.prefix, asset.decimals);
-
-                    // Busca 1 mês apenas para o minigráfico do cartão
-                    const resHist = await fetch(`${urlBackend}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
-                    const histData = await resHist.json();
-                    if(histData.historico) drawMiniChart(asset.id, histData.historico, asset);
-                }
-            } catch (error) { console.error(error); }
-        }
-
-        // --- FUNÇÕES DO MODAL ---
 
         function openModal(asset) {
             currentAssetObj = asset;
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
-            
-            // Simula o clique no botão de "1 Ano" por padrão ao abrir
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
         }
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
 
         async function loadDetailedData(range, interval, btnElement) {
-            // Atualiza o visual dos botões
             document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
-
             try {
-                // Busca os dados personalizados (ex: 5 anos)
-                const url = `https://api-financeira-8yu7.onrender.com/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`;
-                const response = await fetch(url);
+                const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`);
                 const data = await response.json();
-                
                 drawDetailedChart(data.historico);
-            } catch (error) { console.error("Erro ao carregar detalhes:", error); }
+            } catch (error) { console.error(error); }
         }
 
         function drawDetailedChart(historicalData) {
             const ctx = document.getElementById('modalChartCanvas').getContext('2d');
             const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
-
-            if(detailedChartInstance) detailedChartInstance.destroy(); // Apaga o gráfico anterior
-
+            if(detailedChartInstance) detailedChartInstance.destroy(); 
             const gradient = ctx.createLinearGradient(0, 0, 0, 400);
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
 
             detailedChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: historicalData.map(item => item.data),
-                    datasets: [{
-                        data: historicalData.map(item => item.preco),
-                        borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient
-                    }]
-                },
+                type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
-                    interaction: { intersect: false, mode: 'index' },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 }
-                    },
-                    scales: {
-                        x: { display: false }, 
-                        // AQUI ESTÁ A MÁGICA DO EIXO Y (FAIXA DE PREÇO)
-                        y: { 
-                            display: true, 
-                            position: 'left', // Coloca os números na esquerda igual na sua foto
-                            ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } },
-                            grid: { color: '#333336' } // Adiciona linhas de grade sutis
-                        }
-                    }
+                    responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' },
+                    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } },
+                    scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } }
                 }
             });
         }
 
-        renderCards();
-        fetchInitialData();
+        // Inicia carregando a primeira aba
+        switchTab('geral', document.querySelector('.tab-btn'));
     </script>
 </body>
 </html>
