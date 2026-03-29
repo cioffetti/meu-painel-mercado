@@ -217,14 +217,15 @@
 
         async function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container');
-            container.innerHTML = '<div class="loading-ind">Acessando banco de dados da empresa...</div>';
+            container.innerHTML = '<div class="loading-ind">Acessando banco de dados da nuvem...</div>';
             
             try {
                 const res = await fetch(`${URL_BACKEND}/api/indicadores/${ticker}`);
                 const data = await res.json();
 
-                if (data.status === "bloqueado") {
-                    container.innerHTML = `<div class="loading-ind" style="color: #e57373;">⚠️ O provedor de dados limitou os acessos temporariamente e ainda não temos esse ativo salvo. Tente novamente mais tarde.</div>`;
+                // NOVO AVISO: Se o Render disser que está vazio, pede pro Marcelo ligar o Robô
+                if (data.status === "aguardando_robo") {
+                    container.innerHTML = `<div class="loading-ind" style="color: #f5a623;">⚠️ Análise Fundamentalista não sincronizada na nuvem. Por favor, rode o Robô Abastecedor no seu computador local para enviar os dados desta ação.</div>`;
                     return;
                 }
                 if (Object.keys(data).length === 0) {
@@ -234,7 +235,6 @@
                 const fmtNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
                 const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
                 
-                // CONSTRUÇÃO DAS CAIXINHAS (Igual à sua imagem)
                 container.innerHTML = `
                     <div class="ind-category">
                         <div class="ind-category-title">Indicadores de Valuation</div>
@@ -275,7 +275,7 @@
                         </div>
                     </div>
                 `;
-            } catch(e) { container.innerHTML = '<div class="loading-ind">Erro de conexão ao buscar indicadores.</div>'; }
+            } catch(e) { container.innerHTML = '<div class="loading-ind">Erro de conexão ao ler os dados da nuvem.</div>'; }
         }
 
         function openModal(asset) {
