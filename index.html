@@ -217,18 +217,17 @@
 
         async function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container');
-            container.innerHTML = '<div class="loading-ind">Acessando banco de dados da nuvem...</div>';
+            container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             
             try {
-                const res = await fetch(`${URL_BACKEND}/api/indicadores/${ticker}`);
-                const data = await res.json();
+                // A grande mudança: o site lê o ficheiro local em vez de ir ao Render!
+                const res = await fetch('./indicadores.json');
+                const todosOsDados = await res.json();
 
-                // NOVO AVISO: Se o Render disser que está vazio, pede pro Marcelo ligar o Robô
-                if (data.status === "aguardando_robo") {
-                    container.innerHTML = `<div class="loading-ind" style="color: #f5a623;">⚠️ Análise Fundamentalista não sincronizada na nuvem. Por favor, rode o Robô Abastecedor no seu computador local para enviar os dados desta ação.</div>`;
-                    return;
-                }
-                if (Object.keys(data).length === 0) {
+                // Procura a empresa específica dentro do ficheiro
+                const data = todosOsDados[ticker];
+
+                if (!data) {
                     container.innerHTML = '<div class="loading-ind">Indicadores não disponíveis para este ativo.</div>'; return;
                 }
 
@@ -275,7 +274,7 @@
                         </div>
                     </div>
                 `;
-            } catch(e) { container.innerHTML = '<div class="loading-ind">Erro de conexão ao ler os dados da nuvem.</div>'; }
+            } catch(e) { container.innerHTML = '<div class="loading-ind">Erro a ler o ficheiro estático de indicadores.</div>'; }
         }
 
         function openModal(asset) {
