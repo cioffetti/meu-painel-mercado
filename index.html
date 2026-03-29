@@ -41,7 +41,6 @@
         .time-btn.active { color: #fff; background-color: #333336; }
         .detailed-chart { width: 100%; height: 350px; margin-bottom: 20px;}
 
-        /* CSS DOS INDICADORES EXPANDIDOS */
         .ind-category { margin-top: 25px; border-top: 1px solid #333; padding-top: 15px; }
         .ind-category-title { font-size: 1rem; font-weight: 700; color: #d67a36; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;}
         .indicadores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 20px; }
@@ -201,7 +200,10 @@
                     const elPrice = document.getElementById(`price-${asset.id}`);
                     if (elPrice && elPrice.innerText === '---') {
                         const precos = histData.historico;
-                        updateCardUI(asset.id, parseFloat(precos[precos.length-1].preco), parseFloat(precos[precos.length-2]?.preco || precos[precos.length-1].preco), asset.prefix, asset.decimals);
+                        // TRADUTOR UNIVERSAL: Aceita 'preco' (antigo) ou 'close' (novo)
+                        const pAtual = precos[precos.length-1].preco || precos[precos.length-1].close;
+                        const pAnt = precos[precos.length-2]?.preco || precos[precos.length-2]?.close || pAtual;
+                        updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
                     }
                 }
             } catch (e) { }
@@ -220,11 +222,8 @@
             container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             
             try {
-                // A grande mudança: o site lê o ficheiro local em vez de ir ao Render!
                 const res = await fetch('./indicadores.json');
                 const todosOsDados = await res.json();
-
-                // Procura a empresa específica dentro do ficheiro
                 const data = todosOsDados[ticker];
 
                 if (!data) {
@@ -301,11 +300,14 @@
             const canvas = document.getElementById(`mini-chart-${id}`);
             if(!canvas) return;
             const ctx = canvas.getContext('2d');
-            const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
+            // TRADUTOR UNIVERSAL APLICADO AQUI
+            const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
+            const pPrimeiro = historicalData[0].preco || historicalData[0].close;
+            const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 
             const gradient = ctx.createLinearGradient(0, 0, 0, 80);
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
             miniCharts[id] = new Chart(ctx, {
-                type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
+                type: 'line', data: { labels: historicalData.map(i => i.data || i.time), datasets: [{ data: historicalData.map(i => i.preco || i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
             });
         }
@@ -321,12 +323,15 @@
         }
         function drawDetailedChart(historicalData) {
             const ctx = document.getElementById('modalChartCanvas').getContext('2d');
-            const color = (historicalData[historicalData.length - 1].preco - historicalData[0].preco) >= 0 ? '#1a7f37' : '#c93e36'; 
+            // TRADUTOR UNIVERSAL APLICADO AQUI
+            const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
+            const pPrimeiro = historicalData[0].preco || historicalData[0].close;
+            const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 
             if(detailedChartInstance) detailedChartInstance.destroy(); 
             const gradient = ctx.createLinearGradient(0, 0, 0, 400);
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
             detailedChartInstance = new Chart(ctx, {
-                type: 'line', data: { labels: historicalData.map(i => i.data), datasets: [{ data: historicalData.map(i => i.preco), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
+                type: 'line', data: { labels: historicalData.map(i => i.data || i.time), datasets: [{ data: historicalData.map(i => i.preco || i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
                 options: {
                     responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' },
                     plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } },
