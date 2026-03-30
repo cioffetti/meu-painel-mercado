@@ -12,7 +12,24 @@
     "margemOperacional": -0.08424,
     "margemLiquida": -0.0016300001,
     "dividaPL": 63.663,
-    "liquidezCorrente": 1.609
+    "liquidezCorrente": 1.609,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "AMOB3.SA": {
     "pvp": 0.1556109,
@@ -20,7 +37,24 @@
     "lpa": -7.54,
     "margemBruta": 0,
     "margemOperacional": 0,
-    "margemLiquida": 0
+    "margemLiquida": 0,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "BBAS3.SA": {
     "pl": 9.441667,
@@ -33,7 +67,24 @@
     "roa": 0.00865,
     "margemBruta": 0,
     "margemOperacional": 0.18375,
-    "margemLiquida": 0.24109
+    "margemLiquida": 0.24109,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "BBDC3.SA": {
     "pl": 7.6197176,
@@ -46,7 +97,24 @@
     "roa": 0.010880001,
     "margemBruta": 0,
     "margemOperacional": 0.2481,
-    "margemLiquida": 0.26519
+    "margemLiquida": 0.26519,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "BBSE3.SA": {
     "pl": 7.3978496,
@@ -61,7 +129,24 @@
     "margemBruta": 0.98234004,
     "margemOperacional": 0.93563,
     "margemLiquida": 0.87246,
-    "liquidezCorrente": 1.278
+    "liquidezCorrente": 1.278,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "BRSR6.SA": {
     "pl": 3.9952266,
@@ -74,7 +159,24 @@
     "roa": 0.011,
     "margemBruta": 0,
     "margemOperacional": 0.44894,
-    "margemLiquida": 0.2299
+    "margemLiquida": 0.2299,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "B3SA3.SA": {
     "pl": 20.73494,
@@ -90,7 +192,24 @@
     "margemOperacional": 0.65740997,
     "margemLiquida": 0.45544997,
     "dividaPL": 88.134,
-    "liquidezCorrente": 1.908
+    "liquidezCorrente": 1.908,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "CMIG3.SA": {
     "pl": 9.719298,
@@ -106,7 +225,24 @@
     "margemOperacional": 0.20073,
     "margemLiquida": 0.11456,
     "dividaPL": 69.564,
-    "liquidezCorrente": 1.001
+    "liquidezCorrente": 1.001,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "CXSE3.SA": {
     "pl": 12.181819,
@@ -122,7 +258,24 @@
     "margemOperacional": 0.80120003,
     "margemLiquida": 0.74801004,
     "dividaPL": 0.011,
-    "liquidezCorrente": 1.702
+    "liquidezCorrente": 1.702,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "EGIE3.SA": {
     "pl": 13.955752,
@@ -138,7 +291,24 @@
     "margemOperacional": 0.38505,
     "margemLiquida": 0.20084,
     "dividaPL": 214.196,
-    "liquidezCorrente": 1.122
+    "liquidezCorrente": 1.122,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "EQTL3.SA": {
     "pl": 40.708336,
@@ -152,12 +322,46 @@
     "margemBruta": 0.34162998,
     "margemOperacional": 0.08656,
     "margemLiquida": 0.03222,
-    "dividaPL": 193.509
+    "dividaPL": 193.509,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ETHE11.SA": {
     "margemBruta": 0,
     "margemOperacional": 0,
-    "margemLiquida": 0
+    "margemLiquida": 0,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "EZTC3.SA": {
     "pl": 7.0793653,
@@ -173,7 +377,24 @@
     "margemOperacional": 0.24354,
     "margemLiquida": 0.35694999,
     "dividaPL": 33.729,
-    "liquidezCorrente": 8.329
+    "liquidezCorrente": 8.329,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "FLRY3.SA": {
     "pl": 13.75,
@@ -189,7 +410,24 @@
     "margemOperacional": 0.1094,
     "margemLiquida": 0.07391,
     "dividaPL": 103.437,
-    "liquidezCorrente": 1.969
+    "liquidezCorrente": 1.969,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "GMAT3.SA": {
     "pl": 5.5243907,
@@ -205,12 +443,46 @@
     "margemOperacional": 0.04298,
     "margemLiquida": 0.0477,
     "dividaPL": 59.125,
-    "liquidezCorrente": 1.748
+    "liquidezCorrente": 1.748,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "GOLD11.SA": {
     "margemBruta": 0,
     "margemOperacional": 0,
-    "margemLiquida": 0
+    "margemLiquida": 0,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ITSA4.SA": {
     "pl": 8.959459,
@@ -226,7 +498,24 @@
     "margemOperacional": 0.07916,
     "margemLiquida": 1.9986701,
     "dividaPL": 13.015,
-    "liquidezCorrente": 3.179
+    "liquidezCorrente": 3.179,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "KEPL3.SA": {
     "pl": 9.111111,
@@ -242,7 +531,24 @@
     "margemOperacional": 0.15231,
     "margemLiquida": 0.10486,
     "dividaPL": 43.031,
-    "liquidezCorrente": 1.956
+    "liquidezCorrente": 1.956,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "KLBN3.SA": {
     "pl": 16.695652,
@@ -258,7 +564,24 @@
     "margemOperacional": 0.07498,
     "margemLiquida": 0.06779,
     "dividaPL": 267.053,
-    "liquidezCorrente": 2.059
+    "liquidezCorrente": 2.059,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "LEVE3.SA": {
     "pl": 7.619154,
@@ -274,7 +597,24 @@
     "margemOperacional": 0.13245,
     "margemLiquida": 0.11257,
     "dividaPL": 196.887,
-    "liquidezCorrente": 1.266
+    "liquidezCorrente": 1.266,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "MBRF3.SA": {
     "pl": 60.638885,
@@ -290,7 +630,24 @@
     "margemOperacional": 0.0361,
     "margemLiquida": 0.0021799998,
     "dividaPL": 529.705,
-    "liquidezCorrente": 1.078
+    "liquidezCorrente": 1.078,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "PETR3.SA": {
     "pl": 6.6462665,
@@ -306,7 +663,24 @@
     "margemOperacional": 0.26850998,
     "margemLiquida": 0.22134,
     "dividaPL": 91.963,
-    "liquidezCorrente": 0.706
+    "liquidezCorrente": 0.706,
+    "data_referencia": "29/03/2026",
+  "analise_senior": {
+        "tendencia": "O gráfico demonstra forte resiliência nos preços do barril estabilizando a geração de caixa. A margem EBITDA elevada sustenta o pagamento de proventos gordos, porém a tendência de endividamento requer atenção frente a novos projetos do plano estratégico voltados a transição energética e capex exploratório na margem equatorial.",
+        "swot": {
+          "forcas": "Custo de extração (lifting cost) do pré-sal entre os mais competitivos do mundo. Alta geração de caixa (FCF).",
+          "fraquezas": "Risco de ingerência política na política de preços e dividendos. Histórico de atrasos em obras de refino.",
+          "oportunidades": "Exploração da Margem Equatorial pode garantir reservas futuras. Transição energética subsidiada pela forte receita do petróleo.",
+          "ameacas": "Queda global no preço do Brent. Regulação ambiental mais rígida travando novas licitações de blocos."
+        },
+        "notas": {
+          "roe": 5,
+          "roic": 5,
+          "ebitda": 4,
+          "divida": 4,
+          "receita": 3
+        }
+      }
   },
   "PRIO3.SA": {
     "pl": 25.566788,
@@ -321,7 +695,24 @@
     "margemOperacional": 0.098859996,
     "margemLiquida": 0.14446999,
     "dividaPL": 110.312,
-    "liquidezCorrente": 1.819
+    "liquidezCorrente": 1.819,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "PSSA3.SA": {
     "pl": 9.353167,
@@ -337,17 +728,68 @@
     "margemOperacional": 0.09952,
     "margemLiquida": 0.07808,
     "dividaPL": 4.536,
-    "liquidezCorrente": 1.218
+    "liquidezCorrente": 1.218,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "QBTC11.SA": {
     "margemBruta": 0,
     "margemOperacional": 0,
-    "margemLiquida": 0
+    "margemLiquida": 0,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "QSOL11.SA": {
     "margemBruta": 0,
     "margemOperacional": 0,
-    "margemLiquida": 0
+    "margemLiquida": 0,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "RAIZ4.SA": {
     "evEbitda": 103.916,
@@ -359,7 +801,24 @@
     "margemBruta": 0.03964,
     "margemOperacional": -0.10459,
     "margemLiquida": -0.09583,
-    "liquidezCorrente": 1.691
+    "liquidezCorrente": 1.691,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "RANI3.SA": {
     "pl": 8.563636,
@@ -375,7 +834,24 @@
     "margemOperacional": 0.16437,
     "margemLiquida": 0.14354,
     "dividaPL": 135.124,
-    "liquidezCorrente": 2.773
+    "liquidezCorrente": 2.773,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SAPR4.SA": {
     "pl": 6.341086,
@@ -391,7 +867,24 @@
     "margemOperacional": 0.28479,
     "margemLiquida": 0.2886,
     "dividaPL": 59.87,
-    "liquidezCorrente": 1.199
+    "liquidezCorrente": 1.199,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SBFG3.SA": {
     "pl": 8.307143,
@@ -407,7 +900,24 @@
     "margemOperacional": 0.06848,
     "margemLiquida": 0.0424,
     "dividaPL": 96.014,
-    "liquidezCorrente": 1.356
+    "liquidezCorrente": 1.356,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SMTO3.SA": {
     "pl": 8.780173,
@@ -423,7 +933,24 @@
     "margemOperacional": 0.20143999,
     "margemLiquida": 0.11094,
     "dividaPL": 160.269,
-    "liquidezCorrente": 2.872
+    "liquidezCorrente": 2.872,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SOJA3.SA": {
     "pl": 9.121621,
@@ -439,7 +966,24 @@
     "margemOperacional": 0.000080000005,
     "margemLiquida": 0.00763,
     "dividaPL": 70.522,
-    "liquidezCorrente": 6.773
+    "liquidezCorrente": 6.773,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SUZB3.SA": {
     "pl": 4.6660495,
@@ -455,7 +999,24 @@
     "margemOperacional": 0.16847,
     "margemLiquida": 0.26754,
     "dividaPL": 231.459,
-    "liquidezCorrente": 3.185
+    "liquidezCorrente": 3.185,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "TAEE11.SA": {
     "pl": 39.528847,
@@ -471,7 +1032,24 @@
     "margemOperacional": 0.4627,
     "margemLiquida": 0.34166,
     "dividaPL": 146.586,
-    "liquidezCorrente": 1.566
+    "liquidezCorrente": 1.566,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "TTEN3.SA": {
     "pl": 9.602485,
@@ -487,7 +1065,24 @@
     "margemOperacional": 0.022249999,
     "margemLiquida": 0.04966,
     "dividaPL": 100.14,
-    "liquidezCorrente": 1.356
+    "liquidezCorrente": 1.356,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "VAMO3.SA": {
     "pl": 12.16129,
@@ -503,7 +1098,24 @@
     "margemOperacional": 0.46729,
     "margemLiquida": 0.05711,
     "dividaPL": 651.433,
-    "liquidezCorrente": 1.81
+    "liquidezCorrente": 1.81,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "VIVT3.SA": {
     "pl": 20.947643,
@@ -519,7 +1131,24 @@
     "margemOperacional": 0.19459,
     "margemLiquida": 0.1035,
     "dividaPL": 29.627,
-    "liquidezCorrente": 0.999
+    "liquidezCorrente": 0.999,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "WEGE3.SA": {
     "pl": 31.19079,
@@ -535,7 +1164,24 @@
     "margemOperacional": 0.19398001,
     "margemLiquida": 0.15626,
     "dividaPL": 29.31,
-    "liquidezCorrente": 1.548
+    "liquidezCorrente": 1.548,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "GOOGL": {
     "pl": 25.378351,
@@ -551,7 +1197,24 @@
     "margemOperacional": 0.31568,
     "margemLiquida": 0.32810003,
     "dividaPL": 16.133,
-    "liquidezCorrente": 2.005
+    "liquidezCorrente": 2.005,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "AMZN": {
     "pl": 27.763231,
@@ -566,7 +1229,24 @@
     "margemOperacional": 0.10533,
     "margemLiquida": 0.108339995,
     "dividaPL": 43.435,
-    "liquidezCorrente": 1.051
+    "liquidezCorrente": 1.051,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "NVDA": {
     "pl": 34.11813,
@@ -582,7 +1262,24 @@
     "margemOperacional": 0.65024,
     "margemLiquida": 0.55603004,
     "dividaPL": 7.255,
-    "liquidezCorrente": 3.905
+    "liquidezCorrente": 3.905,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "TSM": {
     "pl": 31.53861,
@@ -598,14 +1295,31 @@
     "margemOperacional": 0.53916,
     "margemLiquida": 0.45099998,
     "dividaPL": 19.565,
-    "liquidezCorrente": 2.618
+    "liquidezCorrente": 2.618,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ASML": {
     "pl": 45.66865,
-    "pvp": 22.174341,
+    "pvp": 22.176262,
     "dy": 0.0068,
     "evEbitda": 40.221,
-    "vpa": 58.73771,
+    "vpa": 58.73262,
     "lpa": 28.52,
     "psr": 15.655599,
     "roe": 0.50458,
@@ -614,7 +1328,24 @@
     "margemOperacional": 0.35304,
     "margemLiquida": 0.29416,
     "dividaPL": 23.916,
-    "liquidezCorrente": 1.262
+    "liquidezCorrente": 1.262,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "AVGO": {
     "pl": 58.498055,
@@ -630,7 +1361,24 @@
     "margemOperacional": 0.31765,
     "margemLiquida": 0.36571997,
     "dividaPL": 166.032,
-    "liquidezCorrente": 1.902
+    "liquidezCorrente": 1.902,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "IRS": {
     "pl": 3.512761,
@@ -646,7 +1394,24 @@
     "margemOperacional": 0.54974,
     "margemLiquida": 0.98941004,
     "dividaPL": 50.658,
-    "liquidezCorrente": 1.49
+    "liquidezCorrente": 1.49,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "TSLA": {
     "pl": 331.9541,
@@ -661,7 +1426,24 @@
     "margemOperacional": 0.047030002,
     "margemLiquida": 0.040009998,
     "dividaPL": 17.763,
-    "liquidezCorrente": 2.164
+    "liquidezCorrente": 2.164,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "MU": {
     "pl": 16.865911,
@@ -677,7 +1459,24 @@
     "margemOperacional": 0.67624,
     "margemLiquida": 0.41486,
     "dividaPL": 14.902,
-    "liquidezCorrente": 2.897
+    "liquidezCorrente": 2.897,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "VZ": {
     "pl": 12.391626,
@@ -693,7 +1492,24 @@
     "margemOperacional": 0.20989001,
     "margemLiquida": 0.124280006,
     "dividaPL": 174.78,
-    "liquidezCorrente": 0.913
+    "liquidezCorrente": 0.913,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "T": {
     "pl": 9.572369,
@@ -709,7 +1525,24 @@
     "margemOperacional": 0.18416001,
     "margemLiquida": 0.17472,
     "dividaPL": 124.179,
-    "liquidezCorrente": 0.906
+    "liquidezCorrente": 0.906,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "HD": {
     "pl": 22.619549,
@@ -725,7 +1558,24 @@
     "margemOperacional": 0.100760005,
     "margemLiquida": 0.08596,
     "dividaPL": 514.392,
-    "liquidezCorrente": 1.061
+    "liquidezCorrente": 1.061,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SHOP": {
     "pl": 118.98936,
@@ -740,7 +1590,24 @@
     "margemOperacional": 0.20289,
     "margemLiquida": 0.106520005,
     "dividaPL": 1.395,
-    "liquidezCorrente": 5.96
+    "liquidezCorrente": 5.96,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "DIS": {
     "pl": 13.611193,
@@ -756,7 +1623,24 @@
     "margemOperacional": 0.15361,
     "margemLiquida": 0.128,
     "dividaPL": 40.909,
-    "liquidezCorrente": 0.669
+    "liquidezCorrente": 0.669,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "SPG": {
     "pl": 12.725283,
@@ -772,7 +1656,24 @@
     "margemOperacional": 0.49717,
     "margemLiquida": 0.7271,
     "dividaPL": 435.463,
-    "liquidezCorrente": 0.236
+    "liquidezCorrente": 0.236,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ANET": {
     "pl": 43.916363,
@@ -787,7 +1688,24 @@
     "margemOperacional": 0.41519,
     "margemLiquida": 0.38991,
     "dividaPL": 0.732,
-    "liquidezCorrente": 3.048
+    "liquidezCorrente": 3.048,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ICE": {
     "pl": 26.459272,
@@ -803,7 +1721,24 @@
     "margemOperacional": 0.49561,
     "margemLiquida": 0.33380002,
     "dividaPL": 70.077,
-    "liquidezCorrente": 1.02
+    "liquidezCorrente": 1.02,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "KO": {
     "pl": 24.904606,
@@ -819,7 +1754,24 @@
     "margemOperacional": 0.24656999,
     "margemLiquida": 0.2734,
     "dividaPL": 139.793,
-    "liquidezCorrente": 1.459
+    "liquidezCorrente": 1.459,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "EQNR": {
     "pl": 21.407215,
@@ -835,7 +1787,24 @@
     "margemOperacional": 0.21440001,
     "margemLiquida": 0.04758,
     "dividaPL": 77.093,
-    "liquidezCorrente": 1.265
+    "liquidezCorrente": 1.265,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "EPR": {
     "pl": 14.85061,
@@ -851,7 +1820,24 @@
     "margemOperacional": 0.52915,
     "margemLiquida": 0.38509,
     "dividaPL": 134.214,
-    "liquidezCorrente": 1.617
+    "liquidezCorrente": 1.617,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "WFC": {
     "pl": 12.330671,
@@ -864,7 +1850,24 @@
     "roa": 0.01047,
     "margemBruta": 0,
     "margemOperacional": 0.29938,
-    "margemLiquida": 0.26659
+    "margemLiquida": 0.26659,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "VICI": {
     "pl": 10.195403,
@@ -880,7 +1883,24 @@
     "margemOperacional": 0.8031,
     "margemLiquida": 0.69281,
     "dividaPL": 62.679,
-    "liquidezCorrente": 17.233
+    "liquidezCorrente": 17.233,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "O": {
     "pl": 51.871796,
@@ -896,7 +1916,24 @@
     "margemOperacional": 0.46975,
     "margemLiquida": 0.18370001,
     "dividaPL": 73.505,
-    "liquidezCorrente": 1.245
+    "liquidezCorrente": 1.245,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "CPRT": {
     "pl": 20.396227,
@@ -911,7 +1948,24 @@
     "margemOperacional": 0.34654,
     "margemLiquida": 0.33758,
     "dividaPL": 0.98,
-    "liquidezCorrente": 10.061
+    "liquidezCorrente": 10.061,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ASX": {
     "pl": 38.392857,
@@ -927,7 +1981,24 @@
     "margemOperacional": 0.099429995,
     "margemLiquida": 0.063,
     "dividaPL": 70.617,
-    "liquidezCorrente": 1.284
+    "liquidezCorrente": 1.284,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "CEPU": {
     "pl": 8.809525,
@@ -942,7 +2013,24 @@
     "margemOperacional": 0.22393999,
     "margemLiquida": 0.31561002,
     "dividaPL": 18.846,
-    "liquidezCorrente": 1.773
+    "liquidezCorrente": 1.773,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "NVO": {
     "pl": 10.123596,
@@ -958,7 +2046,24 @@
     "margemOperacional": 0.44528,
     "margemLiquida": 0.33143002,
     "dividaPL": 67.488,
-    "liquidezCorrente": 0.8
+    "liquidezCorrente": 0.8,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "PLTR": {
     "pl": 227.07936,
@@ -973,7 +2078,24 @@
     "margemOperacional": 0.40901002,
     "margemLiquida": 0.36310002,
     "dividaPL": 3.063,
-    "liquidezCorrente": 7.11
+    "liquidezCorrente": 7.11,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "JBL": {
     "pl": 35.18868,
@@ -989,7 +2111,24 @@
     "margemOperacional": 0.046729997,
     "margemLiquida": 0.02477,
     "dividaPL": 325.352,
-    "liquidezCorrente": 1.013
+    "liquidezCorrente": 1.013,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "QCOM": {
     "pl": 25.627016,
@@ -1005,7 +2144,24 @@
     "margemOperacional": 0.27473,
     "margemLiquida": 0.11958,
     "dividaPL": 64.218,
-    "liquidezCorrente": 2.505
+    "liquidezCorrente": 2.505,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "AAPL": {
     "pl": 31.453857,
@@ -1021,7 +2177,24 @@
     "margemOperacional": 0.35374,
     "margemLiquida": 0.27037,
     "dividaPL": 102.63,
-    "liquidezCorrente": 0.974
+    "liquidezCorrente": 0.974,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "MSFT": {
     "pl": 22.326033,
@@ -1037,7 +2210,24 @@
     "margemOperacional": 0.47094002,
     "margemLiquida": 0.39044,
     "dividaPL": 31.539,
-    "liquidezCorrente": 1.386
+    "liquidezCorrente": 1.386,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "BAC": {
     "pl": 12.328085,
@@ -1050,7 +2240,24 @@
     "roa": 0.00914,
     "margemBruta": 0,
     "margemOperacional": 0.41627997,
-    "margemLiquida": 0.28401
+    "margemLiquida": 0.28401,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ORCL": {
     "pl": 25.073608,
@@ -1066,7 +2273,24 @@
     "margemOperacional": 0.32676,
     "margemLiquida": 0.25298,
     "dividaPL": 415.265,
-    "liquidezCorrente": 1.347
+    "liquidezCorrente": 1.347,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "EQT": {
     "pl": 20.407856,
@@ -1082,7 +2306,24 @@
     "margemOperacional": 0.5499,
     "margemLiquida": 0.24927,
     "dividaPL": 28.932,
-    "liquidezCorrente": 0.763
+    "liquidezCorrente": 0.763,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "MNST": {
     "pl": 37.025772,
@@ -1097,7 +2338,24 @@
     "margemOperacional": 0.31315002,
     "margemLiquida": 0.22973,
     "dividaPL": 0.8,
-    "liquidezCorrente": 3.703
+    "liquidezCorrente": 3.703,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "CVS": {
     "pl": 50.417267,
@@ -1113,7 +2371,24 @@
     "margemOperacional": 0.01572,
     "margemLiquida": 0.00442,
     "dividaPL": 106.06,
-    "liquidezCorrente": 0.842
+    "liquidezCorrente": 0.842,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "HUYA": {
     "pvp": 0.9693159,
@@ -1127,7 +2402,24 @@
     "margemOperacional": -0.03731,
     "margemLiquida": -0.01732,
     "dividaPL": 0.422,
-    "liquidezCorrente": 2.838
+    "liquidezCorrente": 2.838,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "GPC": {
     "pl": 223.44681,
@@ -1143,7 +2435,24 @@
     "margemOperacional": 0.04851,
     "margemLiquida": 0.00271,
     "dividaPL": 156.063,
-    "liquidezCorrente": 1.079
+    "liquidezCorrente": 1.079,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "PFE": {
     "pl": 19.882353,
@@ -1159,7 +2468,24 @@
     "margemOperacional": 0.23945,
     "margemLiquida": 0.124180004,
     "dividaPL": 77.957,
-    "liquidezCorrente": 1.16
+    "liquidezCorrente": 1.16,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "ROKU": {
     "pl": 147.71187,
@@ -1174,7 +2500,24 @@
     "margemOperacional": 0.045440003,
     "margemLiquida": 0.01865,
     "dividaPL": 19.689,
-    "liquidezCorrente": 2.749
+    "liquidezCorrente": 2.749,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "DIBS": {
     "pvp": 2.0826771,
@@ -1188,7 +2531,24 @@
     "margemOperacional": -0.100530006,
     "margemLiquida": -0.15248999,
     "dividaPL": 19.863,
-    "liquidezCorrente": 4.195
+    "liquidezCorrente": 4.195,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "LEG": {
     "pl": 5.6686387,
@@ -1204,7 +2564,24 @@
     "margemOperacional": 0.046669997,
     "margemLiquida": 0.05805,
     "dividaPL": 161.93,
-    "liquidezCorrente": 2.25
+    "liquidezCorrente": 2.25,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "MBUU": {
     "pl": 35.243244,
@@ -1219,7 +2596,24 @@
     "margemOperacional": -0.016139999,
     "margemLiquida": 0.01758,
     "dividaPL": 5.239,
-    "liquidezCorrente": 1.559
+    "liquidezCorrente": 1.559,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   },
   "FVRR": {
     "pl": 17.428572,
@@ -1234,6 +2628,23 @@
     "margemOperacional": 0.049569998,
     "margemLiquida": 0.04869,
     "dividaPL": 1.01,
-    "liquidezCorrente": 1.931
+    "liquidezCorrente": 1.931,
+    "data_referencia": "29/03/2026",
+    "analise_senior": {
+      "tendencia": "Aguardando análise do especialista...",
+      "swot": {
+        "forcas": "-",
+        "fraquezas": "-",
+        "oportunidades": "-",
+        "ameacas": "-"
+      },
+      "notas": {
+        "roe": 0,
+        "roic": 0,
+        "ebitda": 0,
+        "divida": 0,
+        "receita": 0
+      }
+    }
   }
 }
