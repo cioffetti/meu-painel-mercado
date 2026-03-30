@@ -221,7 +221,7 @@
             container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             
             try {
-                const res = await fetch('./indicadores.json');
+                const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                 const todosOsDados = await res.json();
                 const data = todosOsDados[ticker];
 
