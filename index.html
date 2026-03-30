@@ -200,7 +200,6 @@
                     const elPrice = document.getElementById(`price-${asset.id}`);
                     if (elPrice && elPrice.innerText === '---') {
                         const precos = histData.historico;
-                        // TRADUTOR UNIVERSAL: Aceita 'preco' (antigo) ou 'close' (novo)
                         const pAtual = precos[precos.length-1].preco || precos[precos.length-1].close;
                         const pAnt = precos[precos.length-2]?.preco || precos[precos.length-2]?.close || pAtual;
                         updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
@@ -217,7 +216,7 @@
             openModal(assetBusca); 
         }
 
-     async function fetchIndicadores(ticker) {
+        async function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container');
             container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             
@@ -231,15 +230,15 @@
                 const fmtNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
                 const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
                 
-                // Gerador de Estrelas (0 a 5)
                 const renderStars = (nota) => {
                     const n = Math.max(0, Math.min(5, Math.floor(nota || 0)));
                     return `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(n)}${'☆'.repeat(5-n)}</span>`;
                 };
 
-                const ai = data.analise_senior || {}; // Dados do Analista
+                const ai = data.analise_senior || {}; 
+                const dcf = data.valuation_dcf; 
                 
-                container.innerHTML = `
+                let htmlContent = `
                     <div class="ind-category">
                         <div class="ind-category-title">Indicadores de Valuation</div>
                         <div class="indicadores-grid">
@@ -303,6 +302,51 @@
                         </div>
                     </div>
                 `;
+
+                // MÓDULO VALUATION DCF (SÓ APARECE SE NÃO FOR ETF)
+                if (dcf) {
+                    let statusColor = '#FFC107'; // Amarelo (Justo)
+                    if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50';
+                    if(dcf.status === 'SUPERVALORIZADA') statusColor = '#F44336';
+
+                    htmlContent += `
+                    <div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div class="ind-category-title" style="color: #9C27B0; margin: 0;">🔮 Valuation DCF & Projeções</div>
+                            <div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: ${statusColor};">
+                                STATUS: <strong style="color: ${statusColor};">${dcf.status || 'N/A'}</strong>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px; font-size: 0.85rem; color: #ccc;">
+                            <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div>
+                            <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP (g):</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div>
+                            <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;">
+                                <div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Cenário Pessimista</div>
+                                <div style="font-size: 1.5rem; color: #fff; font-weight: 800; margin-bottom: 10px;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.pessimista?.preco_justo)}</div>
+                                <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div>
+                            </div>
+                            <div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;">
+                                <div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Cenário Base</div>
+                                <div style="font-size: 1.5rem; color: #fff; font-weight: 800; margin-bottom: 10px;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.base?.preco_justo)}</div>
+                                <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div>
+                            </div>
+                            <div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;">
+                                <div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Cenário Otimista</div>
+                                <div style="font-size: 1.5rem; color: #fff; font-weight: 800; margin-bottom: 10px;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.otimista?.preco_justo)}</div>
+                                <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }
+
+                container.innerHTML = htmlContent;
+
             } catch(e) { container.innerHTML = '<div class="loading-ind">Erro a ler o ficheiro estático.</div>'; }
         }
 
@@ -330,7 +374,6 @@
             const canvas = document.getElementById(`mini-chart-${id}`);
             if(!canvas) return;
             const ctx = canvas.getContext('2d');
-            // TRADUTOR UNIVERSAL APLICADO AQUI
             const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
             const pPrimeiro = historicalData[0].preco || historicalData[0].close;
             const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 
@@ -353,7 +396,6 @@
         }
         function drawDetailedChart(historicalData) {
             const ctx = document.getElementById('modalChartCanvas').getContext('2d');
-            // TRADUTOR UNIVERSAL APLICADO AQUI
             const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
             const pPrimeiro = historicalData[0].preco || historicalData[0].close;
             const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 

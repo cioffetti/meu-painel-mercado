@@ -29,6 +29,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "AMOB3.SA": {
@@ -53,6 +75,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -84,6 +128,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "BBDC3.SA": {
@@ -113,6 +179,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -146,6 +234,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "BRSR6.SA": {
@@ -175,6 +285,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -209,6 +341,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "CMIG3.SA": {
@@ -241,6 +395,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -275,6 +451,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "EGIE3.SA": {
@@ -308,6 +506,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "EQTL3.SA": {
@@ -339,6 +559,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "ETHE11.SA": {
@@ -361,7 +603,8 @@
         "divida": 0,
         "receita": 0
       }
-    }
+    },
+    "valuation_dcf": null
   },
   "EZTC3.SA": {
     "pl": 7.0793653,
@@ -393,6 +636,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -427,6 +692,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "GMAT3.SA": {
@@ -460,6 +747,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "GOLD11.SA": {
@@ -482,7 +791,8 @@
         "divida": 0,
         "receita": 0
       }
-    }
+    },
+    "valuation_dcf": null
   },
   "ITSA4.SA": {
     "pl": 8.959459,
@@ -514,6 +824,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -548,6 +880,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "KLBN3.SA": {
@@ -580,6 +934,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -614,6 +990,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "MBRF3.SA": {
@@ -647,6 +1045,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "PETR3.SA": {
@@ -665,20 +1085,42 @@
     "dividaPL": 91.963,
     "liquidezCorrente": 0.706,
     "data_referencia": "29/03/2026",
-  "analise_senior": {
-        "tendencia": "O gráfico demonstra forte resiliência nos preços do barril estabilizando a geração de caixa. A margem EBITDA elevada sustenta o pagamento de proventos gordos, porém a tendência de endividamento requer atenção frente a novos projetos do plano estratégico voltados a transição energética e capex exploratório na margem equatorial.",
-        "swot": {
-          "forcas": "Custo de extração (lifting cost) do pré-sal entre os mais competitivos do mundo. Alta geração de caixa (FCF).",
-          "fraquezas": "Risco de ingerência política na política de preços e dividendos. Histórico de atrasos em obras de refino.",
-          "oportunidades": "Exploração da Margem Equatorial pode garantir reservas futuras. Transição energética subsidiada pela forte receita do petróleo.",
-          "ameacas": "Queda global no preço do Brent. Regulação ambiental mais rígida travando novas licitações de blocos."
+    "analise_senior": {
+      "tendencia": "O gráfico demonstra forte resiliência nos preços do barril estabilizando a geração de caixa. A margem EBITDA elevada sustenta o pagamento de proventos gordos, porém a tendência de endividamento requer atenção frente a novos projetos do plano estratégico voltados a transição energética e capex exploratório na margem equatorial.",
+      "swot": {
+        "forcas": "Custo de extração (lifting cost) do pré-sal entre os mais competitivos do mundo. Alta geração de caixa (FCF).",
+        "fraquezas": "Risco de ingerência política na política de preços e dividendos. Histórico de atrasos em obras de refino.",
+        "oportunidades": "Exploração da Margem Equatorial pode garantir reservas futuras. Transição energética subsidiada pela forte receita do petróleo.",
+        "ameacas": "Queda global no preço do Brent. Regulação ambiental mais rígida travando novas licitações de blocos."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 5,
+        "ebitda": 4,
+        "divida": 4,
+        "receita": 3
+      }
+    },
+ "valuation_dcf": {
+        "parametros": {
+          "wacc": "12.5%",
+          "crescimento_longo_prazo": "1.5%",
+          "margem_seguranca": "25%"
         },
-        "notas": {
-          "roe": 5,
-          "roic": 5,
-          "ebitda": 4,
-          "divida": 4,
-          "receita": 3
+        "status": "SUBVALORIZADA",
+        "cenarios": {
+          "pessimista": {
+            "preco_justo": 32.50,
+            "descricao": "Queda severa do Brent para a casa dos US$ 60 e intervenção estatal nos preços de combustíveis. Margem EBITDA contrai fortemente."
+          },
+          "base": {
+            "preco_justo": 44.80,
+            "descricao": "Petróleo estabilizado em US$ 80. Empresa mantém política de dividendos e Capex dentro do planejado sem grandes surpresas macroeconômicas."
+          },
+          "otimista": {
+            "preco_justo": 55.20,
+            "descricao": "Choque de oferta global eleva barril para US$ 100+. Descobertas na Margem Equatorial são bem-sucedidas e eficiências operacionais aumentam a geração de FCF."
+          }
         }
       }
   },
@@ -711,6 +1153,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -745,6 +1209,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "QBTC11.SA": {
@@ -767,7 +1253,8 @@
         "divida": 0,
         "receita": 0
       }
-    }
+    },
+    "valuation_dcf": null
   },
   "QSOL11.SA": {
     "margemBruta": 0,
@@ -789,7 +1276,8 @@
         "divida": 0,
         "receita": 0
       }
-    }
+    },
+    "valuation_dcf": null
   },
   "RAIZ4.SA": {
     "evEbitda": 103.916,
@@ -817,6 +1305,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -851,6 +1361,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "SAPR4.SA": {
@@ -883,6 +1415,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -917,6 +1471,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "SMTO3.SA": {
@@ -949,6 +1525,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -983,6 +1581,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "SUZB3.SA": {
@@ -1015,6 +1635,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1049,6 +1691,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "TTEN3.SA": {
@@ -1081,6 +1745,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1115,6 +1801,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "VIVT3.SA": {
@@ -1147,6 +1855,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1181,6 +1911,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "GOOGL": {
@@ -1214,6 +1966,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "AMZN": {
@@ -1245,6 +2019,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1279,6 +2075,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "TSM": {
@@ -1311,6 +2129,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1345,6 +2185,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "AVGO": {
@@ -1377,6 +2239,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1411,6 +2295,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "TSLA": {
@@ -1442,6 +2348,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1476,6 +2404,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "VZ": {
@@ -1508,6 +2458,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1542,6 +2514,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "HD": {
@@ -1575,6 +2569,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "SHOP": {
@@ -1606,6 +2622,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1640,6 +2678,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "SPG": {
@@ -1673,6 +2733,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "ANET": {
@@ -1704,6 +2786,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1738,6 +2842,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "KO": {
@@ -1770,6 +2896,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1804,6 +2952,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "EPR": {
@@ -1837,6 +3007,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "WFC": {
@@ -1866,6 +3058,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1900,6 +3114,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "O": {
@@ -1933,6 +3169,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "CPRT": {
@@ -1964,6 +3222,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -1998,6 +3278,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "CEPU": {
@@ -2029,6 +3331,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2063,6 +3387,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "PLTR": {
@@ -2094,6 +3440,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2128,6 +3496,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "QCOM": {
@@ -2160,6 +3550,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2194,6 +3606,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "MSFT": {
@@ -2227,6 +3661,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "BAC": {
@@ -2256,6 +3712,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2290,6 +3768,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "EQT": {
@@ -2323,6 +3823,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "MNST": {
@@ -2354,6 +3876,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2388,6 +3932,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "HUYA": {
@@ -2418,6 +3984,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2452,6 +4040,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "PFE": {
@@ -2485,6 +4095,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "ROKU": {
@@ -2517,6 +4149,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "DIBS": {
@@ -2547,6 +4201,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   },
@@ -2581,6 +4257,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "MBUU": {
@@ -2613,6 +4311,28 @@
         "divida": 0,
         "receita": 0
       }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
+      }
     }
   },
   "FVRR": {
@@ -2644,6 +4364,28 @@
         "ebitda": 0,
         "divida": 0,
         "receita": 0
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "0%",
+        "crescimento_longo_prazo": "0%",
+        "margem_seguranca": "0%"
+      },
+      "status": "AGUARDANDO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "base": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        },
+        "otimista": {
+          "preco_justo": 0,
+          "descricao": "Cenário não preenchido."
+        }
       }
     }
   }
