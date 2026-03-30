@@ -16,40 +16,40 @@
     "liquidezCorrente": 0.706,
     "data_referencia": "29/03/2026",
     "analise_senior": {
-      "tendencia": "O gráfico demonstra forte resiliência nos preços do barril estabilizando a geração de caixa. A margem EBITDA elevada sustenta o pagamento de proventos gordos, porém a tendência de endividamento requer atenção frente a novos projetos do plano estratégico voltados a transição energética e capex exploratório na margem equatorial.",
+      "tendencia": "A PETR3.SA demonstra uma sólida performance financeira, com um P/L relativamente baixo de 6.65, indicando que o mercado pode não estar precificando totalmente seu valor intrínseco. Um ROE robusto de 28.18% e uma Margem Líquida expressiva de 22.13% sublinham a alta rentabilidade e eficiência operacional da empresa. A tendência geral é de uma empresa financeiramente saudável, mas com riscos inerentes ao setor de commodities e à governança corporativa no Brasil.",
       "swot": {
-        "forcas": "Custo de extração (lifting cost) do pré-sal entre os mais competitivos do mundo. Alta geração de caixa (FCF).",
-        "fraquezas": "Risco de ingerência política na política de preços e dividendos. Histórico de atrasos em obras de refino.",
-        "oportunidades": "Exploração da Margem Equatorial pode garantir reservas futuras. Transição energética subsidiada pela forte receita do petróleo.",
-        "ameacas": "Queda global no preço do Brent. Regulação ambiental mais rígida travando novas licitações de blocos."
+        "forcas": "Excelente rentabilidade (ROE e Margem Líquida elevadas); P/L atrativo comparado aos pares e histórico; Liderança de mercado no Brasil com grande capacidade de produção e refino; Posicionamento estratégico em reservas de petróleo de pré-sal.",
+        "fraquezas": "Alta exposição à volatilidade dos preços internacionais do petróleo; Risco significativo de intervenção política e regulatória por parte do governo; Passivos ambientais e desafios relacionados à transição energética; Histórico de alta alavancagem, apesar das recentes melhorias.",
+        "oportunidades": "Potencial de novas descobertas e exploração em campos de pré-sal; Aumento da demanda global por energia a médio prazo; Oportunidades em projetos de energia renovável e transição energética; Desinvestimentos estratégicos para otimização do portfólio e redução de dívida.",
+        "ameacas": "Queda sustentada e prolongada dos preços do petróleo; Regulamentações ambientais mais rigorosas e pressões ESG crescentes; Concorrência acirrada no setor de energia; Desaceleração econômica global impactando a demanda por combustíveis."
       },
       "notas": {
-        "roe": 5,
-        "roic": 5,
-        "ebitda": 4,
-        "divida": 4,
-        "receita": 3
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
       }
     },
     "valuation_dcf": {
       "parametros": {
-        "wacc": "12.5%",
-        "crescimento_longo_prazo": "1.5%",
-        "margem_seguranca": "25%"
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
       },
       "status": "SUBVALORIZADA",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 32.5,
-          "descricao": "Queda severa do Brent para a casa dos US$ 60 e intervenção estatal nos preços de combustíveis. Margem EBITDA contrai fortemente."
+          "preco_justo": 20.5,
+          "descricao": "Cenário adverso com queda acentuada e prolongada nos preços do petróleo, aumento de impostos ou royalties, e desafios operacionais significativos impactando as margens."
         },
         "base": {
-          "preco_justo": 44.8,
-          "descricao": "Petróleo estabilizado em US$ 80. Empresa mantém política de dividendos e Capex dentro do planejado sem grandes surpresas macroeconômicas."
+          "preco_justo": 25,
+          "descricao": "Projeção com estabilidade nos preços do petróleo, manutenção da atual eficiência operacional, disciplina de capital e um ambiente regulatório previsível."
         },
         "otimista": {
-          "preco_justo": 55.2,
-          "descricao": "Choque de oferta global eleva barril para US$ 100+. Descobertas na Margem Equatorial são bem-sucedidas e eficiências operacionais aumentam a geração de FCF."
+          "preco_justo": 30,
+          "descricao": "Cenário favorável com forte recuperação dos preços do petróleo, sucesso em novas explorações e produção, e um ambiente político-econômico estável, impulsionando a confiança do investidor."
         }
       }
     }
@@ -71,40 +71,40 @@
     "liquidezCorrente": 1.548,
     "data_referencia": "29/03/2026",
     "analise_senior": {
-      "tendencia": "Aguardando análise do especialista...",
+      "tendencia": "A WEGE3.SA demonstra fundamentos robustos, com um ROE excepcional de 32.51% e uma Margem Líquida sólida de 15.63%, indicando alta eficiência e rentabilidade. Contudo, seu P/L de 31.19x sugere que o mercado já precifica um crescimento futuro significativo, levando a uma avaliação que pode ser considerada esticada, embora justificada pela qualidade dos resultados operacionais e sua posição de liderança.",
       "swot": {
-        "forcas": "-",
-        "fraquezas": "-",
-        "oportunidades": "-",
-        "ameacas": "-"
+        "forcas": "Liderança de mercado em diversos segmentos industriais e de energia, alta rentabilidade (ROE e Margem Líquida), forte capacidade de inovação e investimento em P&D, reputação de marca sólida e diversificação geográfica.",
+        "fraquezas": "Elevada capitalização de mercado e valuation (P/L), o que pode limitar o upside de curto prazo; sensibilidade a ciclos econômicos globais e flutuações cambiais; potencial de desaceleração do crescimento em mercados mais maduros.",
+        "oportunidades": "Transição energética global (eletrificação, energias renováveis, veículos elétricos), automação industrial e digitalização (Indústria 4.0), expansão para novos mercados e segmentos, aquisições estratégicas para complementar portfólio e tecnologia.",
+        "ameacas": "Intensificação da concorrência, volatilidade nos preços de commodities e matérias-primas, desaceleração econômica global, barreiras comerciais e instabilidade geopolítica, mudanças regulatórias no setor de energia."
       },
       "notas": {
-        "roe": 0,
-        "roic": 0,
-        "ebitda": 0,
-        "divida": 0,
-        "receita": 0
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 4,
+        "divida": 3,
+        "receita": 4
       }
     },
     "valuation_dcf": {
       "parametros": {
-        "wacc": "0%",
-        "crescimento_longo_prazo": "0%",
-        "margem_seguranca": "0%"
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
       },
-      "status": "AGUARDANDO",
+      "status": "SUPERVALORIZADA",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 0,
-          "descricao": "Cenário não preenchido."
+          "preco_justo": 28,
+          "descricao": "Assumes uma desaceleração econômica global mais acentuada, com impacto negativo na demanda industrial, aumento da pressão sobre os custos e na capacidade da empresa de sustentar as margens elevadas."
         },
         "base": {
-          "preco_justo": 0,
-          "descricao": "Cenário não preenchido."
+          "preco_justo": 35,
+          "descricao": "Reflete a capacidade da WEG de manter seu ritmo de crescimento orgânico consistente, impulsionado pela inovação contínua, expansão em mercados-chave e gestão eficiente de custos, em um ambiente econômico moderado."
         },
         "otimista": {
-          "preco_justo": 0,
-          "descricao": "Cenário não preenchido."
+          "preco_justo": 42,
+          "descricao": "Considera uma aceleração robusta da transição energética e da demanda por automação industrial, além de ganhos de market share e eficiências operacionais significativas que superam as expectativas atuais, resultando em um crescimento de lucro mais elevado."
         }
       }
     }
