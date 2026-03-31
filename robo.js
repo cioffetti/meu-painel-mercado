@@ -1,9 +1,10 @@
+import 'dotenv/config';
 import YahooFinance from 'yahoo-finance2';
 import fs from 'fs';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // 1. LIGANDO AS MÁQUINAS
-const CHAVE_GEMINI = "AIzaSyDFk-t-hHijtSYXDbmtQOD62hSEjf3cRQY"; // <--- COLOQUE SUA CHAVE AQUI COM ASPAS
+const CHAVE_GEMINI = process.env.CHAVE_GEMINI;
 const genAI = new GoogleGenerativeAI(CHAVE_GEMINI);
 
 const modeloIA = genAI.getGenerativeModel({ 
@@ -19,7 +20,7 @@ const listaIntl = ['GOOGL', 'AMZN', 'NVDA', 'TSM', 'ASML', 'AVGO', 'IRS', 'TSLA'
 const todasAsAcoes = [...listaBrasil, ...listaIntl];
 const ativosSemValuation = ['ETHE11.SA', 'QBTC11.SA', 'QSOL11.SA', 'GOLD11.SA'];
 
-// 3. CONFIGURAÇÕES DO ARQUITETO (NOVO)
+// 3. CONFIGURAÇÕES DO ARQUITETO
 const LIMITE_DIARIO_IA = 15; // Máximo de perguntas por dia para não ser bloqueado
 const DIAS_DE_VALIDADE = 15; // Tempo que uma análise dura antes de ser refeita
 
@@ -49,7 +50,7 @@ function extrairMatematica(result) {
     };
 }
 
-// MÁGICA DO TEMPO: Calcula quantos dias se passaram desde a última análise
+// MÁGICA DO TEMPO: Calcula quantos dias se passaram
 function calcularDiasPassados(dataString) {
     if (!dataString) return 999; 
     const partes = dataString.split('/');
@@ -65,19 +66,22 @@ async function gerarAnaliseComIA(ticker, dadosMatematicos, isETF) {
     try {
         const resultado = await modeloIA.generateContent(prompt);
         return JSON.parse(resultado.response.text());
-    } catch (erro) { return null; }
+    } catch (erro) { 
+        console.error(`   🔎 Detalhe do bloqueio: ${erro.message}`);
+        return null; 
+    }
 }
 
 async function iniciarTrabalho() {
-    console.log("🤖 Iniciando 'Motor de Cache Rotativo' (Proposta do Arquiteto Marcelo)...\n");
+    console.log("🤖 Iniciando 'Motor de Cache Rotativo + Sistema Teimoso'...\n");
     
     const bancoDeDadosJSON = {};
     const dataHoje = new Date().toLocaleDateString('pt-BR'); 
-    let perguntasIADia = 0; // O contador da cota!
+    let perguntasIADia = 0; 
 
     for (const ticker of todasAsAcoes) {
         try {
-            console.log(`⏳ [${ticker}] Baixando números matemáticos...`);
+            console.log(`⏳ [${ticker}] Baixando números matemáticos do Yahoo...`);
             const resultYahoo = await yahooFinance.quoteSummary(ticker, { modules: ['summaryDetail', 'defaultKeyStatistics', 'financialData'] });
             const matematica = extrairMatematica(resultYahoo);
             const isETF = ativosSemValuation.includes(ticker);
@@ -89,40 +93,57 @@ async function iniciarTrabalho() {
 
             let analiseFinal = null;
             let valuationFinal = null;
-            let dataSalvar = bancoAntigo[ticker]?.data_referencia || dataHoje; // Por padrão, mantém a data antiga
+            let dataSalvar = bancoAntigo[ticker]?.data_referencia || dataHoje; 
 
-            // CÁLCULO DE ROTA DA INTELIGÊNCIA ARTIFICIAL
             if (temAnaliseValida) {
                 console.log(`   ⏭️ Poupando cota! Análise tem ${diasPassados} dias (válida por ${DIAS_DE_VALIDADE} dias).`);
                 analiseFinal = bancoAntigo[ticker].analise_senior;
                 valuationFinal = bancoAntigo[ticker].valuation_dcf;
-            } else if (perguntasIADia < LIMITE_DIARIO_IA && !isETF) { // Se ainda temos cota hoje e não é ETF
+            } else if (perguntasIADia < LIMITE_DIARIO_IA && !isETF) { 
                 console.log(`   🧠 Solicitando IA (Consulta ${perguntasIADia + 1} de ${LIMITE_DIARIO_IA})...`);
-                const analiseIA = await gerarAnaliseComIA(ticker, matematica, isETF);
                 
+                // --- INÍCIO DO SISTEMA TEIMOSO ---
+                let tentativas = 0;
+                let analiseIA = null;
+
+                while (tentativas < 3 && !analiseIA) {
+                    analiseIA = await gerarAnaliseComIA(ticker, matematica, isETF);
+                    
+                    if (!analiseIA) {
+                        tentativas++;
+                        if (tentativas < 3) {
+                            console.log(`   🚧 Bloqueio detectado! Tentativa ${tentativas} falhou. Esperando 60s para tentar de novo...`);
+                            await new Promise(r => setTimeout(r, 60000)); // Espera 1 minuto inteiro antes de tentar a mesma ação
+                        }
+                    }
+                }
+                // --- FIM DO SISTEMA TEIMOSO ---
+
                 if (analiseIA) {
                     analiseFinal = analiseIA.analise_senior;
                     valuationFinal = analiseIA.valuation_dcf;
-                    dataSalvar = dataHoje; // Atualiza a data só porque fez uma tese nova!
+                    dataSalvar = dataHoje; 
                     perguntasIADia++;
                     console.log(`   ✅ Tese e Valuation concluídos!`);
-                    await new Promise(r => setTimeout(r, 25000)); // Freio de 25s
                 } else {
-                    console.log(`   ❌ Falha na IA. Retendo texto antigo.`);
+                    console.log(`   ❌ Falha definitiva na IA após 3 tentativas. Pulando ativo.`);
                     analiseFinal = bancoAntigo[ticker]?.analise_senior || { tendencia: "Aguardando análise do especialista...", swot: { forcas: "-", fraquezas: "-", oportunidades: "-", ameacas: "-" }, notas: { roe: 0, roic: 0, ebitda: 0, divida: 0, receita: 0 } };
                     valuationFinal = bancoAntigo[ticker]?.valuation_dcf || null;
                 }
+
+                console.log(`   ⏳ Esfriando motores por 25s para a próxima ação...`);
+                await new Promise(r => setTimeout(r, 25000));
+
             } else {
                 if (isETF) {
                     console.log(`   🚫 ETF detectado. Valuation não aplicável.`);
                 } else {
-                    console.log(`   ⏸️ Cota diária atingida ou vencida. Retendo texto antigo para atualizar depois.`);
+                    console.log(`   ⏸️ Cota diária atingida. Retendo texto antigo para atualizar amanhã.`);
                 }
                 analiseFinal = bancoAntigo[ticker]?.analise_senior || { tendencia: "Aguardando análise do especialista...", swot: { forcas: "-", fraquezas: "-", oportunidades: "-", ameacas: "-" }, notas: { roe: 0, roic: 0, ebitda: 0, divida: 0, receita: 0 } };
                 valuationFinal = bancoAntigo[ticker]?.valuation_dcf || null;
             }
 
-            // SALVA TUDO
             bancoDeDadosJSON[ticker] = {
                 ...matematica,
                 data_referencia: dataSalvar,
@@ -138,7 +159,7 @@ async function iniciarTrabalho() {
     }
 
     fs.writeFileSync('indicadores.json', JSON.stringify(bancoDeDadosJSON, null, 2), 'utf-8');
-    console.log("\n🎉 SUCESSO! Banco de dados atualizado com Cache Rotativo.");
+    console.log("\n🎉 SUCESSO! Banco de dados atualizado com Cache Rotativo Inteligente.");
 }
 
 iniciarTrabalho();
