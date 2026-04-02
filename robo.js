@@ -32,9 +32,9 @@ if (fs.existsSync('indicadores.json')) {
 function extrairMatematica(result) {
     const getVal = (obj, path) => path.split('.').reduce((acc, part) => acc && acc[part], obj)?.raw || null;
     return {
+        precoAtual: getVal(result, 'financialData.currentPrice') || result.summaryDetail?.previousClose || 0, // <-- A NOVA ÂNCORA AQUI
         pl: getVal(result, 'summaryDetail.trailingPE') || result.summaryDetail?.trailingPE, 
-        pvp: getVal(result, 'defaultKeyStatistics.priceToBook') || result.defaultKeyStatistics?.priceToBook, 
-        dy: getVal(result, 'summaryDetail.dividendYield') || result.summaryDetail?.dividendYield,
+        pvp: getVal(result, 'defaultKeyStatistics.priceToBook') || result.defaultKeyStatistics?.priceToBook,        dy: getVal(result, 'summaryDetail.dividendYield') || result.summaryDetail?.dividendYield,
         pegRatio: getVal(result, 'defaultKeyStatistics.pegRatio') || result.defaultKeyStatistics?.pegRatio, 
         evEbitda: getVal(result, 'defaultKeyStatistics.enterpriseToEbitda') || result.defaultKeyStatistics?.enterpriseToEbitda, 
         vpa: getVal(result, 'defaultKeyStatistics.bookValue') || result.defaultKeyStatistics?.bookValue,
@@ -62,7 +62,14 @@ function calcularDiasPassados(dataString) {
 }
 
 async function gerarAnaliseComIA(ticker, dadosMatematicos, isETF) {
-    const prompt = `Você é um Analista de Investimentos Sênior. Gere a análise para a empresa ${ticker} baseada nestes indicadores reais: P/L: ${dadosMatematicos.pl}, ROE: ${dadosMatematicos.roe}, Margem Líquida: ${dadosMatematicos.margemLiquida}. Retorne o JSON estrito obedecendo o esquema: { "analise_senior": { "tendencia": "texto", "swot": { "forcas": "...", "fraquezas": "...", "oportunidades": "...", "ameacas": "..." }, "notas": { "roe": 4, "roic": 3, "ebitda": 5, "divida": 2, "receita": 4 } } ${!isETF ? `, "valuation_dcf": { "parametros": { "wacc": "12%", "crescimento_longo_prazo": "2%", "margem_seguranca": "20%" }, "status": "JUSTO", "cenarios": { "pessimista": { "preco_justo": 20.50, "descricao": "..." }, "base": { "preco_justo": 25.00, "descricao": "..." }, "otimista": { "preco_justo": 30.00, "descricao": "..." } } }` : ''} }`;
+    const prompt = `Você é um Analista de Investimentos Sênior. Gere a análise para a empresa ${ticker} baseada nestes indicadores reais: 
+    Preço Atual de Tela: ${dadosMatematicos.precoAtual}
+    P/L: ${dadosMatematicos.pl}, ROE: ${dadosMatematicos.roe}, Margem Líquida: ${dadosMatematicos.margemLiquida}. 
+    
+    IMPORTANTE: Calcule valores REAIS e coerentes para o Preço Justo nos cenários com base no Preço Atual e nos fundamentos da empresa. NÃO copie os valores zerados de exemplo.
+    
+    Retorne o JSON estrito obedecendo o esquema: { "analise_senior": { "tendencia": "texto", "swot": { "forcas": "...", "fraquezas": "...", "oportunidades": "...", "ameacas": "..." }, "notas": { "roe": 4, "roic": 3, "ebitda": 5, "divida": 2, "receita": 4 } } ${!isETF ? `, "valuation_dcf": { "parametros": { "wacc": "12%", "crescimento_longo_prazo": "2%", "margem_seguranca": "20%" }, "status": "JUSTO", "cenarios": { "pessimista": { "preco_justo": 0.00, "descricao": "..." }, "base": { "preco_justo": 0.00, "descricao": "..." }, "otimista": { "preco_justo": 0.00, "descricao": "..." } } }` : ''} }`;
+    
     try {
         const resultado = await modeloIA.generateContent(prompt);
         return JSON.parse(resultado.response.text());
@@ -71,7 +78,6 @@ async function gerarAnaliseComIA(ticker, dadosMatematicos, isETF) {
         return null; 
     }
 }
-
 async function iniciarTrabalho() {
     console.log("🤖 Iniciando 'Motor de Cache Rotativo + Sistema Teimoso'...\n");
     
