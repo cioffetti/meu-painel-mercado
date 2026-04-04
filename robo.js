@@ -22,7 +22,7 @@ const ativosSemValuation = ['ETHE11.SA', 'QBTC11.SA', 'QSOL11.SA', 'GOLD11.SA'];
 
 // 3. CONFIGURAÇÕES DO ARQUITETO
 const LIMITE_DIARIO_IA = 15; // Máximo de perguntas por dia para não ser bloqueado
-const DIAS_DE_VALIDADE = 15; // Tempo que uma análise dura antes de ser refeita
+const DIAS_DE_VALIDADE = 2; // Tempo que uma análise dura antes de ser refeita
 
 let bancoAntigo = {};
 if (fs.existsSync('indicadores.json')) {
