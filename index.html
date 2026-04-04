@@ -50,9 +50,9 @@
         .loading-ind { color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
 
         /* ESTILOS DA SUPER TABELA DE RANKING */
-        .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.95rem; }
-        .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; }
-        .ranking-table td { padding: 15px; border-bottom: 1px solid #333336; color: #fff; }
+        .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; white-space: nowrap; }
+        .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 12px 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;}
+        .ranking-table td { padding: 12px 15px; border-bottom: 1px solid #333336; color: #fff; }
         .ranking-table tr:hover { background-color: #2a2a2c; }
         .status-badge { padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
         .status-sub { background-color: rgba(76, 175, 80, 0.15); color: #4CAF50; border: 1px solid #4CAF50; }
@@ -150,74 +150,112 @@
             Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
             miniCharts = {};
 
-            // SISTEMA DO NOVO RANKING FUNDAMENTALISTA
+            // SISTEMA DO NOVO RANKING FUNDAMENTALISTA (SEPARADO BR/US E COM TODOS OS INDICADORES)
             if(tabName === 'ranking') {
                 dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
                 try {
-                    // Puxa o banco de dados
                     const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                     const dadosDaBase = await res.json();
                     
-                    let listaRanqueada = [];
-                    // Filtra só o que já tem ROE salvo
+                    let listaBrasil = [];
+                    let listaIntl = [];
+                    
+                    // Varre o banco e separa nas duas listas
                     for (const ticker in dadosDaBase) {
                         const d = dadosDaBase[ticker];
                         if(d.roe !== undefined && d.roe !== null) {
-                            listaRanqueada.push({
+                            const item = {
                                 ticker: ticker,
+                                status: d.valuation_dcf?.status || 'N/A',
+                                dy: d.dy,
                                 pl: d.pl,
+                                pegRatio: d.pegRatio,
                                 pvp: d.pvp,
-                                roe: d.roe,
+                                evEbitda: d.evEbitda,
+                                vpa: d.vpa,
+                                dividaPL: d.dividaPL ? d.dividaPL / 100 : null,
+                                liquidezCorrente: d.liquidezCorrente,
                                 margem: d.margemLiquida,
-                                status: d.valuation_dcf?.status || 'N/A'
-                            });
+                                roe: d.roe
+                            };
+
+                            if (ticker.includes('.SA')) {
+                                listaBrasil.push(item);
+                            } else {
+                                listaIntl.push(item);
+                            }
                         }
                     }
                     
-                    // Ordena do Maior para o Menor ROE
-                    listaRanqueada.sort((a, b) => b.roe - a.roe);
-                    
-                    // Desenha a Super Tabela
-                    let htmlTable = `
-                    <div class="section-title">🏆 Ranking Fundamentalista (Ordenado por ROE)</div>
-                    <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px;">
-                    <table class="ranking-table">
-                        <thead>
-                            <tr>
-                                <th>Ativo</th>
-                                <th>Status IA (Valuation)</th>
-                                <th>ROE</th>
-                                <th>Margem Líq.</th>
-                                <th>P/L</th>
-                                <th>P/VP</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    `;
+                    // Ordena ambas pelo ROE (Maior para o Menor)
+                    listaBrasil.sort((a, b) => b.roe - a.roe);
+                    listaIntl.sort((a, b) => b.roe - a.roe);
                     
                     const fNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
                     const fPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
-                    
-                    listaRanqueada.forEach(item => {
-                        let badgeClass = 'status-badge ';
-                        if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
-                        else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
-                        else badgeClass += 'status-justo';
 
-                        htmlTable += `
-                            <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
-                                <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
-                                <td><span class="${badgeClass}">${item.status}</span></td>
-                                <td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td>
-                                <td>${fPct(item.margem)}</td>
-                                <td>${fNum(item.pl)}</td>
-                                <td>${fNum(item.pvp)}</td>
-                            </tr>
+                    // Função criadora de tabelas
+                    const renderTabelaRanking = (titulo, lista) => {
+                        if (lista.length === 0) return '';
+                        let html = `
+                        <div class="section-title">${titulo}</div>
+                        <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
+                        <table class="ranking-table">
+                            <thead>
+                                <tr>
+                                    <th>Ativo</th>
+                                    <th>Status IA</th>
+                                    <th>D.Y</th>
+                                    <th>P/L</th>
+                                    <th>PEG Ratio</th>
+                                    <th>P/VP</th>
+                                    <th>EV/EBITDA</th>
+                                    <th>VPA</th>
+                                    <th>Dív/PL</th>
+                                    <th>Liq. Corr.</th>
+                                    <th>Margem Líq.</th>
+                                    <th style="color: #4CAF50;">ROE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                         `;
-                    });
+                        
+                        lista.forEach(item => {
+                            let badgeClass = 'status-badge ';
+                            if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
+                            else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
+                            else badgeClass += 'status-justo';
+
+                            html += `
+                                <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
+                                    <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
+                                    <td><span class="${badgeClass}">${item.status}</span></td>
+                                    <td>${fPct(item.dy)}</td>
+                                    <td>${fNum(item.pl)}</td>
+                                    <td>${fNum(item.pegRatio)}</td>
+                                    <td>${fNum(item.pvp)}</td>
+                                    <td>${fNum(item.evEbitda)}</td>
+                                    <td>${fNum(item.vpa)}</td>
+                                    <td>${fNum(item.dividaPL)}</td>
+                                    <td>${fNum(item.liquidezCorrente)}</td>
+                                    <td>${fPct(item.margem)}</td>
+                                    <td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td>
+                                </tr>
+                            `;
+                        });
+                        
+                        html += `</tbody></table></div>`;
+                        return html;
+                    };
+
+                    // Desenha as duas tabelas na tela
+                    let telaCompleta = '';
+                    if (listaBrasil.length > 0) telaCompleta += renderTabelaRanking('🇧🇷 Ranking Ações Brasil', listaBrasil);
+                    if (listaIntl.length > 0) telaCompleta += renderTabelaRanking('🇺🇸 Ranking Ações Internacionais', listaIntl);
                     
-                    htmlTable += `</tbody></table></div>`;
-                    dashboard.innerHTML = htmlTable;
+                    if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado fundamentalista encontrado no banco.</div>';
+
+                    dashboard.innerHTML = telaCompleta;
 
                 } catch(e) {
                     dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json. Verifique se o banco de dados existe.</div>';
@@ -301,7 +339,7 @@
             abrirDoRanking(ticker);
         }
 
-        // Tradutor de Ticker para abrir o Modal
+        // Tradutor de Ticker para abrir o Modal diretamente da tabela de Ranking
         function abrirDoRanking(tickerReal) {
             const ehBrasil = tickerReal.includes('.SA');
             const nomeLimpo = tickerReal.replace('.SA', '');
