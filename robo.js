@@ -21,8 +21,8 @@ const todasAsAcoes = [...listaBrasil, ...listaIntl];
 const ativosSemValuation = ['ETHE11.SA', 'QBTC11.SA', 'QSOL11.SA', 'GOLD11.SA'];
 
 // 3. CONFIGURAÇÕES DO ARQUITETO
-const LIMITE_DIARIO_IA = 20; // Máximo de perguntas por dia para não ser bloqueado
-const DIAS_DE_VALIDADE = 3; // Tempo que uma análise dura antes de ser refeita
+const LIMITE_DIARIO_IA = 18; // Máximo de perguntas por dia para não ser bloqueado
+const DIAS_DE_VALIDADE = 3; // Ajustado para os 3 dias do seu teste atual!
 
 let bancoAntigo = {};
 if (fs.existsSync('indicadores.json')) {
@@ -32,7 +32,7 @@ if (fs.existsSync('indicadores.json')) {
 function extrairMatematica(result) {
     const getVal = (obj, path) => path.split('.').reduce((acc, part) => acc && acc[part], obj)?.raw || null;
     return {
-        precoAtual: getVal(result, 'financialData.currentPrice') || result.summaryDetail?.previousClose || 0, // <-- A NOVA ÂNCORA AQUI
+        precoAtual: getVal(result, 'financialData.currentPrice') || result.summaryDetail?.previousClose || 0,
         pl: getVal(result, 'summaryDetail.trailingPE') || result.summaryDetail?.trailingPE, 
         pvp: getVal(result, 'defaultKeyStatistics.priceToBook') || result.defaultKeyStatistics?.priceToBook,        dy: getVal(result, 'summaryDetail.dividendYield') || result.summaryDetail?.dividendYield,
         pegRatio: getVal(result, 'defaultKeyStatistics.pegRatio') || result.defaultKeyStatistics?.pegRatio, 
@@ -78,6 +78,7 @@ async function gerarAnaliseComIA(ticker, dadosMatematicos, isETF) {
         return null; 
     }
 }
+
 async function iniciarTrabalho() {
     console.log("🤖 Iniciando 'Motor de Cache Rotativo + Sistema Teimoso'...\n");
     
@@ -92,10 +93,25 @@ async function iniciarTrabalho() {
             const matematica = extrairMatematica(resultYahoo);
             const isETF = ativosSemValuation.includes(ticker);
             
+            // RADARES DE IDENTIFICAÇÃO DE NACIONALIDADE
+            const isBrasil = ticker.includes('.SA');
+            const isGoogle = ticker === 'GOOGL';
+            const isInternacionalForcada = !isBrasil && !isGoogle;
+            
             const diasPassados = calcularDiasPassados(bancoAntigo[ticker]?.data_referencia);
-            const temAnaliseValida = diasPassados <= DIAS_DE_VALIDADE && 
+            
+            // Lógica padrão do escudo protetor
+            let temAnaliseValida = diasPassados <= DIAS_DE_VALIDADE && 
                                      bancoAntigo[ticker]?.analise_senior?.tendencia && 
                                      bancoAntigo[ticker]?.analise_senior?.tendencia !== "Aguardando análise do especialista...";
+
+            // 🎯 A MÁGICA DA AMNÉSIA DIRECIONADA
+            if (isInternacionalForcada) {
+                if (temAnaliseValida) {
+                    console.log(`   🎯 Amnésia Direcionada ativada! Ignorando o escudo de ${diasPassados} dias.`);
+                }
+                temAnaliseValida = false; // Quebra o escudo de propósito!
+            }
 
             let analiseFinal = null;
             let valuationFinal = null;
