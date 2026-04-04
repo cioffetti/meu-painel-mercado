@@ -303,7 +303,7 @@
                     </div>
                 `;
 
-              // MÓDULO VALUATION DCF (SÓ APARECE SE NÃO FOR ETF)
+                // MÓDULO VALUATION DCF (SÓ APARECE SE NÃO FOR ETF)
                 if (dcf) {
                     let statusColor = '#FFC107'; // Amarelo (Justo)
                     if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50';
@@ -325,26 +325,6 @@
                         </div>
 
                         <div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
-                            <div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 20px;">
-                                
-                                <div style="position: absolute; left: 10%; top: -30px; transform: translateX(-50%); text-align: center;">
-                                    <div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.pessimista?.preco_justo)}</div>
-                                </div>
-                                <div style="position: absolute; left: 10%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px;">Pessimista</div>
-
-                                <div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center;">
-                                    <div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.base?.preco_justo)}</div>
-                                </div>
-                                <div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px;">Alvo Base</div>
-
-                                <div style="position: absolute; left: 90%; top: -30px; transform: translateX(-50%); text-align: center;">
-                                    <div style="color: #1a7f37; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.otimista?.preco_justo)}</div>
-                                </div>
-                                <div style="position: absolute; left: 90%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px;">Otimista</div>
-                                
-                            </div>
-                        </div>
-                      <div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
                             <div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;">
                                 
                                 <div style="position: absolute; left: 0%; top: -30px; text-align: left; white-space: nowrap;">
@@ -364,8 +344,21 @@
                                 
                             </div>
                         </div>
-                        ```
-
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;">
+                                <div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Tese Pessimista</div>
+                                <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div>
+                            </div>
+                            <div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;">
+                                <div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Tese Base</div>
+                                <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div>
+                            </div>
+                            <div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;">
+                                <div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Tese Otimista</div>
+                                <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div>
+                            </div>
+                        </div>
+                    </div>
                     `;
                 }
 
