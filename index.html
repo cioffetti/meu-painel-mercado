@@ -49,7 +49,7 @@
         .ind-value { font-size: 1.3rem; font-weight: bold; color: #fff; margin-top: 4px;}
         .loading-ind { color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
 
-        /* ESTILOS DA SUPER TABELA DE RANKING */
+        /* ESTILOS DA SUPER TABELA DE RANKING E OPORTUNIDADES */
         .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; white-space: nowrap; }
         .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 12px 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: 0.2s;}
         .ranking-table th:hover { background-color: #333; color: #fff; }
@@ -59,6 +59,9 @@
         .status-sub { background-color: rgba(76, 175, 80, 0.15); color: #4CAF50; border: 1px solid #4CAF50; }
         .status-justo { background-color: rgba(255, 193, 7, 0.15); color: #FFC107; border: 1px solid #FFC107; }
         .status-super { background-color: rgba(244, 67, 54, 0.15); color: #F44336; border: 1px solid #F44336; }
+        
+        .margem-positiva { color: #4CAF50; font-weight: bold; }
+        .margem-negativa { color: #c93e36; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -77,6 +80,7 @@
         <button class="tab-btn" onclick="switchTab('brasil', this)">Ações Brasil</button>
         <button class="tab-btn" onclick="switchTab('intl', this)">Ações Internacionais</button>
         <button class="tab-btn" onclick="switchTab('ranking', this)">🏆 Ranking IA</button>
+        <button class="tab-btn" onclick="switchTab('oportunidades', this)">🎯 Oportunidades</button>
     </div>
 
     <div class="dashboard" id="dashboard"></div>
@@ -157,10 +161,109 @@
             miniCharts = {};
 
             // MUDANÇA DE ESTRUTURA PARA EVITAR TABELAS ESPREMIDAS
-            if (tabName === 'ranking' || tabName === 'destaques') {
+            if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
                 dashboard.style.display = 'block';
             } else {
                 dashboard.style.display = 'grid';
+            }
+
+            // SISTEMA DO NOVO RADAR DE OPORTUNIDADES
+            if(tabName === 'oportunidades') {
+                dashboard.innerHTML = '<div class="section-title">Calculando Margem de Segurança nos Cenários Pessimistas... ⏳</div>';
+                try {
+                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
+                    const dadosDaBase = await res.json();
+                    
+                    let listaOportunidadesBr = [];
+                    let listaOportunidadesUs = [];
+                    
+                    for (const ticker in dadosDaBase) {
+                        const d = dadosDaBase[ticker];
+                        const precoAtual = d.precoAtual;
+                        const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
+                        
+                        if(precoAtual && precoPessimista && precoAtual > 0) {
+                            // Cálculo do Upside: Se o Pessimista é maior que o atual, temos margem positiva.
+                            const margemSeguranca = (precoPessimista - precoAtual) / precoAtual;
+                            
+                            const isBrasil = ticker.includes('.SA');
+                            const prefix = isBrasil ? 'R$' : 'US$';
+
+                            const item = {
+                                ticker: ticker,
+                                status: d.valuation_dcf?.status || 'N/A',
+                                precoAtual: precoAtual,
+                                precoPessimista: precoPessimista,
+                                margem: margemSeguranca,
+                                prefix: prefix
+                            };
+
+                            if (isBrasil) listaOportunidadesBr.push(item);
+                            else listaOportunidadesUs.push(item);
+                        }
+                    }
+                    
+                    // Ordena da MAIOR margem (mais barata) para a MENOR margem (mais cara)
+                    listaOportunidadesBr.sort((a, b) => b.margem - a.margem);
+                    listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
+                    
+                    const fNum = (num) => parseFloat(num).toFixed(2);
+                    const fPct = (num) => (parseFloat(num) * 100).toFixed(2) + '%';
+
+                    const renderTabelaOportunidades = (titulo, lista) => {
+                        if (lista.length === 0) return '';
+                        let html = `
+                        <div class="section-title">${titulo}</div>
+                        <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
+                        <table class="ranking-table">
+                            <thead>
+                                <tr>
+                                    <th>Ativo</th>
+                                    <th>Status IA</th>
+                                    <th>Preço Atual Tela</th>
+                                    <th>Alvo Pessimista IA</th>
+                                    <th style="color: #4CAF50;" title="Potencial de alta/baixa até o pior cenário calculado">Margem vs Pessimista (Upside)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        `;
+                        
+                        lista.forEach(item => {
+                            let badgeClass = 'status-badge ';
+                            if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
+                            else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
+                            else badgeClass += 'status-justo';
+
+                            let margemClass = item.margem >= 0 ? 'margem-positiva' : 'margem-negativa';
+                            let sinalMargem = item.margem > 0 ? '+' : '';
+
+                            html += `
+                                <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
+                                    <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
+                                    <td><span class="${badgeClass}">${item.status}</span></td>
+                                    <td>${item.prefix} ${fNum(item.precoAtual)}</td>
+                                    <td>${item.prefix} ${fNum(item.precoPessimista)}</td>
+                                    <td class="${margemClass}">${sinalMargem}${fPct(item.margem)}</td>
+                                </tr>
+                            `;
+                        });
+                        
+                        html += `</tbody></table></div>`;
+                        return html;
+                    };
+
+                    let telaCompleta = '';
+                    if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil', listaOportunidadesBr);
+                    if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais', listaOportunidadesUs);
+                    
+                    if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado de Valuation encontrado no banco.</div>';
+
+                    dashboard.innerHTML = telaCompleta;
+
+                } catch(e) {
+                    dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json. Verifique se o banco de dados existe.</div>';
+                }
+                return;
             }
 
             // SISTEMA DO RANKING ORDENÁVEL
