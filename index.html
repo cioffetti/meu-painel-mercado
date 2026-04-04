@@ -51,7 +51,8 @@
 
         /* ESTILOS DA SUPER TABELA DE RANKING */
         .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; white-space: nowrap; }
-        .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 12px 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;}
+        .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 12px 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: 0.2s;}
+        .ranking-table th:hover { background-color: #333; color: #fff; }
         .ranking-table td { padding: 12px 15px; border-bottom: 1px solid #333336; color: #fff; }
         .ranking-table tr:hover { background-color: #2a2a2c; }
         .status-badge { padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
@@ -124,6 +125,11 @@
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
+        // VARIÁVEIS DE ESTADO DO RANKING
+        let dadosRankingBr = [];
+        let dadosRankingUs = [];
+        let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
+
         function buildCards(ativos, container) {
             ativos.forEach(asset => {
                 const card = document.createElement('div');
@@ -150,17 +156,23 @@
             Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
             miniCharts = {};
 
-            // SISTEMA DO NOVO RANKING FUNDAMENTALISTA (SEPARADO BR/US E COM TODOS OS INDICADORES)
+            // MUDANÇA DE ESTRUTURA PARA EVITAR TABELAS ESPREMIDAS
+            if (tabName === 'ranking' || tabName === 'destaques') {
+                dashboard.style.display = 'block';
+            } else {
+                dashboard.style.display = 'grid';
+            }
+
+            // SISTEMA DO RANKING ORDENÁVEL
             if(tabName === 'ranking') {
                 dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
                 try {
                     const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                     const dadosDaBase = await res.json();
                     
-                    let listaBrasil = [];
-                    let listaIntl = [];
+                    dadosRankingBr = [];
+                    dadosRankingUs = [];
                     
-                    // Varre o banco e separa nas duas listas
                     for (const ticker in dadosDaBase) {
                         const d = dadosDaBase[ticker];
                         if(d.roe !== undefined && d.roe !== null) {
@@ -179,83 +191,15 @@
                                 roe: d.roe
                             };
 
-                            if (ticker.includes('.SA')) {
-                                listaBrasil.push(item);
-                            } else {
-                                listaIntl.push(item);
-                            }
+                            if (ticker.includes('.SA')) dadosRankingBr.push(item);
+                            else dadosRankingUs.push(item);
                         }
                     }
                     
-                    // Ordena ambas pelo ROE (Maior para o Menor)
-                    listaBrasil.sort((a, b) => b.roe - a.roe);
-                    listaIntl.sort((a, b) => b.roe - a.roe);
-                    
-                    const fNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
-                    const fPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
-
-                    // Função criadora de tabelas
-                    const renderTabelaRanking = (titulo, lista) => {
-                        if (lista.length === 0) return '';
-                        let html = `
-                        <div class="section-title">${titulo}</div>
-                        <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                        <table class="ranking-table">
-                            <thead>
-                                <tr>
-                                    <th>Ativo</th>
-                                    <th>Status IA</th>
-                                    <th>D.Y</th>
-                                    <th>P/L</th>
-                                    <th>PEG Ratio</th>
-                                    <th>P/VP</th>
-                                    <th>EV/EBITDA</th>
-                                    <th>VPA</th>
-                                    <th>Dív/PL</th>
-                                    <th>Liq. Corr.</th>
-                                    <th>Margem Líq.</th>
-                                    <th style="color: #4CAF50;">ROE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        `;
-                        
-                        lista.forEach(item => {
-                            let badgeClass = 'status-badge ';
-                            if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
-                            else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
-                            else badgeClass += 'status-justo';
-
-                            html += `
-                                <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
-                                    <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
-                                    <td><span class="${badgeClass}">${item.status}</span></td>
-                                    <td>${fPct(item.dy)}</td>
-                                    <td>${fNum(item.pl)}</td>
-                                    <td>${fNum(item.pegRatio)}</td>
-                                    <td>${fNum(item.pvp)}</td>
-                                    <td>${fNum(item.evEbitda)}</td>
-                                    <td>${fNum(item.vpa)}</td>
-                                    <td>${fNum(item.dividaPL)}</td>
-                                    <td>${fNum(item.liquidezCorrente)}</td>
-                                    <td>${fPct(item.margem)}</td>
-                                    <td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td>
-                                </tr>
-                            `;
-                        });
-                        
-                        html += `</tbody></table></div>`;
-                        return html;
-                    };
-
-                    // Desenha as duas tabelas na tela
-                    let telaCompleta = '';
-                    if (listaBrasil.length > 0) telaCompleta += renderTabelaRanking('🇧🇷 Ranking Ações Brasil', listaBrasil);
-                    if (listaIntl.length > 0) telaCompleta += renderTabelaRanking('🇺🇸 Ranking Ações Internacionais', listaIntl);
-                    
-                    if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado fundamentalista encontrado no banco.</div>';
-
-                    dashboard.innerHTML = telaCompleta;
+                    // Ordem inicial pelo ROE (já cai na regra de maior para menor)
+                    ordenarDados('br', 'roe', true);
+                    ordenarDados('us', 'roe', true);
+                    renderizarAbaRanking();
 
                 } catch(e) {
                     dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json. Verifique se o banco de dados existe.</div>';
@@ -287,10 +231,12 @@
 
                     dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
                     const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard';
+                    gridAltas.style.display = 'grid'; // Força a grelha de volta nas sub-seções
                     buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
                     
                     dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
                     const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard';
+                    gridBaixas.style.display = 'grid';
                     buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
 
                     [...maioresAltas, ...maioresBaixas].forEach(asset => {
@@ -313,6 +259,114 @@
                 });
             } catch (e) {}
             ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
+        }
+
+        // FUNÇÕES DE ORDENAÇÃO DO RANKING
+        function clickOrdenar(tipo, coluna) {
+            ordenarDados(tipo, coluna, false);
+            renderizarAbaRanking();
+        }
+
+        function ordenarDados(tipo, coluna, isInit) {
+            let estado = ordemRanking[tipo];
+            
+            if (!isInit) {
+                if (estado.col === coluna) {
+                    estado.dir *= -1; // Se clicou na mesma, inverte a ordem
+                } else {
+                    estado.col = coluna;
+                    // Múltiplos (Menor é Melhor) -> Começa Crescente
+                    if (['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna)) {
+                        estado.dir = 1; 
+                    } else {
+                        // Rentabilidade (Maior é Melhor) -> Começa Decrescente
+                        estado.dir = -1;
+                    }
+                }
+            }
+
+            let lista = tipo === 'br' ? dadosRankingBr : dadosRankingUs;
+            
+            lista.sort((a, b) => {
+                // Joga os dados vazios (-) sempre para o final da fila
+                if (a[coluna] === null || a[coluna] === undefined) return 1;
+                if (b[coluna] === null || b[coluna] === undefined) return -1;
+                
+                if (a[coluna] < b[coluna]) return -1 * estado.dir;
+                if (a[coluna] > b[coluna]) return 1 * estado.dir;
+                return 0;
+            });
+        }
+
+        function renderizarAbaRanking() {
+            const dashboard = document.getElementById('dashboard');
+            
+            const fNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
+            const fPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
+            
+            // Coloca a setinha na coluna que está ativa
+            const getSeta = (tipo, col) => ordemRanking[tipo].col === col ? (ordemRanking[tipo].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
+
+            const renderTabela = (titulo, lista, tipo) => {
+                if (lista.length === 0) return '';
+                let html = `
+                <div class="section-title">${titulo}</div>
+                <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>Ativo</th>
+                            <th>Status IA</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dy')" title="Dividend Yield">D.Y${getSeta(tipo,'dy')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pl')" title="Preço sobre Lucro">P/L${getSeta(tipo,'pl')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pegRatio')" title="P/L sobre Crescimento">PEG Ratio${getSeta(tipo,'pegRatio')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pvp')" title="Preço sobre Valor Patrimonial">P/VP${getSeta(tipo,'pvp')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'evEbitda')" title="EV / EBITDA">EV/EBITDA${getSeta(tipo,'evEbitda')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'vpa')" title="Valor Patrimonial por Ação">VPA${getSeta(tipo,'vpa')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dividaPL')" title="Dívida Líquida sobre Patrimônio">Dív/PL${getSeta(tipo,'dividaPL')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'liquidezCorrente')" title="Liquidez Corrente">Liq. Corr.${getSeta(tipo,'liquidezCorrente')}</th>
+                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'margem')" title="Margem Líquida">Margem Líq.${getSeta(tipo,'margem')}</th>
+                            <th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${tipo}', 'roe')" title="Retorno sobre Patrimônio">ROE${getSeta(tipo,'roe')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                `;
+                
+                lista.forEach(item => {
+                    let badgeClass = 'status-badge ';
+                    if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
+                    else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
+                    else badgeClass += 'status-justo';
+
+                    html += `
+                        <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
+                            <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
+                            <td><span class="${badgeClass}">${item.status}</span></td>
+                            <td>${fPct(item.dy)}</td>
+                            <td>${fNum(item.pl)}</td>
+                            <td>${fNum(item.pegRatio)}</td>
+                            <td>${fNum(item.pvp)}</td>
+                            <td>${fNum(item.evEbitda)}</td>
+                            <td>${fNum(item.vpa)}</td>
+                            <td>${fNum(item.dividaPL)}</td>
+                            <td>${fNum(item.liquidezCorrente)}</td>
+                            <td>${fPct(item.margem)}</td>
+                            <td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td>
+                        </tr>
+                    `;
+                });
+                
+                html += `</tbody></table></div>`;
+                return html;
+            };
+
+            let telaCompleta = '';
+            if (dadosRankingBr.length > 0) telaCompleta += renderTabela('🇧🇷 Ranking Ações Brasil', dadosRankingBr, 'br');
+            if (dadosRankingUs.length > 0) telaCompleta += renderTabela('🇺🇸 Ranking Ações Internacionais', dadosRankingUs, 'us');
+            
+            if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado fundamentalista encontrado no banco.</div>';
+
+            dashboard.innerHTML = telaCompleta;
         }
 
         async function fetchMiniChart(asset, targetTab) {
@@ -339,7 +393,6 @@
             abrirDoRanking(ticker);
         }
 
-        // Tradutor de Ticker para abrir o Modal diretamente da tabela de Ranking
         function abrirDoRanking(tickerReal) {
             const ehBrasil = tickerReal.includes('.SA');
             const nomeLimpo = tickerReal.replace('.SA', '');
