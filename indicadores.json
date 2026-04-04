@@ -1,12 +1,12 @@
 {
   "AGRO3.SA": {
-    "precoAtual": 21.56,
-    "pvp": 0.9961172,
-    "dy": 0.036199998,
-    "evEbitda": -35.614,
+    "precoAtual": 20.78,
+    "pvp": 0.9937203,
+    "dy": 0.0363,
+    "evEbitda": -35.561,
     "vpa": 20.861,
     "lpa": -0.02,
-    "psr": 2.144614,
+    "psr": 2.1394536,
     "roe": -0.00074,
     "roa": -0.01319,
     "margemBruta": 0.043920003,
@@ -55,12 +55,12 @@
     }
   },
   "AMOB3.SA": {
-    "precoAtual": 12.9,
-    "pvp": 0.2589604,
-    "evEbitda": 9.92,
+    "precoAtual": 13.8,
+    "pvp": 0.26102456,
+    "evEbitda": 9.93,
     "vpa": 53.29,
     "lpa": -7.54,
-    "psr": 0.04079682,
+    "psr": 0.04112201,
     "roe": -0.13216,
     "roa": 0.01526,
     "margemBruta": 0.14461,
@@ -109,13 +109,13 @@
     }
   },
   "BBAS3.SA": {
-    "precoAtual": 23,
-    "pl": 9.845833,
-    "pvp": 0.73387367,
-    "dy": 0.0119,
+    "precoAtual": 23.63,
+    "pl": 9.745832,
+    "pvp": 0.72642004,
+    "dy": 0.012,
     "vpa": 32.199,
     "lpa": 2.4,
-    "psr": 1.8261706,
+    "psr": 1.8076229,
     "roe": 0.1106,
     "roa": 0.00865,
     "margemBruta": 0,
@@ -162,13 +162,13 @@
     }
   },
   "BBDC3.SA": {
-    "precoAtual": 16.71,
-    "pl": 7.9671354,
-    "pvp": 1.0060469,
-    "dy": 0.012200001,
+    "precoAtual": 16.9557,
+    "pl": 7.868544,
+    "pvp": 0.9935973,
+    "dy": 0.0124,
     "vpa": 16.868,
     "lpa": 2.13,
-    "psr": 2.1772745,
+    "psr": 2.1503315,
     "roe": 0.13754,
     "roa": 0.010880001,
     "margemBruta": 0,
@@ -215,14 +215,14 @@
     }
   },
   "BBSE3.SA": {
-    "precoAtual": 34.81,
-    "pl": 7.5483866,
-    "pvp": 6.561974,
-    "dy": 0.14850001,
-    "evEbitda": 5.883,
+    "precoAtual": 35.1,
+    "pl": 7.6193547,
+    "pvp": 6.623668,
+    "dy": 0.1472,
+    "evEbitda": 5.948,
     "vpa": 5.349,
     "lpa": 4.65,
-    "psr": 6.5925093,
+    "psr": 6.654491,
     "roe": 0.89815,
     "roa": 0.27602,
     "margemBruta": 0.98234004,
@@ -270,13 +270,13 @@
     }
   },
   "BRSR6.SA": {
-    "precoAtual": 17.25,
-    "pl": 4.252983,
-    "pvp": 0.63586086,
-    "dy": 0.051999997,
+    "precoAtual": 17.82,
+    "pl": 4.2601433,
+    "pvp": 0.63693136,
+    "dy": 0.0519,
     "vpa": 28.025,
     "lpa": 4.19,
-    "psr": 0.9775755,
+    "psr": 0.9792213,
     "roe": 0.1567,
     "roa": 0.011,
     "margemBruta": 0,
@@ -323,14 +323,14 @@
     }
   },
   "B3SA3.SA": {
-    "precoAtual": 18.3386,
-    "pl": 22.04762,
-    "pvp": 5.3464203,
-    "dy": 0.0327,
-    "evEbitda": 13.885,
+    "precoAtual": 18.52,
+    "pl": 22.39759,
+    "pvp": 5.366628,
+    "dy": 0.0326,
+    "evEbitda": 13.937,
     "vpa": 3.464,
-    "lpa": 0.84,
-    "psr": 9.216991,
+    "lpa": 0.83,
+    "psr": 9.251828,
     "roe": 0.25591,
     "roa": 0.08862001,
     "margemBruta": 0.95489,
@@ -379,14 +379,14 @@
     }
   },
   "CMIG3.SA": {
-    "precoAtual": 16.75,
-    "pl": 9.836257,
-    "pvp": 1.6838522,
-    "dy": 0.118599996,
-    "evEbitda": 8.332,
+    "precoAtual": 16.82,
+    "pl": 10,
+    "pvp": 1.7118831,
+    "dy": 0.0809,
+    "evEbitda": 8.434,
     "vpa": 9.989,
     "lpa": 1.71,
-    "psr": 1.1255023,
+    "psr": 1.1442385,
     "roe": 0.1751,
     "roa": 0.06287,
     "margemBruta": 0.12495,
@@ -436,13 +436,13 @@
   },
   "CXSE3.SA": {
     "precoAtual": 18.35,
-    "pl": 12.832169,
-    "pvp": 4.062431,
-    "dy": 0.0715,
-    "evEbitda": 11.514,
+    "pl": 12.909091,
+    "pvp": 4.086783,
+    "dy": 0.071100004,
+    "evEbitda": 11.585,
     "vpa": 4.517,
     "lpa": 1.43,
-    "psr": 9.595158,
+    "psr": 9.652676,
     "roe": 0.32463002,
     "roa": 0.2018,
     "margemBruta": 0.89219004,
@@ -491,14 +491,14 @@
     }
   },
   "EGIE3.SA": {
-    "precoAtual": 32.83,
-    "pl": 14.548673,
-    "pvp": 2.9441261,
-    "dy": 0.0557,
-    "evEbitda": 9.423,
+    "precoAtual": 32.88,
+    "pl": 14.725663,
+    "pvp": 2.9799426,
+    "dy": 0.055,
+    "evEbitda": 9.489,
     "vpa": 11.168,
     "lpa": 2.26,
-    "psr": 2.9207585,
+    "psr": 2.9562905,
     "roe": 0.2182,
     "roa": 0.06559,
     "margemBruta": 0.46707,
@@ -547,14 +547,14 @@
     }
   },
   "EQTL3.SA": {
-    "precoAtual": 40.77,
-    "pl": 42.302086,
-    "pvp": 1.9840727,
-    "dy": 0.0584,
-    "evEbitda": 8.505,
+    "precoAtual": 40.61,
+    "pl": 42.1875,
+    "pvp": 1.9786984,
+    "dy": 0.0586,
+    "evEbitda": 8.493,
     "vpa": 20.468,
     "lpa": 0.96,
-    "psr": 0.9812433,
+    "psr": 0.97858536,
     "roe": 0.06985,
     "roa": 0.04887,
     "margemBruta": 0.22136,
@@ -603,7 +603,7 @@
     }
   },
   "ETHE11.SA": {
-    "precoAtual": 31.6,
+    "precoAtual": 31.87,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -627,14 +627,14 @@
     "valuation_dcf": null
   },
   "EZTC3.SA": {
-    "precoAtual": 13.98,
-    "pl": 7.484211,
-    "pvp": 0.7840327,
-    "dy": 0.0859,
-    "evEbitda": 10.821,
+    "precoAtual": 14.22,
+    "pl": 7.463158,
+    "pvp": 0.7818273,
+    "dy": 0.0862,
+    "evEbitda": 10.793,
     "vpa": 18.137,
     "lpa": 1.9,
-    "psr": 2.631711,
+    "psr": 2.624308,
     "roe": 0.10949001,
     "roa": 0.03442,
     "margemBruta": 0.41674998,
@@ -683,14 +683,14 @@
     }
   },
   "FLRY3.SA": {
-    "precoAtual": 15.93,
-    "pl": 14.312501,
-    "pvp": 1.7467582,
-    "dy": 0.1179,
-    "evEbitda": 6.504,
+    "precoAtual": 16.03,
+    "pl": 14.178572,
+    "pvp": 1.730413,
+    "dy": 0.118999995,
+    "evEbitda": 6.459,
     "vpa": 9.177,
     "lpa": 1.12,
-    "psr": 1.0554801,
+    "psr": 1.0456034,
     "roe": 0.113970004,
     "roa": 0.0596,
     "margemBruta": 0.26607,
@@ -739,14 +739,14 @@
     }
   },
   "GMAT3.SA": {
-    "precoAtual": 4.7,
-    "pl": 5.6829267,
-    "pvp": 1.0073497,
-    "dy": 0.0535,
-    "evEbitda": 6.291,
+    "precoAtual": 4.66,
+    "pl": 5.609756,
+    "pvp": 0.9943796,
+    "dy": 0.0542,
+    "evEbitda": 6.239,
     "vpa": 4.626,
     "lpa": 0.82,
-    "psr": 0.27894306,
+    "psr": 0.27535155,
     "roe": 0.17333001,
     "roa": 0.06525,
     "margemBruta": 0.22399999,
@@ -795,7 +795,7 @@
     }
   },
   "GOLD11.SA": {
-    "precoAtual": 25.28,
+    "precoAtual": 25.59,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -819,14 +819,14 @@
     "valuation_dcf": null
   },
   "ITSA4.SA": {
-    "precoAtual": 13.98,
-    "pl": 9.581081,
-    "pvp": 1.7910825,
-    "dy": 0.0068,
-    "evEbitda": 109.925,
+    "precoAtual": 14.18,
+    "pl": 9.405405,
+    "pvp": 1.7582418,
+    "dy": 0.0069999998,
+    "evEbitda": 108.039,
     "vpa": 7.917,
     "lpa": 1.48,
-    "psr": 19.272264,
+    "psr": 18.918894,
     "roe": 0.17571,
     "roa": 0.00201,
     "margemBruta": 0.24367,
@@ -876,13 +876,13 @@
   },
   "KEPL3.SA": {
     "precoAtual": 8.21,
-    "pl": 9.122223,
-    "pvp": 1.8379226,
-    "dy": 0.0657,
-    "evEbitda": 6.454,
+    "pl": 9.155556,
+    "pvp": 1.8446383,
+    "dy": 0.0655,
+    "evEbitda": 6.477,
     "vpa": 4.467,
     "lpa": 0.9,
-    "psr": 0.9548779,
+    "psr": 0.95836705,
     "roe": 0.20629999,
     "roa": 0.07988,
     "margemBruta": 0.23753001,
@@ -890,14 +890,14 @@
     "margemLiquida": 0.10486,
     "dividaPL": 43.031,
     "liquidezCorrente": 1.956,
-    "data_referencia": "29/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A KEPL3.SA exibe um panorama fundamentalmente atraente, com um P/L de 9.11x, que pode ser considerado razoável e potencialmente indicativo de uma avaliação justa ou subvalorizada, dependendo do setor e peers. O Retorno sobre o Patrimônio Líquido (ROE) robusto de aproximadamente 20.63% demonstra uma excelente capacidade da empresa de gerar lucro a partir do capital investido pelos acionistas, superando a média de muitos setores. A Margem Líquida de 10.49% é saudável e reflete uma gestão eficiente da estrutura de custos. Em conjunto, esses indicadores sugerem uma empresa com boa saúde financeira e rentabilidade, o que pode atrair investidores de valor e crescimento com uma visão de longo prazo.",
+      "tendencia": "A KEPL3.SA demonstra fundamentos sólidos com um Retorno sobre o Patrimônio Líquido (ROE) robusto de 20.63% e uma Margem Líquida saudável de 10.49%. O P/L de 9.16 sugere que a empresa está sendo negociada a um múltiplo razoável em comparação com seus pares e sua capacidade de geração de lucro. Há um bom equilíbrio entre rentabilidade e valuation, indicando uma tendência estável com potencial de valorização caso os múltiplos se expandam para refletir plenamente a sua eficiência.",
       "swot": {
-        "forcas": "Alta rentabilidade evidenciada pelo ROE expressivo. Margem líquida sólida que demonstra eficiência operacional. P/L atrativo, sugerindo que a empresa não está sobreprecificada e pode ter espaço para valorização.",
-        "fraquezas": "Potencial dependência de mercados específicos ou commodities. Desafios para escalar o crescimento mantendo as margens. Necessidade de investimentos contínuos em capital para manter a competitividade.",
-        "oportunidades": "Expansão para novos segmentos de mercado ou regiões geográficas. Inovação em produtos/serviços que possam gerar novas fontes de receita. Consolidação do setor através de aquisições estratégicas.",
-        "ameacas": "Aumento da concorrência, pressionando preços e margens. Variações macroeconômicas ou regulatórias desfavoráveis. Flutuações na demanda do consumidor ou nos custos de insumos."
+        "forcas": "Alta rentabilidade evidenciada por um ROE superior a 20%; Margem Líquida saudável, indicando boa eficiência operacional; Valuation atraente com P/L relativamente baixo para a qualidade dos fundamentos.",
+        "fraquezas": "Potencial dependência de ciclos econômicos ou de setores específicos; Necessidade de constante inovação para manter a competitividade; Riscos associados à gestão de custos em um ambiente inflacionário.",
+        "oportunidades": "Expansão para novos mercados ou segmentos; Lançamento de novos produtos/serviços; Consolidação da indústria através de aquisições estratégicas; Aumento do reconhecimento de marca e fidelidade do cliente.",
+        "ameacas": "Intensificação da concorrência; Mudanças regulatórias ou políticas que afetem o setor; Flutuações cambiais e nos preços de insumos; Desaceleração econômica global ou nacional afetando a demanda."
       },
       "notas": {
         "roe": 5,
@@ -913,32 +913,32 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "SUPERVALORIZADA",
+      "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "No cenário pessimista, consideramos um ambiente econômico mais desafiador, com menor crescimento de receita e pressões maiores sobre as margens operacionais, levando a um valuation reduzido."
+          "preco_justo": 7.62,
+          "descricao": "Neste cenário, uma leve compressão do múltiplo P/L para 8.5x (frente ao atual 9.16x) é considerada devido a um ambiente macroeconômico menos favorável ou menor crescimento do que o esperado. Ainda assim, a empresa mantém sua rentabilidade."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "O cenário base reflete nossas expectativas mais prováveis, considerando as tendências atuais de mercado e o desempenho histórico da empresa. É o valor mais provável da ação sob condições normais."
+          "preco_justo": 8.21,
+          "descricao": "O cenário base assume que o atual múltiplo P/L de 9.16x reflete adequadamente os fundamentos da empresa. A KEPL3.SA continua a entregar seu bom desempenho operacional e rentabilidade, justificando o preço atual."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "O cenário otimista presume um desempenho excepcional da empresa, com crescimento acima do esperado e melhoria significativa das margens, seja por expansão de mercado ou eficiência operacional aprimorada."
+          "preco_justo": 9.41,
+          "descricao": "No cenário otimista, o mercado reconhece plenamente a alta rentabilidade (ROE de 20.63%) da empresa, resultando em uma expansão do múltiplo P/L para 10.5x. Isso poderia ser impulsionado por um crescimento de receita acima do esperado ou melhoria do sentimento do mercado."
         }
       }
     }
   },
   "KLBN3.SA": {
-    "precoAtual": 3.9,
-    "pl": 16.913044,
-    "pvp": 0.60525906,
-    "dy": 0.0841,
-    "evEbitda": 5.361,
+    "precoAtual": 3.89,
+    "pl": 16.869566,
+    "pvp": 0.60370314,
+    "dy": 0.084300004,
+    "evEbitda": 5.36,
     "vpa": 6.427,
     "lpa": 0.23,
-    "psr": 1.1545931,
+    "psr": 1.151625,
     "roe": 0.14569001,
     "roa": 0.025929999,
     "margemBruta": 0.27287,
@@ -946,14 +946,14 @@
     "margemLiquida": 0.06779,
     "dividaPL": 267.053,
     "liquidezCorrente": 2.059,
-    "data_referencia": "29/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A KLBN3.SA, como uma das líderes no setor de papel e celulose, demonstra uma rentabilidade sólida com um ROE de 14.57%. No entanto, seu P/L de 16.7 e uma margem líquida de 6.78% sugerem que a empresa está sendo negociada a um múltiplo que pode estar um pouco esticado para uma empresa de commodities, considerando sua margem. O setor tem potencial de crescimento impulsionado por demanda de embalagens sustentáveis, mas é intrinsecamente cíclico e sensível a preços de commodities e taxas de câmbio. A tendência de longo prazo é positiva, suportada pela busca por produtos mais sustentáveis e integração vertical, mas com atenção à gestão de dívida e custos.",
+      "tendencia": "A Klabin (KLBN3) demonstra solidez operacional, refletida por um ROE de 14.57%, indicando uma gestão eficiente do capital próprio. A Margem Líquida de 6.78% é razoável para o setor de papel e celulose, que é intensivo em capital e sensível a ciclos. O P/L de 16.87 sugere que o mercado precifica um crescimento contínuo ou a estabilidade de seus fluxos de caixa. A empresa é um player consolidado no mercado brasileiro, com diversificação de produtos e projetos de expansão que buscam aumentar a capacidade e a eficiência. A tendência geral é de uma empresa estável, com capacidade de gerar valor a longo prazo, mas sujeita às flutuações dos preços das commodities e do câmbio.",
       "swot": {
-        "forcas": "Liderança de mercado e escala de produção robusta; forte integração vertical que abrange florestas, celulose, papel e embalagens, garantindo controle de custos e qualidade; portfólio diversificado de produtos; foco em sustentabilidade e inovação em produtos de base biológica.",
-        "fraquezas": "Sensibilidade e exposição à volatilidade dos preços de commodities (celulose e papel); histórico de alto endividamento devido a investimentos intensivos em capital; margem líquida de 6.78% que, embora razoável para o setor, pode ser pressionada em cenários adversos de custos ou preços; exposição a riscos cambiais devido à forte componente de exportação.",
-        "oportunidades": "Crescimento da demanda global por embalagens sustentáveis e papelão; expansão para mercados emergentes e produtos de maior valor agregado; potencial de desalavancagem através da geração de caixa operacional; melhorias contínuas na eficiência operacional e inovações em bioprodutos.",
-        "ameacas": "Recessão econômica global ou nacional que impacte a demanda por seus produtos; aumento da concorrência e sobreoferta no mercado de celulose; elevação dos custos de insumos (energia, químicos, logística); mudanças regulatórias e ambientais mais restritivas; flutuações desfavoráveis no câmbio impactando as receitas de exportação."
+        "forcas": "Liderança de mercado no setor de papel e celulose no Brasil; Alta diversificação de produtos (celulose, papéis, embalagens); Forte governança corporativa e histórico de execução de grandes projetos; Escala de produção e eficiência operacional; Atuação em mercados com demanda crescente por soluções sustentáveis.",
+        "fraquezas": "Setor cíclico, com alta dependência dos preços de commodities (celulose); Elevado nível de endividamento, comum em empresas de capital intensivo com grandes projetos de investimento; Exposição à volatilidade cambial, impactando custos e receitas; Sensibilidade a custos de insumos energéticos e matérias-primas.",
+        "oportunidades": "Crescimento da demanda global por embalagens sustentáveis e produtos de base florestal; Expansão para novos mercados e segmentos de valor agregado; Otimização de custos e ganhos de eficiência com novas tecnologias e projetos de modernização; Potencial de crescimento através de aquisições estratégicas ou parcerias; Desenvolvimento de novos produtos bio-baseados.",
+        "ameacas": "Flutuações acentuadas nos preços internacionais de celulose e papel; Aumento da concorrência global e regional; Novas regulamentações ambientais e sociais que podem elevar custos operacionais; Desaceleração econômica global ou regional, impactando a demanda; Risco de valorização do Real, que penaliza exportadoras."
       },
       "notas": {
         "roe": 4,
@@ -969,32 +969,32 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "SUPERVALORIZADA",
+      "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Neste cenário, assumimos um crescimento de receitas mais moderado e pressões nas margens operacionais devido a custos mais altos e menor repasse de preços. A volatilidade das commodities e um ambiente macroeconômico global desafiador impactam negativamente o fluxo de caixa futuro."
+          "preco_justo": 3.55,
+          "descricao": "Cenário de desaceleração econômica global acentuada, queda nos preços das commodities (celulose e papel) e aumento da concorrência, impactando negativamente margens e volume de vendas. Considera uma contração do múltiplo P/L e menores projeções de lucros."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Considera um crescimento alinhado às projeções de mercado para o setor de papel e celulose, com a empresa mantendo sua participação de mercado e margens operacionais. A execução dos planos de investimento e a gestão de dívida ocorrem conforme o planejado, sem grandes choques externos."
+          "preco_justo": 4.05,
+          "descricao": "Considera a manutenção da demanda por papel e celulose, estabilidade nos custos operacionais e crescimento moderado da empresa, em linha com o histórico do setor e as projeções de expansão de capacidade. Reflete uma avaliação equilibrada dos fundamentos atuais e expectativas de mercado."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Reflete uma aceleração na demanda por produtos sustentáveis, maior eficiência operacional e a concretização de projetos de expansão com resultados acima do esperado. O ambiente macroeconômico é favorável, com preços de commodities estáveis ou em ascensão e um câmbio benéfico para exportações."
+          "preco_justo": 4.5,
+          "descricao": "Melhora significativa na demanda global por produtos de base florestal, aumento dos preços da celulose e papel acima do esperado, e ganhos de eficiência operacional impulsionados por novos projetos. Considera uma expansão do múltiplo P/L devido ao otimismo do mercado e maiores projeções de lucros."
         }
       }
     }
   },
   "LEVE3.SA": {
-    "precoAtual": 34.99,
-    "pl": 7.826281,
-    "pvp": 5.5286345,
-    "dy": 0.081099994,
-    "evEbitda": 6.2,
+    "precoAtual": 35.14,
+    "pl": 7.8218265,
+    "pvp": 5.5254874,
+    "dy": 0.081199996,
+    "evEbitda": 6.197,
     "vpa": 6.356,
     "lpa": 4.49,
-    "psr": 0.88091743,
+    "psr": 0.8804161,
     "roe": 0.74492997,
     "roa": 0.14077,
     "margemBruta": 0.27048,
@@ -1002,20 +1002,20 @@
     "margemLiquida": 0.11257,
     "dividaPL": 196.887,
     "liquidezCorrente": 1.266,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A empresa LEVE3.SA exibe indicadores financeiros excepcionalmente fortes, sinalizando uma performance robusta e alta eficiência. O P/L de 7.6 indica que as ações podem estar sendo negociadas a um múltiplo de lucros bastante atraente, sugerindo uma possível subvalorização no mercado em relação à sua capacidade de geração de resultados. O Retorno sobre o Patrimônio Líquido (ROE) de impressionantes 74.49% demonstra uma capacidade extraordinária de gerar lucros a partir do capital próprio investido, colocando a LEVE3.SA entre as empresas mais rentáveis e eficientes do mercado. A Margem Líquida de 11.26% reforça a capacidade da empresa de converter vendas em lucro líquido de forma saudável e consistente. A tendência geral é muito positiva, indicando um potencial de valorização sustentado por fundamentos sólidos e uma gestão altamente eficaz. Recomendamos uma análise aprofundada para confirmar a sustentabilidade desses resultados.",
+      "tendencia": "A empresa LEVE3.SA exibe um desempenho de rentabilidade excepcional, evidenciado por um ROE de 74,49% e uma Margem Líquida saudável de 11,26%. O P/L de 7,82 é relativamente baixo para tamanha rentabilidade, sugerindo que o mercado pode estar cético quanto à sustentabilidade desse patamar ou que a empresa está subvalorizada. A tendência de preço dependerá da capacidade da LEVE3.SA de manter ou replicar seu crescimento e rentabilidade, bem como da evolução da percepção do mercado sobre seus múltiplos. No curto prazo, há potencial para expansão de múltiplos se os resultados se mantiverem fortes. No longo prazo, a sustentabilidade do ROE e a gestão da dívida serão cruciais para a valorização.",
       "swot": {
-        "forcas": "Rentabilidade excepcional (ROE elevadíssimo), valuation atraente (P/L baixo em relação aos lucros), margem líquida saudável, forte geração de caixa e eficiência na gestão de capital.",
-        "fraquezas": "Potencial dependência de ciclos econômicos ou de um setor específico, desafios de manter o ritmo de inovação e competitividade em um ambiente dinâmico, possível sensibilidade a flutuações de custos de insumos ou mão de obra.",
-        "oportunidades": "Expansão para novos mercados geográficos, diversificação do portfólio de produtos ou serviços, aquisições estratégicas de concorrentes ou empresas complementares, avanços tecnológicos para otimização operacional, crescimento orgânico impulsionado pela demanda do setor.",
-        "ameacas": "Aumento da concorrência, volatilidade de preços de matérias-primas e insumos, mudanças regulatórias que possam impactar o setor, desaceleração econômica geral, disrupção tecnológica por novos players ou produtos substitutos."
+        "forcas": "ROE (Retorno sobre o Patrimônio Líquido) excepcionalmente alto de 74,49%, indicando alta eficiência na geração de lucro a partir do capital dos acionistas. Margem Líquida robusta de 11,26%, demonstrando boa capacidade de converter receita em lucro. P/L atrativo de 7,82 em comparação com a alta rentabilidade, o que pode indicar potencial de valorização.",
+        "fraquezas": "A sustentabilidade de um ROE tão elevado pode ser um ponto de atenção, pois níveis extremos podem não ser perenes e exigem uma análise mais aprofundada de sua composição (e.g., alavancagem financeira). Ausência de informações detalhadas sobre a dívida pode mascarar riscos que poderiam justificar o P/L mais baixo. Potencial dependência de poucos mercados ou produtos.",
+        "oportunidades": "Expansão da avaliação de mercado, com potencial de reavaliação dos múltiplos (P/L) para cima, caso a empresa mantenha a rentabilidade e crescimento. Oportunidades de crescimento orgânico ou inorgânico, aproveitando a forte capacidade de geração de caixa implícita nos indicadores. Expansão para novos mercados ou segmentos de atuação, diversificando receitas.",
+        "ameacas": "Aumento da concorrência no setor, o que pode pressionar margens e crescimento. Flutuações nos custos de insumos ou commodities, impactando a margem líquida. Desaceleração econômica geral, que pode reduzir a demanda por seus produtos/serviços. Mudanças regulatórias ou fiscais que possam afetar a rentabilidade ou o ambiente de negócios."
       },
       "notas": {
         "roe": 5,
         "roic": 4,
-        "ebitda": 5,
-        "divida": 2,
+        "ebitda": 4,
+        "divida": 3,
         "receita": 4
       }
     },
@@ -1025,25 +1025,25 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "JUSTO",
+      "status": "SUBVALORIZADO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Neste cenário, assumimos um crescimento de receitas mais conservador e/ou um custo de capital (WACC) ligeiramente mais elevado, refletindo um ambiente de mercado menos favorável ou maior percepção de risco para a empresa."
+          "preco_justo": 31.45,
+          "descricao": "Cenário onde o mercado reage a possíveis desacelerações de crescimento ou questiona a sustentabilidade do alto ROE, atribuindo um múltiplo P/L mais conservador (e.g., 7.0x o LPA atual)."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "O cenário base reflete nossas premissas atuais para o crescimento futuro da empresa e seu custo de capital. Representa o valor mais provável das ações com base nas informações e tendências disponíveis."
+          "preco_justo": 38.19,
+          "descricao": "Neste cenário, a empresa mantém sua forte performance, e o mercado começa a precificar um múltiplo P/L ligeiramente superior (e.g., 8.5x o LPA atual) em reconhecimento à sua rentabilidade e potencial de crescimento."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "O cenário otimista considera um crescimento de receitas acima do esperado, maior eficiência operacional e/ou uma redução no custo de capital, impulsionado por um ambiente macroeconômico forte ou ganhos de mercado significativos."
+          "preco_justo": 44.93,
+          "descricao": "Um cenário otimista onde a empresa supera as expectativas de crescimento, fortalece sua posição de mercado e o P/L se expande significativamente (e.g., 10.0x o LPA atual), alinhando-se melhor com empresas de alta rentabilidade."
         }
       }
     }
   },
   "MBRF3.SA": {
-    "precoAtual": 21.64,
+    "precoAtual": 20.79,
     "pl": 57.75,
     "pvp": 2.5874302,
     "dy": 0.2715,
@@ -1058,19 +1058,130 @@
     "margemLiquida": 0.0021799998,
     "dividaPL": 529.705,
     "liquidezCorrente": 1.078,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A MBRF3.SA apresenta um P/L extremamente elevado, o que sugere que o mercado precifica um crescimento futuro agressivo ou que os lucros atuais são muito baixos. No entanto, sua Margem Líquida e ROE são alarmantemente baixos, indicando sérios desafios de rentabilidade e eficiência operacional. A tendência atual é de alta expectativa de mercado contrastando com uma baixa performance fundamental de lucratividade. Isso cria um perfil de alto risco, onde qualquer decepção pode levar a uma correção significativa.",
+      "tendencia": "A MBRF3.SA apresenta um cenário de alto risco e potencial volatilidade. O múltiplo P/L extremamente elevado (57.75x) é preocupante, especialmente quando confrontado com uma rentabilidade operacional muito baixa (ROE de 4.45% e Margem Líquida de 0.22%). Isso sugere que o preço atual de tela já incorpora expectativas de crescimento e melhoria de margens extremamente ambiciosas. A tendência de curto prazo é incerta, mas no longo prazo, a sustentação do preço dependerá criticamente da capacidade da empresa de converter receita em lucro de forma muito mais eficiente, o que é um desafio dado o patamar atual. Sem uma melhora drástica nas margens, a empresa está vulnerável a uma reavaliação de múltiplos por parte do mercado.",
       "swot": {
-        "forcas": "Potencial de crescimento inexplorado (justificando o alto P/L), forte posicionamento em nicho de mercado (se aplicável), capacidade de atrair capital para expansão.",
-        "fraquezas": "Extremamente baixa margem líquida (0.22%), baixo retorno sobre o patrimônio (ROE de 4.45%), alta precificação (P/L de 62.03) em relação aos lucros atuais, o que a torna vulnerável a choques de mercado e resultados abaixo do esperado. Ineficiência na conversão de vendas em lucro líquido.",
-        "oportunidades": "Melhoria da eficiência operacional para elevar as margens, expansão de mercado para alavancar a receita, consolidação do setor, desenvolvimento de produtos ou serviços de maior valor agregado para aumentar a rentabilidade.",
-        "ameacas": "Intensificação da concorrência, incapacidade de materializar o crescimento esperado, aumento dos custos operacionais que comprimem ainda mais as margens, deterioração do cenário macroeconômico, pressões sobre o preço dos produtos/serviços."
+        "forcas": "Potencial para rápido crescimento de receita (inferido pelo alto múltiplo P/L e nota de receita), indicando uma demanda robusta por seus produtos ou serviços. Possível liderança de mercado ou posicionamento estratégico que justifique a expectativa de crescimento futuro.",
+        "fraquezas": "Rentabilidade extremamente baixa (Margem Líquida de 0.22% e ROE de 4.45%), o que torna a empresa altamente sensível a variações de custo e dificulta a geração de valor para os acionistas. O elevado P/L sugere que o papel está caro em relação aos fundamentos atuais, expondo os investidores a um alto risco de correção.",
+        "oportunidades": "Espaço significativo para melhoria da eficiência operacional e expansão das margens. A empresa pode capitalizar em um mercado em crescimento, otimizando custos e aumentando o poder de precificação. Possíveis aquisições estratégicas ou inovações que transformem sua estrutura de custos e receita.",
+        "ameacas": "Concorrência acirrada que impede a elevação de preços ou pressiona as margens. Risco de falha na execução de planos de crescimento ou na implementação de melhorias de eficiência. Deterioração do cenário econômico geral, impactando a demanda e a capacidade de repassar custos. Risco de 'downgrade' por analistas caso as expectativas não sejam atendidas, levando a uma contração de múltiplos."
       },
       "notas": {
         "roe": 2,
-        "roic": 2,
-        "ebitda": 3,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "CARO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 10.08,
+          "descricao": "Neste cenário, as expectativas de crescimento não se concretizam e a rentabilidade permanece sob forte pressão (Margem Líquida estagnada ou piora, e ROE baixo). O mercado corrige o múltiplo P/L drasticamente para cerca de 28x, alinhando-o a empresas com potencial de crescimento, mas com eficiências operacionais questionáveis, resultando em uma desvalorização acentuada."
+        },
+        "base": {
+          "preco_justo": 14.4,
+          "descricao": "A empresa entrega um crescimento razoável de receita, mas a expansão das margens líquidas é lenta e desafiadora, e o ROE melhora marginalmente. O mercado atribui um múltiplo P/L ainda elevado (cerca de 40x), mas mais conservador do que o atual, refletindo um balanço entre potencial de crescimento e riscos de rentabilidade."
+        },
+        "otimista": {
+          "preco_justo": 18,
+          "descricao": "Crescimento robusto de receita acompanhado por melhorias substanciais na eficiência operacional, resultando em margens líquidas mais saudáveis e um ROE aprimorado. O mercado mantém um múltiplo P/L elevado (cerca de 50x), justificado pela forte execução e perspectivas de lucro futuro, porém ainda indicando que o preço atual já reflete um otimismo muito alto."
+        }
+      }
+    }
+  },
+  "PETR3.SA": {
+    "precoAtual": 51.93,
+    "pl": 6.6044774,
+    "pvp": 1.6460012,
+    "dy": 0.0736,
+    "evEbitda": 4.899,
+    "vpa": 32.26,
+    "lpa": 8.04,
+    "psr": 1.3755262,
+    "roe": 0.28176,
+    "roa": 0.08613,
+    "margemBruta": 0.47632998,
+    "margemOperacional": 0.26850998,
+    "margemLiquida": 0.22134,
+    "dividaPL": 91.963,
+    "liquidezCorrente": 0.706,
+    "data_referencia": "03/04/2026",
+    "analise_senior": {
+      "tendencia": "A Petrobras (PETR3.SA) apresenta fundamentos robustos, com um ROE e Margem Líquida excepcionais, indicando alta rentabilidade e eficiência operacional. No entanto, o P/L relativamente baixo de 6.60 reflete a percepção de risco do mercado, principalmente devido à volatilidade do preço do petróleo e, historicamente, a intervenções governamentais. A tendência de longo prazo para o setor de energia global, com a transição energética, adiciona complexidade. No curto a médio prazo, a empresa se beneficia de um cenário de preços de commodities favorável e da gestão de sua dívida. O desafio permanece em equilibrar o potencial de valorização com os riscos inerentes.",
+      "swot": {
+        "forcas": "Liderança de mercado no Brasil e forte presença na exploração e produção de petróleo e gás em águas profundas. Alta rentabilidade e margens líquidas robustas (ROE de 28.17%, Margem Líquida de 22.13%). Grande capacidade de investimento e geração de caixa.",
+        "fraquezas": "Elevada dívida histórica (embora em redução). Sensibilidade a flutuações do preço do petróleo. Potencial de interferência política em sua governança e política de preços, impactando a previsibilidade dos lucros. Custos operacionais e de capital elevados para manutenção da infraestrutura.",
+        "oportunidades": "Exploração e desenvolvimento de novas reservas (Ex: Bacia de Sergipe-Alagoas). Expansão em energias renováveis e biocombustíveis, diversificando a matriz energética. Otimização de portfólio através de desinvestimentos em ativos não-essenciais. Demanda global por energia, especialmente de mercados emergentes.",
+        "ameacas": "Volatilidade global dos preços do petróleo. Regulamentação ambiental mais rígida e pressão por descarbonização. Aumento da concorrência de outras fontes de energia. Risco político e regulatório no Brasil, incluindo mudanças na política de dividendos e investimentos. Potenciais impactos da transição energética de longo prazo."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 47.21,
+          "descricao": "Considera um P/L se contraindo para 6.0x devido a um cenário global ou doméstico adverso, como queda acentuada nos preços do petróleo ou aumento significativo da incerteza política. Reflete um maior prêmio de risco."
+        },
+        "base": {
+          "preco_justo": 59.01,
+          "descricao": "Assume uma expansão moderada do P/L para 7.5x, refletindo o reconhecimento do mercado pela forte rentabilidade da empresa (ROE de 28.17%, Margem Líquida de 22.13%) e melhora na percepção de risco. Considera um cenário macroeconômico estável."
+        },
+        "otimista": {
+          "preco_justo": 70.81,
+          "descricao": "Em um cenário otimista, o P/L se expande para 9.0x, impulsionado por preços de petróleo favoráveis, redução do risco político no Brasil, sucesso nos projetos de exploração e desinvestimentos, e um maior apreço do mercado pelos fundamentos da empresa."
+        }
+      }
+    }
+  },
+  "PRIO3.SA": {
+    "precoAtual": 64.13,
+    "pl": 24.465702,
+    "pvp": 2.1291234,
+    "evEbitda": 9.953,
+    "vpa": 31.83,
+    "lpa": 2.77,
+    "psr": 3.5216374,
+    "roe": 0.08708999,
+    "roa": 0.022669999,
+    "margemBruta": 0.19917,
+    "margemOperacional": 0.098859996,
+    "margemLiquida": 0.14446999,
+    "dividaPL": 110.312,
+    "liquidezCorrente": 1.819,
+    "data_referencia": "03/04/2026",
+    "analise_senior": {
+      "tendencia": "A PRIO3.SA (PetroRio) tem demonstrado uma forte tendência de crescimento, impulsionada por uma estratégia agressiva de aquisição e revitalização de campos maduros de petróleo e gás. Sua gestão focada em eficiência operacional e redução de custos tem sido um diferencial no setor. O P/L elevado (24.46) reflete as expectativas do mercado por um crescimento contínuo de lucros, apesar de um ROE moderado de 8.71%, sugerindo que o valor é gerado mais por expansão via aquisições e otimização do que apenas pela rentabilidade intrínseca de ativos existentes. A margem líquida de 14.45% é saudável e indica boa capacidade de conversão de receita em lucro líquido.",
+      "swot": {
+        "forcas": "Eficiência operacional e expertise na revitalização de campos maduros; Forte geração de fluxo de caixa; Equipe de gestão ágil e com histórico comprovado de M&A; Potencial de sinergias em novas aquisições.",
+        "fraquezas": "Exposição à volatilidade do preço do petróleo; Alta intensidade de capital, exigindo investimentos contínuos; Riscos de execução em projetos de grande porte ou integração de novas aquisições; Dependência regulatória no setor de óleo e gás brasileiro.",
+        "oportunidades": "Continuidade das oportunidades de M&A no mercado de ativos maduros (divestimentos de grandes players); Potencial de exploração e desenvolvimento em campos existentes; Melhoria da infraestrutura e logística de exportação; Demanda global por energia, especialmente petróleo.",
+        "ameacas": "Cenário de preços de petróleo desfavoráveis a longo prazo; Aumento da pressão regulatória e ambiental; Acidentes operacionais ou desastres ambientais; Concorrência acirrada com empresas maiores e com mais capital; Instabilidade política e econômica no Brasil."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
         "divida": 3,
         "receita": 4
       }
@@ -1081,144 +1192,32 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "JUSTO",
+      "status": "SUBVALORIZADO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Considera um ambiente de mercado mais competitivo, falha na execução de planos de melhoria de margem e um crescimento de receita aquém do esperado. A ineficiência operacional persiste, e a alta precificação atual não se sustenta, levando a uma desvalorização significativa."
+          "preco_justo": 52.59,
+          "descricao": "Este cenário considera uma desaceleração no ritmo de crescimento, pressões sobre os preços do petróleo e um aumento nos custos operacionais. O Preço Justo reflete uma menor atratividade e maior risco percebido pelo mercado, resultando em um múltiplo de valuation mais conservador."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Reflete um cenário onde a empresa consegue manter seu patamar de crescimento de receita, mas as melhorias nas margens são lentas e incrementais. O custo de capital permanece elevado devido ao risco percebido, e o potencial de valorização é limitado pela necessidade de otimização de custos e operações."
+          "preco_justo": 73.75,
+          "descricao": "Neste cenário, a PRIO3 continua a executar sua estratégia de crescimento via M&A e otimização operacional, com preços de petróleo estáveis e um ambiente regulatório favorável. O Preço Justo indica um upside razoável em relação ao preço atual, refletindo o potencial de criação de valor da empresa."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Pressupõe uma execução bem-sucedida de estratégias de otimização operacional, resultando em uma melhora substancial da margem líquida e do ROE. O crescimento da receita acelera, e a empresa capitaliza seu potencial de mercado, justificando o alto P/L atual e gerando valor significativo para os acionistas."
-        }
-      }
-    }
-  },
-  "PETR3.SA": {
-    "precoAtual": 53.91,
-    "pl": 6.411111,
-    "pvp": 1.6097335,
-    "dy": 0.0752,
-    "evEbitda": 4.826,
-    "vpa": 32.26,
-    "lpa": 8.1,
-    "psr": 1.3452181,
-    "roe": 0.28176,
-    "roa": 0.08613,
-    "margemBruta": 0.47632998,
-    "margemOperacional": 0.26850998,
-    "margemLiquida": 0.22134,
-    "dividaPL": 91.963,
-    "liquidezCorrente": 0.706,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {
-      "tendencia": "A Petrobras (PETR3.SA) apresenta indicadores financeiros robustos, com um P/L de 6,65, um ROE de 28,18% e uma Margem Líquida de 22,13%. O ROE e a margem líquida são excepcionais, evidenciando uma alta rentabilidade e eficiência operacional. O P/L, relativamente baixo, sugere que o mercado pode estar precificando riscos inerentes ao setor de commodities e à governança corporativa, ou indicando uma potencial subavaliação do ativo frente à sua capacidade de geração de lucros. A tendência de curto prazo é positiva, impulsionada pelos resultados atuais, mas o longo prazo depende da estabilidade política e dos preços internacionais do petróleo.",
-      "swot": {
-        "forcas": "Alta lucratividade com ROE e Margem Líquida excepcionais; Liderança no mercado brasileiro de exploração e produção; Grande capacidade de investimento e forte geração de caixa; Integração vertical na cadeia de óleo e gás.",
-        "fraquezas": "Exposição significativa à volatilidade dos preços internacionais do petróleo; Risco de intervenção política e regulatória; Elevado endividamento histórico (embora em melhoria); Questões ambientais e de conformidade.",
-        "oportunidades": "Avanço na transição energética com investimentos em energias renováveis e biocombustíveis; Novas descobertas e desenvolvimento de reservas no pré-sal; Otimização de custos e eficiência operacional; Potencial de desinvestimentos estratégicos para redução de dívida e foco em core business.",
-        "ameacas": "Desaceleração da economia global e queda na demanda por petróleo; Aumento das pressões regulatórias e ambientais; Instabilidade política no Brasil e mudanças de governo; Concorrência crescente no setor de energia; Litígios e processos judiciais."
-      },
-      "notas": {
-        "roe": 4,
-        "roic": 3,
-        "ebitda": 5,
-        "divida": 2,
-        "receita": 4
-      }
-    },
-    "valuation_dcf": {
-      "parametros": {
-        "wacc": "12%",
-        "crescimento_longo_prazo": "2%",
-        "margem_seguranca": "20%"
-      },
-      "status": "SUBVALORIZADA",
-      "cenarios": {
-        "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Cenário considera uma queda significativa nos preços internacionais do petróleo, aumento da interferência política na gestão e desaceleração econômica global impactando negativamente a demanda e as margens da companhia."
-        },
-        "base": {
-          "preco_justo": 25,
-          "descricao": "Cenário reflete a manutenção dos preços do petróleo em patamares moderados, continuidade da gestão operacional eficiente e um ambiente político relativamente estável, permitindo uma geração de caixa consistente e resultados operacionais sólidos."
-        },
-        "otimista": {
-          "preco_justo": 30,
-          "descricao": "Cenário incorpora preços de petróleo elevados e sustentados, sucesso em novos projetos de exploração e produção, forte controle de custos e governança corporativa aprimorada, impulsionando a lucratividade e o valor da empresa."
-        }
-      }
-    }
-  },
-  "PRIO3.SA": {
-    "precoAtual": 66.21,
-    "pl": 23.151623,
-    "pvp": 2.014766,
-    "evEbitda": 9.586,
-    "vpa": 31.83,
-    "lpa": 2.77,
-    "psr": 3.3324866,
-    "roe": 0.08708999,
-    "roa": 0.022669999,
-    "margemBruta": 0.19917,
-    "margemOperacional": 0.098859996,
-    "margemLiquida": 0.14446999,
-    "dividaPL": 110.312,
-    "liquidezCorrente": 1.819,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {
-      "tendencia": "A PRIO3.SA apresenta uma margem líquida robusta (14.45%) e um Retorno sobre o Patrimônio Líquido (ROE) saudável de 8.71%, indicando boa capacidade de gerar lucro a partir de suas vendas e eficiência no uso do capital próprio. Contudo, seu múltiplo Preço/Lucro (P/L) de 25.57 sugere que o mercado já precifica um crescimento futuro significativo ou que o ativo pode estar com uma valuation esticada. A empresa está em um setor de commodities com inherentemente alta volatilidade. A tendência geral é de uma empresa rentável com expectativas elevadas por parte do mercado.",
-      "swot": {
-        "forcas": "Sólida margem líquida (14.45%) demonstrando eficiência operacional. ROE positivo e decente (8.71%) indicando boa rentabilidade sobre o capital. Experiência e foco na revitalização de campos maduros, otimizando a produção e reduzindo custos. Flexibilidade na gestão de ativos e portfólio.",
-        "fraquezas": "Alto P/L (25.57) pode indicar que a empresa já está com valorização elevada, limitando o potencial de upside a curto prazo ou aumentando o risco em caso de frustração de expectativas. Dependência de um número limitado de ativos de produção. Vulnerabilidade à volatilidade dos preços do petróleo e gás.",
-        "oportunidades": "Potencial de aquisição de novos campos de petróleo e gás com desconto. Aumento da demanda global por energia. Melhorias contínuas na eficiência operacional e redução de custos. Exploração de novas tecnologias para otimização da produção e sustentabilidade. Crescimento inorgânico através de M&A.",
-        "ameacas": "Queda prolongada nos preços do petróleo e gás natural. Riscos regulatórios e ambientais crescentes. Aumento da pressão por transição energética e desinvestimento em combustíveis fósseis. Desafios operacionais inesperados em plataformas offshore. Forte concorrência no setor de óleo e gás.",
-        "desc_pl": "O P/L elevado de 25.57 para PRIO3.SA reflete as altas expectativas de crescimento de lucros futuros da empresa. Embora a margem líquida e o ROE sejam saudáveis, um P/L nesse patamar sugere que grande parte do potencial de valorização já pode estar incorporado no preço atual da ação. Investidores que consideram esse múltiplo devem estar cientes de que a empresa precisa entregar um crescimento robusto para justificar essa valuation."
-      },
-      "notas": {
-        "roe": 4,
-        "roic": 3,
-        "ebitda": 4,
-        "divida": 2,
-        "receita": 4
-      }
-    },
-    "valuation_dcf": {
-      "parametros": {
-        "wacc": "12%",
-        "crescimento_longo_prazo": "2%",
-        "margem_seguranca": "20%"
-      },
-      "status": "SUPERVALORIZADA",
-      "cenarios": {
-        "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Baseado em um cenário de preços de commodities em declínio, aumento de custos operacionais e desafios na expansão da produção. Pressões regulatórias e menor crescimento da demanda global contribuem para um valuation mais conservador."
-        },
-        "base": {
-          "preco_justo": 25,
-          "descricao": "Considera preços de petróleo estáveis, sucesso moderado na otimização de ativos existentes e um crescimento gradual da produção. Melhorias contínuas na eficiência, com custos controlados e expansão planejada."
-        },
-        "otimista": {
-          "preco_justo": 30,
-          "descricao": "Reflete um ambiente de preços de petróleo favoráveis, forte execução de projetos de expansão e aquisição de novos ativos de alto valor. Significativas reduções de custos e uma aceleração na produção, superando as expectativas do mercado."
+          "preco_justo": 82.09,
+          "descricao": "O cenário otimista contempla a concretização de novas aquisições estratégicas com sucesso, um aumento sustentado nos preços do petróleo, e uma aceleração na produção e na eficiência. O Preço Justo reflete a plena realização do potencial de crescimento e de geração de caixa da empresa."
         }
       }
     }
   },
   "PSSA3.SA": {
-    "precoAtual": 49.6239,
-    "pl": 9.568138,
-    "pvp": 2.0279064,
-    "dy": 0.0598,
-    "evEbitda": 3.919,
+    "precoAtual": 49.85,
+    "pl": 9.700576,
+    "pvp": 2.055976,
+    "dy": 0.059,
+    "evEbitda": 4.004,
     "vpa": 24.582,
     "lpa": 5.21,
-    "psr": 0.7395041,
+    "psr": 0.74974,
     "roe": 0.22815001,
     "roa": 0.06106,
     "margemBruta": 0.40445998,
@@ -1226,20 +1225,20 @@
     "margemLiquida": 0.07808,
     "dividaPL": 4.536,
     "liquidezCorrente": 1.218,
-    "data_referencia": "29/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A Porto Seguro (PSSA3) demonstra solidez em seus fundamentos, com um Retorno sobre o Patrimônio Líquido (ROE) de 22.81% que indica excelente eficiência na geração de lucro a partir do capital dos acionistas. A Margem Líquida de 7.81% é robusta para o setor, refletindo boa gestão de custos. O P/L de 9.35x, relativamente baixo, pode sinalizar uma oportunidade de valor, caso o mercado esteja precificando a empresa abaixo de seu potencial intrínseco, ou indicar alguma percepção de risco. Em suma, a tendência aponta para uma empresa lucrativa, bem gerida e com capacidade de gerar valor, mas que opera em um mercado competitivo e sensível a fatores macroeconômicos.",
+      "tendencia": "A Porto Seguro (PSSA3) demonstra forte rentabilidade, com um ROE de 22.81% e uma margem líquida de 7.81%. Seu P/L de 9.70 sugere que a empresa pode estar ligeiramente subavaliada em relação à sua capacidade de geração de lucro. Observa-se uma tendência positiva na qualidade dos resultados, mas com sensibilidade a fatores macroeconômicos e concorrência acirrada no setor de seguros e serviços financeiros. O setor possui resiliência, e a PSSA3 é um player consolidado com potencial de crescimento orgânico e via expansão de portfólio.",
       "swot": {
-        "forcas": "Forte reconhecimento de marca e liderança no setor de seguros e serviços financeiros no Brasil. Alta rentabilidade (ROE superior a 22%) e eficiência operacional. Diversificação de produtos e serviços, que abrange desde seguros automotivos e residenciais até saúde, consórcios e serviços financeiros. Vasta rede de corretores e canais de distribuição.",
-        "fraquezas": "Sensibilidade às condições macroeconômicas, como flutuações da taxa de juros e desemprego, que podem afetar a demanda por seguros e a sinistralidade. Elevada competitividade no setor, com a entrada de novos players e a digitalização acentuada. Necessidade de investimentos contínuos em tecnologia e inovação para manter a relevância no mercado.",
-        "oportunidades": "Expansão do mercado segurador brasileiro, que ainda possui baixa penetração em comparação com economias desenvolvidas. Desenvolvimento e lançamento de novos produtos e serviços digitais para atender novas demandas e públicos. Crescimento através de parcerias estratégicas e aquisições. Potencial de cross-selling e up-selling na sua vasta base de clientes.",
-        "ameacas": "Aumento da sinistralidade devido a eventos climáticos extremos, crises sanitárias ou econômicas. Mudanças regulatórias que possam impactar as operações e a rentabilidade do setor. Concorrência acirrada, com a guerra de preços e a pressão sobre as margens. Desaceleração econômica que afete a renda disponível e a capacidade de contratação de seguros pelos consumidores."
+        "forcas": "Forte reconhecimento de marca e confiança dos consumidores. Portfólio diversificado de produtos e serviços (seguros, saúde, consórcio, serviços financeiros, etc.). Elevada rentabilidade sobre o patrimônio (ROE de 22.81%). Solidez financeira e experiência consolidada no mercado. Inovação contínua em produtos digitais e serviços agregados.",
+        "fraquezas": "Sensibilidade a flutuações nas taxas de juros e desempenho dos investimentos. Exposição ao aumento da sinistralidade em determinados segmentos. Elevado custo de aquisição de clientes em mercados competitivos. Dependência do ciclo econômico e poder de compra dos consumidores para seguros de bens de maior valor.",
+        "oportunidades": "Expansão para novos nichos de mercado (insurtechs, seguros personalizados, PMEs). Crescimento do mercado de seguros no Brasil. Aumento da penetração de produtos financeiros e de previdência privada. Uso de tecnologia (IA, Big Data) para otimizar precificação e gestão de riscos. Potencial de cross-selling entre sua vasta base de clientes.",
+        "ameacas": "Aumento da concorrência, incluindo a entrada de novos players digitais e fintechs. Mudanças regulatórias que possam impactar a rentabilidade ou a operação. Eventos climáticos extremos e aumento da frequência de sinistros. Cenário de recessão econômica ou aumento do desemprego, impactando a demanda por seguros. Flutuações cambiais para operações com insumos ou resseguros internacionais."
       },
       "notas": {
         "roe": 4,
         "roic": 3,
-        "ebitda": 5,
-        "divida": 2,
+        "ebitda": 4,
+        "divida": 3,
         "receita": 4
       }
     },
@@ -1249,25 +1248,25 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "SUPERVALORIZADA",
+      "status": "POTENCIAL DE ALTA",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Neste cenário, consideramos um ambiente econômico adverso com menor crescimento do PIB, aumento da taxa de juros e da sinistralidade. Prevemos uma desaceleração no crescimento da receita e uma pressão maior sobre as margens operacionais, impactando negativamente os fluxos de caixa futuros da empresa."
+          "preco_justo": 43.75,
+          "descricao": "Neste cenário, assumimos um ambiente macroeconômico adverso, com desaceleração do crescimento e aumento da sinistralidade. O múltiplo P/L da empresa sofre uma compressão, refletindo a menor confiança do mercado e a percepção de riscos elevados. Considera-se uma deterioração marginal da capacidade de geração de lucro e uma reavaliação para baixo do valor dos ativos e fluxos futuros."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "O cenário base contempla um crescimento moderado do mercado segurador, com a Porto Seguro mantendo sua participação e rentabilidade atuais. Assumimos estabilidade nas condições macroeconômicas e uma gestão eficiente dos custos e riscos, resultando em um crescimento consistente dos resultados."
+          "preco_justo": 53.5,
+          "descricao": "O cenário base projeta a manutenção da performance operacional e da elevada rentabilidade (ROE de 22.81%). Assume-se um crescimento moderado do mercado e a continuidade da capacidade da PSSA3 de gerar resultados consistentes, com o mercado ajustando o múltiplo P/L para refletir de forma mais adequada seus fundamentos e a qualidade de seus resultados. Há uma leve expansão do múltiplo em relação ao patamar atual."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Este cenário projeta um aquecimento da economia, maior penetração de seguros no Brasil e sucesso nas iniciativas de inovação e digitalização da Porto Seguro. Esperamos um crescimento de receita acima do esperado, melhora nas margens e controle eficaz da sinistralidade, elevando o valor intrínseco da companhia."
+          "preco_justo": 62,
+          "descricao": "No cenário otimista, prevemos uma recuperação econômica robusta, impulsionando o mercado de seguros e serviços financeiros. A PSSA3 capitaliza sobre novas oportunidades de mercado, expande sua base de clientes e otimiza sua estrutura de custos. O mercado reconhece plenamente o valor de sua alta rentabilidade e potencial de crescimento, levando a uma expansão significativa do múltiplo P/L e uma reavaliação positiva de seus ativos e fluxos de caixa futuros."
         }
       }
     }
   },
   "QBTC11.SA": {
-    "precoAtual": 21.46,
+    "precoAtual": 21.4,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -1291,7 +1290,7 @@
     "valuation_dcf": null
   },
   "QSOL11.SA": {
-    "precoAtual": 5.29,
+    "precoAtual": 5.37,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -1300,32 +1299,32 @@
     "valuation_dcf": null
   },
   "RAIZ4.SA": {
-    "precoAtual": 0.51,
-    "evEbitda": 104.234,
+    "precoAtual": 0.53,
+    "evEbitda": 104.394,
     "vpa": -0.154,
     "lpa": -2.15,
-    "psr": 0.023603575,
+    "psr": 0.024048928,
     "roe": -2.31277,
     "roa": -0.03151,
     "margemBruta": 0.03964,
     "margemOperacional": -0.10459,
     "margemLiquida": -0.09583,
     "liquidezCorrente": 1.691,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A RAIZ4.SA apresenta um quadro de rentabilidade desafiador, com um ROE (Retorno sobre o Patrimônio Líquido) de -231.28% e uma Margem Líquida de -9.58%. Esses indicadores negativos sinalizam que a empresa não está gerando lucros a partir de suas operações nem do capital investido pelos acionistas. A ausência de um P/L definido corrobora a informação de que a empresa está operando com prejuízo líquido. Esta situação aponta para uma tendência de baixa rentabilidade no curto a médio prazo, exigindo uma análise aprofundada das causas e das estratégias de recuperação.",
+      "tendencia": "A Raízen (RAIZ4.SA) apresenta um cenário fundamental desafiador no curto prazo, evidenciado por sua margem líquida e ROE negativos, indicando perdas na linha final. Contudo, a robustez de sua receita e o alto nível de EBITDA, conforme nossas notas, sugerem uma forte capacidade operacional e de geração de caixa bruto. Se bem gerida em termos de estrutura de custos, endividamento e eficiência, a empresa tem potencial para pavimentar um caminho para a recuperação da lucratividade. O preço atual de R$ 0,53 reflete a incerteza e o potencial de longo prazo, com o mercado avaliando um possível turnaround.",
       "swot": {
-        "forcas": "Ampla escala operacional e liderança de mercado em segmentos como distribuição de combustíveis e produção de açúcar e etanol. Forte reconhecimento de marca (Raízen) e parcerias estratégicas sólidas (Shell). Diversificação de portfólio, incluindo energias renováveis, o que pode mitigar riscos futuros e abrir novas avenidas de crescimento.",
-        "fraquezas": "Rentabilidade líquida severamente comprometida, evidenciada pelo ROE e Margem Líquida negativos. Alta sensibilidade à volatilidade dos preços das commodities (etanol, açúcar, petróleo) e potenciais ineficiências operacionais que impactam a estrutura de custos. Possível dependência de endividamento para financiar operações e investimentos, que pode ser agravada pela falta de lucratividade.",
-        "oportunidades": "Crescente demanda por biocombustíveis e energias renováveis, permitindo à empresa expandir sua atuação nesse segmento. Potencial para otimização de custos e ganhos de eficiência através de novas tecnologias e processos. Expansão para novos mercados ou segmentos de maior valor agregado. Cenários favoráveis de preços de commodities podem impulsionar uma recuperação.",
-        "ameacas": "Intensa concorrência no setor de combustíveis. Flutuações desfavoráveis e imprevisíveis nos preços de commodities. Riscos regulatórios e mudanças em políticas governamentais que afetem o setor. Aumento das taxas de juros, que impacta o custo da dívida da empresa. Eventos climáticos adversos afetando a produção agrícola."
+        "forcas": "Forte geração de EBITDA e receita, indicando grande escala operacional e capacidade de gerar caixa bruto. Potencial para ganhos de eficiência e otimização de custos em um ambiente operacional complexo. Liderança em segmentos estratégicos como bioenergia.",
+        "fraquezas": "Margens líquidas e Retorno sobre o Patrimônio Líquido (ROE) negativos, sinalizando problemas de rentabilidade na linha final. Provável alta alavancagem financeira, pressionada por juros elevados. Dificuldade em traduzir volume e receita em lucro líquido.",
+        "oportunidades": "Crescimento do mercado de energia renovável e biocombustíveis. Potencial de consolidação e otimização de ativos. Melhoria do cenário macroeconômico e queda das taxas de juros, que reduziriam o custo da dívida. Implementação de novas tecnologias para eficiência.",
+        "ameacas": "Volatilidade dos preços de commodities (açúcar, etanol, petróleo). Mudanças regulatórias no setor de energia e combustíveis. Aumento da concorrência e pressão sobre as margens. Risco de deterioração econômica global e impactos no consumo."
       },
       "notas": {
-        "roe": 1,
-        "roic": 1,
-        "ebitda": 3,
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
         "divida": 2,
-        "receita": 3
+        "receita": 4
       }
     },
     "valuation_dcf": {
@@ -1337,29 +1336,29 @@
       "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "O cenário pessimista considera a persistência da baixa rentabilidade e margens pressionadas pela volatilidade das commodities e custos operacionais elevados, sem uma reversão significativa no curto prazo. Este cenário reflete um crescimento de receita moderado e desafios contínuos na geração de fluxo de caixa."
+          "preco_justo": 0.25,
+          "descricao": "Reflete a persistência das perdas operacionais e a incapacidade de reverter as margens negativas, levando a uma deterioração da posição financeira e desconfiança contínua do mercado. Neste cenário, o valor intrínseco é significativamente abaixo do preço atual."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "No cenário base, projetamos uma recuperação gradual da rentabilidade, com estabilização das margens e eficiências operacionais começando a surtir efeito. Acreditamos que a empresa consiga defender sua participação de mercado e se beneficiar de um ambiente macroeconômico estável, justificando o preço justo de R$25,00."
+          "preco_justo": 0.53,
+          "descricao": "Considera o cenário atual desafiador, onde a empresa busca a estabilização das operações e uma lenta, mas consistente, recuperação da rentabilidade. O preço atual de R$ 0,53 é visto como um equilíbrio entre os riscos inerentes e o potencial de longo prazo de um turnaround gradual."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "O cenário otimista contempla uma forte reversão na lucratividade, impulsionada por um ambiente de preços de commodities favorável, ganhos significativos de eficiência e a aceleração da estratégia de energias renováveis. Nesse cenário, a empresa superaria as expectativas de mercado, elevando seu potencial de valorização."
+          "preco_justo": 0.9,
+          "descricao": "Baseado em uma reestruturação bem-sucedida, com reversão efetiva das margens negativas, ganhos expressivos de eficiência operacional e um cenário macroeconômico favorável. A empresa retorna à lucratividade consistente e atrai maior interesse dos investidores, refletindo um valor intrínseco superior."
         }
       }
     }
   },
   "RANI3.SA": {
-    "precoAtual": 9.77,
-    "pl": 8.827272,
-    "pvp": 1.5415146,
-    "dy": 0.0469,
-    "evEbitda": 6.478,
+    "precoAtual": 9.71,
+    "pl": 8.681818,
+    "pvp": 1.5161138,
+    "dy": 0.0477,
+    "evEbitda": 6.407,
     "vpa": 6.299,
     "lpa": 1.1,
-    "psr": 1.3272562,
+    "psr": 1.305386,
     "roe": 0.18021,
     "roa": 0.054759998,
     "margemBruta": 0.34599,
@@ -1367,182 +1366,14 @@
     "margemLiquida": 0.14354,
     "dividaPL": 135.124,
     "liquidezCorrente": 2.773,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A RANI3.SA apresenta indicadores financeiros robustos que sugerem uma tendência positiva de rentabilidade e valuation atrativo. Com um P/L de 8.62, a empresa parece negociar a um múltiplo razoável frente aos seus lucros, indicando que o mercado não a considera supervalorizada. Um Retorno sobre o Patrimônio Líquido (ROE) de 18.02% é excelente, demonstrando uma gestão eficiente do capital dos acionistas e forte capacidade de geração de valor. A Margem Líquida de 14.35% reforça a capacidade da empresa em converter suas vendas em lucro líquido de forma saudável e sustentável. Estes dados apontam para uma empresa com fundamentos sólidos e potencial de valorização, embora uma análise completa exija a consideração de fatores setoriais, macroeconômicos e o perfil de endividamento.",
+      "tendencia": "A RANI3.SA demonstra fundamentos sólidos, com um ROE de 18,02% e uma Margem Líquida de 14,35%, indicando alta eficiência e rentabilidade. O P/L de 8,68 sugere que a empresa pode estar subvalorizada pelo mercado ou que as expectativas de crescimento futuro são moderadas. A tendência geral é de estabilidade com um considerável potencial de valorização, impulsionado pela robustez de seus indicadores de desempenho.",
       "swot": {
-        "forcas": "Alto ROE (18.02%) e Margem Líquida saudável (14.35%) demonstram forte rentabilidade e eficiência operacional. P/L atrativo (8.62) sugere um valuation razoável em comparação com o mercado, indicando que a ação pode não estar precificada excessivamente.",
-        "fraquezas": "A falta de informações sobre endividamento e fluxo de caixa impede uma análise completa da saúde financeira. Potencial dependência de um único setor ou linha de produtos pode aumentar a vulnerabilidade a choques específicos. Necessidade de investimentos contínuos para manter a competitividade tecnológica e operacional.",
-        "oportunidades": "Expansão para novos mercados geográficos ou nichos de produtos. Inovação contínua em produtos e serviços para capturar novas demandas. Consolidação do setor através de aquisições estratégicas. Otimização de processos e ganhos de escala para melhorar ainda mais as margens.",
-        "ameacas": "Instabilidade macroeconômica, que pode impactar o consumo e os custos de operação. Aumento da concorrência, que pode pressionar preços e margens. Novas regulamentações governamentais que afetem o setor. Volatilidade nos custos de insumos e matérias-primas, impactando diretamente a rentabilidade."
-      },
-      "notas": {
-        "roe": 4,
-        "roic": 3,
-        "ebitda": 5,
-        "divida": 2,
-        "receita": 4
-      }
-    },
-    "valuation_dcf": {
-      "parametros": {
-        "wacc": "12%",
-        "crescimento_longo_prazo": "2%",
-        "margem_seguranca": "20%"
-      },
-      "status": "JUSTO",
-      "cenarios": {
-        "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Neste cenário, consideramos um crescimento de receitas mais lento devido a desafios econômicos ou intensificação da concorrência, e uma pressão sobre as margens operacionais. Um custo de capital (WACC) ligeiramente mais elevado reflete um aumento percebido no risco do negócio."
-        },
-        "base": {
-          "preco_justo": 25,
-          "descricao": "O cenário base reflete as premissas atuais da empresa, incluindo o crescimento histórico e as margens sustentáveis, com um WACC de 12% e crescimento de longo prazo de 2%. O valuation considera os fundamentos atuais da companhia."
-        },
-        "otimista": {
-          "preco_justo": 30,
-          "descricao": "Assumimos um crescimento de receita acima do esperado, impulsionado por expansão de mercado ou novos produtos de sucesso, melhoria nas margens de lucro devido a ganhos de eficiência ou menor pressão competitiva. Um custo de capital marginalmente menor reflete uma percepção de risco reduzida no futuro."
-        }
-      }
-    }
-  },
-  "SAPR4.SA": {
-    "precoAtual": 8.51,
-    "pl": 6.744186,
-    "pvp": 0.21295343,
-    "dy": 0.025899999,
-    "evEbitda": 1.949,
-    "vpa": 40.854,
-    "lpa": 1.29,
-    "psr": 1.8245885,
-    "roe": 0.17944999,
-    "roa": 0.04665,
-    "margemBruta": 0.56273997,
-    "margemOperacional": 0.28479,
-    "margemLiquida": 0.2886,
-    "dividaPL": 59.87,
-    "liquidezCorrente": 1.199,
-    "data_referencia": "31/03/2026",
-    "analise_senior": {
-      "tendencia": "A empresa SAPR4.SA exibe fundamentos robustos, com um P/L (Preço/Lucro) atrativo de 6.39, sugerindo que o mercado pode estar subvalorizando seu potencial de ganhos ou incorporando riscos específicos do setor. A rentabilidade sobre o patrimônio líquido (ROE) de 17.94% é excelente, indicando uma gestão eficiente do capital próprio e forte capacidade de gerar valor. Adicionalmente, a margem líquida de 28.86% demonstra alta eficiência operacional e poder de precificação. A tendência geral é de uma empresa sólida e rentável em um setor essencial, com potencial de valorização a longo prazo, desde que os riscos regulatórios e políticos sejam gerenciados adequadamente.",
-      "swot": {
-        "forcas": "Atuação em um setor essencial e defensivo (saneamento básico), garantindo receita estável. Elevada rentabilidade (ROE de 17.94%) e margem líquida (28.86%) destacam a eficiência operacional. P/L baixo (6.39) pode indicar potencial de valorização. Sólida base de clientes e concessões de longo prazo.",
-        "fraquezas": "Natureza estatal, sujeita a interferências políticas na gestão, política tarifária e investimentos. Setor intensivo em capital, demandando altos investimentos em infraestrutura, o que pode impactar o endividamento. Risco de dependência de condições climáticas para a operação.",
-        "oportunidades": "Expansão da cobertura de serviços para áreas não atendidas, especialmente com o novo Marco Legal do Saneamento. Potencial para ganhos de eficiência através de modernização tecnológica e redução de perdas. Possíveis parcerias público-privadas para acelerar investimentos e otimizar a gestão. Crescimento populacional e urbanização.",
-        "ameacas": "Intervenção política na definição de tarifas e investimentos, impactando a saúde financeira da empresa. Elevação dos custos operacionais (energia, insumos) não repassada integralmente nas tarifas. Mudanças adversas na legislação ambiental ou regulatória. Crises hídricas ou desastres naturais que afetam a operação e demandam altos custos de contingência."
-      },
-      "notas": {
-        "roe": 4,
-        "roic": 3,
-        "ebitda": 5,
-        "divida": 2,
-        "receita": 4
-      }
-    },
-    "valuation_dcf": {
-      "parametros": {
-        "wacc": "12%",
-        "crescimento_longo_prazo": "2%",
-        "margem_seguranca": "20%"
-      },
-      "status": "JUSTO",
-      "cenarios": {
-        "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Considera desaceleração do crescimento da base de clientes, pressões regulatórias para contenção de tarifas, aumento significativo de custos operacionais e lentidão na execução de projetos de expansão, impactando negativamente os fluxos de caixa futuros."
-        },
-        "base": {
-          "preco_justo": 25,
-          "descricao": "Reflete a manutenção do ritmo atual de crescimento e eficiência operacional. Leva em conta reajustes tarifários consistentes com a inflação e investimentos contínuos na infraestrutura. Cenário de gerenciamento equilibrado dos riscos regulatórios e políticos."
-        },
-        "otimista": {
-          "preco_justo": 30,
-          "descricao": "Projeta um cenário de crescimento acelerado impulsionado por novas concessões e/ou parcerias. Aumento da eficiência com redução de perdas, ambiente regulatório favorável com tarifas que refletem adequadamente os custos e investimentos, e maior atração de capital privado para o setor."
-        }
-      }
-    }
-  },
-  "SBFG3.SA": {
-    "precoAtual": 12.29,
-    "pl": 8.892858,
-    "pvp": 0.87880284,
-    "dy": 0.0436,
-    "evEbitda": 7.576,
-    "vpa": 14.167,
-    "lpa": 1.4,
-    "psr": 0.37056035,
-    "roe": 0.10802,
-    "roa": 0.03584,
-    "margemBruta": 0.48279,
-    "margemOperacional": 0.06848,
-    "margemLiquida": 0.0424,
-    "dividaPL": 96.014,
-    "liquidezCorrente": 1.356,
-    "data_referencia": "31/03/2026",
-    "analise_senior": {
-      "tendencia": "A SBFG3.SA apresenta um P/L atrativo de 8.37, o que sugere que a empresa pode estar subvalorizada ou que o mercado já precifica desafios inerentes ao setor de varejo. O Retorno sobre o Patrimônio Líquido (ROE) de 10.80% é um indicativo razoável de geração de valor para os acionistas, mas a margem líquida de 4.24% é relativamente apertada. Essa margem, embora não incomum no varejo, ressalta a importância de uma gestão de custos e despesas altamente eficiente para a sustentabilidade e expansão da lucratividade. A tendência é de uma empresa madura com potencial para otimização de eficiência e exploração de seu P/L baixo.",
-      "swot": {
-        "forcas": "Liderança de mercado no varejo esportivo (Centauro, distribuição Nike); forte reconhecimento de marca e base de clientes consolidada; presença multicanal robusta (lojas físicas e e-commerce); P/L atrativo que pode indicar valor não totalmente reconhecido pelo mercado.",
-        "fraquezas": "Margem líquida relativamente baixa, o que aumenta a sensibilidade a pressões de custo e precificação; alta dependência do consumo discricionário, tornando-a suscetível a ciclos econômicos; necessidade contínua de investimento em tecnologia e logística para manter a competitividade no e-commerce.",
-        "oportunidades": "Expansão e otimização da operação digital e do e-commerce; diversificação do portfólio de marcas e categorias de produtos; consolidação do mercado via aquisições estratégicas; ganhos de eficiência operacional e negociação com fornecedores para melhoria das margens.",
-        "ameacas": "Intensificação da concorrência, incluindo novos entrantes digitais e players internacionais; desaceleração econômica prolongada impactando o poder de compra do consumidor; flutuações cambiais que afetam os custos de produtos importados; mudanças nas tendências de consumo e tecnologia que exigem rápida adaptação."
-      },
-      "notas": {
-        "roe": 4,
-        "roic": 3,
-        "ebitda": 5,
-        "divida": 2,
-        "receita": 4
-      }
-    },
-    "valuation_dcf": {
-      "parametros": {
-        "wacc": "12%",
-        "crescimento_longo_prazo": "2%",
-        "margem_seguranca": "20%"
-      },
-      "status": "JUSTO",
-      "cenarios": {
-        "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Considera um ambiente macroeconômico desfavorável, com retração do consumo discricionário, aumento da concorrência e falha na execução de iniciativas estratégicas, pressionando receitas e margens."
-        },
-        "base": {
-          "preco_justo": 25,
-          "descricao": "Reflete um cenário de manutenção das condições atuais de mercado, crescimento moderado do e-commerce, controle de custos eficiente e desempenho operacional estável, em linha com as expectativas históricas."
-        },
-        "otimista": {
-          "preco_justo": 30,
-          "descricao": "Contempla uma recuperação econômica robusta, forte expansão das vendas online, sucesso na diversificação de produtos/marcas e ganhos significativos de eficiência operacional e de market share, resultando em expansão das margens."
-        }
-      }
-    }
-  },
-  "SMTO3.SA": {
-    "precoAtual": 21.2,
-    "pl": 8.495689,
-    "pvp": 0.8787729,
-    "dy": 0.0463,
-    "evEbitda": 4.946,
-    "vpa": 22.429,
-    "lpa": 2.32,
-    "psr": 0.91858983,
-    "roe": 0.11124,
-    "roa": 0.03426,
-    "margemBruta": 0.24601,
-    "margemOperacional": 0.20143999,
-    "margemLiquida": 0.11094,
-    "dividaPL": 160.269,
-    "liquidezCorrente": 2.872,
-    "data_referencia": "31/03/2026",
-    "analise_senior": {
-      "tendencia": "A empresa SMTO3.SA demonstra fundamentos sólidos de rentabilidade com uma Margem Líquida saudável de 11.09% e um Retorno sobre o Patrimônio Líquido (ROE) de 11.12%, indicando boa eficiência na geração de lucro a partir do capital dos acionistas. O baixo P/L de 9.23 sugere que o mercado pode estar subavaliando a empresa em relação aos seus lucros atuais ou precificando um crescimento mais lento no futuro. A tendência é de uma empresa estável, com boa capacidade de geração de valor, mas que pode estar com o seu potencial de crescimento futuro não totalmente reconhecido pelo mercado, apresentando características de um ativo de valor.",
-      "swot": {
-        "forcas": "Rentabilidade robusta (Margem Líquida > 11%), eficiência no uso do capital (ROE > 11%), e um P/L relativamente baixo que pode indicar um bom valor para o investidor.",
-        "fraquezas": "ROE, embora bom, não é excepcionalmente alto, podendo limitar o crescimento orgânico agressivo sem alavancagem adicional. A percepção do mercado, refletida no P/L, pode indicar falta de catalisadores de crescimento de curto prazo.",
-        "oportunidades": "Potencial de reavaliação pelo mercado à medida que o desempenho sólido se mantém e se houver comunicação eficaz sobre sua estratégia. Possibilidade de expansão para novos mercados ou otimização da estrutura de capital para impulsionar o ROE.",
-        "ameacas": "Concorrência intensa no setor, desaceleração econômica impactando a demanda por seus produtos/serviços, elevação das taxas de juros (WACC) tornando o capital mais caro, e riscos regulatórios que podem afetar a percepção de valor."
+        "forcas": "Excelente rentabilidade (ROE e Margem Líquida), valuation atrativo (P/L baixo para o nível de ROE), capacidade de gerar valor para acionistas, forte eficiência operacional.",
+        "fraquezas": "Sem dados sobre alavancagem financeira, o que pode representar um risco oculto. A ausência de informações sobre crescimento de receita e endividamento impede uma análise mais aprofundada de sustentabilidade.",
+        "oportunidades": "Expansão de mercado, otimização de custos, reavaliação do múltiplo P/L pelo mercado, crescimento do setor.",
+        "ameacas": "Flutuações de preços de commodities (se aplicável), aumento da concorrência, riscos regulatórios ou ambientais, desaceleração econômica impactando a demanda."
       },
       "notas": {
         "roe": 4,
@@ -1558,32 +1389,200 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "JUSTO",
+      "status": "SUBVALORIZADO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Neste cenário, consideramos um ambiente macroeconômico adverso, menor crescimento de receitas e pressões sobre as margens, resultando em um WACC mais elevado e projeções de fluxo de caixa mais conservadoras para a SMTO3.SA."
+          "preco_justo": 8.95,
+          "descricao": "Neste cenário, a empresa enfrenta pressões de mercado ou uma desaceleração significativa do crescimento, o que leva a uma compressão dos múltiplos de valuation. O preço justo reflete uma visão mais conservadora do potencial de lucro e expansão, com o mercado precificando um P/L de 8.0x sobre os lucros atuais."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "O cenário base reflete a continuidade do desempenho operacional histórico da SMTO3.SA, com crescimento moderado de receitas, manutenção das margens de lucratividade e um WACC consistente com o risco de mercado atual."
+          "preco_justo": 11.18,
+          "descricao": "O cenário base assume que a empresa mantém seu desempenho atual, com crescimento moderado e sustentável. Os múltiplos de mercado se ajustam para refletir adequadamente a rentabilidade e eficiência da empresa, justificando um P/L de 10.0x sobre os lucros atuais, o que representa uma valorização acima do preço atual de tela."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "O cenário otimista contempla a implementação bem-sucedida de iniciativas estratégicas, expansão de mercado, ganhos de eficiência operacional e um ambiente macroeconômico favorável, impulsionando o crescimento e a rentabilidade da empresa, levando a uma reavaliação de seu múltiplo."
+          "preco_justo": 13.42,
+          "descricao": "No cenário otimista, a empresa consegue acelerar seu crescimento, expandir margens ou o mercado reavalia positivamente seus múltiplos, reconhecendo plenamente seu potencial de geração de valor. Com um P/L de 12.0x sobre os lucros atuais, o preço justo é significativamente superior ao valor de tela, indicando forte upside."
+        }
+      }
+    }
+  },
+  "SAPR4.SA": {
+    "precoAtual": 8.7,
+    "pl": 6.782946,
+    "pvp": 0.21417731,
+    "dy": 0.0257,
+    "evEbitda": 1.956,
+    "vpa": 40.854,
+    "lpa": 1.29,
+    "psr": 1.8350748,
+    "roe": 0.17944999,
+    "roa": 0.04665,
+    "margemBruta": 0.56273997,
+    "margemOperacional": 0.28479,
+    "margemLiquida": 0.2886,
+    "dividaPL": 59.87,
+    "liquidezCorrente": 1.199,
+    "data_referencia": "03/04/2026",
+    "analise_senior": {
+      "tendencia": "A SAPR4.SA apresenta indicadores financeiros robustos, como um P/L baixo (6.78), um ROE elevado (17.94%) e uma Margem Líquida substancial (28.86%). Estes números sugerem uma empresa eficiente e rentável, com potencial de valorização a longo prazo, especialmente considerando o seu setor essencial. No entanto, o setor de saneamento é regulado e pode enfrentar volatilidade devido a decisões governamentais e macroeconômicas.",
+      "swot": {
+        "forcas": "Alta rentabilidade (ROE de 17.94% e Margem Líquida de 28.86%), P/L atrativo (6.78), setor essencial com demanda estável e previsível, capacidade de geração de caixa consistente.",
+        "fraquezas": "Setor intensivo em capital, dependência de investimentos e financiamentos, risco regulatório e político inerente a empresas estatais ou concessionárias, sensibilidade a variações nas taxas de juros (devido a potencial endividamento).",
+        "oportunidades": "Expansão da rede de saneamento, ganhos de eficiência operacional e tecnológica, reajustes tarifários favoráveis (se aprovados pelas agências reguladoras), potencial de crescimento via aquisições estratégicas no setor.",
+        "ameacas": "Mudanças regulatórias desfavoráveis ou interferência política nas tarifas, pressão sobre o endividamento em cenários de juros altos, flutuações cambiais para equipamentos importados, inadimplência de clientes em períodos de crise econômica, impacto das mudanças climáticas nos recursos hídricos."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 10.8,
+          "descricao": "Cenário com crescimento de longo prazo reduzido para 1% e custo de capital próprio elevado para 13%, refletindo um ambiente econômico mais desafiador ou maior aversão a risco no mercado."
+        },
+        "base": {
+          "preco_justo": 13.08,
+          "descricao": "Cenário com crescimento de longo prazo de 2% e custo de capital próprio de 12%, representando as expectativas atuais e os fundamentos sólidos da empresa no setor de saneamento."
+        },
+        "otimista": {
+          "preco_justo": 16.51,
+          "descricao": "Cenário com crescimento de longo prazo otimista de 3% e custo de capital próprio de 11%, impulsionado por expansão agressiva, ganhos de eficiência inesperados e ambiente regulatório favorável."
+        }
+      }
+    }
+  },
+  "SBFG3.SA": {
+    "precoAtual": 12.45,
+    "pl": 8.885715,
+    "pvp": 0.87809694,
+    "dy": 0.0436,
+    "evEbitda": 7.572,
+    "vpa": 14.167,
+    "lpa": 1.4,
+    "psr": 0.3702627,
+    "roe": 0.10802,
+    "roa": 0.03584,
+    "margemBruta": 0.48279,
+    "margemOperacional": 0.06848,
+    "margemLiquida": 0.0424,
+    "dividaPL": 96.014,
+    "liquidezCorrente": 1.356,
+    "data_referencia": "03/04/2026",
+    "analise_senior": {
+      "tendencia": "A SBFG3 (Centauro/Fisia) apresenta um valuation atrativo com P/L abaixo da média histórica do setor e um ROE saudável, indicando potencial de valorização a médio prazo. A empresa demonstra resiliência no varejo esportivo, impulsionada por sua liderança de mercado e estratégia omni-channel. A tendência é de recuperação e crescimento gradual, especialmente com a melhoria do cenário macroeconômico e o fortalecimento do consumo discricionário.",
+      "swot": {
+        "forcas": "Liderança consolidada no varejo esportivo brasileiro com marcas fortes (Centauro, Fisia - Nike). Robustez da plataforma omni-channel e experiência do cliente integrada. Valuation com P/L de 8.88x, considerado atrativo para o setor. Capacidade de adaptação às tendências de consumo e inovações no mercado.",
+        "fraquezas": "Sensibilidade ao ciclo econômico e à renda disponível do consumidor, podendo impactar o consumo discricionário. Alta competição no setor de varejo, incluindo novos players digitais e internacionais. Dependência de poucas marcas fortes em seu portfólio (ex: Nike). Desafios na gestão de estoques e capital de giro, comuns ao varejo de grande porte.",
+        "oportunidades": "Expansão e consolidação da presença digital e e-commerce. Crescimento do mercado de saúde e bem-estar, com maior demanda por produtos esportivos e lifestyle. Potencial para aquisições estratégicas de marcas ou redes menores. Otimização contínua da cadeia de suprimentos e logística para ganhos de eficiência.",
+        "ameacas": "Inflação persistente e taxas de juros elevadas, que impactam o poder de compra e o crédito ao consumidor. Concorrência intensificada, especialmente de marketplaces e gigantes globais de e-commerce. Disrupções na cadeia de suprimentos global, afetando custos e disponibilidade de produtos. Mudanças regulatórias ou fiscais que possam onerar o setor varejista."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 10.51,
+          "descricao": "Cenário pessimista assume deterioração das condições macroeconômicas, aumento da concorrência e/ou falha na execução estratégica, levando a uma compressão do múltiplo P/L para 7.5x e impacto negativo nos lucros. A resiliência do consumidor brasileiro é testada, e a percepção de risco sobre a empresa aumenta."
+        },
+        "base": {
+          "preco_justo": 14.71,
+          "descricao": "Cenário base considera que a SBFG3 manterá sua performance operacional atual, com uma leve re-avaliação do múltiplo P/L para 10.5x, refletindo a estabilidade dos seus fundamentos (ROE de 10.8%, Margem Líquida de 4.24%) e um crescimento moderado. A tese de investimento se baseia na consolidação do setor e na força das suas marcas."
+        },
+        "otimista": {
+          "preco_justo": 18.21,
+          "descricao": "Cenário otimista prevê uma aceleração no crescimento da receita e lucratividade, impulsionada por iniciativas estratégicas bem-sucedidas (e.g., expansão digital, novas parcerias) e um ambiente macroeconômico favorável. Isso leva a uma expansão do múltiplo P/L para 13x e captura de maior valor pelo mercado, refletindo a força da gestão e a capacidade de execução."
+        }
+      }
+    }
+  },
+  "SMTO3.SA": {
+    "precoAtual": 19.71,
+    "pl": 8.771552,
+    "pvp": 0.9073075,
+    "dy": 0.044899996,
+    "evEbitda": 5.015,
+    "vpa": 22.429,
+    "lpa": 2.32,
+    "psr": 0.94841725,
+    "roe": 0.11124,
+    "roa": 0.03426,
+    "margemBruta": 0.24601,
+    "margemOperacional": 0.20143999,
+    "margemLiquida": 0.11094,
+    "dividaPL": 160.269,
+    "liquidezCorrente": 2.872,
+    "data_referencia": "03/04/2026",
+    "analise_senior": {
+      "tendencia": "A SMTO3.SA demonstra fundamentos financeiros robustos, com um ROE (Retorno sobre Patrimônio Líquido) de 11.12% e uma Margem Líquida de 11.09% saudáveis, indicando boa rentabilidade e eficiência na gestão. O índice Preço/Lucro (P/L) relativamente baixo de 8.77 sugere que o ativo pode estar subvalorizado pelo mercado, apresentando um potencial atrativo de valorização a médio e longo prazo. A tendência é positiva, desde que a empresa mantenha sua disciplina financeira e continue a executar sua estratégia de crescimento e otimização de custos.",
+      "swot": {
+        "forcas": "Rentabilidade sólida com ROE e Margem Líquida saudáveis. Avaliação atrativa com P/L abaixo da média do mercado para empresas de fundamentos similares, indicando potencial subvalorização. Eficiência operacional e controle de custos. Potencial para gerar fluxo de caixa consistente.",
+        "fraquezas": "Possível dependência de ciclos econômicos ou de um setor específico, o que pode introduzir volatilidade na receita. Necessidade contínua de reinvestimento para manutenção e expansão das operações. Risco de intensificação da concorrência, que pode pressionar margens futuras.",
+        "oportunidades": "Expansão para novos mercados ou segmentos geográficos. Lançamento de produtos/serviços inovadores ou aprimoramento dos existentes. Aquisições estratégicas que complementem o core business. Crescimento orgânico impulsionado por uma recuperação econômica geral ou por tendências de mercado favoráveis.",
+        "ameacas": "Desaceleração econômica que impacte a demanda pelos serviços/produtos da empresa. Aumento dos custos de insumos ou mão de obra, pressionando as margens. Mudanças regulatórias ou políticas governamentais que afetem o ambiente de negócios. Surgimento de novas tecnologias ou concorrentes disruptivos."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 4,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 20.22,
+          "descricao": "Cenário conservador, considerando uma desaceleração no crescimento do lucro por ação ou uma compressão dos múltiplos de valuation devido a riscos de mercado. Assumimos um P/L de 9x."
+        },
+        "base": {
+          "preco_justo": 22.47,
+          "descricao": "Cenário mais provável, refletindo as expectativas de mercado para o crescimento e os múltiplos históricos da empresa, considerando seus fundamentos atuais. Assumimos um P/L de 10x."
+        },
+        "otimista": {
+          "preco_justo": 26.96,
+          "descricao": "Cenário favorável, com crescimento robusto dos lucros ou expansão dos múltiplos de valuation, impulsionado por condições de mercado positivas ou iniciativas estratégicas da empresa. Assumimos um P/L de 12x."
         }
       }
     }
   },
   "SOJA3.SA": {
-    "precoAtual": 7.13,
-    "pl": 50.714283,
-    "pvp": 0.7523577,
-    "dy": 0.0618,
-    "evEbitda": 16.785,
+    "precoAtual": 7.1,
+    "pl": 53.5,
+    "pvp": 0.79368436,
+    "dy": 0.0586,
+    "evEbitda": 17.244,
     "vpa": 9.437,
     "lpa": 0.14,
-    "psr": 0.38191482,
+    "psr": 0.40289322,
     "roe": 0.051570002,
     "roa": 0.018380001,
     "margemBruta": 0.102910005,
@@ -1591,18 +1590,18 @@
     "margemLiquida": 0.00763,
     "dividaPL": 70.522,
     "liquidezCorrente": 6.773,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A empresa SOJA3.SA apresenta um perfil de rentabilidade desafiador, com Margem Líquida extremamente baixa (0.76%) e ROE modesto (5.16%). Embora o P/L de 9.39 possa sugerir uma avaliação potencialmente atrativa, os indicadores de eficiência operacional e retorno sobre o capital próprio demandam atenção. A tendência atual aponta para uma gestão de custos crítica e a necessidade de estratégias robustas para melhoria da lucratividade. O setor de agronegócios, onde a SOJA3.SA atua, é propenso à volatilidade de preços de commodities, o que exige resiliência e adaptação.",
+      "tendencia": "A empresa SOJA3.SA, com um P/L de 53.5, ROE de 5.16% e Margem Líquida de 0.76%, apresenta indicadores de rentabilidade e eficiência operacional preocupantemente baixos. O alto P/L sugere que o mercado precifica um crescimento futuro robusto ou uma reversão significativa dos resultados atuais, o que não é corroborado pelos fundamentos atuais. A tendência é de alerta, com o preço de tela atual parecendo sobrevalorizado frente à performance fundamentalista. Há um risco considerável se a empresa não conseguir melhorar drasticamente sua lucratividade e margens.",
       "swot": {
-        "forcas": "Posicionamento no setor de agronegócios, essencial e com demanda constante por seus produtos; P/L relativamente baixo, o que pode indicar potencial de valorização caso a lucratividade melhore ou que o mercado já precifica cenários menos otimistas. Estabilidade de um modelo de negócio focado em commodities essenciais.",
-        "fraquezas": "Margem Líquida muito baixa (0.76%), evidenciando a dificuldade em converter receita em lucro; ROE (5.16%) aquém das expectativas de um retorno robusto sobre o capital; Alta sensibilidade aos custos operacionais e à precificação de mercado; Potencial dificuldade em gerar valor significativo para os acionistas com o atual nível de rentabilidade.",
-        "oportunidades": "Melhora nos preços das commodities agrícolas no mercado global; Ganhos de eficiência operacional e implementação de programas de redução de custos; Expansão para mercados com maior valor agregado ou diversificação de produtos; Adoção de tecnologias que aumentem a produtividade e otimizem a cadeia de suprimentos; Cenários macroeconômicos favoráveis para exportações agrícolas.",
-        "ameacas": "Volatilidade dos preços de grãos no mercado internacional; Condições climáticas adversas que afetam a produção e a colheita; Aumento dos custos de insumos (fertilizantes, defensivos, energia); Instabilidade política ou regulatória no setor agrícola, incluindo barreiras comerciais; Forte concorrência e pressão por preços que podem erodir ainda mais as margens."
+        "forcas": "Potencial de escala no setor de agronegócio e commodities, exposição a mercados globais de produtos essenciais, possibilidade de melhorias de eficiência em operações para empresas com margens tão baixas.",
+        "fraquezas": "Rentabilidade extremamente baixa (ROE de 5.16% e Margem Líquida de 0.76%), o que indica ineficiência na geração de lucro a partir das vendas e do capital próprio. O alto P/L (53.5) sugere uma valuation esticada em relação aos lucros atuais, tornando-a sensível a qualquer decepção nos resultados.",
+        "oportunidades": "Crescimento da demanda global por alimentos e commodities, que pode impulsionar volumes de vendas; Potencial para ganhos de eficiência e otimização de custos para elevar as margens; Expansão para novos mercados ou produtos de maior valor agregado; Consolidação do setor.",
+        "ameacas": "Volatilidade dos preços das commodities, riscos climáticos impactando a produção, flutuações cambiais, pressão competitiva, aumento dos custos de insumos, mudanças regulatórias e alta sensibilidade do preço da ação a frustrações nas expectativas de crescimento."
       },
       "notas": {
         "roe": 2,
-        "roic": 3,
+        "roic": 2,
         "ebitda": 3,
         "divida": 3,
         "receita": 3
@@ -1614,32 +1613,32 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "JUSTO",
+      "status": "SOBREVALORIZADO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Neste cenário, assumimos uma deterioração nos preços das commodities agrícolas, aumento significativo nos custos de produção e a incapacidade da empresa de implementar melhorias operacionais eficazes. A pressão sobre as margens persiste, e o crescimento permanece estagnado, refletindo a baixa rentabilidade."
+          "preco_justo": 1.5,
+          "descricao": "Neste cenário, a empresa mantém seus níveis atuais de baixíssima rentabilidade e margens líquidas. O mercado ajusta o múltiplo P/L para um patamar mais condizente com a geração de lucro ineficiente, resultando em uma forte correção de preço."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "O cenário base considera estabilidade nos preços das commodities e uma melhora gradual na gestão de custos, resultando em margens líquidas que se mantêm baixas, mas estáveis. O crescimento da receita acompanha o ritmo do setor, sem grandes saltos, e o ROE permanece no patamar atual, indicando uma performance estável, porém modesta."
+          "preco_justo": 2.8,
+          "descricao": "Considerando uma leve melhora na eficiência operacional e uma normalização das expectativas de crescimento para um patamar mais realista, o preço justo ainda estaria significativamente abaixo do valor de tela, refletindo as atuais fragilidades de rentabilidade."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "O cenário otimista prevê uma recuperação robusta nos preços das commodities, somada a iniciativas bem-sucedidas de otimização de custos e expansão de mercado que elevam a Margem Líquida e o ROE para patamares mais saudáveis. Há um crescimento acima da média para o setor, impulsionado por maior demanda global e eficiência aprimorada."
+          "preco_justo": 4.8,
+          "descricao": "Assume uma recuperação substancial da rentabilidade e margens, com a empresa atingindo patamares de ROE e Margem Líquida mais robustos, juntamente com um crescimento de lucros acelerado. Mesmo com este otimismo, o preço atual já precifica um cenário de sucesso extremo."
         }
       }
     }
   },
   "SUZB3.SA": {
-    "precoAtual": 51.9,
-    "pl": 4.818686,
-    "pvp": 1.4694349,
-    "dy": 0.0215,
-    "evEbitda": 6.722,
+    "precoAtual": 52.09,
+    "pl": 4.6996303,
+    "pvp": 1.434455,
+    "dy": 0.022,
+    "evEbitda": 6.649,
     "vpa": 35.449,
-    "lpa": 10.81,
-    "psr": 1.2847934,
+    "lpa": 10.82,
+    "psr": 1.2542088,
     "roe": 0.35192,
     "roa": 0.037750002,
     "margemBruta": 0.32377,
@@ -1647,14 +1646,14 @@
     "margemLiquida": 0.26754,
     "dividaPL": 231.459,
     "liquidezCorrente": 3.185,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A Suzano (SUZB3) exibe uma performance financeira notavelmente forte, com um Retorno sobre o Patrimônio Líquido (ROE) de 35,19% e uma Margem Líquida de 26,75%. Estes indicadores demonstram uma excelente capacidade da empresa em gerar lucro a partir de suas vendas e do capital investido pelos acionistas, evidenciando alta eficiência operacional e boa gestão de custos. No entanto, o múltiplo Preço/Lucro (P/L) de apenas 4,68 é significativamente baixo e sugere que o mercado está precificando um cenário de desaceleração substancial dos lucros futuros, ou que a ação está potencialmente subvalorizada. É comum que empresas de setores cíclicos, como celulose e papel, apresentem P/Ls mais baixos em picos de ciclo. A sustentabilidade desses lucros, o endividamento e a dinâmica do preço da celulose serão cruciais para a tese de investimento.",
+      "tendencia": "A SUZB3.SA, com uma notável rentabilidade (ROE de 35,19%) e uma margem líquida robusta (26,75%), demonstra forte eficiência operacional e capacidade de geração de valor. No entanto, o P/L extremamente baixo de 4,7 sugere que o mercado está cético quanto à sustentabilidade desses lucros ou projeta uma desaceleração significativa no futuro. Embora o setor de papel e celulose seja cíclico, a demanda por produtos sustentáveis e soluções de embalagem pode oferecer suporte de longo prazo. Com base nos fundamentos atuais, a ação parece estar subvalorizada, indicando uma possível oportunidade se a percepção de risco do mercado se alinhar com a resiliência operacional da empresa.",
       "swot": {
-        "forcas": "Liderança global na produção de celulose de eucalipto; alta eficiência operacional e rentabilidade (ROE e Margem Líquida); vasta base florestal própria e manejo sustentável; forte posição exportadora beneficiada pelo câmbio.",
-        "fraquezas": "Exposição significativa à volatilidade dos preços da celulose e do câmbio; elevado endividamento, comum em indústrias de capital intensivo; dependência de condições macroeconômicas globais.",
-        "oportunidades": "Crescimento da demanda por celulose para embalagens, tecidos sanitários e novas aplicações bio-baseadas; expansão para mercados emergentes; diversificação de portfólio de produtos e serviços; ganhos de eficiência e sinergias de escala.",
-        "ameacas": "Recessão econômica global impactando a demanda e preços; concorrência acirrada e sobreoferta de celulose; aumento de custos (energia, insumos, logística); pressões regulatórias e ambientais mais rigorosas; valorização persistente do Real."
+        "forcas": "Liderança de mercado global em celulose de eucalipto, com produção em larga escala e custos competitivos. Alta rentabilidade (ROE de 35,19%) e margem líquida robusta (26,75%) indicam forte eficiência operacional e gestão eficaz. Sólida capacidade de geração de caixa. Integração vertical e gestão florestal eficiente que garantem suprimento e otimizam custos.",
+        "fraquezas": "Exposição significativa à volatilidade dos preços das commodities (celulose), que pode impactar a receita e a lucratividade. Nível de endividamento elevado, típico de empresas de capital intensivo, que pode aumentar o risco em cenários de juros altos ou desaceleração econômica. Dependência do mercado externo e flutuações cambiais, que afetam custos e receitas em moeda local.",
+        "oportunidades": "Crescimento da demanda global por celulose e produtos de papel, impulsionado por mercados emergentes e o aumento do consumo de produtos de higiene e embalagens. Expansão para novos mercados e desenvolvimento de produtos de base biológica e renovável. Potenciais oportunidades de fusões e aquisições no setor para consolidação e ganhos de escala. Maior conscientização ambiental impulsionando a demanda por soluções sustentáveis.",
+        "ameacas": "Recessão econômica global ou desaceleração significativa em mercados-chave (como a China) que impactem a demanda por celulose. Aumento da concorrência e potencial sobreoferta no mercado, pressionando os preços. Novas regulamentações ambientais mais restritivas ou mudanças nas políticas comerciais globais. Flutuações climáticas e eventos extremos que podem afetar a produção florestal."
       },
       "notas": {
         "roe": 4,
@@ -1670,32 +1669,32 @@
         "crescimento_longo_prazo": "2%",
         "margem_seguranca": "20%"
       },
-      "status": "JUSTO",
+      "status": "SUBVALORIZADO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Este cenário considera uma acentuada desaceleração da economia global, resultando em uma queda drástica nos preços da celulose e no volume de vendas. Uma valorização significativa do Real também pressionaria as margens de exportação, e os custos operacionais poderiam aumentar sem a capacidade de repasse."
+          "preco_justo": 49.87,
+          "descricao": "Neste cenário, o mercado continua a precificar a SUZB3.SA com um múltiplo P/L conservador, em torno de 4.5x. Isso reflete preocupações persistentes com a sustentabilidade dos lucros em um ambiente de preços de celulose mais baixos ou aumento de custos, resultando em um pequeno decréscimo em relação ao preço atual."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Neste cenário, a empresa mantém sua eficiência operacional e a demanda por celulose apresenta crescimento moderado e estável. Os preços da celulose se normalizam em patamares sustentáveis a médio prazo, e a gestão da dívida permanece prudente. Considera-se um ambiente macroeconômico global de crescimento contido."
+          "preco_justo": 77.58,
+          "descricao": "O cenário base assume que o mercado começa a reconhecer a forte rentabilidade e eficiência da Suzano, elevando o múltiplo P/L para cerca de 7x. Isso implica que os lucros atuais são sustentáveis a médio prazo e que a empresa mantém sua liderança e eficiência operacional, indicando um upside significativo em relação ao preço atual."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "O cenário otimista prevê uma forte recuperação da economia global, impulsionando a demanda e os preços da celulose. A Suzano se beneficia de um câmbio favorável às exportações e avança com sucesso em projetos de expansão e diversificação, solidificando ainda mais sua liderança e reduzindo o endividamento de forma expressiva."
+          "preco_justo": 110.84,
+          "descricao": "No cenário otimista, a SUZB3.SA é precificada de forma mais alinhada com empresas de alta rentabilidade e margens robustas, com o mercado atribuindo um P/L de aproximadamente 10x. Isso pode ser impulsionado por um ciclo positivo da celulose, crescimento robusto da demanda e sucesso na diversificação de produtos, gerando um potencial de valorização expressivo."
         }
       }
     }
   },
   "TAEE11.SA": {
-    "precoAtual": 43.01,
-    "pl": 39.25688,
-    "pvp": 1.9373387,
-    "dy": 0.0747,
-    "evEbitda": 10.506,
+    "precoAtual": 42.79,
+    "pl": 39.29358,
+    "pvp": 1.9391499,
+    "dy": 0.0746,
+    "evEbitda": 10.512,
     "vpa": 22.087,
     "lpa": 1.09,
-    "psr": 3.1878781,
+    "psr": 3.1908581,
     "roe": 0.21719,
     "roa": 0.066350006,
     "margemBruta": 0.55202,
@@ -1703,14 +1702,14 @@
     "margemLiquida": 0.34166,
     "dividaPL": 146.586,
     "liquidezCorrente": 1.566,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A TAEE11.SA demonstra fundamentos sólidos, com um ROE (Retorno sobre o Patrimônio Líquido) de 21.72% e uma Margem Líquida de 34.17%, indicando excelente eficiência operacional e rentabilidade. Embora o P/L de 39.25 reflita uma avaliação de mercado premium, que pode sugerir altas expectativas de crescimento ou um reconhecimento da estabilidade e qualidade do ativo no setor de utilities, a performance financeira robusta justifica em parte essa precificação. A tendência é de manutenção de uma empresa com forte geração de valor, embora a avaliação exija um olhar atento às perspectivas de crescimento futuro e ao ambiente regulatório.",
+      "tendencia": "A Taesa (TAEE11) opera no setor de transmissão de energia elétrica, um segmento defensivo caracterizado por receitas previsíveis e contratos de longo prazo. Com uma Margem Líquida de 34,17% e um ROE de 21,72%, a empresa demonstra excelente eficiência e rentabilidade. Contudo, o P/L de 39,29x é bastante elevado, sugerindo que o mercado já precifica um crescimento robusto ou atribui um prêmio significativo à segurança e estabilidade dos seus fluxos de caixa e à política de dividendos. A tendência é de manutenção de um perfil de investimento gerador de renda, mas com potencial de valorização limitado no curto prazo devido ao preço já esticado, sendo a estabilidade e os dividendos os principais atrativos.",
       "swot": {
-        "forcas": "Alta rentabilidade e margens líquidas robustas (ROE de 21.7%, Margem Líquida de 34.1%). Setor regulado e estável, com receita previsível e menor volatilidade. Histórico consistente de geração de caixa e distribuição de dividendos. Eficiência operacional comprovada na gestão de ativos de transmissão de energia.",
-        "fraquezas": "Elevado P/L (39.25), o que pode indicar uma avaliação esticada ou dependência de expectativas de crescimento futuro. Dependência de decisões regulatórias e da renovação de concessões governamentais. Necessidade de investimentos de capital (capex) elevados para manutenção e expansão da rede. Sensibilidade a variações nas taxas de juros, que impactam o custo da dívida e o WACC.",
-        "oportunidades": "Expansão da infraestrutura de transmissão de energia no Brasil, com participação em novos leilões. Potencial de crescimento inorgânico através de aquisições no setor fragmentado. Transição energética e necessidade de investimentos em novas fontes de energia e transmissão. Otimização contínua de custos e processos para ganhos de eficiência operacional.",
-        "ameacas": "Mudanças adversas na regulamentação que possam impactar tarifas e rentabilidade (ex.: revisão tarifária desfavorável). Aumento da concorrência em futuros leilões de concessões. Riscos macroeconômicos como inflação elevada e aumento da taxa de juros, que podem elevar custos e o custo de capital. Eventos climáticos extremos que podem afetar a infraestrutura e gerar custos de manutenção não previstos."
+        "forcas": "Receita previsível e contratada (RAP), alta margem líquida e ROE, setor essencial e regulado com baixíssima volatilidade, forte histórico de pagamento de dividendos.",
+        "fraquezas": "Elevado múltiplo P/L, o que indica um preço já esticado; alta alavancagem para novos projetos; sensibilidade a aumentos da taxa básica de juros (custo da dívida).",
+        "oportunidades": "Expansão da malha de transmissão via novos leilões; demanda crescente por energia elétrica no Brasil; potenciais ganhos de eficiência e otimização de custos.",
+        "ameacas": "Aumento persistente das taxas de juros no longo prazo; riscos regulatórios e de revisão tarifária (RAP); concorrência acirrada em futuros leilões de transmissão."
       },
       "notas": {
         "roe": 4,
@@ -1729,29 +1728,29 @@
       "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Cenário de desaceleração econômica acentuada, com impactos negativos na demanda de energia e aumento das pressões regulatórias. Aumento inesperado do WACC devido a um ambiente de juros mais altos e menor crescimento de longo prazo. Custos operacionais podem subir acima do previsto."
+          "preco_justo": 40,
+          "descricao": "Neste cenário, consideramos um ambiente macroeconômico adverso, com aumento das taxas de juros impactando o custo da dívida e reduzindo a atratividade dos projetos. Revisões regulatórias menos favoráveis ou um desempenho inferior ao esperado em novos leilões limitam o crescimento da Receita Anual Permitida (RAP), pressionando as margens e o valuation da empresa."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Manutenção do ambiente regulatório atual, com crescimento moderado do mercado de energia. A empresa mantém sua eficiência operacional e capacidade de repassar custos. Crescimento em linha com as projeções do setor e WACC estável."
+          "preco_justo": 45,
+          "descricao": "O cenário base reflete a continuidade do desempenho histórico da Taesa, com forte estabilidade operacional, manutenção das elevadas margens e sucesso moderado na aquisição de novos projetos de transmissão. Os contratos existentes garantem a previsibilidade de receita, e a gestão eficiente do endividamento permite a sustentação da política de dividendos, justificando o prêmio pela qualidade e segurança dos ativos. O preço atual está justificado pelos fundamentos sólidos e a expectativa de dividendos consistentes."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Ambiente regulatório favorável com aprovação de novas tarifas e expansão acelerada da infraestrutura. A empresa captura novas concessões com margens atraentes e demonstra ganhos de eficiência superiores. Cenário de juros decrescentes, otimizando o WACC."
+          "preco_justo": 50,
+          "descricao": "Neste cenário otimista, a Taesa se beneficia de um ambiente de taxas de juros em queda, reduzindo o custo de capital e o serviço da dívida. A empresa obtém sucesso expressivo em novos leilões de transmissão com condições favoráveis, expandindo sua RAP e elevando seu ROE. Ganhos adicionais de eficiência operacional e uma percepção positiva do mercado sobre o setor de transmissão impulsionam uma reavaliação dos múltiplos, resultando em um valor justo superior."
         }
       }
     }
   },
   "TTEN3.SA": {
-    "precoAtual": 16,
-    "pl": 9.956522,
-    "pvp": 1.7055006,
-    "dy": 0.0233,
-    "evEbitda": 15.296,
+    "precoAtual": 16.03,
+    "pl": 9.906832,
+    "pvp": 1.6969889,
+    "dy": 0.0234,
+    "evEbitda": 15.235,
     "vpa": 9.399,
     "lpa": 1.61,
-    "psr": 0.48871765,
+    "psr": 0.4862786,
     "roe": 0.18494,
     "roa": 0.030650001,
     "margemBruta": 0.15127,
@@ -1759,14 +1758,14 @@
     "margemLiquida": 0.04966,
     "dividaPL": 100.14,
     "liquidezCorrente": 1.356,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A TTEN3.SA demonstra uma tendência fundamentalmente positiva, sustentada por um Retorno sobre o Patrimônio Líquido (ROE) robusto de 18,49%, indicando alta eficiência na geração de lucros a partir do capital dos acionistas. O múltiplo Preço/Lucro (P/L) de 9,62 está em um patamar atrativo, sugerindo que o mercado pode estar precificando a empresa de forma justa ou até subestimada em relação à sua capacidade de gerar lucro. Contudo, a Margem Líquida de 4,97% requer atenção, pois, embora aceitável para o setor, pode indicar pressões de custo ou um ambiente competitivo que limita a conversão de receita em lucro líquido. A empresa apresenta uma base sólida de rentabilidade com espaço para otimização de margens, mas a trajetória geral é de saúde financeira e potencial de valorização.",
+      "tendencia": "A TTEN3.SA demonstra fundamentos sólidos, com um P/L atrativo em relação ao seu forte Retorno sobre o Patrimônio Líquido (ROE). A margem líquida, embora moderada, é um ponto de atenção. A tendência geral é de valorização, impulsionada pela eficiência operacional e potencial de crescimento, indicando um potencial de alta a partir do preço atual.",
       "swot": {
-        "forcas": "Excelente ROE de 18,49%, denotando alta eficiência e rentabilidade. P/L atrativo de 9,62, sugerindo valuation justo ou descontado. Atuação no setor de agronegócio, que é resiliente e essencial. Cadeia de valor integrada (produção, indústria e varejo).",
-        "fraquezas": "Margem Líquida de 4,97% é razoável, mas pode ser um ponto de otimização em relação a concorrentes mais eficientes. Dependência das condições climáticas e da volatilidade dos preços das commodities agrícolas. Potencial sensibilidade à flutuação cambial para custos de insumos.",
-        "oportunidades": "Crescente demanda global por alimentos e biocombustíveis. Expansão para novas regiões geográficas ou segmentos do agronegócio. Inovação em produtos e serviços, como agricultura de precisão e biotecnologia. Consolidação do mercado através de aquisições estratégicas.",
-        "ameacas": "Volatilidade dos preços de grãos e outras commodities agrícolas. Mudanças regulatórias ou políticas governamentais que afetem o agronegócio. Eventos climáticos extremos que impactem a produção. Aumento da concorrência e custos de insumos."
+        "forcas": "Alto ROE (18.49%) indicando excelente eficiência na geração de lucro sobre o patrimônio. P/L (9.91x) relativamente baixo, sugerindo que a empresa pode estar subvalorizada em relação aos seus pares e ao seu potencial de lucro. Geração de caixa consistente (inferido do ROE).",
+        "fraquezas": "Margem líquida (4.97%) é relativamente baixa, indicando que a empresa opera com menor rentabilidade sobre suas vendas. Isso pode sugerir um setor competitivo ou a necessidade de maior controle de custos.",
+        "oportunidades": "Expansão de mercado ou lançamento de novos produtos/serviços que possam aumentar a receita e, potencialmente, as margens. Otimização de processos e custos para melhorar a margem líquida. Cenário econômico favorável que pode impulsionar o setor.",
+        "ameacas": "Aumento da concorrência, que pode pressionar ainda mais as margens de lucro. Desaceleração econômica ou elevação das taxas de juros, impactando o poder de compra e o custo de capital. Riscos regulatórios ou mudanças nas políticas governamentais que afetem o setor."
       },
       "notas": {
         "roe": 4,
@@ -1785,29 +1784,29 @@
       "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Cenário com desaceleração econômica global, aumento dos custos de insumos, condições climáticas desfavoráveis impactando a produção e a rentabilidade, e margens sob pressão devido à concorrência e menores preços das commodities."
+          "preco_justo": 14.55,
+          "descricao": "Neste cenário conservador, assume-se que o crescimento desacelera e que há uma compressão das margens ou aumento de custos. O mercado atribui um múltiplo P/L ligeiramente menor (ex: 9x), refletindo maior cautela e incertezas."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Cenário de manutenção das condições atuais, com crescimento moderado do agronegócio, gestão eficiente de custos, preços das commodities agrícolas estáveis e boa execução da estratégia de expansão da empresa, mantendo os níveis de rentabilidade."
+          "preco_justo": 17.8,
+          "descricao": "No cenário base, a empresa mantém seu bom desempenho operacional e um ROE forte. O mercado começa a reconhecer seu valor intrínseco, elevando o múltiplo P/L para um patamar mais adequado (ex: 11x) em relação aos seus fundamentos."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Cenário de forte recuperação econômica, aumento significativo da demanda global por alimentos, condições climáticas favoráveis, valorização das commodities agrícolas e sucesso na otimização de margens e expansão para novos mercados, impulsionando os resultados."
+          "preco_justo": 20.25,
+          "descricao": "No cenário otimista, observa-se uma aceleração do crescimento, expansão das margens e/ou maior eficiência operacional. O mercado reavalia a empresa positivamente, expandindo o múltiplo P/L (ex: 12.5x) em função das perspectivas futuras de lucro."
         }
       }
     }
   },
   "VAMO3.SA": {
-    "precoAtual": 3.72,
-    "pl": 12.16129,
-    "pvp": 1.5688722,
-    "dy": 0.0372,
-    "evEbitda": 4.451,
+    "precoAtual": 3.77,
+    "pl": 11.903226,
+    "pvp": 1.5355805,
+    "dy": 0.038,
+    "evEbitda": 4.428,
     "vpa": 2.403,
     "lpa": 0.31,
-    "psr": 0.70114136,
+    "psr": 0.686263,
     "roe": 0.13136,
     "roa": 0.075500004,
     "margemBruta": 0.52428,
@@ -1815,14 +1814,14 @@
     "margemLiquida": 0.05711,
     "dividaPL": 657.286,
     "liquidezCorrente": 1.81,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A VAMO3.SA demonstra fundamentos sólidos em termos de rentabilidade, com um ROE aceitável de 13.13% e uma margem líquida positiva de 5.71%, indicando eficiência na geração de lucros a partir de suas vendas. O múltiplo P/L de 11.71 sugere que a empresa está sendo negociada a um patamar razoável em relação aos seus lucros atuais. No entanto, a alta alavancagem financeira (indicada pela nota de dívida de 2) é um ponto de atenção crucial que pode impactar sua capacidade de investimento e resiliência em cenários de alta de juros ou desaceleração econômica. Apesar da boa rentabilidade operacional, a gestão da dívida é um fator crítico para a sustentabilidade do valor a longo prazo.",
+      "tendencia": "A VAMO3.SA, atuante no segmento de locação de frotas e equipamentos, apresenta uma tendência de estabilidade operacional com indicadores de rentabilidade positivos. O P/L de 11.90x indica que a ação está sendo negociada a um múltiplo razoável frente aos seus lucros. O ROE de 13.14% demonstra uma boa capacidade de geração de valor para os acionistas, enquanto a margem líquida de 5.71% aponta para uma operação eficiente, mas com certa sensibilidade a variações de custos. O potencial de valorização a médio prazo dependerá da capacidade da empresa em expandir sua atuação, otimizar ainda mais sua estrutura de custos e do cenário macroeconômico favorável ao setor.",
       "swot": {
-        "forcas": "Rentabilidade consistente (ROE de 13.13%, Margem Líquida de 5.71%), que indica boa eficiência na conversão de vendas em lucro. Posição de mercado estabelecida no seu setor de atuação, com um modelo de negócio que demonstra resiliência operacional. Potencial capacidade de gestão de custos operacionais eficaz.",
-        "fraquezas": "Elevado nível de endividamento (nota 2), o que aumenta o risco financeiro da empresa e pode limitar a flexibilidade para novos investimentos estratégicos ou a capacidade de enfrentar choques econômicos. Potencial dependência de mercados específicos ou ciclos econômicos, que podem impactar a demanda pelos seus serviços ou produtos.",
-        "oportunidades": "Expansão para novos mercados geográficos ou segmentos de clientes inexplorados. Diversificação do portfólio de produtos ou serviços para reduzir a dependência de ofertas existentes. Potenciais ganhos de eficiência através de investimentos em digitalização e tecnologia. Possibilidade de aquisições estratégicas de concorrentes menores para consolidar mercado.",
-        "ameacas": "Aumento das taxas de juros, o que impactaria diretamente o custo de serviço da dívida elevada da empresa. Desaceleração econômica geral, que poderia reduzir a demanda por seus produtos ou serviços. Intensificação da concorrência no setor, pressionando margens. Novas regulamentações que possam afetar negativamente as operações ou custos. Volatilidade nos preços de insumos essenciais."
+        "forcas": "Modelo de negócio resiliente no setor de locação, que pode se beneficiar da terceirização de frotas. Boa rentabilidade demonstrada por um ROE de 13.14% e margem líquida positiva. P/L de 11.90x considerado razoável, indicando que a empresa não está excessivamente cara em relação aos seus lucros, sugerindo um ponto de entrada potencialmente interessante.",
+        "fraquezas": "A margem líquida de 5.71% é relativamente estreita, podendo ser vulnerável a choques de custos (combustível, manutenção) ou pressões competitivas. O setor de locação é intensivo em capital, demandando constantes investimentos em frota, o que pode levar a um maior endividamento e custos financeiros.",
+        "oportunidades": "Expansão para novos mercados geográficos ou segmentos de clientes (ex: agronegócio, infraestrutura). Crescimento da demanda por soluções de mobilidade e logística terceirizadas impulsionadas pela busca por eficiência por parte das empresas. Potencial de consolidação do mercado através de aquisições. Inovação tecnológica na gestão de frotas e otimização de rotas.",
+        "ameacas": "Desaceleração econômica pode impactar a demanda por locação de equipamentos e veículos, reduzindo a taxa de utilização da frota. Aumento das taxas de juros eleva o custo da dívida e do capital para novos investimentos. Forte concorrência no setor, que pode pressionar as margens. Variações nos preços de veículos e equipamentos novos podem afetar o CAPEX."
       },
       "notas": {
         "roe": 4,
@@ -1841,29 +1840,29 @@
       "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Cenário onde fatores macroeconômicos desfavoráveis, como taxas de juros persistentemente altas ou uma recessão mais profunda, impactam negativamente o crescimento e a rentabilidade da VAMO3.SA. Custos de capital aumentam e a dívida se torna um fardo maior, pressionando as margens e limitando a geração de caixa."
+          "preco_justo": 3.2,
+          "descricao": "Neste cenário, assumimos um ambiente macroeconômico adverso, com menor demanda por locação e aumento da pressão sobre as margens operacionais devido a custos mais elevados. Um crescimento dos lucros abaixo do esperado e um impacto negativo sobre o custo de capital resultam em um valor intrínseco inferior ao preço atual, com o Preço Justo em R$3,20."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Reflete a performance atual da empresa com projeções de crescimento moderadas e estabilização das condições de mercado. A VAMO3.SA continua a gerenciar sua dívida de forma eficaz e mantém sua participação de mercado, sem grandes choques externos ou impulsos extraordinários, alinhado com suas métricas históricas de rentabilidade."
+          "preco_justo": 3.75,
+          "descricao": "Este cenário reflete as projeções mais prováveis, onde a empresa mantém sua trajetória de crescimento e rentabilidade atual. Considera-se um ambiente de mercado estável, com gestão eficiente de custos e expansão gradual. O preço justo de R$3,75 está alinhado ao preço de tela (R$3,77), indicando uma avaliação justa com base nos fundamentos atuais."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Preveem-se condições de mercado favoráveis, com uma recuperação econômica robusta, queda nas taxas de juros, e a VAMO3.SA capitalizando em novas oportunidades de mercado ou ganhos significativos de eficiência operacional. A dívida é refinanciada a custos mais baixos, impulsionando a lucratividade e o crescimento futuro."
+          "preco_justo": 4.35,
+          "descricao": "Em um cenário otimista, a VAMO3.SA supera as expectativas de mercado, impulsionada por uma forte recuperação econômica, expansão agressiva para novos mercados e ganhos significativos de eficiência operacional. Isso resultaria em um crescimento superior dos lucros e fluxo de caixa, com o Preço Justo atingindo R$4,35."
         }
       }
     }
   },
   "VIVT3.SA": {
-    "precoAtual": 41.23,
-    "pl": 21.806284,
-    "pvp": 1.936759,
-    "dy": 0.0554,
-    "evEbitda": 7.579,
+    "precoAtual": 41.65,
+    "pl": 21.628273,
+    "pvp": 1.9209487,
+    "dy": 0.0559,
+    "evEbitda": 7.523,
     "vpa": 21.505,
     "lpa": 1.91,
-    "psr": 2.2333586,
+    "psr": 2.215127,
     "roe": 0.08901,
     "roa": 0.05242,
     "margemBruta": 0.48099998,
@@ -1871,14 +1870,14 @@
     "margemLiquida": 0.1035,
     "dividaPL": 29.627,
     "liquidezCorrente": 0.999,
-    "data_referencia": "31/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A VIVT3.SA apresenta uma tendência de estabilidade operacional com indicadores de rentabilidade (ROE de 8.9% e Margem Líquida de 10.35%) que, embora saudáveis, não indicam um crescimento explosivo. O P/L de aproximadamente 20.9x sugere que o mercado já precifica um crescimento moderado ou a estabilidade dos fluxos de caixa, exigindo atenção para o 'valuation'. A empresa se beneficia de um setor resiliente, mas enfrenta desafios de investimento e concorrência.",
+      "tendencia": "A VIVT3.SA, como uma das líderes no setor de telecomunicações brasileiro, demonstra uma tendência de estabilidade operacional e resiliência em seus resultados. Apesar de um P/L que sugere expectativas de crescimento moderadas a elevadas para o setor, sua Margem Líquida consistente e ROE razoável indicam uma gestão eficaz. Espera-se um desempenho de mercado estável, impulsionado por sua forte infraestrutura e base de clientes, com potencial de valorização atrelado à execução de estratégias de expansão em 5G e serviços digitais.",
       "swot": {
-        "forcas": "Marca forte e consolidada (Vivo) com grande base de clientes, fluxos de caixa estáveis e previsíveis, liderança em infraestrutura de fibra ótica e 5G no Brasil, resiliência do setor de telecomunicações em diversos cenários econômicos.",
-        "fraquezas": "Elevada necessidade de CAPEX para manutenção e expansão da infraestrutura, alta alavancagem financeira (comum no setor), intensa concorrência de preços, sensibilidade à regulamentação governamental e custos operacionais fixos elevados.",
-        "oportunidades": "Expansão da rede 5G e fibra ótica impulsionando novos serviços e maior consumo de dados, crescimento do mercado de IoT (Internet das Coisas), diversificação para serviços digitais B2B e B2C (saúde, finanças, entretenimento), recuperação econômica impulsionando o consumo.",
-        "ameacas": "Desaceleração econômica impactando a capacidade de consumo dos clientes, novas tecnologias disruptivas, aumento da pressão regulatória e impostos, competição acirrada com novas entrantes ou fusões/aquisições entre concorrentes, flutuações cambiais impactando custos de equipamentos."
+        "forcas": "Liderança de mercado no Brasil (Vivo), ampla infraestrutura de rede (fibra e móvel), forte reconhecimento de marca, base de clientes diversificada e receitas recorrentes, capacidade de geração de caixa operacional robusta (EBITDA).",
+        "fraquezas": "Elevada necessidade de investimento (CAPEX) para manutenção e expansão de rede, sensibilidade a mudanças regulatórias e fiscais, alta alavancagem financeira (comum no setor), intensa concorrência e riscos de obsolescência tecnológica.",
+        "oportunidades": "Expansão da rede 5G e serviços de ultra banda larga (fibra), crescimento do segmento IoT (Internet das Coisas) e soluções corporativas, diversificação para serviços digitais e financeiros, potencial de otimização de custos através da digitalização e automação.",
+        "ameacas": "Crises econômicas que afetam o poder de compra dos consumidores, aumento da pressão competitiva por parte de outros players ou novas tecnologias, riscos de cibersegurança e vazamento de dados, elevação das taxas de juros impactando o custo da dívida e CAPEX."
       },
       "notas": {
         "roe": 4,
@@ -1897,29 +1896,29 @@
       "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Cenário de desaceleração econômica acentuada, aumento da concorrência e falha na execução de projetos de expansão, impactando margens e fluxo de caixa livre da empresa, levando a um preço-alvo menor."
+          "preco_justo": 34,
+          "descricao": "Cenário que considera desaceleração do crescimento de receitas, aumento da concorrência e pressões regulatórias, resultando em menor lucratividade e múltiplos de mercado mais conservadores, com P/L de aproximadamente 17.65x."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Projeções conservadoras de crescimento de receita e margens, com estabilidade macroeconômica e manutenção da participação de mercado. Incorpora eficiências operacionais e investimentos estratégicos esperados."
+          "preco_justo": 40,
+          "descricao": "Cenário mais provável, com crescimento de receitas em linha com o mercado, manutenção das margens atuais e um múltiplo P/L que reflete a estabilidade e o potencial de dividendos da empresa, em torno de 20.77x. Com margem de segurança de 20%, o preço de compra seria de R$ 32,00."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Crescimento acima do esperado em 5G e fibra, sucesso na diversificação de serviços digitais e melhora do ambiente macroeconômico, impulsionando lucratividade e valorização do negócio. Aumento significativo da ARPU (Receita Média por Usuário)."
+          "preco_justo": 48,
+          "descricao": "Cenário que assume forte adoção de novas tecnologias (e.g., 5G), expansão bem-sucedida em novos segmentos (e.g., IoT, B2B), otimização de custos e um prêmio nos múltiplos de mercado pela liderança e resiliência, com P/L de aproximadamente 24.92x."
         }
       }
     }
   },
   "WEGE3.SA": {
     "precoAtual": 51.01,
-    "pl": 33.55921,
-    "pvp": 12.288605,
-    "dy": 0.007900001,
-    "evEbitda": 24.331,
+    "pl": 33.098686,
+    "pvp": 12.119971,
+    "dy": 0.008,
+    "evEbitda": 23.996,
     "vpa": 4.151,
     "lpa": 1.52,
-    "psr": 5.245139,
+    "psr": 5.1731615,
     "roe": 0.32514998,
     "roa": 0.11845,
     "margemBruta": 0.3353,
@@ -1927,71 +1926,14 @@
     "margemLiquida": 0.15626,
     "dividaPL": 29.31,
     "liquidezCorrente": 1.548,
-    "data_referencia": "29/03/2026",
+    "data_referencia": "03/04/2026",
     "analise_senior": {
-      "tendencia": "A WEGE3.SA demonstra fundamentos robustos, com um ROE excepcional de 32.51% e uma Margem Líquida sólida de 15.63%, indicando alta eficiência e rentabilidade. Contudo, seu P/L de 31.19x sugere que o mercado já precifica um crescimento futuro significativo, levando a uma avaliação que pode ser considerada esticada, embora justificada pela qualidade dos resultados operacionais e sua posição de liderança.",
+      "tendencia": "A WEGE3.SA demonstra uma tendência de crescimento robusta e sustentável, impulsionada por sua forte liderança de mercado nos segmentos de bens de capital elétricos, inovação contínua e expansão global. Os indicadores financeiros reforçam essa visão: um ROE excepcional de 32.5% e uma Margem Líquida saudável de 15.6% evidenciam a alta rentabilidade e eficiência da companhia. O múltiplo P/L de 33.1x, embora elevado, é justificado pelas expectativas de mercado de crescimento contínuo de lucros e pela qualidade superior dos ativos da WEG. A empresa tem se destacado na transição energética e eletrificação da indústria, posicionando-se favoravelmente para o futuro.",
       "swot": {
-        "forcas": "Liderança de mercado em diversos segmentos industriais e de energia, alta rentabilidade (ROE e Margem Líquida), forte capacidade de inovação e investimento em P&D, reputação de marca sólida e diversificação geográfica.",
-        "fraquezas": "Elevada capitalização de mercado e valuation (P/L), o que pode limitar o upside de curto prazo; sensibilidade a ciclos econômicos globais e flutuações cambiais; potencial de desaceleração do crescimento em mercados mais maduros.",
-        "oportunidades": "Transição energética global (eletrificação, energias renováveis, veículos elétricos), automação industrial e digitalização (Indústria 4.0), expansão para novos mercados e segmentos, aquisições estratégicas para complementar portfólio e tecnologia.",
-        "ameacas": "Intensificação da concorrência, volatilidade nos preços de commodities e matérias-primas, desaceleração econômica global, barreiras comerciais e instabilidade geopolítica, mudanças regulatórias no setor de energia."
-      },
-      "notas": {
-        "roe": 5,
-        "roic": 4,
-        "ebitda": 4,
-        "divida": 3,
-        "receita": 4
-      }
-    },
-    "valuation_dcf": {
-      "parametros": {
-        "wacc": "12%",
-        "crescimento_longo_prazo": "2%",
-        "margem_seguranca": "20%"
-      },
-      "status": "SUPERVALORIZADA",
-      "cenarios": {
-        "pessimista": {
-          "preco_justo": 28,
-          "descricao": "Assumes uma desaceleração econômica global mais acentuada, com impacto negativo na demanda industrial, aumento da pressão sobre os custos e na capacidade da empresa de sustentar as margens elevadas."
-        },
-        "base": {
-          "preco_justo": 35,
-          "descricao": "Reflete a capacidade da WEG de manter seu ritmo de crescimento orgânico consistente, impulsionado pela inovação contínua, expansão em mercados-chave e gestão eficiente de custos, em um ambiente econômico moderado."
-        },
-        "otimista": {
-          "preco_justo": 42,
-          "descricao": "Considera uma aceleração robusta da transição energética e da demanda por automação industrial, além de ganhos de market share e eficiências operacionais significativas que superam as expectativas atuais, resultando em um crescimento de lucro mais elevado."
-        }
-      }
-    }
-  },
-  "GOOGL": {
-    "precoAtual": 287.56,
-    "pl": 27.536112,
-    "pvp": 8.656886,
-    "dy": 0.0028,
-    "evEbitda": 23.557,
-    "vpa": 34.353,
-    "lpa": 10.8,
-    "psr": 8.930501,
-    "roe": 0.35705003,
-    "roa": 0.15427,
-    "margemBruta": 0.59652,
-    "margemOperacional": 0.31568,
-    "margemLiquida": 0.32810003,
-    "dividaPL": 16.133,
-    "liquidezCorrente": 2.005,
-    "data_referencia": "31/03/2026",
-    "analise_senior": {
-      "tendencia": "A Alphabet (GOOGL) demonstra uma solidez financeira notável, com um ROE (35.7%) e Margem Líquida (32.81%) elevados, evidenciando sua capacidade de gerar lucros consistentes e eficientes sobre o capital. O P/L de 25.32 sugere que o mercado precifica um crescimento robusto, impulsionado pela liderança em inteligência artificial, publicidade digital e computação em nuvem. A tendência é de manutenção do crescimento, com a IA sendo um catalisador chave para futuras expansões e otimizações de produtos, apesar dos desafios regulatórios e da concorrência intensa em mercados emergentes e inovadores.",
-      "swot": {
-        "forcas": "Liderança de mercado em busca e publicidade digital; ecossistema robusto (Android, YouTube, Chrome); forte balanço patrimonial com significativa posição de caixa; inovação constante em Inteligência Artificial e Google Cloud Platform (GCP) em rápido crescimento.",
-        "fraquezas": "Dependência significativa da receita de publicidade digital, o que a torna vulnerável a ciclos econômicos; crescente escrutínio regulatório e antitruste em diversas jurisdições; concorrência intensa em novas áreas como IA generativa e computação em nuvem.",
-        "oportunidades": "Expansão da receita do Google Cloud; monetização aprimorada de inovações em IA em produtos existentes e novos; crescimento em mercados emergentes com maior penetração de internet e smartphones; desenvolvimento e comercialização de novas tecnologias em 'Other Bets'.",
-        "ameacas": "Aumento da regulamentação e potenciais multas significativas; mudança nas preferências de privacidade dos usuários, impactando o modelo de publicidade; concorrência agressiva de players como Microsoft, Meta e Amazon em áreas estratégicas; desaceleração econômica global impactando os gastos com publicidade.",
-        "observacoes": "ROE (35.7%) e Margem Líquida (32.81%) são excelentes, indicando forte rentabilidade e eficiência operacional. P/L de 25.32 reflete as expectativas de crescimento. A empresa está bem posicionada para capitalizar na era da IA, mas deve gerenciar riscos regulatórios e competitivos."
+        "forcas": "Liderança global em seus segmentos de atuação; Forte capacidade de inovação e investimento em P&D; Diversificação geográfica e de produtos que mitiga riscos; Alta rentabilidade e eficiência operacional demonstradas por ROE e Margem Líquida; Sólida governança corporativa e gestão.",
+        "fraquezas": "Valuation premium (P/L alto) que pode limitar o upside no curto prazo em cenários de menor crescimento; Exposição à volatilidade cambial e a ciclos econômicos globais, apesar da diversificação; Dependência de algumas matérias-primas importadas.",
+        "oportunidades": "Expansão no mercado de energias renováveis (eólica, solar, hidrogênio verde); Crescimento da demanda por automação e digitalização industrial; Eletrificação de frotas e infraestruturas; Conquista de novos mercados internacionais, especialmente em economias emergentes; Aquisições estratégicas para complementar portfólio.",
+        "ameacas": "Intensificação da concorrência global; Volatilidade nos preços de commodities e matérias-primas; Instabilidade econômica e política em mercados chave; Disrupção tecnológica por novos entrantes ou tecnologias; Regulamentação ambiental mais rígida."
       },
       "notas": {
         "roe": 4,
@@ -2010,28 +1952,84 @@
       "status": "JUSTO",
       "cenarios": {
         "pessimista": {
-          "preco_justo": 20.5,
-          "descricao": "Cenário de desaceleração significativa da publicidade digital devido a condições macroeconômicas adversas, aumento da pressão regulatória resultando em multas e restrições operacionais, e uma concorrência mais acirrada no segmento de IA e nuvem impactando margens e taxas de crescimento."
+          "preco_justo": 47.5,
+          "descricao": "Este cenário reflete uma desaceleração econômica mais acentuada globalmente, impactos negativos nas cadeias de suprimentos ou aumento da concorrência. Considera-se uma contração marginal das margens e um crescimento de receita abaixo das expectativas. A valoração é pressionada por um sentimento de mercado mais cauteloso e múltiplos P/L menores, resultando em um preço justo inferior ao atual."
         },
         "base": {
-          "preco_justo": 25,
-          "descricao": "Continuidade do crescimento sólido em publicidade digital, expansão sustentada do Google Cloud superando a média do mercado, e uma monetização gradual e eficaz de inovações em Inteligência Artificial em produtos existentes, mantendo margens operacionais saudáveis e eficientes."
+          "preco_justo": 54,
+          "descricao": "O cenário base considera a manutenção do atual ritmo de crescimento da WEG, impulsionado por sua liderança de mercado, capacidade de inovação e expansão em mercados estratégicos. Margens de lucro sólidas e o avanço em áreas como energia renovável e digitalização industrial justificam um prêmio de valuation. O preço justo reflete um P/L coerente com boas expectativas de resultados futuros, indicando um leve upside em relação ao preço atual."
         },
         "otimista": {
-          "preco_justo": 30,
-          "descricao": "Adoção massiva e rápida de novas tecnologias de IA generativa em seus produtos, crescimento acelerado do Google Cloud superando significativamente as expectativas e ganhando maior participação de mercado, juntamente com uma rápida recuperação e expansão do mercado global de publicidade digital, impulsionando a lucratividade e o fluxo de caixa."
+          "preco_justo": 60,
+          "descricao": "No cenário otimista, a WEG supera as expectativas de mercado, aproveitando plenamente as oportunidades em eletrificação global e transição energética. Uma expansão agressiva em novos mercados, ganhos de eficiência operacional e um ambiente macroeconômico favorável impulsionam o crescimento de receita e lucros acima do previsto, resultando em múltiplos de mercado expandidos e um preço justo significativamente maior."
+        }
+      }
+    }
+  },
+  "GOOGL": {
+    "precoAtual": 297.39,
+    "pl": 27.38611,
+    "pvp": 8.609728,
+    "dy": 0.0028,
+    "evEbitda": 23.427,
+    "vpa": 34.353,
+    "lpa": 10.8,
+    "psr": 8.881852,
+    "roe": 0.35705003,
+    "roa": 0.15427,
+    "margemBruta": 0.59652,
+    "margemOperacional": 0.31568,
+    "margemLiquida": 0.32810003,
+    "dividaPL": 16.133,
+    "liquidezCorrente": 2.005,
+    "data_referencia": "03/04/2026",
+    "analise_senior": {
+      "tendencia": "A Alphabet (GOOGL) demonstra uma tendência de crescimento robusta e lucratividade elevada, impulsionada por seu domínio em mercados chave como busca e publicidade digital, além de um forte crescimento em computação em nuvem (Google Cloud). Os indicadores de ROE e Margem Líquida são excepcionais, indicando alta eficiência na geração de lucros para os acionistas. O P/L, embora um pouco elevado, é justificado pela liderança de mercado, inovação contínua e expectativas de crescimento futuro. A empresa mantém uma posição financeira sólida e capacidade de investir em novas tecnologias, consolidando sua vantagem competitiva.",
+      "swot": {
+        "forcas": "Dominância de mercado em busca (Google Search), sistemas operacionais móveis (Android) e vídeo (YouTube). Forte capacidade de inovação em inteligência artificial e novas tecnologias. Balanço patrimonial robusto e forte geração de caixa. Marcas altamente reconhecidas globalmente. Alta margem líquida e ROE superior à média do setor.",
+        "fraquezas": "Dependência significativa da receita de publicidade, tornando a empresa vulnerável a flutuações econômicas. Crescente escrutínio regulatório e riscos antitruste em múltiplas jurisdições. Desafios na monetização de outras 'apostas' (Other Bets).",
+        "oportunidades": "Expansão contínua e rápido crescimento do Google Cloud. Crescimento exponencial do mercado de inteligência artificial (IA) e machine learning, onde a Alphabet é líder. Expansão para novos mercados emergentes. Desenvolvimento e comercialização de tecnologias inovadoras (ex: carros autônomos Waymo, biotecnologia Verily).",
+        "ameacas": "Concorrência acirrada de gigantes como Microsoft, Amazon e Apple em diversas frentes. Novas regulamentações de privacidade de dados e publicidade digital podem impactar a receita. Riscos de multas e processos antitruste significativos. Desaceleração econômica global impactando o investimento em publicidade digital."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 5,
+        "divida": 5,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 265,
+          "descricao": "Neste cenário, assumimos um crescimento mais lento devido a um ambiente macroeconômico adverso, maior pressão regulatória e intensificação da concorrência, impactando as margens e o crescimento da receita de publicidade. O múltiplo P/L sofreria uma contração."
+        },
+        "base": {
+          "preco_justo": 315,
+          "descricao": "Considera a continuidade do crescimento sólido dos negócios principais, como busca e YouTube, com o Google Cloud ganhando participação de mercado e a Alphabet navegando com sucesso o cenário regulatório. As margens se mantêm elevadas, justificando o P/L atual."
+        },
+        "otimista": {
+          "preco_justo": 365,
+          "descricao": "Reflete um cenário de aceleração do crescimento do Google Cloud, inovações disruptivas gerando novas fontes de receita e uma resolução favorável de desafios regulatórios. O mercado reconheceria o potencial de longo prazo e expandiria os múltiplos de avaliação da empresa."
         }
       }
     }
   },
   "AMZN": {
-    "precoAtual": 208.31,
-    "pl": 29.3273,
-    "pvp": 5.4970503,
-    "evEbitda": 15.892,
+    "precoAtual": 210.57,
+    "pl": 29.256624,
+    "pvp": 5.476166,
+    "evEbitda": 15.833,
     "vpa": 38.306,
-    "lpa": 7.18,
-    "psr": 3.1529872,
+    "lpa": 7.17,
+    "psr": 3.1410086,
     "roe": 0.22286,
     "roa": 0.06928,
     "margemBruta": 0.50286,
@@ -2080,14 +2078,14 @@
     }
   },
   "NVDA": {
-    "precoAtual": 174.445,
-    "pl": 35.867348,
-    "pvp": 27.155437,
+    "precoAtual": 175.75,
+    "pl": 36.20204,
+    "pvp": 27.408838,
     "dy": 0.0002,
-    "evEbitda": 31.671,
+    "evEbitda": 31.971,
     "vpa": 6.472,
     "lpa": 4.9,
-    "psr": 19.78162,
+    "psr": 19.966211,
     "roe": 1.01485,
     "roa": 0.51188,
     "margemBruta": 0.71068,
@@ -2136,14 +2134,14 @@
     }
   },
   "TSM": {
-    "precoAtual": 337.95,
-    "pl": 32.9942,
-    "pvp": 52.236732,
-    "dy": 0.010299999,
-    "evEbitda": 2.638,
+    "precoAtual": 341.49,
+    "pl": 32.694313,
+    "pvp": 51.861965,
+    "dy": 0.0104,
+    "evEbitda": 2.614,
     "vpa": 6.5373535,
-    "lpa": 10.35,
-    "psr": 0.46498144,
+    "lpa": 10.37,
+    "psr": 0.46164545,
     "roe": 0.35064,
     "roa": 0.16555001,
     "margemBruta": 0.59891,
@@ -2192,14 +2190,14 @@
     }
   },
   "ASML": {
-    "precoAtual": 1320.83,
-    "pl": 47.627323,
-    "pvp": 23.088886,
-    "dy": 0.0064999997,
-    "evEbitda": 42.021,
+    "precoAtual": 1359.76,
+    "pl": 46.089222,
+    "pvp": 22.366722,
+    "dy": 0.0067000003,
+    "evEbitda": 40.684,
     "vpa": 58.892403,
-    "lpa": 28.55,
-    "psr": 16.344221,
+    "lpa": 28.58,
+    "psr": 15.833014,
     "roe": 0.50458,
     "roa": 0.14247,
     "margemBruta": 0.52830005,
@@ -2248,20 +2246,20 @@
     }
   },
   "AVGO": {
-    "precoAtual": 309.66,
-    "pl": 60.990273,
-    "pvp": 5.293561,
+    "precoAtual": 313.49,
+    "pl": 61.315784,
+    "pvp": 18.651052,
     "dy": 0.0083,
-    "evEbitda": 4.251,
-    "vpa": 59.221,
-    "lpa": 5.14,
-    "psr": 21.767696,
+    "evEbitda": 41.409,
+    "vpa": 16.865,
+    "lpa": 5.13,
+    "psr": 21.841297,
     "roe": 0.33370999,
     "roa": 0.10663,
     "margemBruta": 0.76725996,
-    "margemOperacional": 0.31765,
+    "margemOperacional": 0.44943002,
     "margemLiquida": 0.36571997,
-    "dividaPL": 166.032,
+    "dividaPL": 82.704,
     "liquidezCorrente": 1.902,
     "data_referencia": "01/04/2026",
     "analise_senior": {
@@ -2304,14 +2302,14 @@
     }
   },
   "IRS": {
-    "precoAtual": 16.21,
-    "pl": 3.8465116,
-    "pvp": 9.406869,
-    "dy": 0.145,
-    "evEbitda": 3.85,
+    "precoAtual": 16.54,
+    "pl": 3.8720927,
+    "pvp": 9.469429,
+    "dy": 0.144,
+    "evEbitda": 3.851,
     "vpa": 1.7582897,
     "lpa": 4.3,
-    "psr": 0.0027804654,
+    "psr": 0.0027989568,
     "roe": 0.31178,
     "roa": 0.038680002,
     "margemBruta": 0.61626,
@@ -2360,13 +2358,13 @@
     }
   },
   "TSLA": {
-    "precoAtual": 371.75,
-    "pl": 356.31775,
-    "pvp": 17.411518,
-    "evEbitda": 133.489,
+    "precoAtual": 381.26,
+    "pl": 333.8796,
+    "pvp": 16.467552,
+    "evEbitda": 126.105,
     "vpa": 21.897,
-    "lpa": 1.07,
-    "psr": 15.08697,
+    "lpa": 1.08,
+    "psr": 14.269031,
     "roe": 0.049250003,
     "roa": 0.02095,
     "margemBruta": 0.18027,
@@ -2415,14 +2413,14 @@
     }
   },
   "MU": {
-    "precoAtual": 337.665,
-    "pl": 17.359604,
-    "pvp": 5.7264504,
+    "precoAtual": 367.85,
+    "pl": 17.267326,
+    "pvp": 5.701387,
     "dy": 0.0016,
-    "evEbitda": 11.169,
+    "evEbitda": 11.119,
     "vpa": 64.237,
-    "lpa": 21.19,
-    "psr": 7.137717,
+    "lpa": 21.21,
+    "psr": 7.1064763,
     "roe": 0.39823002,
     "roa": 0.20145,
     "margemBruta": 0.58437,
@@ -2471,14 +2469,14 @@
     }
   },
   "VZ": {
-    "precoAtual": 50.2,
-    "pl": 12.165025,
-    "pvp": 1.9939442,
+    "precoAtual": 49.39,
+    "pl": 12.167488,
+    "pvp": 1.994348,
     "dy": 0.0573,
     "evEbitda": 7.508,
     "vpa": 24.77,
     "lpa": 4.06,
-    "psr": 1.5074167,
+    "psr": 1.507722,
     "roe": 0.17069,
     "roa": 0.05014,
     "margemBruta": 0.59071,
@@ -2527,14 +2525,14 @@
     }
   },
   "T": {
-    "precoAtual": 28.99,
-    "pl": 9.3125,
-    "pvp": 1.8024958,
+    "precoAtual": 28.31,
+    "pl": 9.319079,
+    "pvp": 1.8037692,
     "dy": 0.0392,
-    "evEbitda": 8.08,
+    "evEbitda": 8.083,
     "vpa": 15.706,
     "lpa": 3.04,
-    "psr": 1.5773139,
+    "psr": 1.5784283,
     "roe": 0.18805,
     "roa": 0.040749997,
     "margemBruta": 0.59554,
@@ -2583,14 +2581,14 @@
     }
   },
   "HD": {
-    "precoAtual": 328.89,
-    "pl": 23.14326,
-    "pvp": 25.61878,
-    "dy": 0.028299998,
-    "evEbitda": 15.704,
+    "precoAtual": 329.56,
+    "pl": 22.618143,
+    "pvp": 25.002333,
+    "dy": 0.029000001,
+    "evEbitda": 15.388,
     "vpa": 12.864,
-    "lpa": 14.24,
-    "psr": 1.9931962,
+    "lpa": 14.22,
+    "psr": 1.9452351,
     "roe": 1.45541,
     "roa": 0.12977,
     "margemBruta": 0.33316,
@@ -2639,13 +2637,13 @@
     }
   },
   "SHOP": {
-    "precoAtual": 118.62,
-    "pl": 126.085106,
-    "pvp": 11.470047,
-    "evEbitda": 77.192,
+    "precoAtual": 118.52,
+    "pl": 127.150536,
+    "pvp": 11.443917,
+    "evEbitda": 77.01,
     "vpa": 10.333,
-    "lpa": 0.94,
-    "psr": 13.385126,
+    "lpa": 0.93,
+    "psr": 13.354633,
     "roe": 0.09836,
     "roa": 0.08149,
     "margemBruta": 0.4807,
@@ -2694,14 +2692,14 @@
     }
   },
   "DIS": {
-    "precoAtual": 96.38,
-    "pl": 14.220913,
-    "pvp": 1.5809034,
+    "precoAtual": 96.56,
+    "pl": 14.228277,
+    "pvp": 1.581722,
     "dy": 0.0155,
-    "evEbitda": 11.269,
+    "evEbitda": 11.273,
     "vpa": 61.079,
     "lpa": 6.79,
-    "psr": 1.7890242,
+    "psr": 1.7899506,
     "roe": 0.12024,
     "roa": 0.04366,
     "margemBruta": 0.37284002,
@@ -2750,14 +2748,14 @@
     }
   },
   "SPG": {
-    "precoAtual": 186.53,
-    "pl": 13.283192,
-    "pvp": 11.837004,
-    "dy": 0.046,
-    "evEbitda": 19.354,
+    "precoAtual": 188.09,
+    "pl": 13.31475,
+    "pvp": 11.873505,
+    "dy": 0.0458,
+    "evEbitda": 19.394,
     "vpa": 15.89,
-    "lpa": 14.16,
-    "psr": 9.603333,
+    "lpa": 14.17,
+    "psr": 9.632946,
     "roe": 1.04109,
     "roa": 0.05436,
     "margemBruta": 0.81899,
@@ -2806,13 +2804,13 @@
     }
   },
   "ANET": {
-    "precoAtual": 122.78,
-    "pl": 45.399998,
-    "pvp": 12.681563,
-    "evEbitda": 37.22,
+    "precoAtual": 124.85,
+    "pl": 46.065456,
+    "pvp": 12.867445,
+    "evEbitda": 37.805,
     "vpa": 9.845,
     "lpa": 2.75,
-    "psr": 17.458027,
+    "psr": 17.713919,
     "roe": 0.314,
     "roa": 0.14392,
     "margemBruta": 0.64056,
@@ -2861,14 +2859,14 @@
     }
   },
   "ICE": {
-    "precoAtual": 157.28,
-    "pl": 27.396881,
-    "pvp": 3.0998511,
-    "dy": 0.013200001,
-    "evEbitda": 17.702,
+    "precoAtual": 158.08,
+    "pl": 28.2461,
+    "pvp": 3.195937,
+    "dy": 0.0128,
+    "evEbitda": 18.153,
     "vpa": 50.996,
     "lpa": 5.77,
-    "psr": 9.076008,
+    "psr": 9.357335,
     "roe": 0.11885,
     "roa": 0.022550002,
     "margemBruta": 1,
@@ -2881,14 +2879,14 @@
     "valuation_dcf": null
   },
   "KO": {
-    "precoAtual": 76.05,
-    "pl": 25.026318,
-    "pvp": 10.173843,
-    "dy": 0.0271,
-    "evEbitda": 22.479,
+    "precoAtual": 76.08,
+    "pl": 25.236843,
+    "pvp": 10.259428,
+    "dy": 0.0269,
+    "evEbitda": 22.65,
     "vpa": 7.478,
     "lpa": 3.04,
-    "psr": 6.830478,
+    "psr": 6.887938,
     "roe": 0.43323,
     "roa": 0.09147,
     "margemBruta": 0.61626,
@@ -2901,14 +2899,14 @@
     "valuation_dcf": null
   },
   "EQNR": {
-    "precoAtual": 42.2,
-    "pl": 20.819586,
-    "pvp": 2.4981446,
-    "dy": 0.038599998,
-    "evEbitda": 3.185,
+    "precoAtual": 40.39,
+    "pl": 21.520618,
+    "pvp": 2.5822613,
+    "dy": 0.0374,
+    "evEbitda": 3.281,
     "vpa": 16.168,
     "lpa": 1.94,
-    "psr": 0.94995993,
+    "psr": 0.9817745,
     "roe": 0.12206,
     "roa": 0.12642999,
     "margemBruta": 0.3703,
@@ -2921,14 +2919,14 @@
     "valuation_dcf": null
   },
   "EPR": {
-    "precoAtual": 49.96,
-    "pl": 15.335365,
-    "pvp": 1.6444895,
-    "dy": 0.070700005,
-    "evEbitda": 12.545,
+    "precoAtual": 50.3,
+    "pl": 15.597561,
+    "pvp": 1.672606,
+    "dy": 0.0695,
+    "evEbitda": 12.665,
     "vpa": 30.587,
     "lpa": 3.28,
-    "psr": 5.39099,
+    "psr": 5.483162,
     "roe": 0.11788,
     "roa": 0.042090002,
     "margemBruta": 0.91712,
@@ -2941,13 +2939,13 @@
     "valuation_dcf": null
   },
   "WFC": {
-    "precoAtual": 79.61,
-    "pl": 12.870606,
-    "pvp": 1.5146445,
+    "precoAtual": 80.57,
+    "pl": 12.875399,
+    "pvp": 1.5152085,
     "dy": 0.0223,
     "vpa": 53.194,
     "lpa": 6.26,
-    "psr": 3.1060288,
+    "psr": 3.1071854,
     "roe": 0.11732,
     "roa": 0.01047,
     "margemBruta": 0,
@@ -2958,14 +2956,14 @@
     "valuation_dcf": null
   },
   "VICI": {
-    "precoAtual": 27.32,
-    "pl": 10.521073,
-    "pvp": 1.0558289,
-    "dy": 0.064899996,
-    "evEbitda": 12.845,
+    "precoAtual": 27.46,
+    "pl": 10.597701,
+    "pvp": 1.0635189,
+    "dy": 0.0644,
+    "evEbitda": 12.903,
     "vpa": 26.008,
     "lpa": 2.61,
-    "psr": 7.3274055,
+    "psr": 7.3807735,
     "roe": 0.10217,
     "roa": 0.049510002,
     "margemBruta": 0.9914,
@@ -2978,14 +2976,14 @@
     "valuation_dcf": null
   },
   "O": {
-    "precoAtual": 61.18,
-    "pl": 52.888893,
-    "pvp": 1.4654131,
-    "dy": 0.052199997,
-    "evEbitda": 17.099,
+    "precoAtual": 61.88,
+    "pl": 53.17094,
+    "pvp": 1.473228,
+    "dy": 0.051999997,
+    "evEbitda": 17.16,
     "vpa": 42.227,
     "lpa": 1.17,
-    "psr": 10.012664,
+    "psr": 10.06606,
     "roe": 0.02702,
     "roa": 0.02269,
     "margemBruta": 0.92559,
@@ -2998,13 +2996,13 @@
     "valuation_dcf": null
   },
   "CPRT": {
-    "precoAtual": 33.2,
-    "pl": 20.767296,
-    "pvp": 3.2493606,
-    "evEbitda": 13.797,
+    "precoAtual": 33.02,
+    "pl": 21.00629,
+    "pvp": 3.2867548,
+    "evEbitda": 13.985,
     "vpa": 10.162,
     "lpa": 1.59,
-    "psr": 6.9283247,
+    "psr": 7.0080576,
     "roe": 0.17129,
     "roa": 0.109919995,
     "margemBruta": 0.47344002,
@@ -3017,14 +3015,14 @@
     "valuation_dcf": null
   },
   "ASX": {
-    "precoAtual": 21.68,
-    "pl": 40.872726,
-    "pvp": 9.063413,
-    "dy": 0.015800001,
-    "evEbitda": 2.499,
+    "precoAtual": 22.48,
+    "pl": 40.50909,
+    "pvp": 8.982778,
+    "dy": 0.016,
+    "evEbitda": 2.491,
     "vpa": 2.4803019,
     "lpa": 0.55,
-    "psr": 0.07617863,
+    "psr": 0.0755009,
     "roe": 0.116359994,
     "roa": 0.03892,
     "margemBruta": 0.17694001,
@@ -3037,13 +3035,13 @@
     "valuation_dcf": null
   },
   "CEPU": {
-    "precoAtual": 16.83,
-    "pl": 9.946109,
-    "pvp": 13.505732,
-    "evEbitda": 0.53,
+    "precoAtual": 16.61,
+    "pl": 10.215569,
+    "pvp": 13.87163,
+    "evEbitda": 0.531,
     "vpa": 1.2298483,
     "lpa": 1.67,
-    "psr": 0.0023298557,
+    "psr": 0.0023929763,
     "roe": 0.13927001,
     "roa": 0.052160002,
     "margemBruta": 0.35881,
@@ -3056,14 +3054,14 @@
     "valuation_dcf": null
   },
   "NVO": {
-    "precoAtual": 36.75,
-    "pl": 10.247191,
-    "pvp": 5.3958945,
-    "dy": 0.0494,
-    "evEbitda": 1.736,
+    "precoAtual": 36.48,
+    "pl": 10.387641,
+    "pvp": 5.4698515,
+    "dy": 0.048699997,
+    "evEbitda": 1.75,
     "vpa": 6.7606955,
     "lpa": 3.56,
-    "psr": 0.5238868,
+    "psr": 0.53106725,
     "roe": 0.60696,
     "roa": 0.17429,
     "margemBruta": 0.82405996,
@@ -3076,13 +3074,13 @@
     "valuation_dcf": null
   },
   "PLTR": {
-    "precoAtual": 146.28,
-    "pl": 232.52382,
-    "pvp": 47.423115,
-    "evEbitda": 238.522,
+    "precoAtual": 146.49,
+    "pl": 239.45161,
+    "pvp": 48.060863,
+    "evEbitda": 241.793,
     "vpa": 3.089,
-    "lpa": 0.63,
-    "psr": 78.28417,
+    "lpa": 0.62,
+    "psr": 79.336945,
     "roe": 0.25983,
     "roa": 0.11597,
     "margemBruta": 0.82366997,
@@ -3095,14 +3093,14 @@
     "valuation_dcf": null
   },
   "JBL": {
-    "precoAtual": 265.63,
-    "pl": 36.65229,
-    "pvp": 21.44964,
+    "precoAtual": 271.96,
+    "pl": 36.241566,
+    "pvp": 21.18069,
     "dy": 0.0011999999,
-    "evEbitda": 13.206,
+    "evEbitda": 13.054,
     "vpa": 12.679,
-    "lpa": 7.42,
-    "psr": 0.8893247,
+    "lpa": 7.41,
+    "psr": 0.8781738,
     "roe": 0.59696996,
     "roa": 0.053489998,
     "margemBruta": 0.09037,
@@ -3115,14 +3113,14 @@
     "valuation_dcf": null
   },
   "QCOM": {
-    "precoAtual": 128.78,
-    "pl": 25.66129,
-    "pvp": 5.9246845,
-    "dy": 0.027999999,
-    "evEbitda": 10.084,
+    "precoAtual": 127.28,
+    "pl": 25.564516,
+    "pvp": 5.9023414,
+    "dy": 0.028099999,
+    "evEbitda": 10.047,
     "vpa": 21.483,
     "lpa": 4.96,
-    "psr": 3.0298615,
+    "psr": 3.018435,
     "roe": 0.2148,
     "roa": 0.14047,
     "margemBruta": 0.55101,
@@ -3135,14 +3133,14 @@
     "valuation_dcf": null
   },
   "AAPL": {
-    "precoAtual": 253.79,
-    "pl": 32.358227,
-    "pvp": 42.619205,
+    "precoAtual": 255.63,
+    "pl": 32.35398,
+    "pvp": 42.667553,
     "dy": 0.0041,
-    "evEbitda": 24.699,
+    "evEbitda": 24.727,
     "vpa": 5.998,
-    "lpa": 7.9,
-    "psr": 8.625078,
+    "lpa": 7.91,
+    "psr": 8.634863,
     "roe": 1.5202099,
     "roa": 0.24377,
     "margemBruta": 0.47325,
@@ -3155,14 +3153,14 @@
     "valuation_dcf": null
   },
   "MSFT": {
-    "precoAtual": 370.17,
-    "pl": 23.100063,
-    "pvp": 7.0202413,
-    "dy": 0.0099,
-    "evEbitda": 15.843,
+    "precoAtual": 369.37,
+    "pl": 23.370462,
+    "pvp": 7.0979753,
+    "dy": 0.0097,
+    "evEbitda": 16.016,
     "vpa": 52.615,
-    "lpa": 15.99,
-    "psr": 8.987626,
+    "lpa": 15.98,
+    "psr": 9.087145,
     "roe": 0.34390998,
     "roa": 0.1486,
     "margemBruta": 0.68586,
@@ -3175,13 +3173,13 @@
     "valuation_dcf": null
   },
   "BAC": {
-    "precoAtual": 48.75,
-    "pl": 12.931759,
-    "pvp": 1.2817044,
+    "precoAtual": 49.27,
+    "pl": 12.96063,
+    "pvp": 1.2845659,
     "dy": 0.0227,
     "vpa": 38.441,
     "lpa": 3.81,
-    "psr": 3.2916453,
+    "psr": 3.2989945,
     "roe": 0.10217,
     "roa": 0.00914,
     "margemBruta": 0,
@@ -3192,14 +3190,14 @@
     "valuation_dcf": null
   },
   "ORCL": {
-    "precoAtual": 147.11,
-    "pl": 26.026882,
-    "pvp": 12.448997,
-    "dy": 0.0138,
-    "evEbitda": 19.906,
+    "precoAtual": 145.23,
+    "pl": 26.232977,
+    "pvp": 12.547574,
+    "dy": 0.0137,
+    "evEbitda": 20.026,
     "vpa": 11.666,
     "lpa": 5.58,
-    "psr": 6.518636,
+    "psr": 6.5702543,
     "roe": 0.57572,
     "roa": 0.06335,
     "margemBruta": 0.67084,
@@ -3212,14 +3210,14 @@
     "valuation_dcf": null
   },
   "EQT": {
-    "precoAtual": 63.64,
-    "pl": 18.456194,
-    "pvp": 1.605055,
-    "dy": 0.0108,
-    "evEbitda": 8.135,
+    "precoAtual": 61.09,
+    "pl": 18.036255,
+    "pvp": 1.5685347,
+    "dy": 0.0111,
+    "evEbitda": 7.992,
     "vpa": 38.061,
     "lpa": 3.31,
-    "psr": 4.661803,
+    "psr": 4.555731,
     "roe": 0.09007,
     "roa": 0.053460002,
     "margemBruta": 0.78629,
@@ -3232,13 +3230,13 @@
     "valuation_dcf": null
   },
   "MNST": {
-    "precoAtual": 72.46,
-    "pl": 37.510307,
-    "pvp": 8.623059,
-    "evEbitda": 25.762,
+    "precoAtual": 72.77,
+    "pl": 37.304123,
+    "pvp": 8.575661,
+    "evEbitda": 25.615,
     "vpa": 8.439,
     "lpa": 1.94,
-    "psr": 8.5828085,
+    "psr": 8.535631,
     "roe": 0.26815,
     "roa": 0.17958,
     "margemBruta": 0.55848,
@@ -3251,14 +3249,14 @@
     "valuation_dcf": null
   },
   "CVS": {
-    "precoAtual": 71.82,
-    "pl": 52.151077,
-    "pvp": 1.2249691,
-    "dy": 0.0367,
-    "evEbitda": 11.059,
+    "precoAtual": 72.49,
+    "pl": 52.870502,
+    "pvp": 1.2418677,
+    "dy": 0.036199998,
+    "evEbitda": 11.146,
     "vpa": 59.177,
     "lpa": 1.39,
-    "psr": 0.23065217,
+    "psr": 0.23383401,
     "roe": 0.022869999,
     "roa": 0.02471,
     "margemBruta": 0.13288,
@@ -3271,7 +3269,7 @@
     "valuation_dcf": null
   },
   "HUYA": {
-    "precoAtual": 3.3,
+    "precoAtual": 3.41,
     "pvp": 1.0954483,
     "evEbitda": 35.068,
     "vpa": 3.112881,
@@ -3289,14 +3287,14 @@
     "valuation_dcf": null
   },
   "GPC": {
-    "precoAtual": 105.75,
-    "pl": 223.78723,
-    "pvp": 3.2725577,
-    "dy": 0.0404,
-    "evEbitda": 10.399,
+    "precoAtual": 105.18,
+    "pl": 220.14894,
+    "pvp": 3.219353,
+    "dy": 0.041100003,
+    "evEbitda": 10.282,
     "vpa": 32.14,
     "lpa": 0.47,
-    "psr": 0.60217196,
+    "psr": 0.59238195,
     "roe": 0.015,
     "roa": 0.046040002,
     "margemBruta": 0.37452,
@@ -3309,14 +3307,14 @@
     "valuation_dcf": null
   },
   "PFE": {
-    "precoAtual": 28.08,
-    "pl": 20.992647,
-    "pvp": 1.877178,
-    "dy": 0.0602,
-    "evEbitda": 8.426,
+    "precoAtual": 28.55,
+    "pl": 20.823528,
+    "pvp": 1.8620554,
+    "dy": 0.060700003,
+    "evEbitda": 8.375,
     "vpa": 15.209,
     "lpa": 1.36,
-    "psr": 2.5951607,
+    "psr": 2.5742543,
     "roe": 0.08886,
     "roa": 0.05683,
     "margemBruta": 0.75807,
@@ -3329,13 +3327,13 @@
     "valuation_dcf": null
   },
   "ROKU": {
-    "precoAtual": 94.62,
-    "pl": 160.84747,
-    "pvp": 5.278968,
-    "evEbitda": 43.846,
+    "precoAtual": 94.9,
+    "pl": 165.52544,
+    "pvp": 5.4324975,
+    "evEbitda": 45.309,
     "vpa": 17.977,
     "lpa": 0.59,
-    "psr": 2.953379,
+    "psr": 3.0392728,
     "roe": 0.03431,
     "roa": -0.000040000003,
     "margemBruta": 0.4379,
@@ -3348,12 +3346,12 @@
     "valuation_dcf": null
   },
   "DIBS": {
-    "precoAtual": 5.5,
-    "pvp": 2.1692915,
-    "evEbitda": -6.869,
+    "precoAtual": 5.51,
+    "pvp": 2.1299212,
+    "evEbitda": -6.666,
     "vpa": 2.54,
     "lpa": -0.38,
-    "psr": 2.2368333,
+    "psr": 2.1962373,
     "roe": -0.1417,
     "roa": -0.081709996,
     "margemBruta": 0.73017,
@@ -3366,14 +3364,14 @@
     "valuation_dcf": null
   },
   "LEG": {
-    "precoAtual": 9.88,
-    "pl": 5.822485,
-    "pvp": 1.3045207,
-    "dy": 0.020299999,
-    "evEbitda": 6.572,
+    "precoAtual": 9.84,
+    "pl": 5.7337275,
+    "pvp": 1.2846347,
+    "dy": 0.020599999,
+    "evEbitda": 6.516,
     "vpa": 7.543,
     "lpa": 1.69,
-    "psr": 0.32971707,
+    "psr": 0.32469085,
     "roe": 0.27487,
     "roa": 0.042579997,
     "margemBruta": 0.18439,
@@ -3386,13 +3384,13 @@
     "valuation_dcf": null
   },
   "MBUU": {
-    "precoAtual": 25.92,
-    "pl": 34.256756,
-    "pvp": 0.95254195,
-    "evEbitda": 7.513,
+    "precoAtual": 25.35,
+    "pl": 33.08108,
+    "pvp": 0.9198511,
+    "evEbitda": 7.256,
     "vpa": 26.613,
     "lpa": 0.74,
-    "psr": 0.59506786,
+    "psr": 0.5746454,
     "roe": 0.029089998,
     "roa": 0.02012,
     "margemBruta": 0.16057,
@@ -3405,13 +3403,13 @@
     "valuation_dcf": null
   },
   "FVRR": {
-    "precoAtual": 10.02,
-    "pl": 18.125,
-    "pvp": 0.8892588,
-    "evEbitda": 2.701,
+    "precoAtual": 10.15,
+    "pl": 17.910713,
+    "pvp": 0.87874544,
+    "evEbitda": 2.565,
     "vpa": 11.414,
     "lpa": 0.56,
-    "psr": 0.8468142,
+    "psr": 0.83680266,
     "roe": 0.054180004,
     "roa": 0.012259999,
     "margemBruta": 0.8157,
