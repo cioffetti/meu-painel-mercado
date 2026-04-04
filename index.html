@@ -33,13 +33,12 @@
         .mini-chart { width: 100%; height: 80px; margin-top: 10px; }
 
         .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: flex-start; overflow-y: auto; padding: 20px 0; }
-        .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; margin: auto; }
+        .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 1000px; border: 1px solid #333336; margin: auto; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .close-btn { font-size: 1.5rem; color: var(--text-muted); cursor: pointer; border: none; background: none; }
-        .timeframe-buttons { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #333336; padding-bottom: 10px; }
-        .time-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; padding: 5px 10px; border-radius: 4px; }
-        .time-btn.active { color: #fff; background-color: #333336; }
-        .detailed-chart { width: 100%; height: 350px; margin-bottom: 20px;}
+        
+        /* Contêiner do TradingView */
+        #grafico-tradingview { height: 500px; width: 100%; margin-bottom: 25px; border-radius: 8px; overflow: hidden; border: 1px solid #333; }
 
         .ind-category { margin-top: 25px; border-top: 1px solid #333; padding-top: 15px; }
         .ind-category-title { font-size: 1rem; font-weight: 700; color: #d67a36; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;}
@@ -75,18 +74,12 @@
                 <h2 id="modal-title">Detalhes do Ativo</h2>
                 <button class="close-btn" onclick="closeModal()">✖</button>
             </div>
-            <div class="timeframe-buttons">
-                <button class="time-btn" onclick="loadDetailedData('1mo', '1d', this)">1 M</button>
-                <button class="time-btn" onclick="loadDetailedData('6mo', '1d', this)">6 M</button>
-                <button class="time-btn active" onclick="loadDetailedData('1y', '1d', this)">1 A</button>
-                <button class="time-btn" onclick="loadDetailedData('5y', '1wk', this)">5 A</button>
-            </div>
-            <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
+            
+            <div id="grafico-tradingview"></div>
 
             <div id="indicadores-container">
                 <div class="loading-ind">Carregando indicadores fundamentais...</div>
             </div>
-
         </div>
     </div>
 
@@ -110,7 +103,6 @@
         const categorias = { geral: ativosGerais, brasil: ativosBrasil, intl: ativosIntl };
         let currentTab = 'geral';
         let miniCharts = {}; 
-        let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
         function buildCards(ativos, container) {
@@ -214,6 +206,43 @@
             if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; }
             const assetBusca = { id: 'BUSCA', name: ticker.replace('.SA', ''), ticker: ticker, decimals: 2, prefix: ticker.includes('.SA') ? 'R$' : 'US$' };
             openModal(assetBusca); 
+        }
+
+        // MOTOR DO GRÁFICO TRADINGVIEW (A MÁGICA)
+        function carregarGraficoTradingView(ticker) {
+            const container = document.getElementById('grafico-tradingview');
+            if (!container) return;
+            container.innerHTML = ''; // Limpa o gráfico anterior
+
+            // Tradutor do Yahoo Finance para o TradingView
+            let tickerTV = ticker;
+            if (ticker.includes('.SA')) {
+                tickerTV = 'BMFBOVESPA:' + ticker.replace('.SA', '');
+            } else if (ticker === 'BRL=X') {
+                tickerTV = 'FX_IDC:USDBRL'; // Dólar
+            } else if (ticker === 'EURBRL=X') {
+                tickerTV = 'FX_IDC:EURBRL'; // Euro
+            } else if (ticker === 'BTC-USD') {
+                tickerTV = 'BINANCE:BTCUSDT'; // Bitcoin
+            } else if (ticker === 'GC=F') {
+                tickerTV = 'COMEX:GC1!'; // Ouro
+            } else if (ticker === 'BZ=F') {
+                tickerTV = 'NYMEX:BZ1!'; // Petróleo
+            }
+
+            new TradingView.widget({
+                "autosize": true,
+                "symbol": tickerTV,
+                "interval": "D",
+                "timezone": "America/Sao_Paulo",
+                "theme": "dark",
+                "style": "1", // 1 = Velas Japonesas
+                "locale": "br",
+                "enable_publishing": false,
+                "hide_top_toolbar": false,
+                "save_image": false,
+                "container_id": "grafico-tradingview"
+            });
         }
 
         async function fetchIndicadores(ticker) {
@@ -354,21 +383,13 @@
             currentAssetObj = asset;
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
-            document.querySelector('.timeframe-buttons button:nth-child(3)').click();
+            
+            // O GATILHO: Dispara o gráfico e os indicadores juntos
+            carregarGraficoTradingView(asset.ticker);
             fetchIndicadores(asset.ticker);
         }
 
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-        async function loadDetailedData(range, interval, btnElement) {
-            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-            try {
-                const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`);
-                const data = await response.json();
-                drawDetailedChart(data.historico);
-            } catch (error) {}
-        }
 
         function drawMiniChart(id, historicalData, assetDetails) {
             const canvas = document.getElementById(`mini-chart-${id}`);
@@ -384,6 +405,7 @@
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
             });
         }
+
         function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
             const elPrice = document.getElementById(`price-${id}`);
             const elVar = document.getElementById(`var-${id}`);
@@ -394,25 +416,10 @@
             elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`;
             elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
         }
-        function drawDetailedChart(historicalData) {
-            const ctx = document.getElementById('modalChartCanvas').getContext('2d');
-            const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
-            const pPrimeiro = historicalData[0].preco || historicalData[0].close;
-            const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 
-            if(detailedChartInstance) detailedChartInstance.destroy(); 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
-            detailedChartInstance = new Chart(ctx, {
-                type: 'line', data: { labels: historicalData.map(i => i.data || i.time), datasets: [{ data: historicalData.map(i => i.preco || i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
-                options: {
-                    responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' },
-                    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } },
-                    scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } }
-                }
-            });
-        }
 
         switchTab('geral', document.querySelector('.tab-btn'));
     </script>
+    
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 </body>
 </html>
