@@ -3043,9 +3043,46 @@
     "margemLiquida": 0.38509,
     "dividaPL": 134.214,
     "liquidezCorrente": 1.617,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A EPR demonstra fundamentos operacionais sólidos, evidenciados por uma margem líquida excepcionalmente alta de 38.51% e um ROE respeitável de 11.79%. O P/L de 15.60 indica que a empresa está sendo negociada a um múltiplo razoável em relação aos seus lucros. Considerando sua forte rentabilidade, a tendência é de estabilidade com potencial de valorização, especialmente se houver crescimento sustentado da receita. A alta margem líquida sugere forte poder de precificação ou controle de custos, o que é um diferencial competitivo.",
+      "swot": {
+        "forcas": "Excelente Margem Líquida (38.51%) indicando alta eficiência operacional e forte poder de precificação. Retorno sobre o Patrimônio Líquido (ROE) sólido de 11.79%, demonstrando boa capacidade de gerar lucro a partir do capital dos acionistas. Múltiplo P/L em patamar atrativo, sugerindo que o mercado não está supervalorizando os lucros atuais da empresa.",
+        "fraquezas": "Ausência de dados sobre o crescimento de receita e endividamento, que são cruciais para uma análise completa. O ROE, embora bom, pode não ser o mais elevado do setor, dependendo da alavancagem financeira. Não há informações sobre a geração de fluxo de caixa livre ou a necessidade de capital intensivo.",
+        "oportunidades": "Potencial para expansão de mercado ou lançamento de novos produtos/serviços, alavancando a forte margem de lucro. Reinvestimento dos lucros para impulsionar o crescimento futuro. Aquisições estratégicas podem ser facilitadas pela saúde financeira. Cenário macroeconômico favorável pode impulsionar o setor e, consequentemente, a demanda pelos serviços/produtos da EPR.",
+        "ameacas": "Aumento da concorrência, que poderia pressionar as margens. Mudanças regulatórias ou políticas que afetem o setor de atuação. Desaceleração econômica generalizada, impactando o consumo e a demanda. Aumento nos custos de insumos ou operacionais, caso não possam ser repassados aos preços.",
+        "observacao_setorial": "A EPR, com sua alta margem líquida, aparenta ter uma posição robusta em seu segmento. Para uma análise mais aprofundada, seria essencial entender a natureza do seu setor e seus drivers de crescimento."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO COM VIÉS DE ALTA",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 46.8,
+          "descricao": "Neste cenário, assumimos uma desaceleração econômica ou aumento da pressão competitiva, levando a uma leve contração dos múltiplos de mercado. O Preço Justo reflete um múltiplo P/L mais conservador de aproximadamente 14.5x, resultando em um valor inferior ao preço atual de tela."
+        },
+        "base": {
+          "preco_justo": 54.8,
+          "descricao": "Considerando a forte margem líquida e o ROE, o cenário base assume a manutenção das condições operacionais e de mercado atuais, com o P/L sendo valorizado para cerca de 17.0x. Este valor indica que a empresa está ligeiramente subvalorizada no preço atual de tela, com potencial de valorização."
+        },
+        "otimista": {
+          "preco_justo": 64.5,
+          "descricao": "O cenário otimista contempla um crescimento acelerado dos lucros, expansão de mercado ou uma reavaliação positiva do setor pela bolsa. Projetamos uma expansão dos múltiplos de avaliação para aproximadamente 20.0x P/L, refletindo um otimismo considerável em relação às perspectivas futuras da EPR."
+        }
+      }
+    }
   },
   "WFC": {
     "precoAtual": 80.57,
@@ -3060,9 +3097,45 @@
     "margemBruta": 0,
     "margemOperacional": 0.29938,
     "margemLiquida": 0.26659,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Wells Fargo & Company (WFC) demonstra uma tendência de estabilização e recuperação gradual, superando desafios regulatórios passados para focar em suas operações bancárias centrais. Com uma margem líquida robusta e um P/L atraente, a empresa mostra resiliência. O mercado parece estar precificando uma expectativa de crescimento moderado e gestão prudente, enquanto a empresa se beneficia da diversificação de suas receitas e de uma base de clientes sólida. A melhora contínua na eficiência e o foco em serviços digitais são pontos positivos para o futuro.",
+      "swot": {
+        "forcas": "Marca reconhecida e forte base de clientes; diversificação de receitas (varejo, comercial, wealth management); margem líquida elevada (26.66%) indicando boa gestão de custos e poder de precificação; forte capitalização pós-reformas regulatórias.",
+        "fraquezas": "Histórico de escândalos e multas regulatórias impactando a reputação e gerando custos de conformidade; dependência da receita líquida de juros, tornando-a sensível a mudanças nas taxas; ROE de 11.73% é sólido, mas pode ser superado por alguns pares de alta performance.",
+        "oportunidades": "Expansão e otimização de serviços digitais e tecnologia; potencial de ganho de mercado à medida que o ambiente regulatório se estabiliza; crescimento em segmentos de wealth management e crédito especializado; cenário de taxas de juros mais altas pode impulsionar a receita líquida de juros.",
+        "ameacas": "Ambiente regulatório ainda rigoroso e potencial para novas restrições; concorrência crescente de fintechs e outros grandes bancos; desaceleração econômica que pode impactar a qualidade dos empréstimos e a demanda por crédito; volatilidade nas taxas de juros."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 4,
+        "ebitda": 5,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "8.5%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 68.84,
+          "descricao": "Cenário com contração do múltiplo P/L para 11x, refletindo preocupações com desaceleração econômica ou novos desafios regulatórios, impactando negativamente o sentimento do investidor."
+        },
+        "base": {
+          "preco_justo": 84.48,
+          "descricao": "Cenário que assume um múltiplo P/L estável de 13.5x, ligeiramente acima do atual, refletindo uma avaliação mais justa com base nos fundamentos e nas expectativas de recuperação gradual da empresa."
+        },
+        "otimista": {
+          "preco_justo": 93.87,
+          "descricao": "Cenário onde o P/L se expande para 15x, impulsionado por uma melhora significativa no ambiente econômico, desfecho positivo de questões regulatórias e forte execução estratégica da WFC, superando as expectativas do mercado."
+        }
+      }
+    }
   },
   "VICI": {
     "precoAtual": 27.46,
@@ -3080,9 +3153,45 @@
     "margemLiquida": 0.69281,
     "dividaPL": 62.679,
     "liquidezCorrente": 17.233,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A VICI demonstra uma saúde financeira robusta, com uma margem líquida excepcionalmente alta de 69.28%, indicando forte poder de precificação e eficiência operacional. O ROE de 10.22% é sólido, gerando retornos decentes para os acionistas. O P/L de 10.6x sugere que a empresa está razoavelmente avaliada em relação aos seus lucros atuais, podendo ser considerada uma oportunidade de investimento dado seus fundamentos.",
+      "swot": {
+        "forcas": "Margem Líquida extraordinariamente alta (69.28%), o que demonstra excelente controle de custos e/ou forte poder de precificação. Retorno sobre o Patrimônio Líquido (ROE) sólido de 10.22%, indicando boa capacidade de gerar lucros a partir do capital dos acionistas. P/L atrativo, sugerindo que a empresa pode estar subvalorizada em relação aos seus pares ou ter um potencial de valorização.",
+        "fraquezas": "Sem informações adicionais sobre a indústria, concorrência e estrutura de capital, é difícil identificar fraquezas específicas. No entanto, uma margem tão alta pode atrair concorrência futura se não houver um fosso econômico robusto. Potencial dependência de poucos clientes ou mercados específicos, o que pode aumentar a volatilidade da receita.",
+        "oportunidades": "Expansão para novos mercados ou segmentos aproveitando a alta lucratividade. Reinvestimento do capital gerado para crescimento orgânico ou aquisições estratégicas. Potencial de aumento de dividendos, tornando-a atraente para investidores focados em renda. Melhoria da percepção de mercado que poderia levar à expansão do múltiplo P/L.",
+        "ameacas": "Intensificação da concorrência, que poderia erodir suas altas margens. Mudanças regulatórias ou fiscais que afetem diretamente sua lucratividade. Desaceleração econômica generalizada que impacte a demanda por seus produtos/serviços. Riscos tecnológicos ou de obsolescência que poderiam prejudicar seu modelo de negócio."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 24.61,
+          "descricao": "Neste cenário, considera-se uma contração do múltiplo P/L para 9.5x, refletindo um ambiente de mercado mais cauteloso, potencial pressão sobre as margens ou crescimento abaixo do esperado. O risco de uma recessão ou aumento da concorrência seria um fator preponderante."
+        },
+        "base": {
+          "preco_justo": 28.01,
+          "descricao": "Avaliamos que a VICI manterá seu sólido desempenho, com o mercado reconhecendo a qualidade de suas operações e rentabilidade. O P/L de 10.8x reflete um prêmio modesto sobre o P/L atual, justificado pelas margens e ROE consistentes."
+        },
+        "otimista": {
+          "preco_justo": 31.09,
+          "descricao": "Neste cenário, assume-se que o mercado irá premiar a VICI por sua excepcional margem líquida e eficiência, resultando em uma expansão do múltiplo P/L para 12.0x. Um crescimento de lucros acima do esperado ou a melhoria do sentimento de mercado global impulsionariam essa valorização."
+        }
+      }
+    }
   },
   "O": {
     "precoAtual": 61.88,
@@ -3100,9 +3209,45 @@
     "margemLiquida": 0.18370001,
     "dividaPL": 73.505,
     "liquidezCorrente": 1.245,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Empresa O apresenta uma situação complexa. Seu P/L extremamente elevado (53.17) sugere que o mercado tem altas expectativas de crescimento futuro e rentabilidade. Contudo, o ROE (Retorno sobre o Patrimônio Líquido) de apenas 2.70% é preocupantemente baixo, indicando uma ineficiência significativa na geração de lucro a partir do capital próprio investido pelos acionistas. A Margem Líquida de 18.37% é robusta, mas não se traduz em um ROE adequado, o que pode apontar para baixa rotação de ativos ou gestão ineficaz do capital. A tendência atual é de alta valorização no preço, impulsionada por expectativas futuras, mas com fundamentos atuais que geram um risco considerável de correção caso essas expectativas não se concretizem.",
+      "swot": {
+        "forcas": "Alta margem líquida (18.37%), demonstrando boa capacidade de precificação ou controle de custos sobre as vendas. Potencial de crescimento futuro, implícito no alto P/L, que pode ser atrativo para investidores de longo prazo se a execução for bem-sucedida.",
+        "fraquezas": "ROE extremamente baixo (2.70%), indicando baixa rentabilidade sobre o capital próprio e ineficiência na alocação de recursos. P/L muito elevado (53.17), o que significa que o preço atual incorpora expectativas de crescimento agressivas, tornando a ação sensível a qualquer desapontamento nos resultados. A discrepância entre margem líquida e ROE sugere problemas na rotação de ativos ou estrutura de capital.",
+        "oportunidades": "Melhoria na eficiência operacional e na gestão de ativos para elevar o ROE, desbloqueando valor para os acionistas. Expansão estratégica em novos mercados ou lançamento de produtos/serviços de alto valor agregado que capitalizem a robusta margem líquida. Potencial de consolidação no setor, dada a aparente força operacional (margem líquida).",
+        "ameacas": "Falha em concretizar as expectativas de crescimento que justificam o P/L, levando a uma correção acentuada no preço da ação. Aumento da concorrência que possa erodir a alta margem líquida. Flutuações macroeconômicas ou aumento das taxas de juros que podem desfavorecer empresas com valorizações elevadas e retornos atuais baixos."
+      },
+      "notas": {
+        "roe": 1,
+        "roic": 2,
+        "ebitda": 4,
+        "divida": 2,
+        "receita": 3
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SOBREVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 30.94,
+          "descricao": "Considerando a persistência do ROE extremamente baixo e a incapacidade de a empresa justificar seu P/L atual com crescimento substancial de lucros, espera-se uma correção significativa. O preço justo é estimado com uma desvalorização de cerca de 50% em relação ao preço atual, refletindo a falta de fundamentos sólidos para a valorização presente."
+        },
+        "base": {
+          "preco_justo": 49.5,
+          "descricao": "Neste cenário, a empresa consegue um crescimento moderado que não justifica completamente o P/L de 53, mas também evita o colapso. O ROE permanece desafiador, mas com leves melhorias operacionais. O preço justo é calculado com uma desvalorização de aproximadamente 20% sobre o preço atual, indicando que a ação ainda está sobrevalorizada com base em uma análise mais conservadora dos fundamentos atuais e expectativas futuras."
+        },
+        "otimista": {
+          "preco_justo": 68,
+          "descricao": "A empresa atinge ou supera as expectativas de crescimento mais agressivas implícitas em seu P/L. Há uma melhora substancial e sustentável no ROE, com a alta margem líquida sendo convertida eficientemente em retorno para o acionista. Neste cenário, o preço atual seria justificado, e haveria um potencial de valorização adicional de aproximadamente 10% a 15%."
+        }
+      }
+    }
   },
   "CPRT": {
     "precoAtual": 33.02,
@@ -3119,9 +3264,45 @@
     "margemLiquida": 0.33758,
     "dividaPL": 0.98,
     "liquidezCorrente": 10.061,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A CPRT demonstra uma performance fundamental robusta, evidenciada por sua excelente Margem Líquida de 33.76% e um Retorno sobre o Patrimônio Líquido (ROE) de 17.13%. Estes indicadores apontam para uma alta eficiência operacional e uma forte capacidade de geração de valor para os acionistas. O P/L atual de 21.01 sugere que o mercado já precifica um crescimento contínuo, o que é consistente com a solidez dos fundamentos. A análise de valuation indica que o preço atual está em patamar justo, com potencial de valorização no cenário base e otimista, reforçando uma perspectiva positiva para o longo prazo.",
+      "swot": {
+        "forcas": "Alta Margem Líquida (33.76%) e ROE forte (17.13%) indicam excelente rentabilidade e eficiência na gestão de capital. Modelo de negócio robusto com potencial de geração de caixa consistente.",
+        "fraquezas": "P/L relativamente alto (21.01) pode indicar menor margem de segurança e maior sensibilidade a desacelerações do mercado ou da economia. A ausência de dados detalhados sobre dívida e fluxo de caixa livre limita uma análise de solvência mais aprofundada.",
+        "oportunidades": "Potencial para expansão de mercado ou lançamento de novos produtos/serviços que capitalizem a alta rentabilidade. Consolidação no setor via aquisições estratégicas, impulsionada pela forte geração de lucro.",
+        "ameacas": "Aumento da concorrência, que pode pressionar as margens a longo prazo. Mudanças regulatórias ou tecnológicas que afetem o modelo de negócio principal. Recessão econômica global ou setorial que impacte a demanda pelos produtos/serviços da empresa."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 29.87,
+          "descricao": "Cenário considera uma desaceleração no crescimento dos lucros ou uma compressão dos múltiplos de mercado devido a fatores macroeconômicos adversos ou aumento da concorrência, levando a um P/L de 19x."
+        },
+        "base": {
+          "preco_justo": 34.58,
+          "descricao": "Cenário reflete a sustentabilidade da rentabilidade atual e um crescimento de lucros consistente, justificando um P/L de 22x, ligeiramente acima do atual devido aos fundamentos robustos."
+        },
+        "otimista": {
+          "preco_justo": 40.87,
+          "descricao": "Cenário projeta um desempenho superior, com aceleração do crescimento ou expansão de margens, levando a uma reavaliação dos múltiplos para um P/L de 26x, refletindo otimismo do mercado."
+        }
+      }
+    }
   },
   "ASX": {
     "precoAtual": 22.48,
@@ -3139,9 +3320,45 @@
     "margemLiquida": 0.063,
     "dividaPL": 70.617,
     "liquidezCorrente": 1.284,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A ASX apresenta um múltiplo Preço/Lucro (P/L) elevado de 40.51, o que indica que o mercado possui altas expectativas de crescimento futuro para a empresa. O Retorno sobre o Patrimônio Líquido (ROE) de 11.64% é positivo, mas a Margem Líquida de 6.3% sugere que, embora a empresa seja rentável, há espaço para otimização de custos ou que atua em um setor com margens naturalmente mais apertadas ou em fase de forte reinvestimento. A tendência atual é de uma ação que já precifica um crescimento robusto, tornando-a sensível a quaisquer desapontamentos em relação às expectativas.",
+      "swot": {
+        "forcas": "Potencial de crescimento significativo, conforme indicado pelo alto P/L. Retorno sobre o Patrimônio Líquido (ROE) saudável, demonstrando capacidade de gerar lucro para os acionistas. Provável inovação ou liderança em seu segmento para justificar alta expectativa de mercado.",
+        "fraquezas": "Margem Líquida relativamente baixa, o que pode indicar pressões competitivas, custos operacionais elevados ou estratégias de precificação agressivas. Alta dependência de crescimento futuro para justificar a avaliação atual, tornando-a vulnerável a desacelerações. Sensibilidade a custos de insumos ou mão de obra, dada a margem estreita.",
+        "oportunidades": "Expansão de mercado através de novos produtos ou geografias. Melhoria da eficiência operacional para elevar a margem líquida. Consolidar sua posição em mercados emergentes ou com alto potencial de crescimento. Aquisições estratégicas para complementar seu portfólio ou ganhar escala.",
+        "ameacas": "Intensificação da concorrência, que pode pressionar ainda mais as margens. Desaceleração econômica impactando o poder de compra dos consumidores ou a demanda por seus produtos/serviços. Aumento das taxas de juros, o que pode impactar negativamente as avaliações de empresas de alto crescimento. Inovação disruptiva de concorrentes ou mudanças regulatórias."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 4,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 18.43,
+          "descricao": "Neste cenário, assumimos uma desaceleração do crescimento de receita e lucros, devido a fatores como aumento da concorrência, falha na execução de iniciativas estratégicas ou condições macroeconômicas adversas. As margens podem sofrer compressão, levando a uma revisão para baixo das expectativas de mercado e, consequentemente, do múltiplo P/L."
+        },
+        "base": {
+          "preco_justo": 23.5,
+          "descricao": "O cenário base considera a manutenção das altas taxas de crescimento de receita e lucros implícitas no múltiplo P/L atual (40.51), com estabilização das margens e execução consistente da estratégia. O preço justo reflete o valor presente desses fluxos de caixa futuros, assumindo que a empresa cumpre as expectativas de crescimento do mercado."
+        },
+        "otimista": {
+          "preco_justo": 26.53,
+          "descricao": "Neste cenário otimista, a empresa supera as expectativas de crescimento de mercado, obtém ganhos significativos de eficiência operacional que elevam a margem líquida e/ou expande para novos mercados com sucesso. Isso justificaria um múltiplo P/L ainda maior ou um crescimento mais acelerado do EPS, adicionando valor para o acionista."
+        }
+      }
+    }
   },
   "CEPU": {
     "precoAtual": 16.61,
@@ -3158,9 +3375,45 @@
     "margemLiquida": 0.31561002,
     "dividaPL": 18.846,
     "liquidezCorrente": 1.773,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A CEPU demonstra forte solidez financeira com excelente rentabilidade e margens robustas, indicando uma tendência positiva a médio e longo prazo, apesar de uma possível subvalorização atual no mercado. Os indicadores sugerem uma gestão eficiente e um negócio resiliente, com capacidade de gerar valor para os acionistas.",
+      "swot": {
+        "forcas": "Elevada Rentabilidade (ROE de 13.93%) e Margem Líquida impressionante (31.56%) indicam eficiência operacional e forte capacidade de geração de lucro. O P/L relativamente baixo (10.22) pode sinalizar um bom ponto de entrada para investidores em busca de valor.",
+        "fraquezas": "Ausência de dados específicos sobre o crescimento da receita e o nível de endividamento impede uma avaliação completa de riscos e sustentabilidade do crescimento. Potencial dependência de um setor específico que pode ser cíclico ou volátil.",
+        "oportunidades": "Expansão de mercado ou diversificação de produtos/serviços pode impulsionar o crescimento da receita. Otimização de custos e processos pode fortalecer ainda mais as margens. Uma reavaliação do mercado, impulsionada por bons resultados contínuos, pode levar a um aumento do múltiplo P/L.",
+        "ameacas": "Intensificação da concorrência, desaceleração econômica geral ou setorial, e mudanças regulatórias adversas podem impactar negativamente a performance da empresa. Riscos cambiais ou de commodities, se relevantes para o setor, também representam ameaças."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 16.26,
+          "descricao": "Neste cenário conservador, consideramos um múltiplo P/L de 10x, ligeiramente abaixo do patamar atual ou refletindo um ambiente de mercado mais cético, resultando em um preço justo muito próximo ou marginalmente abaixo do preço de tela."
+        },
+        "base": {
+          "preco_justo": 19.51,
+          "descricao": "Com base em uma performance estável da empresa e aplicando um múltiplo P/L de 12x – justificado pela alta rentabilidade (ROE de 13.93%) e margem líquida (31.56%) –, o preço justo sugere que a ação da CEPU está subvalorizada atualmente."
+        },
+        "otimista": {
+          "preco_justo": 22.76,
+          "descricao": "Em um cenário otimista, com melhora das perspectivas de crescimento, reconhecimento do mercado pela sua forte rentabilidade e eficiência, o múltiplo P/L poderia atingir 14x, resultando em um preço justo significativamente acima do valor de tela, indicando um potencial de alta considerável."
+        }
+      }
+    }
   },
   "NVO": {
     "precoAtual": 36.48,
@@ -3178,9 +3431,45 @@
     "margemLiquida": 0.33143002,
     "dividaPL": 67.488,
     "liquidezCorrente": 0.8,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A NVO apresenta fundamentos excepcionais, com um Retorno sobre o Patrimônio Líquido (ROE) impressionante de 60.7% e uma Margem Líquida robusta de 33.1%. Apesar dessa alta rentabilidade, o Preço/Lucro (P/L) atual de 10.39 está consideravelmente abaixo do que seria esperado para uma empresa com tal desempenho. Isso sugere que o mercado pode estar subestimando o potencial de lucro da NVO ou sua capacidade de sustentar essa rentabilidade. A tendência aponta para uma possível reavaliação positiva do mercado, à medida que os investidores reconheçam o valor inerente e a forte capacidade de geração de caixa da empresa, impulsionando o preço da ação para níveis mais justos. A empresa demonstra uma forte saúde financeira e operacional, posicionando-a favoravelmente para o crescimento futuro.",
+      "swot": {
+        "forcas": "1. Alta Rentabilidade: ROE excepcional de 60.7% e Margem Líquida de 33.1% demonstram eficiência e lucratividade superiores. 2. Potencial de Re-rating: P/L baixo (10.39) em relação à sua qualidade fundamental sugere que o preço atual não reflete totalmente o valor da empresa. 3. Forte Geração de Lucro: Capacidade comprovada de converter vendas em lucro líquido de forma muito eficaz.",
+        "fraquezas": "1. Sustentabilidade do ROE: Taxas de retorno tão elevadas podem ser difíceis de manter a longo prazo, levantando questões sobre a perpetuidade desses níveis. 2. Percepção do Mercado: O baixo P/L pode indicar ceticismo do mercado sobre a sustentabilidade do crescimento ou sobre os lucros futuros. 3. Concentração de Ativos/Receita: Não há informações suficientes para avaliar riscos de concentração, mas é uma fraqueza potencial para empresas de alta rentabilidade.",
+        "oportunidades": "1. Reavaliação de Mercado: À medida que os fundamentos sólidos persistirem, o mercado pode reajustar o múltiplo P/L para cima, refletindo melhor o valor intrínseco. 2. Expansão de Mercado: A alta rentabilidade pode financiar expansões ou aquisições estratégicas que impulsionem o crescimento da receita e dos lucros. 3. Inovação: O reinvestimento dos lucros em P&D pode levar a novos produtos ou serviços, aumentando a participação de mercado e a diferenciação.",
+        "ameacas": "1. Concorrência: Entrada de novos players ou ações agressivas de concorrentes podem pressionar margens e share de mercado. 2. Mudanças Regulatórias: Alterações no ambiente regulatório podem impactar diretamente as operações e a rentabilidade. 3. Desaceleração Econômica: Uma retração econômica geral pode reduzir a demanda por seus produtos/serviços, afetando as receitas e lucros. 4. Volatilidade do Mercado: Flutuações amplas do mercado podem afetar o preço da ação, independentemente dos fundamentos da empresa."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 5,
+        "divida": 4,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 42.13,
+          "descricao": "Neste cenário, assumimos que o mercado mantém um certo ceticismo, e o múltiplo P/L da empresa se expande moderadamente para 12x. Embora ainda seja conservador, reflete a percepção de que os lucros atuais da NVO são mais sustentáveis do que o P/L atual sugere, levando a um preço justo acima do valor de tela."
+        },
+        "base": {
+          "preco_justo": 56.18,
+          "descricao": "No cenário base, projetamos que o mercado reconheça as excelentes margens e o ROE da NVO, reajustando o múltiplo P/L para 16x. Este valor considera a forte saúde financeira da empresa e sua capacidade de gerar lucros consistentes, justificando uma avaliação significativamente maior que o preço atual."
+        },
+        "otimista": {
+          "preco_justo": 70.22,
+          "descricao": "O cenário otimista prevê que a NVO continue a entregar resultados excepcionais e que o mercado a reavalie para um P/L de 20x. Este múltiplo é comum para empresas de alta qualidade e rentabilidade, assumindo que a NVO mantém sua vantagem competitiva e sustenta seu alto desempenho operacional a longo prazo."
+        }
+      }
+    }
   },
   "PLTR": {
     "precoAtual": 146.49,
@@ -3197,9 +3486,45 @@
     "margemLiquida": 0.36310002,
     "dividaPL": 3.063,
     "liquidezCorrente": 7.11,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Palantir (PLTR) opera em um mercado de alto crescimento, impulsionado pela demanda por análise de dados e inteligência artificial. Com uma margem líquida robusta de 36.31% e um ROE excelente de 25.98%, a empresa demonstra forte capacidade de gerar lucro a partir de suas operações e patrimônio líquido. No entanto, o múltiplo Preço/Lucro (P/L) de 239.45x é extremamente elevado, indicando que o mercado precifica um crescimento exponencial de lucros nos próximos anos. Esta valuation esticada apresenta um risco significativo, sugerindo que a empresa é altamente sensível a qualquer desaceleração no crescimento ou falha em atender às expectativas agressivas. A tendência de longo prazo permanece positiva devido à relevância tecnológica, mas o curto e médio prazos podem ser voláteis devido à alta expectativa já embutida no preço.",
+      "swot": {
+        "forcas": "Liderança tecnológica em plataformas de análise de dados e IA para setores governamentais e comerciais; Margens de lucro e ROE excepcionais; Forte base de clientes com altos custos de troca; Potencial de expansão em novos mercados e setores com IA.",
+        "fraquezas": "Valuation extremamente elevada (P/L de 239.45x), tornando a ação sensível a qualquer revés; Dependência histórica de grandes contratos governamentais, embora a diversificação comercial esteja crescendo; Dificuldade em prever resultados de projetos de longo prazo e ciclos de vendas.",
+        "oportunidades": "Crescimento contínuo da demanda por soluções de IA e Big Data; Expansão da base de clientes comerciais e internacionais; Lançamento de novas funcionalidades e produtos que impulsionem a receita recorrente; Potencial de monetização de dados de forma inovadora.",
+        "ameacas": "Intensa concorrência no setor de tecnologia, especialmente em IA e análise de dados; Risco regulatório e de privacidade de dados; Recessão econômica global que pode reduzir gastos empresariais; Falha em inovar ou em entregar os resultados esperados para justificar a valuation atual."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 110.12,
+          "descricao": "Neste cenário, uma retração nas expectativas de crescimento ou uma contração do múltiplo P/L para cerca de 180x (ainda elevado, mas menos especulativo) levaria a uma reavaliação do preço da ação, refletindo uma visão mais cautelosa do mercado."
+        },
+        "base": {
+          "preco_justo": 146.49,
+          "descricao": "O preço atual de tela é considerado justo sob a premissa de que o mercado continua a precificar um crescimento agressivo e a manutenção de múltiplos P/L muito elevados (aproximadamente 239x), justificado pela robusta rentabilidade (ROE, Margem Líquida) e pela liderança tecnológica da PLTR."
+        },
+        "otimista": {
+          "preco_justo": 171.3,
+          "descricao": "Em um cenário otimista, a aceleração da adoção de produtos, a expansão de mercados e um crescimento de receita e lucros acima do esperado poderiam justificar uma expansão ainda maior do múltiplo P/L (para cerca de 280x), impulsionando o preço da ação."
+        }
+      }
+    }
   },
   "JBL": {
     "precoAtual": 271.96,
@@ -3217,9 +3542,45 @@
     "margemLiquida": 0.02477,
     "dividaPL": 325.352,
     "liquidezCorrente": 1.013,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A JBL apresenta um panorama de empresa com alta rentabilidade sobre o patrimônio (ROE de 59.7%), o que é excelente e sugere uma gestão altamente eficiente do capital próprio. Contudo, sua margem líquida (2.48%) é relativamente baixa, indicando que a empresa opera com uma lucratividade por venda apertada, talvez em um setor competitivo ou com altos custos de produção/distribuição. O P/L de 36.24x é elevado, refletindo uma forte expectativa de crescimento futuro por parte do mercado. A combinação desses fatores sugere uma empresa com forte geração de valor a partir de seu capital, mas que precisa gerenciar de perto seus custos para sustentar a rentabilidade em um ambiente possivelmente volátil. A tendência geral é de valorização impulsionada por expectativas de crescimento e alta rentabilidade do capital, mas com riscos associados à baixa margem operacional que pode ser sensível a choques externos.",
+      "swot": {
+        "forcas": "Alto Retorno sobre o Patrimônio Líquido (ROE de 59.7%), indicando excelente eficiência na geração de lucros a partir do capital próprio. Forte reconhecimento de marca e reputação no mercado de eletrônicos de consumo. Potencial para alta rotação de ativos ou gestão eficiente de custos operacionais (dado o ROE elevado com margem baixa).",
+        "fraquezas": "Margem Líquida muito baixa (2.48%), tornando a empresa vulnerável a aumentos de custos ou quedas nos preços de venda, impactando diretamente a lucratividade. Múltiplo Preço/Lucro (P/L) elevado (36.24x), o que implica altas expectativas de crescimento que podem ser difíceis de sustentar a longo prazo e deixam pouco espaço para decepções.",
+        "oportunidades": "Expansão para novos mercados geográficos ou segmentos de produtos complementares, como serviços de assinatura ou acessórios inteligentes. Otimização de processos e investimentos em tecnologia para melhorar a margem líquida. Crescimento contínuo do mercado global de eletrônicos de consumo e áudio, impulsionado pela inovação. Aquisição estratégica de outras empresas para diversificar ou fortalecer o portfólio.",
+        "ameacas": "Concorrência acirrada no setor de eletrônicos, levando a guerras de preço e compressão de margens. Dependência de fornecedores globais, sujeita a interrupções na cadeia de suprimentos e volatilidade de custos de matéria-prima. Desaceleração econômica global impactando o consumo discricionário de bens duráveis. Inovação rápida no setor que pode tornar produtos obsoletos rapidamente, exigindo investimentos constantes em P&D."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 4,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 225.12,
+          "descricao": "Neste cenário, uma desaceleração no crescimento dos lucros da JBL, pressões competitivas sobre a margem líquida ou um aumento nas taxas de juros (reduzindo o múltiplo P/L) levam a uma contração da avaliação de mercado. O preço justo é menor, refletindo um ambiente de negócios mais desafiador e expectativas de mercado mais conservadoras."
+        },
+        "base": {
+          "preco_justo": 271.96,
+          "descricao": "O preço justo no cenário base reflete a avaliação atual do mercado, considerando o alto ROE da empresa e a expectativa de crescimento que justifica o P/L elevado, apesar da margem líquida apertada. Indica que o ativo está sendo negociado em sua faixa de valor intrínseco, com os fundamentos atuais já precificados."
+        },
+        "otimista": {
+          "preco_justo": 315.17,
+          "descricao": "Um cenário otimista considera a superação das expectativas de crescimento da JBL, melhorias significativas na margem líquida através de eficiência operacional ou inovação de produtos, ou a consolidação da liderança de mercado. Estes fatores justificariam uma expansão do múltiplo P/L e, consequentemente, um preço justo superior."
+        }
+      }
+    }
   },
   "QCOM": {
     "precoAtual": 127.28,
@@ -3237,9 +3598,45 @@
     "margemLiquida": 0.11958,
     "dividaPL": 64.218,
     "liquidezCorrente": 2.505,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Qualcomm (QCOM), líder em tecnologia de semicondutores e software para dispositivos móveis, automotivos e IoT, demonstra uma tendência de crescimento impulsionada pela inovação contínua, especialmente no avanço do 5G. Seus indicadores fundamentais, como um P/L de 25.56x, ROE robusto de 21.48% e margem líquida de 11.96%, refletem uma empresa eficiente e com boa capacidade de geração de valor. A diversificação para novas verticais, como automotivo e IoT industrial, é estratégica para mitigar a dependência do ciclo de smartphones e oferece avenidas promissoras para expansão. A empresa está bem posicionada para capitalizar as tendências tecnológicas de longo prazo, embora precise navegar em um ambiente competitivo dinâmico e desafios macroeconômicos.",
+      "swot": {
+        "forcas": "Liderança global em tecnologias 5G e chips móveis; Vasto portfólio de patentes e forte propriedade intelectual; Crescente diversificação para mercados de IoT e automotivo; Boas margens de lucro e retorno sobre o patrimônio (ROE de 21.48%).",
+        "fraquezas": "Dependência significativa do mercado de smartphones, sujeito a ciclos de demanda; Alta concorrência, incluindo a verticalização de chips por grandes clientes; Exposição a riscos geopolíticos e interrupções na cadeia de suprimentos; Litígios regulatórios e de patentes podem ser uma distração e gerar custos.",
+        "oportunidades": "Aceleração global da adoção do 5G e novas aplicações (e.g., metaverso); Expansão massiva nos mercados de veículos conectados e autônomos; Crescimento do ecossistema de Internet das Coisas (IoT) industrial e edge computing; Potencial de licenciar novas tecnologias e expandir em mercados emergentes.",
+        "ameacas": "Desaceleração da economia global e inflação impactando o poder de compra; Aumento da concorrência de fabricantes de chips asiáticos e in-house por grandes empresas de tecnologia; Riscos regulatórios e antitruste em diferentes jurisdições; Flutuações cambiais e tensões comerciais internacionais."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 114.51,
+          "descricao": "Neste cenário, assumimos um crescimento mais lento do mercado de smartphones, maior pressão competitiva em mercados-chave ou desafios na expansão para novas verticais. Uma desaceleração econômica global acentuada e interrupções persistentes na cadeia de suprimentos poderiam justificar um múltiplo P/L mais conservador e um valor justo abaixo do preço atual."
+        },
+        "base": {
+          "preco_justo": 131.94,
+          "descricao": "Este cenário reflete a execução consistente da estratégia da QCOM, beneficiando-se da adoção contínua do 5G e da expansão moderada em IoT e automotivo. Considera um ambiente macroeconômico estável e a capacidade da empresa de manter suas margens e participação de mercado, resultando em um múltiplo P/L ligeiramente acima do atual e um valor justo um pouco superior."
+        },
+        "otimista": {
+          "preco_justo": 149.36,
+          "descricao": "Aqui, projetamos uma aceleração significativa na adoção do 5G e do seu ecossistema, sucesso robusto na diversificação para segmentos automotivos e IoT com altas margens, e uma resolução favorável de potenciais disputas regulatórias ou de patentes. Uma execução superior da gestão, inovação disruptiva e um cenário macro favorável impulsionariam um múltiplo de valuation premium e um valor justo bem acima do preço atual."
+        }
+      }
+    }
   },
   "AAPL": {
     "precoAtual": 255.63,
@@ -3257,9 +3654,45 @@
     "margemLiquida": 0.27037,
     "dividaPL": 102.63,
     "liquidezCorrente": 0.974,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Apple (AAPL) demonstra uma tendência de valorização consistente, impulsionada por seu ecossistema robusto, forte lealdade à marca e crescimento contínuo do segmento de serviços. Apesar de um P/L (32.35) que sugere expectativas de crescimento já precificadas, a alta Margem Líquida (27.04%) e um ROE excepcional (152.02%) indicam uma eficiência operacional e rentabilidade superiores, garantindo uma base sólida para sustentação do preço atual e potencial valorização futura. O foco em inovação e diversificação de receitas, como o Apple Vision Pro, sugere que a empresa está bem-posicionada para enfrentar desafios e explorar novas oportunidades de mercado.",
+      "swot": {
+        "forcas": "Ecossistema de produtos e serviços altamente integrado e viciante; Forte reconhecimento e lealdade à marca; Sólida geração de caixa e balanço patrimonial; Crescimento robusto do segmento de serviços; Capacidade comprovada de inovação.",
+        "fraquezas": "Elevada dependência do iPhone para receita e lucratividade; Potencial escrutínio regulatório global em relação a práticas de mercado; Riscos na cadeia de suprimentos e dependência de poucos fabricantes; Preços premium que podem ser sensíveis em cenários de desaceleração econômica.",
+        "oportunidades": "Expansão para novos mercados emergentes; Crescimento contínuo do setor de serviços (assinaturas, publicidade, saúde); Lançamento e adoção de novas categorias de produtos (AR/VR como o Vision Pro); Potencial de monetização de dados e IA generativa; Aumento da base instalada de usuários.",
+        "ameacas": "Intensa concorrência em todos os segmentos de atuação; Desaceleração econômica global impactando o poder de compra dos consumidores; Alterações regulatórias e antitruste; Tensões geopolíticas e impactos na cadeia de produção e vendas em mercados chave; Variações cambiais desfavoráveis."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 5,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 242.85,
+          "descricao": "Considera uma desaceleração significativa no crescimento de receita do iPhone, pressão sobre as margens devido ao aumento da concorrência e custos operacionais, e um impacto negativo de potenciais desafios regulatórios. O valuation reflete uma expectativa de menor geração de caixa futuro."
+        },
+        "base": {
+          "preco_justo": 273.5,
+          "descricao": "Reflete a continuidade do crescimento moderado do segmento de serviços, estabilidade nas vendas do iPhone e Mac, e a manutenção da alta eficiência operacional. Assume uma gestão de capital eficiente e um avanço gradual em novas categorias de produtos. O preço justo indica que a empresa está razoavelmente precificada, com um potencial de valorização modesto."
+        },
+        "otimista": {
+          "preco_justo": 301.6,
+          "descricao": "Baseado em um crescimento acelerado do segmento de serviços, forte adoção de novas tecnologias como o Apple Vision Pro, expansão bem-sucedida em mercados emergentes, e o sucesso em iniciativas de IA. Implica um cenário onde a Apple supera as expectativas de mercado e demonstra maior capacidade de inovação e monetização."
+        }
+      }
+    }
   },
   "MSFT": {
     "precoAtual": 369.37,
@@ -3277,9 +3710,45 @@
     "margemLiquida": 0.39044,
     "dividaPL": 31.539,
     "liquidezCorrente": 1.386,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Microsoft (MSFT) exibe uma forte tendência de crescimento e solidez financeira, impulsionada por sua liderança em computação em nuvem (Azure), software empresarial (Office 365) e investimentos estratégicos em inteligência artificial. Com margens de lucro elevadas e um ROE impressionante, a empresa demonstra excelente capacidade de gerar valor para os acionistas. A diversificação de suas receitas e a inovação contínua mitigam parte dos riscos inerentes ao setor de tecnologia, posicionando-a favoravelmente para o longo prazo.",
+      "swot": {
+        "forcas": "Liderança dominante no mercado de software empresarial e computação em nuvem (Azure). Forte balanço patrimonial e geração robusta de fluxo de caixa. Capacidade de inovação contínua, especialmente em IA. Reconhecimento de marca global e ecossistema de produtos diversificado (Windows, Office, Xbox). Altas margens de lucro e ROE.",
+        "fraquezas": "Escrutínio regulatório crescente em mercados-chave devido ao seu tamanho e domínio. Dependência do sucesso da plataforma Windows e Office em alguns segmentos de mercado. Riscos de cibersegurança e necessidade de investimento contínuo em P&D para manter a competitividade.",
+        "oportunidades": "Expansão contínua do mercado de computação em nuvem e IA. Monetização de novas tecnologias e serviços emergentes. Crescimento em mercados internacionais e segmentos de jogos (Xbox). Potencial de fusões e aquisições estratégicas para expandir portfólio.",
+        "ameacas": "Concorrência acirrada de gigantes da tecnologia como Amazon (AWS), Google (GCP) e Apple. Desaceleração econômica global que pode impactar gastos empresariais em TI. Mudanças regulatórias e antitruste que podem limitar o crescimento ou forçar desinvestimentos. Riscos de disrupção tecnológica por startups."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 339.82,
+          "descricao": "Atinge este preço em um cenário de desaceleração econômica global acentuada, aumento da concorrência e impacto regulatório mais severo, resultando em menor crescimento e compressão de margens. O P/L poderia contrair para cerca de 21x os lucros."
+        },
+        "base": {
+          "preco_justo": 398.92,
+          "descricao": "Este preço reflete a capacidade contínua da Microsoft de monetizar seu ecossistema de nuvem (Azure), software empresarial (Office 365) e inovação em IA, com crescimento estável e manutenção das altas margens de lucro. Corresponde a um P/L de aproximadamente 25x."
+        },
+        "otimista": {
+          "preco_justo": 435.86,
+          "descricao": "Alcança este valor com a aceleração do crescimento em segmentos-chave como IA e computação em nuvem, superando as expectativas de mercado, ou em um cenário de expansão dos múltiplos de valuation para empresas de tecnologia de alta qualidade, elevando o P/L para cerca de 27.5x."
+        }
+      }
+    }
   },
   "BAC": {
     "precoAtual": 49.27,
@@ -3294,9 +3763,45 @@
     "margemBruta": 0,
     "margemOperacional": 0.41627997,
     "margemLiquida": 0.28401,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A empresa BAC demonstra fundamentos sólidos, com um Retorno sobre o Patrimônio Líquido (ROE) de 10.22% e uma Margem Líquida notável de 28.40%. O múltiplo Preço/Lucro (P/L) de 12.96 sugere que o mercado a avalia de forma justa, considerando seu perfil de rentabilidade e um crescimento que parece ser mais estável do que acelerado. A forte margem líquida é um indicativo positivo de eficiência operacional ou poder de precificação. A tendência geral é de uma empresa madura e financeiramente robusta, com desempenho consistente.",
+      "swot": {
+        "forcas": "Elevada Margem Líquida (28.40%), que indica forte controle de custos e/ou poder de precificação. Retorno sobre o Patrimônio Líquido (ROE) de 10.22% é respeitável, indicando boa eficiência no uso do capital dos acionistas. Múltiplo P/L razoável (12.96), sugerindo que a empresa não está excessivamente esticada em sua avaliação atual.",
+        "fraquezas": "Ausência de dados de crescimento de receita ou lucro histórico, o que impede uma análise mais profunda do dinamismo e do potencial de expansão. Falta de informações sobre endividamento (Dívida Líquida/EBITDA, etc.), o que impede uma avaliação completa da estrutura de capital e risco financeiro. Potencial dependência de setores específicos ou da conjuntura econômica.",
+        "oportunidades": "Expansão para novos mercados ou segmentos de clientes, aproveitando a solidez financeira. Inovação em produtos e serviços que possam impulsionar o crescimento orgânico. Potenciais aquisições estratégicas para ganho de escala, sinergias e diversificação. Melhoria contínua na eficiência operacional que pode elevar ainda mais as margens já expressivas.",
+        "ameacas": "Aumento da concorrência no seu setor principal de atuação. Mudanças regulatórias que possam impactar diretamente sua operação, custos ou rentabilidade. Desaceleração econômica geral que afete a demanda por seus produtos/serviços. Flutuações nas taxas de juros ou no ambiente macroeconômico que possam pressionar as margens ou o custo de capital."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 42.5,
+          "descricao": "Neste cenário, considera-se uma deterioração das condições de mercado ou do desempenho operacional da empresa. Isso poderia resultar em menor crescimento de lucros, pressões sobre as margens e um aumento do risco percebido, justificando múltiplos de valuation mais conservadores e, consequentemente, um preço-alvo inferior."
+        },
+        "base": {
+          "preco_justo": 50,
+          "descricao": "O cenário base projeta a continuidade do desempenho atual da BAC, com manutenção de suas robustas margens e ROE. Assume-se um crescimento moderado e estável em linha com as perspectivas para empresas do seu setor e porte, resultando em um valor justo que reflete a avaliação atual do mercado com uma leve valorização."
+        },
+        "otimista": {
+          "preco_justo": 57.5,
+          "descricao": "Este cenário contempla uma aceleração do crescimento da BAC, impulsionada por iniciativas estratégicas bem-sucedidas, expansão de mercado ou um ambiente econômico mais favorável. A expectativa é de que a empresa consiga expandir suas margens e ROE, justificando múltiplos de valuation mais elevados e um preço-alvo superior."
+        }
+      }
+    }
   },
   "ORCL": {
     "precoAtual": 145.23,
@@ -3314,9 +3819,46 @@
     "margemLiquida": 0.25298,
     "dividaPL": 415.265,
     "liquidezCorrente": 1.347,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Oracle (ORCL) demonstra uma tendência de crescimento estável, impulsionada pela sua forte posição no mercado de bancos de dados empresariais e pela expansão contínua da sua plataforma de nuvem (OCI). Com um ROE e Margem Líquida robustos, a empresa possui fundamentos sólidos que sustentam sua avaliação e potencial de valorização a longo prazo, apesar da intensa concorrência no setor de tecnologia. A capacidade de gerar caixa e a recorrência de receita são pontos fortes.",
+      "swot": {
+        "forcas": "Liderança global em software de banco de dados empresarial; Crescimento acelerado da Oracle Cloud Infrastructure (OCI); Forte base de clientes com alta retenção; Modelo de receita recorrente robusto; Capacidade de inovação e aquisições estratégicas.",
+        "fraquezas": "Intensa concorrência de grandes players da nuvem (AWS, Azure, Google); Dependência histórica do mercado de software on-premise; Desafios na integração de aquisições; Percepção de lentidão em comparação com empresas de nuvem mais novas.",
+        "oportunidades": "Expansão global da OCI e aumento da adoção de serviços em nuvem; Crescimento da demanda por soluções de inteligência artificial e machine learning integradas; Potencial de cross-selling e up-selling para a base de clientes existente; Aquisições estratégicas para fortalecer portfólio e mercado.",
+        "ameacas": "Guerra de preços e margens na indústria de nuvem; Risco de cibersegurança e conformidade regulatória; Desaceleração econômica global impactando gastos corporativos em TI; Avanço de soluções open-source e modelos de licença alternativos; Escassez de talentos tecnológicos.",
+        "ameacas_adicional": "Riscos de segurança cibernética e privacidade de dados; Vulnerabilidade a mudanças tecnológicas disruptivas."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 5,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 121.79,
+          "descricao": "Cenário onde a adoção da nuvem é mais lenta que o esperado, a concorrência se intensifica, ou há uma desaceleração econômica significativa que afeta os gastos corporativos em TI, resultando em menor crescimento de receita e compressão de margens. O P/L aplicado é de 22x."
+        },
+        "base": {
+          "preco_justo": 145.23,
+          "descricao": "Cenário mais provável, onde a Oracle mantém seu ritmo de crescimento na nuvem e no software de banco de dados, com gestão eficiente de custos e lucros consistentes. O P/L aplicado reflete o múltiplo atual do mercado de 26.23x, indicando um valor justo para a ação neste momento."
+        },
+        "otimista": {
+          "preco_justo": 166.08,
+          "descricao": "Cenário onde a Oracle acelera significativamente sua participação de mercado na nuvem (OCI), impulsionada por inovações em IA e parcerias estratégicas, ou superando as expectativas de crescimento de lucros. O P/L aplicado é de 30x, refletindo um prêmio de mercado por performance superior."
+        }
+      }
+    }
   },
   "EQT": {
     "precoAtual": 61.09,
@@ -3334,9 +3876,45 @@
     "margemLiquida": 0.24927,
     "dividaPL": 28.932,
     "liquidezCorrente": 0.763,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A EQT, uma proeminente produtora de gás natural, demonstra fundamentos operacionais sólidos, evidenciados por uma Margem Líquida robusta de 24.93%. O Retorno sobre o Patrimônio Líquido (ROE) de 9.01% indica uma gestão eficiente do capital, embora com espaço para otimização. O múltiplo Preço/Lucro (P/L) de 18.04 sugere que o mercado atribui um valor razoável aos seus lucros, indicando expectativas de crescimento moderado a estável. A tendência geral é de uma empresa madura com forte geração de caixa, mas exposta à volatilidade do setor de energia.",
+      "swot": {
+        "forcas": "Liderança de mercado na produção de gás natural; alta margem líquida (24.93%) indicando forte rentabilidade operacional; vasta base de ativos e infraestrutura consolidada; experiência em otimização de custos e operações.",
+        "fraquezas": "Dependência da volatilidade dos preços das commodities (gás natural); ROE de 9.01% que, embora decente, pode ser considerado moderado em comparação com pares de alto crescimento; potencial para altos custos de capital e manutenção de ativos.",
+        "oportunidades": "Crescente demanda por gás natural como combustível de transição energética; expansão para mercados de GNL (Gás Natural Liquefeito); aquisições estratégicas e consolidação no setor; avanços tecnológicos que reduzem custos de extração e produção.",
+        "ameacas": "Regulamentações ambientais mais rigorosas; forte concorrência de fontes de energia renováveis; flutuações geopolíticas afetando o suprimento e a demanda de energia; riscos de desastres naturais ou operacionais afetando a produção."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 52,
+          "descricao": "Este cenário reflete um ambiente de mercado desafiador, com preços de gás natural abaixo das expectativas, aumento dos custos operacionais ou um impacto negativo de novas regulamentações. O múltiplo P/L e as expectativas de lucros são revisados para baixo, resultando em um valor justo que representa uma desvalorização considerável em relação ao preço atual, mas ainda acima do valor de compra com margem de segurança."
+        },
+        "base": {
+          "preco_justo": 65,
+          "descricao": "O cenário base assume uma continuidade das condições de mercado atuais, com preços de gás natural estáveis, crescimento moderado da demanda e manutenção das margens de lucro. A eficiência operacional e a disciplina de capital da EQT são consideradas consistentes, justificando um múltiplo P/L alinhado com a média histórica da empresa e do setor."
+        },
+        "otimista": {
+          "preco_justo": 70,
+          "descricao": "Neste cenário, a EQT se beneficia de um aumento significativo nos preços do gás natural, expansão bem-sucedida em novos mercados (ex: exportação de GNL) ou uma melhora na eficiência operacional que impulsiona o ROE e a margem líquida. O mercado reage positivamente a um crescimento de lucros acima do esperado e à redução de riscos, atribuindo um múltiplo P/L superior."
+        }
+      }
+    }
   },
   "MNST": {
     "precoAtual": 72.77,
@@ -3353,9 +3931,45 @@
     "margemLiquida": 0.22973,
     "dividaPL": 0.8,
     "liquidezCorrente": 3.703,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A Monster Beverage Corporation (MNST) demonstra uma forte tendência de crescimento, sustentada por um elevado Retorno sobre o Patrimônio Líquido (ROE) de 26.81% e uma margem líquida robusta de 22.97%. O P/L de 37.30 indica que o mercado possui altas expectativas de crescimento futuro para a empresa, posicionando-a como um player premium no setor de bebidas energéticas. A tendência é de manutenção da liderança e expansão, mas com o desafio de justificar sua alta valoração.",
+      "swot": {
+        "forcas": "Liderança de mercado consolidada no segmento de bebidas energéticas; Forte reconhecimento de marca e lealdade do consumidor; Elevadas margens de lucro e ROE indicando eficiência operacional e rentabilidade superior; Capacidade comprovada de inovação em produtos e sabores; Forte balanço patrimonial e geração de caixa.",
+        "fraquezas": "Alta dependência do segmento de bebidas energéticas, tornando-a vulnerável a mudanças de tendências de consumo ou regulamentação; Valoração elevada (P/L alto) que exige performance de crescimento contínua para ser justificada, limitando a margem para erros; Potencial saturação em mercados desenvolvidos; Desafios de expansão em mercados emergentes.",
+        "oportunidades": "Expansão para novos mercados geográficos, especialmente em regiões com crescente demanda por bebidas energéticas; Diversificação do portfólio de produtos para categorias adjacentes (ex: bebidas funcionais, chás gelados) ou com tendências de saúde; Aquisições estratégicas de marcas menores ou tecnologias complementares; Oportunidades de marketing e patrocínio para fortalecer ainda mais a marca globalmente.",
+        "ameacas": "Crescente escrutínio regulatório sobre ingredientes como açúcar e cafeína, o que pode impactar a formulação dos produtos; Aumento da concorrência por parte de grandes players de bebidas e pequenas startups; Mudanças nos hábitos de consumo, com preferência por opções mais 'naturais' ou 'saudáveis'; Flutuações cambiais adversas, dado o alcance global; Recessão econômica global impactando o consumo discricionário."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 4,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 58.52,
+          "descricao": "Neste cenário, assumimos uma desaceleração significativa no crescimento do mercado de bebidas energéticas, maior pressão regulatória ou intensificação da concorrência. Isso levaria a uma contração dos múltiplos de valuation (P/L de 30), refletindo expectativas de lucro mais modestas para a MNST."
+        },
+        "base": {
+          "preco_justo": 70.23,
+          "descricao": "O cenário base reflete a expectativa atual do mercado, com a MNST mantendo sua forte posição e crescimento sólido no setor, justificado por suas altas margens e ROE. Consideramos um P/L de 36, levemente abaixo do atual para incorporar uma margem de segurança e refletir um crescimento consistente."
+        },
+        "otimista": {
+          "preco_justo": 78.03,
+          "descricao": "Este cenário otimista considera uma aceleração no crescimento da empresa através de expansão de mercado bem-sucedida, sucesso em novos produtos/categorias ou aquisições estratégicas. Tal performance justificaria a manutenção ou até uma expansão dos múltiplos de mercado (P/L de 40)."
+        }
+      }
+    }
   },
   "CVS": {
     "precoAtual": 72.49,
@@ -3373,9 +3987,45 @@
     "margemLiquida": 0.00442,
     "dividaPL": 106.06,
     "liquidezCorrente": 0.842,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A CVS Health (CVS) apresenta um cenário complexo para análise. Com um Preço/Lucro (P/L) de 52.87, o mercado está precificando expectativas de crescimento ou uma normalização significativa de lucros futuros. No entanto, os indicadores de rentabilidade atuais são bastante fracos: um Retorno sobre o Patrimônio Líquido (ROE) de apenas 2.29% e uma Margem Líquida de 0.44% são preocupantemente baixos para uma empresa do seu porte e maturidade. Isso sugere que os lucros atuais estão deprimidos ou que a empresa enfrenta desafios estruturais em rentabilidade. A tendência aponta para uma empresa com uma base de receita massiva e uma estratégia ambiciosa de transição para serviços de saúde, mas que luta para traduzir isso em rentabilidade para os acionistas. O alto P/L, diante de margens tão apertadas, indica que o preço atual incorpora um otimismo substancial em relação a uma melhoria futura que ainda não se materializou nos resultados.",
+      "swot": {
+        "forcas": "1. Escala e presença de mercado incomparáveis em farmácias e gerenciamento de benefícios farmacêuticos (PBM).\n2. Diversificação estratégica para serviços de saúde (MinuteClinic, HealthHubs, integração Aetna).\n3. Marca forte e reconhecimento do consumidor.\n4. Fluxos de receita resilientes, impulsionados pela demanda por saúde.",
+        "fraquezas": "1. Baixa rentabilidade atual (ROE e Margem Líquida muito baixos).\n2. Alto P/L, sugerindo que o estoque pode estar sobrevalorizado em relação aos lucros atuais.\n3. Pressões competitivas e de reembolso nos segmentos de farmácia e PBM.\n4. Desafios na integração e na obtenção de sinergias das aquisições.",
+        "oportunidades": "1. Expansão contínua em serviços de saúde primária e especializada.\n2. Crescimento da população idosa e aumento da demanda por serviços de saúde.\n3. Otimização e inovação digital para melhorar a experiência do cliente e a eficiência operacional.\n4. Potencial para melhorar as margens através de eficiências operacionais e gestão de custos.",
+        "ameacas": "1. Riscos regulatórios e governamentais na indústria da saúde.\n2. Concorrência acirrada de players existentes e novos entrantes (ex: Amazon).\n3. Flutuações nos custos de medicamentos e pressões sobre preços de reembolso.\n4. Riscos macroeconômicos que afetam o poder de compra e o acesso a seguros de saúde."
+      },
+      "notas": {
+        "roe": 1,
+        "roic": 2,
+        "ebitda": 3,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "8.5%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SOBREVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 50,
+          "descricao": "Neste cenário, a empresa falha em melhorar significativamente sua rentabilidade, e as margens permanecem sob pressão. O mercado ajusta suas expectativas, resultando em uma contração substancial dos múltiplos de avaliação, refletindo o baixo ROE e a Margem Líquida persistente."
+        },
+        "base": {
+          "preco_justo": 65,
+          "descricao": "Considera uma melhoria modesta nas operações e uma integração bem-sucedida, mas gradual, dos serviços de saúde. Há um aumento moderado nos lucros, mas a empresa ainda enfrenta desafios para justificar um P/L tão elevado, levando a um preço justo abaixo do atual."
+        },
+        "otimista": {
+          "preco_justo": 78,
+          "descricao": "Assume uma execução excepcional das estratégias de crescimento e uma expansão significativa das margens, impulsionada pela inovação e eficiência nos serviços de saúde. Isso justifica o atual múltiplo de P/L e oferece um pequeno potencial de valorização, indicando que o mercado antecipa um forte e rápido turnaround."
+        }
+      }
+    }
   },
   "HUYA": {
     "precoAtual": 3.41,
@@ -3391,9 +4041,45 @@
     "margemLiquida": -0.01732,
     "dividaPL": 0.422,
     "liquidezCorrente": 2.838,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A HUYA Inc. (HUYA) apresenta indicadores financeiros preocupantes, com P/L indefinido (indicando ausência de lucro ou prejuízo), ROE negativo (-0.01806) e Margem Líquida também negativa (-0.01732). Isso sinaliza perdas operacionais e ineficiência na gestão do capital próprio. A tendência de curto a médio prazo é desfavorável, com a empresa enfrentando desafios significativos para reverter a rentabilidade. O preço atual de tela de 3.41 reflete um nível de risco elevado, onde o mercado ainda pode estar precificando um potencial de turnaround, mas os fundamentos atuais não o justificam.",
+      "swot": {
+        "forcas": "Liderança de mercado em seu nicho de transmissão ao vivo de jogos na China; Forte base de usuários engajados e reconhecimento de marca; Potencial para diversificação de conteúdo e monetização, explorando novos formatos além de jogos.",
+        "fraquezas": "Rentabilidade negativa persistente (ROE e Margem Líquida negativos) indicando prejuízos; Alta dependência da indústria de jogos e e-sports, sujeita a tendências e ciclos; Intensa concorrência no mercado de streaming e entretenimento digital; Desafios regulatórios na China que podem impactar a operação e a monetização.",
+        "oportunidades": "Expansão para mercados internacionais ou novas verticais de conteúdo; Inovação em modelos de monetização (e-commerce, assinaturas premium, publicidade direcionada); Potencial de consolidação da indústria através de fusões e aquisições; Crescimento contínuo do mercado global de e-sports e streaming de jogos.",
+        "ameacas": "Aumento da concorrência de plataformas estabelecidas e novos entrantes; Mudanças regulatórias adversas que afetam operações e modelo de negócios; Volatilidade na popularidade de jogos específicos; Incapacidade de reverter as perdas e retornar à lucratividade, levando a um esgotamento de capital; Retração econômica impactando gastos com entretenimento e publicidade."
+      },
+      "notas": {
+        "roe": 1,
+        "roic": 1,
+        "ebitda": 2,
+        "divida": 3,
+        "receita": 3
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "ALTO RISCO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 1.8,
+          "descricao": "Neste cenário, a HUYA falha em reverter suas perdas operacionais, ou as condições de mercado e regulatórias se deterioram ainda mais. A empresa continua a queimar caixa, levando a uma desvalorização significativa do ativo, refletindo a dificuldade de gerar valor para os acionistas. O valor é fortemente pressionado pela ausência de lucratividade e potencial exaustão de reservas."
+        },
+        "base": {
+          "preco_justo": 2.8,
+          "descricao": "Aqui, a HUYA consegue estabilizar suas operações e as perdas se tornam menos pronunciadas, mas sem um retorno robusto à lucratividade no curto e médio prazo. Há uma lenta recuperação ou estagnação próximo ao ponto de equilíbrio, justificando um valor abaixo do preço de tela atual devido aos riscos contínuos e à ausência de fortes perspectivas de crescimento de lucros. O mercado penaliza a falta de resultados concretos de turnaround."
+        },
+        "otimista": {
+          "preco_justo": 5,
+          "descricao": "No cenário otimista, a HUYA implementa com sucesso estratégias de reestruturação e monetização, retornando à lucratividade. Há um crescimento significativo de receita e margens, com a empresa capitalizando sua base de usuários e expandindo para novas verticais ou geografias. Isso justificaria uma valorização acima do preço atual, refletindo a expectativa de geração futura de caixa positivo e sustentável."
+        }
+      }
+    }
   },
   "GPC": {
     "precoAtual": 105.18,
@@ -3411,9 +4097,45 @@
     "margemLiquida": 0.00271,
     "dividaPL": 156.063,
     "liquidezCorrente": 1.079,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "05/04/2026",
+    "analise_senior": {
+      "tendencia": "A GPC exibe uma tendência de alta volátil, impulsionada por expectativas futuras de crescimento e potencial especulativo, refletido em seu P/L extremamente elevado. No entanto, os fundamentos de baixa rentabilidade (ROE de 1.5% e Margem Líquida de 0.27%) sugerem que o preço atual está apoiado em expectativas muito otimistas, o que implica um risco considerável de correção caso essas projeções não se concretizem.",
+      "swot": {
+        "forcas": "A GPC possui um alto múltiplo P/L, que pode ser interpretado como a crença do mercado em seu potencial de crescimento futuro e inovação. A capacidade de atrair investidores com foco em oportunidades de longo prazo ou turnaround é uma força, sugerindo resiliência no preço de tela, apesar dos desafios de rentabilidade atuais.",
+        "fraquezas": "As principais fraquezas residem na rentabilidade e eficiência. O P/L de 220.15 é excessivamente elevado, sugerindo uma sobreavaliação ou expectativas de crescimento que não são sustentadas pelos indicadores atuais. O ROE de apenas 1.5% e a margem líquida de 0.27% indicam uma performance operacional e financeira muito fraca, levantando preocupações sobre a sustentabilidade do modelo de negócio atual.",
+        "oportunidades": "Oportunidades podem surgir de uma reestruturação operacional que melhore significativamente as margens e o ROE. Qualquer aumento na eficiência, otimização de custos ou expansão de mercado que leve a um crescimento da receita e lucratividade pode ter um impacto desproporcional nos lucros e na percepção de valor do mercado, justificando, em parte, o alto P/L.",
+        "ameacas": "A principal ameaça é uma correção de mercado em relação ao múltiplo P/L, que é insustentável a longo prazo sem uma melhora substancial nos fundamentos. A incapacidade de entregar o crescimento e a rentabilidade esperados pode levar a uma queda acentuada no preço das ações. A concorrência intensa, mudanças regulatórias ou condições macroeconômicas desfavoráveis também representam riscos significativos para a GPC."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 68.39,
+          "descricao": "Neste cenário, o mercado recalibra as expectativas, levando o P/L para um patamar mais conservador (aproximadamente 143x), diante da baixa rentabilidade atual (ROE de 1.5% e Margem Líquida de 0.27%). Há uma correção significativa da precificação especulativa, com uma queda de cerca de 35% em relação ao preço atual."
+        },
+        "base": {
+          "preco_justo": 105.18,
+          "descricao": "O cenário base reflete a precificação atual de tela, onde o mercado mantém um P/L extremamente elevado (220.15x) para a GPC. Isso sugere que altas expectativas de crescimento ou uma reviravolta na lucratividade já estão amplamente precificadas, apesar dos fundamentos de rentabilidade fracos. A avaliação é considerada 'Justa' com base na percepção do mercado atual."
+        },
+        "otimista": {
+          "preco_justo": 117.89,
+          "descricao": "No cenário otimista, a GPC consegue superar levemente as já elevadas expectativas de mercado, ou a especulação se intensifica, permitindo uma pequena expansão do múltiplo P/L (aproximadamente 246x). Pequenas melhorias operacionais, anúncios estratégicos ou um ambiente de mercado favorável podem sustentar esse otimismo, elevando o preço em cerca de 12% acima do patamar atual."
+        }
+      }
+    }
   },
   "PFE": {
     "precoAtual": 28.55,
