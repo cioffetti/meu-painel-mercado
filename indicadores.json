@@ -1,12 +1,12 @@
 {
   "AGRO3.SA": {
-    "precoAtual": 20.78,
-    "pvp": 0.9937203,
+    "precoAtual": 20.73,
+    "pvp": 0.9874886,
     "dy": 0.0363,
     "evEbitda": -35.561,
     "vpa": 20.861,
     "lpa": -0.02,
-    "psr": 2.1394536,
+    "psr": 2.126037,
     "roe": -0.00074,
     "roa": -0.01319,
     "margemBruta": 0.043920003,
@@ -55,12 +55,12 @@
     }
   },
   "AMOB3.SA": {
-    "precoAtual": 13.8,
-    "pvp": 0.26102456,
+    "precoAtual": 13.91,
+    "pvp": 0.25689623,
     "evEbitda": 9.93,
     "vpa": 53.29,
     "lpa": -7.54,
-    "psr": 0.04112201,
+    "psr": 0.04047163,
     "roe": -0.13216,
     "roa": 0.01526,
     "margemBruta": 0.14461,
@@ -109,13 +109,13 @@
     }
   },
   "BBAS3.SA": {
-    "precoAtual": 23.63,
-    "pl": 9.745832,
-    "pvp": 0.72642004,
+    "precoAtual": 23.39,
+    "pl": 9.7625,
+    "pvp": 0.7276623,
     "dy": 0.012,
     "vpa": 32.199,
     "lpa": 2.4,
-    "psr": 1.8076229,
+    "psr": 1.8107142,
     "roe": 0.1106,
     "roa": 0.00865,
     "margemBruta": 0,
@@ -162,13 +162,13 @@
     }
   },
   "BBDC3.SA": {
-    "precoAtual": 16.9557,
-    "pl": 7.868544,
-    "pvp": 0.9935973,
+    "precoAtual": 16.76,
+    "pl": 7.8920183,
+    "pvp": 0.9965615,
     "dy": 0.0124,
     "vpa": 16.868,
     "lpa": 2.13,
-    "psr": 2.1503315,
+    "psr": 2.1567464,
     "roe": 0.13754,
     "roa": 0.010880001,
     "margemBruta": 0,
@@ -215,14 +215,14 @@
     }
   },
   "BBSE3.SA": {
-    "precoAtual": 35.1,
-    "pl": 7.6193547,
-    "pvp": 6.623668,
+    "precoAtual": 35.43,
+    "pl": 7.621505,
+    "pvp": 6.6255374,
     "dy": 0.1472,
     "evEbitda": 5.948,
     "vpa": 5.349,
     "lpa": 4.65,
-    "psr": 6.654491,
+    "psr": 6.6563687,
     "roe": 0.89815,
     "roa": 0.27602,
     "margemBruta": 0.98234004,
@@ -270,13 +270,13 @@
     }
   },
   "BRSR6.SA": {
-    "precoAtual": 17.82,
-    "pl": 4.2601433,
-    "pvp": 0.63693136,
+    "precoAtual": 17.85,
+    "pl": 4.2577567,
+    "pvp": 0.6365745,
     "dy": 0.0519,
     "vpa": 28.025,
     "lpa": 4.19,
-    "psr": 0.9792213,
+    "psr": 0.9786727,
     "roe": 0.1567,
     "roa": 0.011,
     "margemBruta": 0,
@@ -323,14 +323,14 @@
     }
   },
   "B3SA3.SA": {
-    "precoAtual": 18.52,
-    "pl": 22.39759,
-    "pvp": 5.366628,
+    "precoAtual": 18.59,
+    "pl": 22.20482,
+    "pvp": 5.320439,
     "dy": 0.0326,
     "evEbitda": 13.937,
     "vpa": 3.464,
     "lpa": 0.83,
-    "psr": 9.251828,
+    "psr": 9.1722,
     "roe": 0.25591,
     "roa": 0.08862001,
     "margemBruta": 0.95489,
@@ -379,14 +379,14 @@
     }
   },
   "CMIG3.SA": {
-    "precoAtual": 16.82,
-    "pl": 10,
-    "pvp": 1.7118831,
+    "precoAtual": 17.1,
+    "pl": 10.087719,
+    "pvp": 1.7268995,
     "dy": 0.0809,
     "evEbitda": 8.434,
     "vpa": 9.989,
     "lpa": 1.71,
-    "psr": 1.1442385,
+    "psr": 1.1542757,
     "roe": 0.1751,
     "roa": 0.06287,
     "margemBruta": 0.12495,
@@ -435,14 +435,14 @@
     }
   },
   "CXSE3.SA": {
-    "precoAtual": 18.35,
-    "pl": 12.909091,
-    "pvp": 4.086783,
+    "precoAtual": 18.46,
+    "pl": 13.132868,
+    "pvp": 4.1576266,
     "dy": 0.071100004,
     "evEbitda": 11.585,
     "vpa": 4.517,
     "lpa": 1.43,
-    "psr": 9.652676,
+    "psr": 9.820003,
     "roe": 0.32463002,
     "roa": 0.2018,
     "margemBruta": 0.89219004,
@@ -491,14 +491,14 @@
     }
   },
   "EGIE3.SA": {
-    "precoAtual": 32.88,
-    "pl": 14.725663,
-    "pvp": 2.9799426,
+    "precoAtual": 33.28,
+    "pl": 14.734513,
+    "pvp": 2.9817333,
     "dy": 0.055,
     "evEbitda": 9.489,
     "vpa": 11.168,
     "lpa": 2.26,
-    "psr": 2.9562905,
+    "psr": 2.9580672,
     "roe": 0.2182,
     "roa": 0.06559,
     "margemBruta": 0.46707,
@@ -547,14 +547,14 @@
     }
   },
   "EQTL3.SA": {
-    "precoAtual": 40.61,
-    "pl": 42.1875,
-    "pvp": 1.9786984,
+    "precoAtual": 40.5,
+    "pl": 42.145832,
+    "pvp": 1.976744,
     "dy": 0.0586,
     "evEbitda": 8.493,
     "vpa": 20.468,
     "lpa": 0.96,
-    "psr": 0.97858536,
+    "psr": 0.9776189,
     "roe": 0.06985,
     "roa": 0.04887,
     "margemBruta": 0.22136,
@@ -603,7 +603,7 @@
     }
   },
   "ETHE11.SA": {
-    "precoAtual": 31.87,
+    "precoAtual": 30.99,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -627,14 +627,14 @@
     "valuation_dcf": null
   },
   "EZTC3.SA": {
-    "precoAtual": 14.22,
-    "pl": 7.463158,
-    "pvp": 0.7818273,
+    "precoAtual": 14.18,
+    "pl": 7.5052633,
+    "pvp": 0.78623813,
     "dy": 0.0862,
     "evEbitda": 10.793,
     "vpa": 18.137,
     "lpa": 1.9,
-    "psr": 2.624308,
+    "psr": 2.639114,
     "roe": 0.10949001,
     "roa": 0.03442,
     "margemBruta": 0.41674998,
@@ -683,14 +683,14 @@
     }
   },
   "FLRY3.SA": {
-    "precoAtual": 16.03,
-    "pl": 14.178572,
-    "pvp": 1.730413,
+    "precoAtual": 15.88,
+    "pl": 14.214286,
+    "pvp": 1.7347717,
     "dy": 0.118999995,
     "evEbitda": 6.459,
     "vpa": 9.177,
     "lpa": 1.12,
-    "psr": 1.0456034,
+    "psr": 1.0482373,
     "roe": 0.113970004,
     "roa": 0.0596,
     "margemBruta": 0.26607,
@@ -739,14 +739,14 @@
     }
   },
   "GMAT3.SA": {
-    "precoAtual": 4.66,
-    "pl": 5.609756,
-    "pvp": 0.9943796,
+    "precoAtual": 4.6,
+    "pl": 5.573171,
+    "pvp": 0.98789454,
     "dy": 0.0542,
     "evEbitda": 6.239,
     "vpa": 4.626,
     "lpa": 0.82,
-    "psr": 0.27535155,
+    "psr": 0.2735558,
     "roe": 0.17333001,
     "roa": 0.06525,
     "margemBruta": 0.22399999,
@@ -795,7 +795,7 @@
     }
   },
   "GOLD11.SA": {
-    "precoAtual": 25.59,
+    "precoAtual": 25.11,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -819,14 +819,14 @@
     "valuation_dcf": null
   },
   "ITSA4.SA": {
-    "precoAtual": 14.18,
-    "pl": 9.405405,
-    "pvp": 1.7582418,
+    "precoAtual": 13.92,
+    "pl": 9.378378,
+    "pvp": 1.7531894,
     "dy": 0.0069999998,
     "evEbitda": 108.039,
     "vpa": 7.917,
     "lpa": 1.48,
-    "psr": 18.918894,
+    "psr": 18.864529,
     "roe": 0.17571,
     "roa": 0.00201,
     "margemBruta": 0.24367,
@@ -875,14 +875,14 @@
     }
   },
   "KEPL3.SA": {
-    "precoAtual": 8.21,
-    "pl": 9.155556,
-    "pvp": 1.8446383,
+    "precoAtual": 8.24,
+    "pl": 8.922222,
+    "pvp": 1.797627,
     "dy": 0.0655,
     "evEbitda": 6.477,
     "vpa": 4.467,
     "lpa": 0.9,
-    "psr": 0.95836705,
+    "psr": 0.9339426,
     "roe": 0.20629999,
     "roa": 0.07988,
     "margemBruta": 0.23753001,
@@ -931,14 +931,14 @@
     }
   },
   "KLBN3.SA": {
-    "precoAtual": 3.89,
-    "pl": 16.869566,
-    "pvp": 0.60370314,
+    "precoAtual": 3.88,
+    "pl": 16.47826,
+    "pvp": 0.5896997,
     "dy": 0.084300004,
     "evEbitda": 5.36,
     "vpa": 6.427,
     "lpa": 0.23,
-    "psr": 1.151625,
+    "psr": 1.124912,
     "roe": 0.14569001,
     "roa": 0.025929999,
     "margemBruta": 0.27287,
@@ -987,14 +987,14 @@
     }
   },
   "LEVE3.SA": {
-    "precoAtual": 35.14,
-    "pl": 7.8218265,
-    "pvp": 5.5254874,
+    "precoAtual": 35.12,
+    "pl": 7.8463254,
+    "pvp": 5.542794,
     "dy": 0.081199996,
     "evEbitda": 6.197,
     "vpa": 6.356,
     "lpa": 4.49,
-    "psr": 0.8804161,
+    "psr": 0.8831736,
     "roe": 0.74492997,
     "roa": 0.14077,
     "margemBruta": 0.27048,
@@ -1044,13 +1044,13 @@
   },
   "MBRF3.SA": {
     "precoAtual": 20.79,
-    "pl": 57.75,
-    "pvp": 2.5874302,
+    "pl": 56.97222,
+    "pvp": 2.5525825,
     "dy": 0.2715,
     "evEbitda": 7.304,
     "vpa": 8.035,
     "lpa": 0.36,
-    "psr": 0.17775889,
+    "psr": 0.17536482,
     "roe": 0.04453,
     "roa": 0.02489,
     "margemBruta": 0.123100005,
@@ -1099,14 +1099,14 @@
     }
   },
   "PETR3.SA": {
-    "precoAtual": 51.93,
-    "pl": 6.6044774,
-    "pvp": 1.6460012,
+    "precoAtual": 53.1,
+    "pl": 6.6803484,
+    "pvp": 1.6649102,
     "dy": 0.0736,
     "evEbitda": 4.899,
     "vpa": 32.26,
     "lpa": 8.04,
-    "psr": 1.3755262,
+    "psr": 1.391328,
     "roe": 0.28176,
     "roa": 0.08613,
     "margemBruta": 0.47632998,
@@ -1155,13 +1155,13 @@
     }
   },
   "PRIO3.SA": {
-    "precoAtual": 64.13,
-    "pl": 24.465702,
-    "pvp": 2.1291234,
+    "precoAtual": 67.77,
+    "pl": 24.29603,
+    "pvp": 2.1143577,
     "evEbitda": 9.953,
     "vpa": 31.83,
     "lpa": 2.77,
-    "psr": 3.5216374,
+    "psr": 3.4972146,
     "roe": 0.08708999,
     "roa": 0.022669999,
     "margemBruta": 0.19917,
@@ -1210,14 +1210,14 @@
     }
   },
   "PSSA3.SA": {
-    "precoAtual": 49.85,
-    "pl": 9.700576,
-    "pvp": 2.055976,
+    "precoAtual": 50.54,
+    "pl": 9.642995,
+    "pvp": 2.043772,
     "dy": 0.059,
     "evEbitda": 4.004,
     "vpa": 24.582,
     "lpa": 5.21,
-    "psr": 0.74974,
+    "psr": 0.7452896,
     "roe": 0.22815001,
     "roa": 0.06106,
     "margemBruta": 0.40445998,
@@ -1266,7 +1266,7 @@
     }
   },
   "QBTC11.SA": {
-    "precoAtual": 21.4,
+    "precoAtual": 21.04,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -1290,7 +1290,7 @@
     "valuation_dcf": null
   },
   "QSOL11.SA": {
-    "precoAtual": 5.37,
+    "precoAtual": 5.06,
     "margemBruta": 0,
     "margemOperacional": 0,
     "margemLiquida": 0,
@@ -1299,7 +1299,7 @@
     "valuation_dcf": null
   },
   "RAIZ4.SA": {
-    "precoAtual": 0.53,
+    "precoAtual": 0.54,
     "evEbitda": 104.394,
     "vpa": -0.154,
     "lpa": -2.15,
@@ -1351,14 +1351,14 @@
     }
   },
   "RANI3.SA": {
-    "precoAtual": 9.71,
-    "pl": 8.681818,
-    "pvp": 1.5161138,
+    "precoAtual": 9.55,
+    "pl": 8.572727,
+    "pvp": 1.4970632,
     "dy": 0.0477,
     "evEbitda": 6.407,
     "vpa": 6.299,
     "lpa": 1.1,
-    "psr": 1.305386,
+    "psr": 1.2889832,
     "roe": 0.18021,
     "roa": 0.054759998,
     "margemBruta": 0.34599,
@@ -1407,14 +1407,14 @@
     }
   },
   "SAPR4.SA": {
-    "precoAtual": 8.7,
-    "pl": 6.782946,
-    "pvp": 0.21417731,
+    "precoAtual": 8.75,
+    "pl": 6.744186,
+    "pvp": 0.21295343,
     "dy": 0.0257,
     "evEbitda": 1.956,
     "vpa": 40.854,
     "lpa": 1.29,
-    "psr": 1.8350748,
+    "psr": 1.8245885,
     "roe": 0.17944999,
     "roa": 0.04665,
     "margemBruta": 0.56273997,
@@ -1463,14 +1463,14 @@
     }
   },
   "SBFG3.SA": {
-    "precoAtual": 12.45,
-    "pl": 8.885715,
-    "pvp": 0.87809694,
+    "precoAtual": 12.44,
+    "pl": 8.771428,
+    "pvp": 0.8668031,
     "dy": 0.0436,
     "evEbitda": 7.572,
     "vpa": 14.167,
     "lpa": 1.4,
-    "psr": 0.3702627,
+    "psr": 0.3655005,
     "roe": 0.10802,
     "roa": 0.03584,
     "margemBruta": 0.48279,
@@ -1519,14 +1519,14 @@
     }
   },
   "SMTO3.SA": {
-    "precoAtual": 19.71,
-    "pl": 8.771552,
-    "pvp": 0.9073075,
+    "precoAtual": 20.35,
+    "pl": 8.487069,
+    "pvp": 0.8778813,
     "dy": 0.044899996,
     "evEbitda": 5.015,
     "vpa": 22.429,
     "lpa": 2.32,
-    "psr": 0.94841725,
+    "psr": 0.91765773,
     "roe": 0.11124,
     "roa": 0.03426,
     "margemBruta": 0.24601,
@@ -1575,14 +1575,14 @@
     }
   },
   "SOJA3.SA": {
-    "precoAtual": 7.1,
-    "pl": 53.5,
-    "pvp": 0.79368436,
+    "precoAtual": 7.49,
+    "pl": 52.714287,
+    "pvp": 0.7820282,
     "dy": 0.0586,
     "evEbitda": 17.244,
     "vpa": 9.437,
     "lpa": 0.14,
-    "psr": 0.40289322,
+    "psr": 0.39697626,
     "roe": 0.051570002,
     "roa": 0.018380001,
     "margemBruta": 0.102910005,
@@ -1631,14 +1631,14 @@
     }
   },
   "SUZB3.SA": {
-    "precoAtual": 52.09,
-    "pl": 4.6996303,
-    "pvp": 1.434455,
+    "precoAtual": 50.85,
+    "pl": 4.5841036,
+    "pvp": 1.3991932,
     "dy": 0.022,
     "evEbitda": 6.649,
     "vpa": 35.449,
     "lpa": 10.82,
-    "psr": 1.2542088,
+    "psr": 1.2233777,
     "roe": 0.35192,
     "roa": 0.037750002,
     "margemBruta": 0.32377,
@@ -1687,14 +1687,14 @@
     }
   },
   "TAEE11.SA": {
-    "precoAtual": 42.79,
-    "pl": 39.29358,
-    "pvp": 1.9391499,
+    "precoAtual": 42.83,
+    "pl": 39.394493,
+    "pvp": 1.94413,
     "dy": 0.0746,
     "evEbitda": 10.512,
     "vpa": 22.087,
     "lpa": 1.09,
-    "psr": 3.1908581,
+    "psr": 3.199053,
     "roe": 0.21719,
     "roa": 0.066350006,
     "margemBruta": 0.55202,
@@ -1743,14 +1743,14 @@
     }
   },
   "TTEN3.SA": {
-    "precoAtual": 16.03,
-    "pl": 9.906832,
-    "pvp": 1.6969889,
+    "precoAtual": 15.95,
+    "pl": 9.869565,
+    "pvp": 1.6906054,
     "dy": 0.0234,
     "evEbitda": 15.235,
     "vpa": 9.399,
     "lpa": 1.61,
-    "psr": 0.4862786,
+    "psr": 0.48444936,
     "roe": 0.18494,
     "roa": 0.030650001,
     "margemBruta": 0.15127,
@@ -1799,14 +1799,14 @@
     }
   },
   "VAMO3.SA": {
-    "precoAtual": 3.77,
-    "pl": 11.903226,
-    "pvp": 1.5355805,
+    "precoAtual": 3.69,
+    "pl": 11.548387,
+    "pvp": 1.4898043,
     "dy": 0.038,
     "evEbitda": 4.428,
     "vpa": 2.403,
     "lpa": 0.31,
-    "psr": 0.686263,
+    "psr": 0.6658053,
     "roe": 0.13136,
     "roa": 0.075500004,
     "margemBruta": 0.52428,
@@ -1855,14 +1855,14 @@
     }
   },
   "VIVT3.SA": {
-    "precoAtual": 41.65,
-    "pl": 21.628273,
-    "pvp": 1.9209487,
+    "precoAtual": 41.31,
+    "pl": 21.314137,
+    "pvp": 1.8930482,
     "dy": 0.0559,
     "evEbitda": 7.523,
     "vpa": 21.505,
     "lpa": 1.91,
-    "psr": 2.215127,
+    "psr": 2.1829536,
     "roe": 0.08901,
     "roa": 0.05242,
     "margemBruta": 0.48099998,
@@ -1911,14 +1911,14 @@
     }
   },
   "WEGE3.SA": {
-    "precoAtual": 51.01,
-    "pl": 33.098686,
-    "pvp": 12.119971,
+    "precoAtual": 50.31,
+    "pl": 33.30263,
+    "pvp": 12.194652,
     "dy": 0.008,
     "evEbitda": 23.996,
     "vpa": 4.151,
     "lpa": 1.52,
-    "psr": 5.1731615,
+    "psr": 5.205037,
     "roe": 0.32514998,
     "roa": 0.11845,
     "margemBruta": 0.3353,
@@ -1967,14 +1967,14 @@
     }
   },
   "GOOGL": {
-    "precoAtual": 297.39,
-    "pl": 27.38611,
-    "pvp": 8.609728,
+    "precoAtual": 295.77,
+    "pl": 27.77685,
+    "pvp": 8.732571,
     "dy": 0.0028,
     "evEbitda": 23.427,
     "vpa": 34.353,
     "lpa": 10.8,
-    "psr": 8.881852,
+    "psr": 9.008576,
     "roe": 0.35705003,
     "roa": 0.15427,
     "margemBruta": 0.59652,
@@ -2023,13 +2023,13 @@
     }
   },
   "AMZN": {
-    "precoAtual": 210.57,
-    "pl": 29.256624,
-    "pvp": 5.476166,
+    "precoAtual": 209.77,
+    "pl": 29.677822,
+    "pvp": 5.555004,
     "evEbitda": 15.833,
     "vpa": 38.306,
     "lpa": 7.17,
-    "psr": 3.1410086,
+    "psr": 3.1862285,
     "roe": 0.22286,
     "roa": 0.06928,
     "margemBruta": 0.50286,
@@ -2078,14 +2078,14 @@
     }
   },
   "NVDA": {
-    "precoAtual": 175.75,
-    "pl": 36.20204,
-    "pvp": 27.408838,
+    "precoAtual": 177.39,
+    "pl": 36.25306,
+    "pvp": 27.447466,
     "dy": 0.0002,
     "evEbitda": 31.971,
     "vpa": 6.472,
     "lpa": 4.9,
-    "psr": 19.966211,
+    "psr": 19.99435,
     "roe": 1.01485,
     "roa": 0.51188,
     "margemBruta": 0.71068,
@@ -2134,14 +2134,14 @@
     }
   },
   "TSM": {
-    "precoAtual": 341.49,
-    "pl": 32.694313,
-    "pvp": 51.861965,
+    "precoAtual": 339.04,
+    "pl": 32.956608,
+    "pvp": 52.278038,
     "dy": 0.0104,
     "evEbitda": 2.614,
     "vpa": 6.5373535,
     "lpa": 10.37,
-    "psr": 0.46164545,
+    "psr": 0.46534908,
     "roe": 0.35064,
     "roa": 0.16555001,
     "margemBruta": 0.59891,
@@ -2190,14 +2190,14 @@
     }
   },
   "ASML": {
-    "precoAtual": 1359.76,
-    "pl": 46.089222,
-    "pvp": 22.366722,
+    "precoAtual": 1317.23,
+    "pl": 45.626663,
+    "pvp": 22.142244,
     "dy": 0.0067000003,
     "evEbitda": 40.684,
     "vpa": 58.892403,
     "lpa": 28.58,
-    "psr": 15.833014,
+    "psr": 15.67411,
     "roe": 0.50458,
     "roa": 0.14247,
     "margemBruta": 0.52830005,
@@ -2246,14 +2246,14 @@
     }
   },
   "AVGO": {
-    "precoAtual": 313.49,
-    "pl": 61.315784,
-    "pvp": 18.651052,
+    "precoAtual": 314.55,
+    "pl": 61.292397,
+    "pvp": 18.643936,
     "dy": 0.0083,
     "evEbitda": 41.409,
     "vpa": 16.865,
     "lpa": 5.13,
-    "psr": 21.841297,
+    "psr": 21.832968,
     "roe": 0.33370999,
     "roa": 0.10663,
     "margemBruta": 0.76725996,
@@ -2302,14 +2302,14 @@
     }
   },
   "IRS": {
-    "precoAtual": 16.54,
-    "pl": 3.8720927,
-    "pvp": 9.469429,
+    "precoAtual": 16.65,
+    "pl": 3.8976743,
+    "pvp": 9.53199,
     "dy": 0.144,
     "evEbitda": 3.851,
     "vpa": 1.7582897,
     "lpa": 4.3,
-    "psr": 0.0027989568,
+    "psr": 0.0028174485,
     "roe": 0.31178,
     "roa": 0.038680002,
     "margemBruta": 0.61626,
@@ -2358,13 +2358,13 @@
     }
   },
   "TSLA": {
-    "precoAtual": 381.26,
-    "pl": 333.8796,
-    "pvp": 16.467552,
+    "precoAtual": 360.59,
+    "pl": 326.68518,
+    "pvp": 16.11271,
     "evEbitda": 126.105,
     "vpa": 21.897,
     "lpa": 1.08,
-    "psr": 14.269031,
+    "psr": 13.961561,
     "roe": 0.049250003,
     "roa": 0.02095,
     "margemBruta": 0.18027,
@@ -2413,14 +2413,14 @@
     }
   },
   "MU": {
-    "precoAtual": 367.85,
-    "pl": 17.267326,
-    "pvp": 5.701387,
+    "precoAtual": 366.24,
+    "pl": 17.810469,
+    "pvp": 5.880723,
     "dy": 0.0016,
     "evEbitda": 11.119,
     "vpa": 64.237,
     "lpa": 21.21,
-    "psr": 7.1064763,
+    "psr": 7.330009,
     "roe": 0.39823002,
     "roa": 0.20145,
     "margemBruta": 0.58437,
@@ -2469,14 +2469,14 @@
     }
   },
   "VZ": {
-    "precoAtual": 49.39,
-    "pl": 12.167488,
-    "pvp": 1.994348,
+    "precoAtual": 49.4,
+    "pl": 12.105912,
+    "pvp": 1.9842552,
     "dy": 0.0573,
     "evEbitda": 7.508,
     "vpa": 24.77,
     "lpa": 4.06,
-    "psr": 1.507722,
+    "psr": 1.5000918,
     "roe": 0.17069,
     "roa": 0.05014,
     "margemBruta": 0.59071,
@@ -2525,14 +2525,14 @@
     }
   },
   "T": {
-    "precoAtual": 28.31,
-    "pl": 9.319079,
-    "pvp": 1.8037692,
+    "precoAtual": 28.33,
+    "pl": 9.315789,
+    "pvp": 1.8031325,
     "dy": 0.0392,
     "evEbitda": 8.083,
     "vpa": 15.706,
     "lpa": 3.04,
-    "psr": 1.5784283,
+    "psr": 1.5778711,
     "roe": 0.18805,
     "roa": 0.040749997,
     "margemBruta": 0.59554,
@@ -2581,14 +2581,14 @@
     }
   },
   "HD": {
-    "precoAtual": 329.56,
-    "pl": 22.618143,
-    "pvp": 25.002333,
+    "precoAtual": 321.63,
+    "pl": 22.971167,
+    "pvp": 25.392567,
     "dy": 0.029000001,
     "evEbitda": 15.388,
     "vpa": 12.864,
     "lpa": 14.22,
-    "psr": 1.9452351,
+    "psr": 1.9755963,
     "roe": 1.45541,
     "roa": 0.12977,
     "margemBruta": 0.33316,
@@ -2637,13 +2637,13 @@
     }
   },
   "SHOP": {
-    "precoAtual": 118.52,
-    "pl": 127.150536,
-    "pvp": 11.443917,
+    "precoAtual": 118.25,
+    "pl": 127.741936,
+    "pvp": 11.497145,
     "evEbitda": 77.01,
     "vpa": 10.333,
     "lpa": 0.93,
-    "psr": 13.354633,
+    "psr": 13.416748,
     "roe": 0.09836,
     "roa": 0.08149,
     "margemBruta": 0.4807,
@@ -2693,14 +2693,14 @@
     }
   },
   "DIS": {
-    "precoAtual": 96.56,
-    "pl": 14.228277,
-    "pvp": 1.581722,
+    "precoAtual": 96.61,
+    "pl": 14.179676,
+    "pvp": 1.5763192,
     "dy": 0.0155,
     "evEbitda": 11.273,
     "vpa": 61.079,
     "lpa": 6.79,
-    "psr": 1.7899506,
+    "psr": 1.7838365,
     "roe": 0.12024,
     "roa": 0.04366,
     "margemBruta": 0.37284002,
@@ -2749,14 +2749,14 @@
     }
   },
   "SPG": {
-    "precoAtual": 188.09,
-    "pl": 13.31475,
-    "pvp": 11.873505,
+    "precoAtual": 188.67,
+    "pl": 13.424841,
+    "pvp": 11.97168,
     "dy": 0.0458,
     "evEbitda": 19.394,
     "vpa": 15.89,
     "lpa": 14.17,
-    "psr": 9.632946,
+    "psr": 9.712595,
     "roe": 1.04109,
     "roa": 0.05436,
     "margemBruta": 0.81899,
@@ -2805,13 +2805,13 @@
     }
   },
   "ANET": {
-    "precoAtual": 124.85,
-    "pl": 46.065456,
-    "pvp": 12.867445,
+    "precoAtual": 126.68,
+    "pl": 45.909092,
+    "pvp": 12.823768,
     "evEbitda": 37.805,
     "vpa": 9.845,
     "lpa": 2.75,
-    "psr": 17.713919,
+    "psr": 17.653791,
     "roe": 0.314,
     "roa": 0.14392,
     "margemBruta": 0.64056,
@@ -2860,14 +2860,14 @@
     }
   },
   "ICE": {
-    "precoAtual": 158.08,
-    "pl": 28.2461,
-    "pvp": 3.195937,
+    "precoAtual": 162.98,
+    "pl": 28.837088,
+    "pvp": 3.262805,
     "dy": 0.0128,
     "evEbitda": 18.153,
     "vpa": 50.996,
     "lpa": 5.77,
-    "psr": 9.357335,
+    "psr": 9.514883,
     "roe": 0.11885,
     "roa": 0.022550002,
     "margemBruta": 1,
@@ -2916,14 +2916,14 @@
     }
   },
   "KO": {
-    "precoAtual": 76.08,
-    "pl": 25.236843,
-    "pvp": 10.259428,
+    "precoAtual": 76.72,
+    "pl": 25.401316,
+    "pvp": 10.32629,
     "dy": 0.0269,
     "evEbitda": 22.65,
     "vpa": 7.478,
     "lpa": 3.04,
-    "psr": 6.887938,
+    "psr": 6.932828,
     "roe": 0.43323,
     "roa": 0.09147,
     "margemBruta": 0.61626,
@@ -2972,14 +2972,14 @@
     }
   },
   "EQNR": {
-    "precoAtual": 40.39,
-    "pl": 21.520618,
-    "pvp": 2.5822613,
+    "precoAtual": 41.75,
+    "pl": 21.62371,
+    "pvp": 2.5946314,
     "dy": 0.0374,
     "evEbitda": 3.281,
     "vpa": 16.168,
     "lpa": 1.94,
-    "psr": 0.9817745,
+    "psr": 0.9864777,
     "roe": 0.12206,
     "roa": 0.12642999,
     "margemBruta": 0.3703,
@@ -3028,14 +3028,14 @@
     }
   },
   "EPR": {
-    "precoAtual": 50.3,
-    "pl": 15.597561,
-    "pvp": 1.672606,
+    "precoAtual": 51.16,
+    "pl": 15.521341,
+    "pvp": 1.6644326,
     "dy": 0.0695,
     "evEbitda": 12.665,
     "vpa": 30.587,
     "lpa": 3.28,
-    "psr": 5.483162,
+    "psr": 5.456368,
     "roe": 0.11788,
     "roa": 0.042090002,
     "margemBruta": 0.91712,
@@ -3085,13 +3085,13 @@
     }
   },
   "WFC": {
-    "precoAtual": 80.57,
-    "pl": 12.875399,
-    "pvp": 1.5152085,
+    "precoAtual": 80.6,
+    "pl": 13.075079,
+    "pvp": 1.5387074,
     "dy": 0.0223,
     "vpa": 53.194,
     "lpa": 6.26,
-    "psr": 3.1071854,
+    "psr": 3.1553736,
     "roe": 0.11732,
     "roa": 0.01047,
     "margemBruta": 0,
@@ -3138,7 +3138,7 @@
     }
   },
   "VICI": {
-    "precoAtual": 27.46,
+    "precoAtual": 27.66,
     "pl": 10.597701,
     "pvp": 1.0635189,
     "dy": 0.0644,
@@ -3194,14 +3194,14 @@
     }
   },
   "O": {
-    "precoAtual": 61.88,
-    "pl": 53.17094,
-    "pvp": 1.473228,
+    "precoAtual": 62.21,
+    "pl": 52.846157,
+    "pvp": 1.4642291,
     "dy": 0.051999997,
     "evEbitda": 17.16,
     "vpa": 42.227,
     "lpa": 1.17,
-    "psr": 10.06606,
+    "psr": 10.004573,
     "roe": 0.02702,
     "roa": 0.02269,
     "margemBruta": 0.92559,
@@ -3250,13 +3250,13 @@
     }
   },
   "CPRT": {
-    "precoAtual": 33.02,
-    "pl": 21.00629,
-    "pvp": 3.2867548,
+    "precoAtual": 33.4,
+    "pl": 20.654087,
+    "pvp": 3.2316475,
     "evEbitda": 13.985,
     "vpa": 10.162,
     "lpa": 1.59,
-    "psr": 7.0080576,
+    "psr": 6.8905573,
     "roe": 0.17129,
     "roa": 0.109919995,
     "margemBruta": 0.47344002,
@@ -3305,14 +3305,14 @@
     }
   },
   "ASX": {
-    "precoAtual": 22.48,
-    "pl": 40.50909,
-    "pvp": 8.982778,
+    "precoAtual": 22.28,
+    "pl": 40.999996,
+    "pvp": 9.091635,
     "dy": 0.016,
     "evEbitda": 2.491,
     "vpa": 2.4803019,
     "lpa": 0.55,
-    "psr": 0.0755009,
+    "psr": 0.076415844,
     "roe": 0.116359994,
     "roa": 0.03892,
     "margemBruta": 0.17694001,
@@ -3361,13 +3361,13 @@
     }
   },
   "CEPU": {
-    "precoAtual": 16.61,
-    "pl": 10.215569,
-    "pvp": 13.87163,
+    "precoAtual": 17.06,
+    "pl": 10.053893,
+    "pvp": 13.652091,
     "evEbitda": 0.531,
     "vpa": 1.2298483,
     "lpa": 1.67,
-    "psr": 0.0023929763,
+    "psr": 0.002355104,
     "roe": 0.13927001,
     "roa": 0.052160002,
     "margemBruta": 0.35881,
@@ -3416,14 +3416,14 @@
     }
   },
   "NVO": {
-    "precoAtual": 36.48,
-    "pl": 10.387641,
-    "pvp": 5.4698515,
+    "precoAtual": 36.98,
+    "pl": 10.300562,
+    "pvp": 5.423998,
     "dy": 0.048699997,
     "evEbitda": 1.75,
     "vpa": 6.7606955,
     "lpa": 3.56,
-    "psr": 0.53106725,
+    "psr": 0.5266154,
     "roe": 0.60696,
     "roa": 0.17429,
     "margemBruta": 0.82405996,
@@ -3472,13 +3472,13 @@
     }
   },
   "PLTR": {
-    "precoAtual": 146.49,
-    "pl": 239.45161,
-    "pvp": 48.060863,
+    "precoAtual": 148.46,
+    "pl": 238.59676,
+    "pvp": 47.889282,
     "evEbitda": 241.793,
     "vpa": 3.089,
     "lpa": 0.62,
-    "psr": 79.336945,
+    "psr": 79.0537,
     "roe": 0.25983,
     "roa": 0.11597,
     "margemBruta": 0.82366997,
@@ -3527,14 +3527,14 @@
     }
   },
   "JBL": {
-    "precoAtual": 271.96,
-    "pl": 36.241566,
-    "pvp": 21.18069,
+    "precoAtual": 268.55,
+    "pl": 36.095818,
+    "pvp": 21.095512,
     "dy": 0.0011999999,
     "evEbitda": 13.054,
     "vpa": 12.679,
     "lpa": 7.41,
-    "psr": 0.8781738,
+    "psr": 0.8746422,
     "roe": 0.59696996,
     "roa": 0.053489998,
     "margemBruta": 0.09037,
@@ -3583,14 +3583,14 @@
     }
   },
   "QCOM": {
-    "precoAtual": 127.28,
-    "pl": 25.564516,
-    "pvp": 5.9023414,
+    "precoAtual": 126.8,
+    "pl": 25.348791,
+    "pvp": 5.852535,
     "dy": 0.028099999,
     "evEbitda": 10.047,
     "vpa": 21.483,
     "lpa": 4.96,
-    "psr": 3.018435,
+    "psr": 2.9929643,
     "roe": 0.2148,
     "roa": 0.14047,
     "margemBruta": 0.55101,
@@ -3639,14 +3639,14 @@
     }
   },
   "AAPL": {
-    "precoAtual": 255.63,
-    "pl": 32.35398,
-    "pvp": 42.667553,
+    "precoAtual": 255.92,
+    "pl": 32.725662,
+    "pvp": 43.157715,
     "dy": 0.0041,
     "evEbitda": 24.727,
     "vpa": 5.998,
     "lpa": 7.91,
-    "psr": 8.634863,
+    "psr": 8.734059,
     "roe": 1.5202099,
     "roa": 0.24377,
     "margemBruta": 0.47325,
@@ -3695,14 +3695,14 @@
     }
   },
   "MSFT": {
-    "precoAtual": 369.37,
-    "pl": 23.370462,
-    "pvp": 7.0979753,
+    "precoAtual": 373.46,
+    "pl": 23.33417,
+    "pvp": 7.086952,
     "dy": 0.0097,
     "evEbitda": 16.016,
     "vpa": 52.615,
     "lpa": 15.98,
-    "psr": 9.087145,
+    "psr": 9.073032,
     "roe": 0.34390998,
     "roa": 0.1486,
     "margemBruta": 0.68586,
@@ -3751,13 +3751,13 @@
     }
   },
   "BAC": {
-    "precoAtual": 49.27,
-    "pl": 12.96063,
-    "pvp": 1.2845659,
+    "precoAtual": 49.38,
+    "pl": 13.139108,
+    "pvp": 1.3022554,
     "dy": 0.0227,
     "vpa": 38.441,
     "lpa": 3.81,
-    "psr": 3.2989945,
+    "psr": 3.344424,
     "roe": 0.10217,
     "roa": 0.00914,
     "margemBruta": 0,
@@ -3804,14 +3804,14 @@
     }
   },
   "ORCL": {
-    "precoAtual": 145.23,
-    "pl": 26.232977,
-    "pvp": 12.547574,
+    "precoAtual": 146.38,
+    "pl": 26.082436,
+    "pvp": 12.475569,
     "dy": 0.0137,
     "evEbitda": 20.026,
     "vpa": 11.666,
     "lpa": 5.58,
-    "psr": 6.5702543,
+    "psr": 6.532551,
     "roe": 0.57572,
     "roa": 0.06335,
     "margemBruta": 0.67084,
@@ -3861,14 +3861,14 @@
     }
   },
   "EQT": {
-    "precoAtual": 61.09,
-    "pl": 18.036255,
-    "pvp": 1.5685347,
+    "precoAtual": 59.7,
+    "pl": 18.247734,
+    "pvp": 1.5869262,
     "dy": 0.0111,
     "evEbitda": 7.992,
     "vpa": 38.061,
     "lpa": 3.31,
-    "psr": 4.555731,
+    "psr": 4.6091485,
     "roe": 0.09007,
     "roa": 0.053460002,
     "margemBruta": 0.78629,
@@ -3917,13 +3917,13 @@
     }
   },
   "MNST": {
-    "precoAtual": 72.77,
-    "pl": 37.304123,
-    "pvp": 8.575661,
+    "precoAtual": 72.37,
+    "pl": 38.226807,
+    "pvp": 8.787771,
     "evEbitda": 25.615,
     "vpa": 8.439,
     "lpa": 1.94,
-    "psr": 8.535631,
+    "psr": 8.746751,
     "roe": 0.26815,
     "roa": 0.17958,
     "margemBruta": 0.55848,
@@ -3972,14 +3972,14 @@
     }
   },
   "CVS": {
-    "precoAtual": 72.49,
-    "pl": 52.870502,
-    "pvp": 1.2418677,
+    "precoAtual": 73.49,
+    "pl": 52.719425,
+    "pvp": 1.2383189,
     "dy": 0.036199998,
     "evEbitda": 11.146,
     "vpa": 59.177,
     "lpa": 1.39,
-    "psr": 0.23383401,
+    "psr": 0.23316583,
     "roe": 0.022869999,
     "roa": 0.02471,
     "margemBruta": 0.13288,
@@ -4029,11 +4029,11 @@
   },
   "HUYA": {
     "precoAtual": 3.41,
-    "pvp": 1.0954483,
+    "pvp": 1.037624,
     "evEbitda": 35.068,
     "vpa": 3.112881,
     "lpa": -0.07,
-    "psr": 0.11722573,
+    "psr": 0.11103786,
     "roe": -0.01806,
     "roa": -0.01249,
     "margemBruta": 0.13412,
@@ -4082,14 +4082,14 @@
     }
   },
   "GPC": {
-    "precoAtual": 105.18,
-    "pl": 220.14894,
-    "pvp": 3.219353,
+    "precoAtual": 103.47,
+    "pl": 223.7234,
+    "pvp": 3.2716243,
     "dy": 0.041100003,
     "evEbitda": 10.282,
     "vpa": 32.14,
     "lpa": 0.47,
-    "psr": 0.59238195,
+    "psr": 0.60200024,
     "roe": 0.015,
     "roa": 0.046040002,
     "margemBruta": 0.37452,
@@ -4138,14 +4138,14 @@
     }
   },
   "PFE": {
-    "precoAtual": 28.55,
-    "pl": 20.823528,
-    "pvp": 1.8620554,
+    "precoAtual": 28.32,
+    "pl": 20.463236,
+    "pvp": 1.8298377,
     "dy": 0.060700003,
     "evEbitda": 8.375,
     "vpa": 15.209,
     "lpa": 1.36,
-    "psr": 2.5742543,
+    "psr": 2.5297139,
     "roe": 0.08886,
     "roa": 0.05683,
     "margemBruta": 0.75807,
@@ -4153,18 +4153,54 @@
     "margemLiquida": 0.124180004,
     "dividaPL": 77.957,
     "liquidezCorrente": 1.16,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "06/04/2026",
+    "analise_senior": {
+      "tendencia": "A Pfizer (PFE) demonstra fundamentos sólidos, com uma Margem Líquida saudável de 12.42% e um ROE de 8.89%, indicando boa rentabilidade sobre o capital próprio. No entanto, seu P/L de 20.46 sugere que o mercado já precifica certo crescimento ou valor intrínseco. A tendência geral é de estabilidade, dada a natureza do setor farmacêutico, com potencial de valorização atrelado ao pipeline de novos medicamentos e expansão de mercado. O preço atual de tela de 28.32 está em linha com uma avaliação considerada justa, mas requer atenção à dinâmica do setor e à gestão de patentes.",
+      "swot": {
+        "forcas": "Portfólio de produtos diversificado, forte capacidade de P&D, presença global consolidada, marcas reconhecidas, fluxo de caixa robusto proveniente de medicamentos estabelecidos.",
+        "fraquezas": "Vulnerabilidade a expiração de patentes (patent cliffs), dependência de blockbusters, desafios regulatórios e custos elevados de desenvolvimento de novos medicamentos, imagem pública impactada por recall ou efeitos colaterais.",
+        "oportunidades": "Expansão para mercados emergentes, desenvolvimento de terapias inovadoras (ex: oncologia, biotecnologia), aquisições estratégicas de empresas menores com pipelines promissores, crescimento da demanda por saúde globalmente.",
+        "ameacas": "Concorrência acirrada de medicamentos genéricos e biossimilares, pressão regulatória sobre preços de medicamentos, falha em testes clínicos de novos produtos, mudanças desfavoráveis em políticas de saúde e reembolso, flutuações cambiais."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "JUSTO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 23.51,
+          "descricao": "Neste cenário, assumimos um ambiente mais desafiador para a PFE, com menor sucesso no desenvolvimento de novos produtos, pressões significativas de concorrência genérica e regulatória, e um crescimento de receita abaixo das expectativas. Isso resultaria em uma compressão do múltiplo P/L, refletindo menor otimismo do mercado e impactando o preço justo."
+        },
+        "base": {
+          "preco_justo": 27.66,
+          "descricao": "O cenário base considera a PFE continuando a operar com sua performance atual, um crescimento moderado de receita e lucros, e a manutenção da sua margem de lucro. Este valor reflete o P/L atual ajustado para um nível considerado mais conservador para um 'fair value' no setor farmacêutico, sem eventos disruptivos ou catalisadores significativos."
+        },
+        "otimista": {
+          "preco_justo": 31.81,
+          "descricao": "No cenário otimista, a PFE se beneficiaria de lançamentos bem-sucedidos de novos medicamentos, expansão agressiva em mercados de alto crescimento, eficiências operacionais resultando em margens elevadas, e uma percepção positiva do mercado. Este cenário justificaria um múltiplo P/L mais elevado, refletindo expectativas de crescimento e rentabilidade acima da média."
+        }
+      }
+    }
   },
   "ROKU": {
-    "precoAtual": 94.9,
-    "pl": 165.52544,
-    "pvp": 5.4324975,
+    "precoAtual": 97.66,
+    "pl": 166.44067,
+    "pvp": 5.4625354,
     "evEbitda": 45.309,
     "vpa": 17.977,
     "lpa": 0.59,
-    "psr": 3.0392728,
+    "psr": 3.056078,
     "roe": 0.03431,
     "roa": -0.000040000003,
     "margemBruta": 0.4379,
@@ -4172,17 +4208,53 @@
     "margemLiquida": 0.01865,
     "dividaPL": 19.689,
     "liquidezCorrente": 2.749,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "06/04/2026",
+    "analise_senior": {
+      "tendencia": "A ROKU exibe um Preço/Lucro (P/L) extremamente elevado de 166.44, indicando que o mercado está precificando um crescimento agressivo e futuro substancial. Contudo, sua Margem Líquida de apenas 1.865% e ROE de 3.43% sugerem que a rentabilidade atual é muito baixa, caracterizando a empresa como de alto crescimento, mas com desafios significativos na monetização e eficiência operacional. A tendência de preço é altamente dependente da capacidade da empresa de sustentar o crescimento de usuários e receita, e, crucialmente, de expandir suas margens de lucro para justificar a valuation atual. Há um risco considerável de volatilidade em caso de desaceleração do crescimento ou falha em melhorar a rentabilidade.",
+      "swot": {
+        "forcas": "Liderança de mercado em plataformas de streaming nos EUA, forte base de usuários ativos e engajados, crescimento robusto na receita de publicidade e licenciamento de software, expansão para smart TVs e parcerias com fabricantes, diversificação de receitas com conteúdo próprio e premium.",
+        "fraquezas": "P/L extremamente elevado, indicando que o preço atual é sustentado por expectativas de crescimento muito otimistas; baixa rentabilidade atual (ROE e Margem Líquida); forte concorrência de gigantes da tecnologia como Amazon, Google e Apple; dependência de receita publicitária, que é cíclica; margens apertadas no segmento de hardware.",
+        "oportunidades": "Expansão para mercados internacionais, crescimento contínuo do mercado global de streaming, aumento da monetização por usuário através de novos formatos de publicidade e serviços premium, fusões e aquisições estratégicas para expandir tecnologia ou conteúdo, inovação em novas tecnologias de TV e publicidade programática.",
+        "ameacas": "Intensificação da concorrência e guerras de preços; regulamentação governamental sobre privacidade de dados e publicidade digital; desaceleração econômica impactando gastos com publicidade; dependência de licenças de conteúdo; mudanças rápidas nas preferências dos consumidores e tecnologias, tornando os produtos obsoletos; pressão sobre as margens devido ao custo de aquisição de conteúdo ou tecnologias."
+      },
+      "notas": {
+        "roe": 1,
+        "roic": 2,
+        "ebitda": 3,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SOBREVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 45,
+          "descricao": "Neste cenário, a ROKU enfrenta desaceleração significativa no crescimento de usuários ou na receita de publicidade, e a concorrência impacta severamente a sua capacidade de expandir margens. O mercado reavalia drasticamente seu múltiplo P/L para um patamar mais conservador (ex: 70-80x), resultando em uma correção substancial no preço das ações."
+        },
+        "base": {
+          "preco_justo": 65,
+          "descricao": "A ROKU continua a crescer sua base de usuários e receita, mas a rentabilidade melhora a um ritmo mais lento do que o esperado pelo mercado. A expansão de margens é desafiadora devido à competição e custos operacionais. O múltiplo P/L se contrai para um patamar ainda premium, mas mais alinhado com empresas de crescimento maduras, justificando um preço inferior ao atual."
+        },
+        "otimista": {
+          "preco_justo": 105,
+          "descricao": "A ROKU supera as expectativas, impulsionando um crescimento robusto de usuários e, crucialmente, uma expansão significativa da margem líquida e do ROE. Novas iniciativas de monetização são um grande sucesso, e a empresa solidifica sua liderança de mercado. Este desempenho excepcional justifica a manutenção de um múltiplo P/L muito elevado, validando um preço justo próximo ou ligeiramente acima do preço atual."
+        }
+      }
+    }
   },
   "DIBS": {
-    "precoAtual": 5.51,
-    "pvp": 2.1299212,
+    "precoAtual": 5.41,
+    "pvp": 2.1929135,
     "evEbitda": -6.666,
     "vpa": 2.54,
     "lpa": -0.38,
-    "psr": 2.1962373,
+    "psr": 2.261191,
     "roe": -0.1417,
     "roa": -0.081709996,
     "margemBruta": 0.73017,
@@ -4190,19 +4262,55 @@
     "margemLiquida": -0.15248999,
     "dividaPL": 19.863,
     "liquidezCorrente": 4.195,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "06/04/2026",
+    "analise_senior": {
+      "tendencia": "A empresa DIBS enfrenta um cenário desafiador, com indicadores de rentabilidade fortemente negativos (ROE de -14.17% e Margem Líquida de -15.25%), e o P/L indefinido, indicando que a empresa opera com prejuízo. Esta situação aponta para uma tendência de baixa ou, no mínimo, de alta incerteza no curto e médio prazo, a menos que haja uma reestruturação estratégica ou operacional significativa. O preço atual de tela de R$ 5.41 sugere que o mercado pode estar precificando um potencial de turnaround futuro ou a avaliação de outros ativos/negócios não refletidos nos indicadores de lucratividade atuais, o que implica um risco elevado.",
+      "swot": {
+        "forcas": "Potencial de mercado em nichos específicos (se houver), base de clientes existente (se relevante para o setor), possíveis tecnologias ou inovações que ainda não atingiram escala de rentabilidade. Capacidade de adaptação em mercados voláteis, se for o caso.",
+        "fraquezas": "Rentabilidade negativa persistente (evidenciada por ROE e Margem Líquida negativos, e P/L indefinido), alta estrutura de custos, ineficiências operacionais, dependência de capital de terceiros para cobrir perdas e manter as operações.",
+        "oportunidades": "Otimização e racionalização de custos e despesas, expansão para novos mercados rentáveis, lançamento de produtos ou serviços com margens mais elevadas, parcerias estratégicas que injetem capital ou novas tecnologias, recuperação econômica do setor de atuação da empresa.",
+        "ameacas": "Concorrência acirrada, instabilidade econômica, aumento das taxas de juros (dificultando o custo da dívida), incapacidade de reverter o cenário de prejuízo, esgotamento do capital de giro e pressão de liquidez, mudanças regulatórias adversas."
+      },
+      "notas": {
+        "roe": 1,
+        "roic": 1,
+        "ebitda": 2,
+        "divida": 3,
+        "receita": 3
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "ATENÇÃO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 3.2,
+          "descricao": "Neste cenário, a DIBS não consegue reverter suas perdas de forma consistente. As ineficiências operacionais persistem, e a geração de caixa permanece negativa, levando a uma contínua erosão do valor para o acionista. O preço justo reflete a deterioração dos fundamentos e a necessidade de uma reestruturação drástica ou risco de descontinuidade."
+        },
+        "base": {
+          "preco_justo": 4.8,
+          "descricao": "No cenário base, a DIBS consegue estabilizar suas operações e controlar as perdas, mostrando sinais incipientes de uma virada gradual. Há uma leve melhora nas margens, mas a rentabilidade ainda é fraca e a lucratividade plena se mostra distante. O preço justo indica que o valor de mercado atual de R$ 5.41 pode estar precificando um otimismo que ainda não se materializou completamente nos resultados financeiros, sugerindo cautela."
+        },
+        "otimista": {
+          "preco_justo": 7.5,
+          "descricao": "Este cenário pressupõe uma reviravolta bem-sucedida, com a DIBS alcançando a lucratividade em um futuro próximo e apresentando crescimento sustentável de receitas e margens. Há uma melhoria significativa na margem líquida e no ROE, indicando maior eficiência operacional e gestão eficaz. O preço justo reflete a concretização desse potencial de crescimento e rentabilidade, validando a aposta do mercado."
+        }
+      }
+    }
   },
   "LEG": {
-    "precoAtual": 9.84,
-    "pl": 5.7337275,
-    "pvp": 1.2846347,
+    "precoAtual": 9.69,
+    "pl": 5.775148,
+    "pvp": 1.2939149,
     "dy": 0.020599999,
     "evEbitda": 6.516,
     "vpa": 7.543,
     "lpa": 1.69,
-    "psr": 0.32469085,
+    "psr": 0.3270364,
     "roe": 0.27487,
     "roa": 0.042579997,
     "margemBruta": 0.18439,
@@ -4210,18 +4318,54 @@
     "margemLiquida": 0.05805,
     "dividaPL": 161.93,
     "liquidezCorrente": 2.25,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "06/04/2026",
+    "analise_senior": {
+      "tendencia": "A LEG demonstra fundamentos robustos, com um ROE (Retorno sobre o Patrimônio Líquido) excepcionalmente alto de 27.49% e uma margem líquida saudável de 5.81%. No entanto, seu P/L (Preço/Lucro) de apenas 5.78 sugere que o mercado pode estar subestimando o valor da empresa ou expressando ceticismo quanto à sustentabilidade de seus retornos. A tendência atual aponta para uma empresa lucrativa, mas que não está sendo precificada adequadamente pelo mercado, indicando um potencial de valorização.",
+      "swot": {
+        "forcas": "ROE elevado (27.49%) indica alta eficiência na geração de lucros a partir do patrimônio líquido. Margem líquida de 5.81% demonstra boa capacidade de conversão de receita em lucro. Baixo P/L sugere que a empresa está barata em relação aos seus lucros.",
+        "fraquezas": "O P/L muito baixo pode ser interpretado como falta de confiança do mercado no crescimento futuro ou na sustentabilidade dos retornos atuais. Não há dados sobre endividamento, o que poderia ser uma fraqueza oculta se for elevado.",
+        "oportunidades": "Potencial de reavaliação do mercado, à medida que investidores reconheçam a forte performance de ROE. Expansão de mercado ou novos produtos podem impulsionar o crescimento da receita. Melhoria na comunicação com o mercado para destacar seus fundamentos.",
+        "ameacas": "Cenário econômico adverso pode impactar receitas e margens. Aumento da concorrência no setor. Mudanças regulatórias que afetem a rentabilidade. Incapacidade de sustentar o alto ROE a longo prazo."
+      },
+      "notas": {
+        "roe": 5,
+        "roic": 4,
+        "ebitda": 4,
+        "divida": 3,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SUBVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 10.91,
+          "descricao": "Neste cenário, assumimos uma ligeira correção na percepção do mercado, com o P/L expandindo para um múltiplo de 6.5x. Ainda é um múltiplo conservador, mas reflete o reconhecimento mínimo dos fortes lucros da empresa. Mesmo assim, o valor indica uma subvalorização em relação ao preço atual de tela de 9.69."
+        },
+        "base": {
+          "preco_justo": 16.78,
+          "descricao": "No cenário base, projetamos que o P/L se ajuste para 10x, um múltiplo mais coerente para uma empresa com ROE e Margem Líquida saudáveis. Este valor sugere uma undervaluation significativa da LEG no mercado atual, com grande potencial de valorização em relação ao preço de tela."
+        },
+        "otimista": {
+          "preco_justo": 22.65,
+          "descricao": "O cenário otimista prevê que o mercado reconheça plenamente a excelência operacional da LEG, elevando seu P/L para 13.5x, compatível com empresas de forte rentabilidade e bom histórico. Representa um potencial de valorização substancial em relação ao preço atual de tela."
+        }
+      }
+    }
   },
   "MBUU": {
-    "precoAtual": 25.35,
-    "pl": 33.08108,
-    "pvp": 0.9198511,
+    "precoAtual": 24.48,
+    "pl": 32.81081,
+    "pvp": 0.91233605,
     "evEbitda": 7.256,
     "vpa": 26.613,
     "lpa": 0.74,
-    "psr": 0.5746454,
+    "psr": 0.56995064,
     "roe": 0.029089998,
     "roa": 0.02012,
     "margemBruta": 0.16057,
@@ -4229,18 +4373,54 @@
     "margemLiquida": 0.01758,
     "dividaPL": 5.239,
     "liquidezCorrente": 1.559,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "06/04/2026",
+    "analise_senior": {
+      "tendencia": "A análise dos indicadores de MBUU (Mercantile Bank Corporation) revela um cenário desafiador. O P/L de 32.81 é consideravelmente alto, sugerindo elevadas expectativas de crescimento ou uma possível sobrevalorização, especialmente quando comparado à sua rentabilidade atual. O ROE extremamente baixo de 2.91% e uma Margem Líquida de apenas 1.76% indicam ineficiência na geração de lucro a partir do patrimônio e das vendas. Essa combinação de alta valoração com baixa rentabilidade subjacente sugere que a empresa pode estar operando em um ambiente de margens apertadas ou passando por um período de investimento/ajuste. A tendência geral, com base nesses dados, aponta para uma preocupação com a sustentabilidade do valuation atual sem uma melhoria substancial e visível na rentabilidade.",
+      "swot": {
+        "forcas": "Base de clientes estabelecida e reputação regional como instituição bancária. Potencial para diversificação de serviços financeiros. Estrutura operacional consolidada que pode ser alavancada para ganhos de eficiência.",
+        "fraquezas": "Baixíssima rentabilidade (ROE e Margem Líquida muito abaixo da média do setor). Alto P/L que não se alinha com a rentabilidade atual, indicando possível sobrevalorização ou expectativas irreais. Potencial para pressão contínua sobre as margens de lucro.",
+        "oportunidades": "Crescimento econômico regional que pode impulsionar a demanda por serviços bancários e crédito. Potencial de otimização de custos e digitalização para melhorar margens. Consolidação do setor bancário através de aquisições estratégicas que melhorem a escala e a eficiência.",
+        "ameacas": "Ambiente competitivo acirrado no setor financeiro, com players tradicionais e fintechs. Flutuações nas taxas de juros e seu impacto direto na margem financeira. Aumento da regulamentação bancária, gerando custos de compliance. Risco de recessão econômica afetando a qualidade dos ativos e a demanda por crédito."
+      },
+      "notas": {
+        "roe": 1,
+        "roic": 2,
+        "ebitda": 3,
+        "divida": 2,
+        "receita": 3
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SOBREVALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 16,
+          "descricao": "Neste cenário, o mercado corrige drasticamente o valuation de MBUU devido à sua baixa rentabilidade persistente (ROE e Margem Líquida) e ao P/L excessivamente alto. Uma reavaliação dos múltiplos para patamares mais conservadores ou um desempenho financeiro abaixo do esperado justificariam uma queda substancial no preço."
+        },
+        "base": {
+          "preco_justo": 19.5,
+          "descricao": "No cenário base, a empresa mantém um desempenho de baixa rentabilidade, e o mercado ajusta o múltiplo P/L para refletir essa realidade, ainda que de forma moderada. Expectativas de melhorias graduais são insuficientes para justificar o preço atual de tela, levando a uma correção no valor justo."
+        },
+        "otimista": {
+          "preco_justo": 25.5,
+          "descricao": "Mesmo em um cenário otimista, a margem de crescimento do preço é limitada pela já alta valoração (P/L) frente aos fracos fundamentos atuais. Assume-se que a empresa consegue manter seu P/L atual por meio de uma pequena melhoria marginal na rentabilidade ou expectativas positivas não explicitadas, permitindo um leve crescimento sobre o preço de tela atual."
+        }
+      }
+    }
   },
   "FVRR": {
-    "precoAtual": 10.15,
-    "pl": 17.910713,
-    "pvp": 0.87874544,
+    "precoAtual": 10.03,
+    "pl": 18.357141,
+    "pvp": 0.90064836,
     "evEbitda": 2.565,
     "vpa": 11.414,
     "lpa": 0.56,
-    "psr": 0.83680266,
+    "psr": 0.8576602,
     "roe": 0.054180004,
     "roa": 0.012259999,
     "margemBruta": 0.8157,
@@ -4248,8 +4428,44 @@
     "margemLiquida": 0.04869,
     "dividaPL": 1.01,
     "liquidezCorrente": 1.931,
-    "data_referencia": "29/03/2026",
-    "analise_senior": {},
-    "valuation_dcf": null
+    "data_referencia": "06/04/2026",
+    "analise_senior": {
+      "tendencia": "A FVRR (Fiverr International Ltd.) apresenta métricas de rentabilidade (ROE e Margem Líquida) que indicam desafios na eficiência e na geração de lucro a partir das vendas. O P/L, embora moderado, pode estar precificando expectativas de crescimento que ainda não se refletem nas margens. A tendência atual é de cautela, com a necessidade de monitorar a capacidade da empresa em melhorar sua rentabilidade para justificar seu valuation e potencial de crescimento a longo prazo.",
+      "swot": {
+        "forcas": "Marca reconhecida e forte presença no mercado global de trabalho freelancer (gig economy). Potencial de escalabilidade da plataforma. Diversificação de serviços oferecidos na plataforma.",
+        "fraquezas": "Baixa rentabilidade, evidenciada pelo ROE e Margem Líquida abaixo da média do setor para empresas de tecnologia com potencial de crescimento. Dependência da economia gig, que pode ser volátil.",
+        "oportunidades": "Expansão para novos mercados geográficos e verticais de serviço. Crescimento contínuo do trabalho remoto e da demanda por freelancers. Aprimoramento da eficiência operacional para elevar as margens de lucro.",
+        "ameacas": "Concorrência acirrada de outras plataformas de freelancing. Riscos regulatórios relacionados ao status dos freelancers. Desaceleração econômica global que possa reduzir a demanda por serviços independentes."
+      },
+      "notas": {
+        "roe": 4,
+        "roic": 3,
+        "ebitda": 5,
+        "divida": 2,
+        "receita": 4
+      }
+    },
+    "valuation_dcf": {
+      "parametros": {
+        "wacc": "12%",
+        "crescimento_longo_prazo": "2%",
+        "margem_seguranca": "20%"
+      },
+      "status": "SOBRE_VALORIZADO",
+      "cenarios": {
+        "pessimista": {
+          "preco_justo": 7.52,
+          "descricao": "Cenário onde a empresa enfrenta desafios significativos na melhoria de suas margens e rentabilidade, ou uma desaceleração no crescimento do mercado, levando a uma desvalorização considerável."
+        },
+        "base": {
+          "preco_justo": 9.23,
+          "descricao": "Considera a manutenção dos níveis atuais de rentabilidade e um crescimento moderado, resultando em uma avaliação que sugere uma leve sobrevalorização em relação ao preço de tela atual."
+        },
+        "otimista": {
+          "preco_justo": 11.23,
+          "descricao": "Projeta uma recuperação robusta da rentabilidade e eficiência operacional, com o mercado recompensando o potencial de crescimento e expansão da empresa, justificando um preço ligeiramente superior."
+        }
+      }
+    }
   }
 }
