@@ -49,7 +49,6 @@
         .ind-value { font-size: 1.3rem; font-weight: bold; color: #fff; margin-top: 4px;}
         .loading-ind { color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
 
-        /* ESTILOS DA SUPER TABELA DE RANKING E OPORTUNIDADES */
         .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; white-space: nowrap; }
         .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 12px 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: 0.2s;}
         .ranking-table th:hover { background-color: #333; color: #fff; }
@@ -59,9 +58,19 @@
         .status-sub { background-color: rgba(76, 175, 80, 0.15); color: #4CAF50; border: 1px solid #4CAF50; }
         .status-justo { background-color: rgba(255, 193, 7, 0.15); color: #FFC107; border: 1px solid #FFC107; }
         .status-super { background-color: rgba(244, 67, 54, 0.15); color: #F44336; border: 1px solid #F44336; }
-        
         .margem-positiva { color: #4CAF50; font-weight: bold; }
         .margem-negativa { color: #c93e36; font-weight: bold; }
+
+        .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; display: block; margin: 0 auto; margin-bottom: 20px;}
+        .btn-ia:disabled { background: #333 !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
+        .btn-ia:hover { transform: translateY(-2px); }
+        .btn-tech { background: linear-gradient(45deg, #9C27B0, #3f51b5); box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); }
+        .btn-tech:hover { box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5); }
+
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px; }
+        .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
+        .tech-label { font-size: 0.8rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; }
+        .tech-val { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: #fff; }
     </style>
 </head>
 <body>
@@ -99,10 +108,14 @@
             </div>
             <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
 
+            <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
+                <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                <div id="tech-result" style="display: none; text-align: left;"></div>
+            </div>
+
             <div id="indicadores-container">
                 <div class="loading-ind">Carregando indicadores fundamentais...</div>
             </div>
-
         </div>
     </div>
 
@@ -129,7 +142,6 @@
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
-        // VARIÁVEIS DE ESTADO DO RANKING
         let dadosRankingBr = [];
         let dadosRankingUs = [];
         let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
@@ -160,153 +172,75 @@
             Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
             miniCharts = {};
 
-            // MUDANÇA DE ESTRUTURA PARA EVITAR TABELAS ESPREMIDAS
             if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
                 dashboard.style.display = 'block';
             } else {
                 dashboard.style.display = 'grid';
             }
 
-            // SISTEMA DO NOVO RADAR DE OPORTUNIDADES
             if(tabName === 'oportunidades') {
-                dashboard.innerHTML = '<div class="section-title">Calculando Margem de Segurança nos Cenários Pessimistas... ⏳</div>';
+                dashboard.innerHTML = '<div class="section-title">Calculando Margem de Segurança... ⏳</div>';
                 try {
                     const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                     const dadosDaBase = await res.json();
-                    
-                    let listaOportunidadesBr = [];
+                    let listaOportunidadesBr = []; 
                     let listaOportunidadesUs = [];
-                    
+
                     for (const ticker in dadosDaBase) {
                         const d = dadosDaBase[ticker];
                         const precoAtual = d.precoAtual;
                         const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
-                        
                         if(precoAtual && precoPessimista && precoAtual > 0) {
-                            // Cálculo do Upside: Se o Pessimista é maior que o atual, temos margem positiva.
                             const margemSeguranca = (precoPessimista - precoAtual) / precoAtual;
-                            
                             const isBrasil = ticker.includes('.SA');
                             const prefix = isBrasil ? 'R$' : 'US$';
-
-                            const item = {
-                                ticker: ticker,
-                                status: d.valuation_dcf?.status || 'N/A',
-                                precoAtual: precoAtual,
-                                precoPessimista: precoPessimista,
-                                margem: margemSeguranca,
-                                prefix: prefix
-                            };
-
-                            if (isBrasil) listaOportunidadesBr.push(item);
-                            else listaOportunidadesUs.push(item);
+                            const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', precoAtual: precoAtual, precoPessimista: precoPessimista, margem: margemSeguranca, prefix: prefix };
+                            if (isBrasil) listaOportunidadesBr.push(item); else listaOportunidadesUs.push(item);
                         }
                     }
-                    
-                    // Ordena da MAIOR margem (mais barata) para a MENOR margem (mais cara)
-                    listaOportunidadesBr.sort((a, b) => b.margem - a.margem);
+                    listaOportunidadesBr.sort((a, b) => b.margem - a.margem); 
                     listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
                     
-                    const fNum = (num) => parseFloat(num).toFixed(2);
+                    const fNum = (num) => parseFloat(num).toFixed(2); 
                     const fPct = (num) => (parseFloat(num) * 100).toFixed(2) + '%';
 
                     const renderTabelaOportunidades = (titulo, lista) => {
                         if (lista.length === 0) return '';
-                        let html = `
-                        <div class="section-title">${titulo}</div>
-                        <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                        <table class="ranking-table">
-                            <thead>
-                                <tr>
-                                    <th>Ativo</th>
-                                    <th>Status IA</th>
-                                    <th>Preço Atual Tela</th>
-                                    <th>Alvo Pessimista IA</th>
-                                    <th style="color: #4CAF50;" title="Potencial de alta/baixa até o pior cenário calculado">Margem vs Pessimista (Upside)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        `;
-                        
+                        let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th>Preço Atual Tela</th><th>Alvo Pessimista IA</th><th style="color: #4CAF50;">Margem vs Pessimista (Upside)</th></tr></thead><tbody>`;
                         lista.forEach(item => {
-                            let badgeClass = 'status-badge ';
-                            if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
-                            else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
-                            else badgeClass += 'status-justo';
-
-                            let margemClass = item.margem >= 0 ? 'margem-positiva' : 'margem-negativa';
+                            let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
+                            let margemClass = item.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; 
                             let sinalMargem = item.margem > 0 ? '+' : '';
-
-                            html += `
-                                <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
-                                    <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
-                                    <td><span class="${badgeClass}">${item.status}</span></td>
-                                    <td>${item.prefix} ${fNum(item.precoAtual)}</td>
-                                    <td>${item.prefix} ${fNum(item.precoPessimista)}</td>
-                                    <td class="${margemClass}">${sinalMargem}${fPct(item.margem)}</td>
-                                </tr>
-                            `;
+                            html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${item.prefix} ${fNum(item.precoAtual)}</td><td>${item.prefix} ${fNum(item.precoPessimista)}</td><td class="${margemClass}">${sinalMargem}${fPct(item.margem)}</td></tr>`;
                         });
-                        
-                        html += `</tbody></table></div>`;
-                        return html;
+                        html += `</tbody></table></div>`; return html;
                     };
-
                     let telaCompleta = '';
                     if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil', listaOportunidadesBr);
                     if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais', listaOportunidadesUs);
-                    
                     if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado de Valuation encontrado no banco.</div>';
-
                     dashboard.innerHTML = telaCompleta;
-
-                } catch(e) {
-                    dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json. Verifique se o banco de dados existe.</div>';
-                }
+                } catch(e) { dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json.</div>'; }
                 return;
             }
 
-            // SISTEMA DO RANKING ORDENÁVEL
             if(tabName === 'ranking') {
                 dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
                 try {
                     const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                     const dadosDaBase = await res.json();
-                    
-                    dadosRankingBr = [];
-                    dadosRankingUs = [];
-                    
+                    dadosRankingBr = []; dadosRankingUs = [];
                     for (const ticker in dadosDaBase) {
                         const d = dadosDaBase[ticker];
                         if(d.roe !== undefined && d.roe !== null) {
-                            const item = {
-                                ticker: ticker,
-                                status: d.valuation_dcf?.status || 'N/A',
-                                dy: d.dy,
-                                pl: d.pl,
-                                pegRatio: d.pegRatio,
-                                pvp: d.pvp,
-                                evEbitda: d.evEbitda,
-                                vpa: d.vpa,
-                                dividaPL: d.dividaPL ? d.dividaPL / 100 : null,
-                                liquidezCorrente: d.liquidezCorrente,
-                                margem: d.margemLiquida,
-                                roe: d.roe
-                            };
-
-                            if (ticker.includes('.SA')) dadosRankingBr.push(item);
-                            else dadosRankingUs.push(item);
+                            const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe };
+                            if (ticker.includes('.SA')) dadosRankingBr.push(item); else dadosRankingUs.push(item);
                         }
                     }
-                    
-                    // Ordem inicial pelo ROE (já cai na regra de maior para menor)
-                    ordenarDados('br', 'roe', true);
-                    ordenarDados('us', 'roe', true);
+                    ordenarDados('br', 'roe', true); 
+                    ordenarDados('us', 'roe', true); 
                     renderizarAbaRanking();
-
-                } catch(e) {
-                    dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json. Verifique se o banco de dados existe.</div>';
-                }
+                } catch(e) { dashboard.innerHTML = '<div class="section-title">Erro ao ler indicadores.json.</div>'; }
                 return;
             }
 
@@ -314,11 +248,9 @@
                 dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
                 const todosAtivos = [...ativosBrasil, ...ativosIntl];
                 const tickersString = todosAtivos.map(a => a.ticker).join(',');
-                
                 try {
                     const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
                     const cotacoes = await res.json();
-                    
                     let ativosComVariacao = todosAtivos.map(asset => {
                         const dados = cotacoes[asset.ticker];
                         if(!dados || !dados.fechamentoAnterior) return null;
@@ -328,23 +260,20 @@
 
                     if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; return; }
                     ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
-
-                    const maioresAltas = ativosComVariacao.slice(0, 5);
+                    const maioresAltas = ativosComVariacao.slice(0, 5); 
                     const maioresBaixas = ativosComVariacao.slice(-5).reverse();
 
                     dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
-                    const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard';
-                    gridAltas.style.display = 'grid'; // Força a grelha de volta nas sub-seções
+                    const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard'; gridAltas.style.display = 'grid';
                     buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
                     
                     dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
-                    const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard';
-                    gridBaixas.style.display = 'grid';
+                    const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
                     buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
 
-                    [...maioresAltas, ...maioresBaixas].forEach(asset => {
-                        updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals);
-                        fetchMiniChart(asset, 'destaques');
+                    [...maioresAltas, ...maioresBaixas].forEach(asset => { 
+                        updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
+                        fetchMiniChart(asset, 'destaques'); 
                     });
                 } catch (e) { dashboard.innerHTML = '<div class="section-title">Servidor processando...</div>'; }
                 return;
@@ -352,123 +281,56 @@
 
             const ativosDaAba = categorias[tabName];
             buildCards(ativosDaAba, dashboard);
-
             const tickersString = ativosDaAba.map(a => a.ticker).join(',');
             try {
                 const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
                 const cotacoesAtuais = await resCotacoes.json();
-                ativosDaAba.forEach(asset => {
-                    if(cotacoesAtuais[asset.ticker]) updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals);
+                ativosDaAba.forEach(asset => { 
+                    if(cotacoesAtuais[asset.ticker]) {
+                        updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
+                    }
                 });
             } catch (e) {}
             ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
         }
 
-        // FUNÇÕES DE ORDENAÇÃO DO RANKING
-        function clickOrdenar(tipo, coluna) {
-            ordenarDados(tipo, coluna, false);
-            renderizarAbaRanking();
-        }
+        function clickOrdenar(tipo, coluna) { ordenarDados(tipo, coluna, false); renderizarAbaRanking(); }
 
         function ordenarDados(tipo, coluna, isInit) {
             let estado = ordemRanking[tipo];
-            
             if (!isInit) {
-                if (estado.col === coluna) {
-                    estado.dir *= -1; // Se clicou na mesma, inverte a ordem
-                } else {
-                    estado.col = coluna;
-                    // Múltiplos (Menor é Melhor) -> Começa Crescente
-                    if (['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna)) {
-                        estado.dir = 1; 
-                    } else {
-                        // Rentabilidade (Maior é Melhor) -> Começa Decrescente
-                        estado.dir = -1;
-                    }
-                }
+                if (estado.col === coluna) { estado.dir *= -1; } 
+                else { estado.col = coluna; estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; }
             }
-
             let lista = tipo === 'br' ? dadosRankingBr : dadosRankingUs;
-            
             lista.sort((a, b) => {
-                // Joga os dados vazios (-) sempre para o final da fila
                 if (a[coluna] === null || a[coluna] === undefined) return 1;
                 if (b[coluna] === null || b[coluna] === undefined) return -1;
-                
                 if (a[coluna] < b[coluna]) return -1 * estado.dir;
-                if (a[coluna] > b[coluna]) return 1 * estado.dir;
-                return 0;
+                if (a[coluna] > b[coluna]) return 1 * estado.dir; return 0;
             });
         }
 
         function renderizarAbaRanking() {
             const dashboard = document.getElementById('dashboard');
-            
             const fNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
             const fPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
-            
-            // Coloca a setinha na coluna que está ativa
             const getSeta = (tipo, col) => ordemRanking[tipo].col === col ? (ordemRanking[tipo].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
 
             const renderTabela = (titulo, lista, tipo) => {
                 if (lista.length === 0) return '';
-                let html = `
-                <div class="section-title">${titulo}</div>
-                <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                <table class="ranking-table">
-                    <thead>
-                        <tr>
-                            <th>Ativo</th>
-                            <th>Status IA</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dy')" title="Dividend Yield">D.Y${getSeta(tipo,'dy')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pl')" title="Preço sobre Lucro">P/L${getSeta(tipo,'pl')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pegRatio')" title="P/L sobre Crescimento">PEG Ratio${getSeta(tipo,'pegRatio')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pvp')" title="Preço sobre Valor Patrimonial">P/VP${getSeta(tipo,'pvp')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'evEbitda')" title="EV / EBITDA">EV/EBITDA${getSeta(tipo,'evEbitda')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'vpa')" title="Valor Patrimonial por Ação">VPA${getSeta(tipo,'vpa')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dividaPL')" title="Dívida Líquida sobre Patrimônio">Dív/PL${getSeta(tipo,'dividaPL')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'liquidezCorrente')" title="Liquidez Corrente">Liq. Corr.${getSeta(tipo,'liquidezCorrente')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'margem')" title="Margem Líquida">Margem Líq.${getSeta(tipo,'margem')}</th>
-                            <th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${tipo}', 'roe')" title="Retorno sobre Patrimônio">ROE${getSeta(tipo,'roe')}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                `;
-                
+                let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dy')">D.Y${getSeta(tipo,'dy')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pl')">P/L${getSeta(tipo,'pl')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pegRatio')">PEG Ratio${getSeta(tipo,'pegRatio')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pvp')">P/VP${getSeta(tipo,'pvp')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'evEbitda')">EV/EBITDA${getSeta(tipo,'evEbitda')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'vpa')">VPA${getSeta(tipo,'vpa')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dividaPL')">Dív/PL${getSeta(tipo,'dividaPL')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'liquidezCorrente')">Liq. Corr.${getSeta(tipo,'liquidezCorrente')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'margem')">Margem Líq.${getSeta(tipo,'margem')}</th><th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${tipo}', 'roe')">ROE${getSeta(tipo,'roe')}</th></tr></thead><tbody>`;
                 lista.forEach(item => {
-                    let badgeClass = 'status-badge ';
-                    if (item.status === 'SUBVALORIZADA') badgeClass += 'status-sub';
-                    else if (item.status === 'SUPERVALORIZADA') badgeClass += 'status-super';
-                    else badgeClass += 'status-justo';
-
-                    html += `
-                        <tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')">
-                            <td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td>
-                            <td><span class="${badgeClass}">${item.status}</span></td>
-                            <td>${fPct(item.dy)}</td>
-                            <td>${fNum(item.pl)}</td>
-                            <td>${fNum(item.pegRatio)}</td>
-                            <td>${fNum(item.pvp)}</td>
-                            <td>${fNum(item.evEbitda)}</td>
-                            <td>${fNum(item.vpa)}</td>
-                            <td>${fNum(item.dividaPL)}</td>
-                            <td>${fNum(item.liquidezCorrente)}</td>
-                            <td>${fPct(item.margem)}</td>
-                            <td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td>
-                        </tr>
-                    `;
+                    let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
+                    html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${fPct(item.dy)}</td><td>${fNum(item.pl)}</td><td>${fNum(item.pegRatio)}</td><td>${fNum(item.pvp)}</td><td>${fNum(item.evEbitda)}</td><td>${fNum(item.vpa)}</td><td>${fNum(item.dividaPL)}</td><td>${fNum(item.liquidezCorrente)}</td><td>${fPct(item.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td></tr>`;
                 });
-                
-                html += `</tbody></table></div>`;
-                return html;
+                html += `</tbody></table></div>`; return html;
             };
 
             let telaCompleta = '';
             if (dadosRankingBr.length > 0) telaCompleta += renderTabela('🇧🇷 Ranking Ações Brasil', dadosRankingBr, 'br');
             if (dadosRankingUs.length > 0) telaCompleta += renderTabela('🇺🇸 Ranking Ações Internacionais', dadosRankingUs, 'us');
-            
             if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado fundamentalista encontrado no banco.</div>';
-
             dashboard.innerHTML = telaCompleta;
         }
 
@@ -479,10 +341,10 @@
                 if(histData.historico && currentTab === targetTab) { 
                     drawMiniChart(asset.id, histData.historico, asset);
                     const elPrice = document.getElementById(`price-${asset.id}`);
-                    if (elPrice && elPrice.innerText === '---') {
+                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
                         const precos = histData.historico;
-                        const pAtual = precos[precos.length-1].preco || precos[precos.length-1].close;
-                        const pAnt = precos[precos.length-2]?.preco || precos[precos.length-2]?.close || pAtual;
+                        const pAtual = precos[precos.length-1].close;
+                        const pAnt = precos[precos.length-2]?.close || pAtual;
                         updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
                     }
                 }
@@ -503,23 +365,52 @@
             openModal(assetObj);
         }
 
+        async function chamarAnaliseTecnica() {
+            const btn = document.getElementById('btn-ia-tech');
+            const resultDiv = document.getElementById('tech-result');
+            btn.innerHTML = '⏳ Calculando Médias...'; 
+            btn.disabled = true;
+            try {
+                const res = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`);
+                const data = await res.json();
+                if(data.erro) throw new Error(data.erro);
+                
+                let corTendencia = '#FFC107'; 
+                if(data.tendencia && data.tendencia.toUpperCase().includes('ALTA')) corTendencia = '#4CAF50';
+                if(data.tendencia && data.tendencia.toUpperCase().includes('BAIXA')) corTendencia = '#c93e36';
+                
+                btn.style.display = 'none'; 
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `
+                    <div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div>
+                    <div class="tech-grid">
+                        <div class="tech-box" style="border-color: ${corTendencia};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${corTendencia};">${data.tendencia || '-'}</div></div>
+                        <div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${data.suporte || '-'}</div></div>
+                        <div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${data.resistencia || '-'}</div></div>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Análise concluída.'}"</div>
+                `;
+            } catch (e) { 
+                btn.innerHTML = '❌ Erro. Tentar Novamente'; 
+                btn.disabled = false; 
+            }
+        }
+
         async function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container');
             container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
-            
             try {
                 const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                 const todosOsDados = await res.json();
                 const data = todosOsDados[ticker];
-
                 if (!data) { container.innerHTML = '<div class="loading-ind">Indicadores não disponíveis para este ativo.</div>'; return; }
 
                 const fmtNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
                 const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
-                
                 const renderStars = (nota) => {
-                    const n = Math.max(0, Math.min(5, Math.floor(nota || 0)));
-                    return `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(n)}${'☆'.repeat(5-n)}</span>`;
+                    const starsOn = Math.max(0, Math.min(5, Math.floor(nota || 0)));
+                    const starsOff = 5 - starsOn;
+                    return `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(starsOn)}${'☆'.repeat(starsOff)}</span>`;
                 };
 
                 const ai = data.analise_senior || {}; 
@@ -537,7 +428,7 @@
                             <div class="ind-box"><span class="ind-label">VPA</span><span class="ind-value">${fmtNum(data.vpa)}</span></div>
                         </div>
                     </div>
-
+                    
                     <div class="ind-category">
                         <div class="ind-category-title">Indicadores de Endividamento & Rentabilidade</div>
                         <div class="indicadores-grid">
@@ -547,18 +438,18 @@
                             <div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div>
                         </div>
                     </div>
-
+                    
                     <div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                             <div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Sênior & Inteligência Setorial</div>
                             <div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: #aaa;">Dados de: <strong style="color: #fff;">${data.data_referencia || 'N/A'}</strong></div>
                         </div>
-
+                        
                         <div style="margin-bottom: 20px;">
-                            <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Análise de Tendência</h4>
+                            <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Análise de Tendência Fundamental</h4>
                             <p style="color: #fff; font-size: 0.95rem; line-height: 1.5; background: #1a1a1b; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; margin:0;">${ai.tendencia || '-'}</p>
                         </div>
-
+                        
                         <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🎯 Matriz SWOT Setorial</h4>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
                             <div style="background: rgba(26, 127, 55, 0.1); border: 1px solid #1a7f37; padding: 12px; border-radius: 8px;">
@@ -578,24 +469,33 @@
                                 <span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.ameacas || '-'}</span>
                             </div>
                         </div>
-
+                        
                         <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🏆 Placar Fundamentalista vs Setor</h4>
                         <div style="background: #1a1a1b; padding: 15px; border-radius: 8px; border: 1px solid #333;">
-                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROE (Retorno do Acionista)</span> <span>${renderStars(ai.notas?.roe)}</span></div>
-                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROIC (Retorno s/ Capital)</span> <span>${renderStars(ai.notas?.roic)}</span></div>
-                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Margem EBITDA</span> <span>${renderStars(ai.notas?.ebitda)}</span></div>
-                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Saúde da Dívida</span> <span>${renderStars(ai.notas?.divida)}</span></div>
-                            <div style="display: flex; justify-content: space-between;"><span>Cresc. Receita Líquida</span> <span>${renderStars(ai.notas?.receita)}</span></div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                                <span>ROE (Retorno do Acionista)</span> <span>${renderStars(ai.notas?.roe)}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                                <span>ROIC (Retorno s/ Capital)</span> <span>${renderStars(ai.notas?.roic)}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                                <span>Margem EBITDA</span> <span>${renderStars(ai.notas?.ebitda)}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                                <span>Saúde da Dívida</span> <span>${renderStars(ai.notas?.divida)}</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Cresc. Receita Líquida</span> <span>${renderStars(ai.notas?.receita)}</span>
+                            </div>
                         </div>
                     </div>
                 `;
 
-                // MÓDULO VALUATION DCF (SÓ APARECE SE NÃO FOR ETF)
                 if (dcf) {
-                    let statusColor = '#FFC107'; // Amarelo (Justo)
-                    if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50';
+                    let statusColor = '#FFC107'; 
+                    if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50'; 
                     if(dcf.status === 'SUPERVALORIZADA') statusColor = '#F44336';
-
+                    
                     htmlContent += `
                     <div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
@@ -604,13 +504,13 @@
                                 STATUS: <strong style="color: ${statusColor};">${dcf.status || 'N/A'}</strong>
                             </div>
                         </div>
-
+                        
                         <div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;">
                             <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div>
                             <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP (g):</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div>
                             <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div>
                         </div>
-
+                        
                         <div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
                             <div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;">
                                 
@@ -618,12 +518,12 @@
                                     <div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.pessimista?.preco_justo)}</div>
                                 </div>
                                 <div style="position: absolute; left: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Pessimista</div>
-
+                                
                                 <div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center; white-space: nowrap;">
                                     <div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.base?.preco_justo)}</div>
                                 </div>
                                 <div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Alvo Base</div>
-
+                                
                                 <div style="position: absolute; right: 0%; top: -30px; text-align: right; white-space: nowrap;">
                                     <div style="color: #4CAF50; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.otimista?.preco_justo)}</div>
                                 </div>
@@ -631,6 +531,7 @@
                                 
                             </div>
                         </div>
+                        
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                             <div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;">
                                 <div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Tese Pessimista</div>
@@ -648,75 +549,80 @@
                     </div>
                     `;
                 }
-
+                
                 container.innerHTML = htmlContent;
-
-            } catch(e) { container.innerHTML = '<div class="loading-ind">Erro a ler o ficheiro estático.</div>'; }
+                
+            } catch(e) { 
+                container.innerHTML = '<div class="loading-ind">Erro a ler o ficheiro estático.</div>'; 
+            }
         }
 
         function openModal(asset) {
             currentAssetObj = asset;
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
+            
+            const btnTech = document.getElementById('btn-ia-tech'); 
+            const resultTech = document.getElementById('tech-result');
+            
+            if (btnTech && resultTech) { 
+                btnTech.style.display = 'block'; 
+                btnTech.innerHTML = '🎯 Análise Gráfica (IA)'; 
+                btnTech.disabled = false; 
+                resultTech.style.display = 'none'; 
+                resultTech.innerHTML = ''; 
+            }
+            
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
             fetchIndicadores(asset.ticker);
         }
 
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        function closeModal() { 
+            document.getElementById('modal').style.display = 'none'; 
+        }
 
         async function loadDetailedData(range, interval, btnElement) {
             document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
             try {
                 const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`);
-                const data = await response.json();
+                const data = await response.json(); 
                 drawDetailedChart(data.historico);
             } catch (error) {}
         }
 
         function drawMiniChart(id, historicalData, assetDetails) {
-            const canvas = document.getElementById(`mini-chart-${id}`);
-            if(!canvas) return;
+            const canvas = document.getElementById(`mini-chart-${id}`); 
+            if(!canvas || !historicalData || historicalData.length === 0) return; 
             const ctx = canvas.getContext('2d');
-            const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
-            const pPrimeiro = historicalData[0].preco || historicalData[0].close;
-            const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 80);
+            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
+            const gradient = ctx.createLinearGradient(0, 0, 0, 80); 
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
-            miniCharts[id] = new Chart(ctx, {
-                type: 'line', data: { labels: historicalData.map(i => i.data || i.time), datasets: [{ data: historicalData.map(i => i.preco || i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } }
-            });
+            miniCharts[id] = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } });
         }
+        
         function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
-            const elPrice = document.getElementById(`price-${id}`);
-            const elVar = document.getElementById(`var-${id}`);
-            if(!elPrice || !elVar) return;
-            const varValue = currentPrice - previousPrice;
-            const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
-            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
-            elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`;
+            const elPrice = document.getElementById(`price-${id}`); const elVar = document.getElementById(`var-${id}`); if(!elPrice || !elVar) return;
+            const varValue = currentPrice - previousPrice; const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
+            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`; 
+            elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`; 
             elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
         }
+
         function drawDetailedChart(historicalData) {
+            if(!historicalData || historicalData.length === 0) return;
             const ctx = document.getElementById('modalChartCanvas').getContext('2d');
-            const pUltimo = historicalData[historicalData.length - 1].preco || historicalData[historicalData.length - 1].close;
-            const pPrimeiro = historicalData[0].preco || historicalData[0].close;
-            const color = (pUltimo - pPrimeiro) >= 0 ? '#1a7f37' : '#c93e36'; 
+            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
             if(detailedChartInstance) detailedChartInstance.destroy(); 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
-            detailedChartInstance = new Chart(ctx, {
-                type: 'line', data: { labels: historicalData.map(i => i.data || i.time), datasets: [{ data: historicalData.map(i => i.preco || i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] },
-                options: {
-                    responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' },
-                    plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } },
-                    scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } }
-                }
-            });
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
+            detailedChartInstance = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } } });
         }
 
-        switchTab('geral', document.querySelector('.tab-btn'));
+        // Aguarda a tela desenhar para não engasgar
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('geral', document.querySelector('.tab-btn'));
+        });
+        
     </script>
 </body>
 </html>
