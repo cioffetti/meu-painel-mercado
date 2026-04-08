@@ -8,21 +8,16 @@
     <style>
         :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
-        
         .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         h1 { margin: 0; font-size: 2rem; }
-        
         .search-box { display: flex; gap: 10px; }
         .search-box input { padding: 10px 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1b; color: #fff; font-size: 1rem; width: 250px; }
         .search-box button { padding: 10px 20px; border-radius: 8px; border: none; background: #1a7f37; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        
         .tabs { display: flex; gap: 15px; margin-bottom: 30px; border-bottom: 1px solid #333336; padding-bottom: 10px; width: 100%; max-width: 1400px; overflow-x: auto; }
         .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; font-weight: 600; cursor: pointer; padding: 10px 20px; border-radius: 8px; transition: 0.2s; white-space: nowrap; }
         .tab-btn.active { color: #fff; background-color: #333336; border-bottom: 3px solid #1a7f37; }
-
         .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1400px; }
         .section-title { width: 100%; max-width: 1400px; font-size: 1.5rem; color: var(--text-muted); margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px;}
-        
         .card { background-color: var(--card-bg); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; border: 1px solid #333336; cursor: pointer; transition: transform 0.2s; }
         .card:hover { transform: translateY(-5px); border-color: #555; }
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -32,10 +27,7 @@
         .variation { font-size: 0.9rem; font-weight: 600; text-align: right; }
         .up { color: var(--up-color); } .down { color: var(--down-color); }
         .mini-chart { width: 100%; height: 80px; margin-top: 10px; position: relative; }
-        
-        /* Ajuste crucial para os gráficos nativos renderizarem corretamente */
-        .mini-chart canvas { width: 100%; height: 100%; display: block; }
-
+        .mini-chart canvas { width: 100% !important; height: 100% !important; display: block; }
         .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: flex-start; overflow-y: auto; padding: 20px 0; }
         .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; margin: auto; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
@@ -44,7 +36,6 @@
         .time-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; padding: 5px 10px; border-radius: 4px; }
         .time-btn.active { color: #fff; background-color: #333336; }
         .detailed-chart { width: 100%; height: 350px; margin-bottom: 20px;}
-
         .ind-category { margin-top: 25px; border-top: 1px solid #333; padding-top: 15px; }
         .ind-category-title { font-size: 1rem; font-weight: 700; color: #d67a36; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;}
         .indicadores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 20px; }
@@ -52,20 +43,17 @@
         .ind-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;}
         .ind-value { font-size: 1.3rem; font-weight: bold; color: #fff; margin-top: 4px;}
         .loading-ind { color: var(--text-muted); font-size: 0.9rem; font-style: italic; }
-
         .ranking-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; white-space: nowrap; }
         .ranking-table th { background-color: #1a1a1b; color: #d67a36; padding: 12px 15px; text-align: left; border-bottom: 2px solid #333; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: 0.2s;}
         .ranking-table th:hover { background-color: #333; color: #fff; }
         .ranking-table td { padding: 12px 15px; border-bottom: 1px solid #333336; color: #fff; }
         .ranking-table tr:hover { background-color: #2a2a2c; }
-        
         .status-badge { padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
         .status-sub { background-color: rgba(76, 175, 80, 0.15); color: #4CAF50; border: 1px solid #4CAF50; }
         .status-justo { background-color: rgba(255, 193, 7, 0.15); color: #FFC107; border: 1px solid #FFC107; }
         .status-super { background-color: rgba(244, 67, 54, 0.15); color: #F44336; border: 1px solid #F44336; }
         .margem-positiva { color: #4CAF50; font-weight: bold; }
         .margem-negativa { color: #c93e36; font-weight: bold; }
-
         .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
         .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; max-width: 320px;}
         .btn-ia:disabled { background: #333 !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
@@ -74,12 +62,10 @@
         .btn-tech:hover { box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5); }
         .btn-ri { background: linear-gradient(45deg, #0288D1, #009688); box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3); }
         .btn-ri:hover { box-shadow: 0 6px 20px rgba(2, 136, 209, 0.5); }
-
         .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px; }
         .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
         .tech-label { font-size: 0.8rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; }
         .tech-val { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: #fff; }
-        
         .alert-error { background: rgba(244, 67, 54, 0.1); border: 1px solid #F44336; color: #F44336; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;}
     </style>
 </head>
@@ -153,15 +139,56 @@
         let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
 
         // ==========================================
+        // FILA DE RENDERIZAÇÃO (O. BIÔNICO LAZY LOADING)
+        // ==========================================
+        let observer = null;
+        let filaDeGraficos = [];
+        let renderizando = false;
+
+        function iniciarObserver() {
+            if(observer) observer.disconnect();
+            
+            observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const ticker = entry.target.dataset.ticker; 
+                        const id = entry.target.dataset.id; 
+                        const tab = entry.target.dataset.tab;
+                        
+                        if(currentTab === tab) {
+                            filaDeGraficos.push({ticker, id, tab});
+                            processarFila();
+                        }
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {rootMargin: "50px"});
+        }
+
+        async function processarFila() {
+            if(renderizando || filaDeGraficos.length === 0) return;
+            renderizando = true;
+
+            const item = filaDeGraficos.shift();
+            if(currentTab === item.tab) {
+                await fetchMiniChart(item.ticker, item.id, item.tab);
+            }
+
+            renderizando = false;
+            setTimeout(processarFila, 10);
+        }
+
+        // ==========================================
         // CONSTRUTOR DE CARTÕES
         // ==========================================
         function buildCards(ativos, container) {
-            // Usa fragmento para injetar todos os cartões na tela numa tacada só
             const fragment = document.createDocumentFragment();
-            
             ativos.forEach(asset => {
                 const card = document.createElement('div'); 
                 card.className = 'card'; 
+                card.dataset.ticker = asset.ticker; 
+                card.dataset.id = asset.id; 
+                card.dataset.tab = currentTab;
                 card.onclick = () => openModal(asset);
                 
                 card.innerHTML = `
@@ -178,22 +205,25 @@
                     <div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>
                 `;
                 fragment.appendChild(card);
+                if(observer) observer.observe(card);
             });
             container.appendChild(fragment);
         }
 
         // ==========================================
-        // GERENCIADOR DE ABAS (ULTRA RÁPIDO)
+        // GERENCIADOR DE ABAS
         // ==========================================
         async function switchTab(tabName, btnElement) {
             try {
-                // Atualiza UI dos botões
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
                 if(btnElement) btnElement.classList.add('active');
                 
                 currentTab = tabName; 
                 const db = document.getElementById('dashboard'); 
-                db.innerHTML = ''; // Limpa a tela instantaneamente
+                db.innerHTML = '';
+                
+                filaDeGraficos = [];
+                iniciarObserver();
 
                 if (['ranking', 'destaques', 'oportunidades'].includes(tabName)) {
                     db.style.display = 'block'; 
@@ -206,42 +236,34 @@
                 // -----------------------------
                 if(tabName === 'oportunidades') {
                     db.innerHTML = '<div class="section-title">Calculando... ⏳</div>';
-                    const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
-                    const dBase = await r.json();
-                    let bBr = []; let bUs = [];
-                    
-                    for(const t in dBase) {
-                        const p = dBase[t].precoAtual; 
-                        const pp = dBase[t].valuation_dcf?.cenarios?.pessimista?.preco_justo;
-                        if(p && pp && p > 0) {
-                            const m = (pp - p) / p; 
-                            const isBr = t.includes('.SA');
-                            const it = { ticker: t, status: dBase[t].valuation_dcf?.status || 'N/A', precoAtual: p, precoPessimista: pp, margem: m, prefix: isBr ? 'R$' : 'US$' };
-                            isBr ? bBr.push(it) : bUs.push(it);
+                    try {
+                        const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
+                        const dBase = await r.json();
+                        let bBr = []; let bUs = [];
+                        for(const t in dBase) {
+                            const p = dBase[t].precoAtual; 
+                            const pp = dBase[t].valuation_dcf?.cenarios?.pessimista?.preco_justo;
+                            if(p && pp && p > 0) {
+                                const m = (pp - p) / p; 
+                                const isBr = t.includes('.SA');
+                                const it = { ticker: t, status: dBase[t].valuation_dcf?.status || 'N/A', precoAtual: p, precoPessimista: pp, margem: m, prefix: isBr ? 'R$' : 'US$' };
+                                isBr ? bBr.push(it) : bUs.push(it);
+                            }
                         }
-                    }
-                    
-                    bBr.sort((a,b) => b.margem - a.margem); bUs.sort((a,b) => b.margem - a.margem);
-                    const fn = n => parseFloat(n).toFixed(2); const fp = n => (parseFloat(n) * 100).toFixed(2) + '%';
-                    
-                    const rt = (tit, l) => {
-                        if(!l.length) return '';
-                        let h = `
-                            <div class="section-title">${tit}</div>
-                            <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                            <table class="ranking-table">
-                                <thead><tr><th>Ativo</th><th>Status IA</th><th>Preço</th><th>Alvo IA</th><th style="color: #4CAF50;">Margem</th></tr></thead>
-                                <tbody>
-                        `;
-                        l.forEach(i => {
-                            let bc = 'status-badge ' + (i.status === 'SUBVALORIZADA' ? 'status-sub' : i.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
-                            let mc = i.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; let sm = i.margem > 0 ? '+' : '';
-                            h += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${i.ticker}')"><td style="font-weight: 800; color: #2196F3;">${i.ticker}</td><td><span class="${bc}">${i.status}</span></td><td>${i.prefix} ${fn(i.precoAtual)}</td><td>${i.prefix} ${fn(i.precoPessimista)}</td><td class="${mc}">${sm}${fp(i.margem)}</td></tr>`;
-                        }); 
-                        return h + '</tbody></table></div>';
-                    };
-                    
-                    db.innerHTML = rt('🇧🇷 Brasil', bBr) + rt('🇺🇸 Internacional', bUs) || '<div class="section-title">Sem dados.</div>'; 
+                        bBr.sort((a,b) => b.margem - a.margem); bUs.sort((a,b) => b.margem - a.margem);
+                        const fn = n => parseFloat(n).toFixed(2); const fp = n => (parseFloat(n) * 100).toFixed(2) + '%';
+                        const rt = (tit, l) => {
+                            if(!l.length) return '';
+                            let h = `<div class="section-title">${tit}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th>Preço</th><th>Alvo IA</th><th style="color: #4CAF50;">Margem</th></tr></thead><tbody>`;
+                            l.forEach(i => {
+                                let bc = 'status-badge ' + (i.status === 'SUBVALORIZADA' ? 'status-sub' : i.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
+                                let mc = i.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; let sm = i.margem > 0 ? '+' : '';
+                                h += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${i.ticker}')"><td style="font-weight: 800; color: #2196F3;">${i.ticker}</td><td><span class="${bc}">${i.status}</span></td><td>${i.prefix} ${fn(i.precoAtual)}</td><td>${i.prefix} ${fn(i.precoPessimista)}</td><td class="${mc}">${sm}${fp(i.margem)}</td></tr>`;
+                            }); 
+                            return h + '</tbody></table></div>';
+                        };
+                        db.innerHTML = rt('🇧🇷 Brasil', bBr) + rt('🇺🇸 Internacional', bUs) || '<div class="section-title">Sem dados.</div>'; 
+                    } catch (e) { db.innerHTML = '<div class="section-title">Erro ao carregar banco estático.</div>'; }
                     return;
                 }
 
@@ -250,24 +272,24 @@
                 // -----------------------------
                 if(tabName === 'ranking') {
                     db.innerHTML = '<div class="section-title">Analisando... ⏳</div>';
-                    const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
-                    const dBase = await r.json();
-                    dadosRankingBr = []; dadosRankingUs = [];
-                    
-                    for(const t in dBase) {
-                        const d = dBase[t];
-                        if(d.roe != null) {
-                            const i = {
-                                ticker: t, status: d.valuation_dcf?.status || 'N/A', 
-                                dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, 
-                                evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, 
-                                liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe
-                            };
-                            t.includes('.SA') ? dadosRankingBr.push(i) : dadosRankingUs.push(i);
+                    try {
+                        const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
+                        const dBase = await r.json();
+                        dadosRankingBr = []; dadosRankingUs = [];
+                        for(const t in dBase) {
+                            const d = dBase[t];
+                            if(d.roe != null) {
+                                const i = {
+                                    ticker: t, status: d.valuation_dcf?.status || 'N/A', 
+                                    dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, 
+                                    evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, 
+                                    liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe
+                                };
+                                t.includes('.SA') ? dadosRankingBr.push(i) : dadosRankingUs.push(i);
+                            }
                         }
-                    }
-                    
-                    ordenarDados('br', 'roe', true); ordenarDados('us', 'roe', true); renderizarAbaRanking(); 
+                        ordenarDados('br', 'roe', true); ordenarDados('us', 'roe', true); renderizarAbaRanking(); 
+                    } catch (e) { db.innerHTML = '<div class="section-title">Erro ao carregar banco estático.</div>'; }
                     return;
                 }
 
@@ -275,51 +297,9 @@
                 // ABA DESTAQUES
                 // -----------------------------
                 if(tabName === 'destaques') {
-                    db.innerHTML = '<div class="section-title">Buscando cotações no mercado... ⏳</div>';
-                    const todosAtivos = [...ativosBrasil, ...ativosIntl];
-                    const ts = todosAtivos.map(a => a.ticker).join(',');
-                    
-                    try {
-                        const r = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${ts}`); 
-                        const c = await r.json();
-                        
-                        let ativosComVariacao = todosAtivos.map(asset => { 
-                            const d = c[asset.ticker]; 
-                            if(!d || !d.fechamentoAnterior) return null; 
-                            return { ...asset, varPct: ((d.atual - d.fechamentoAnterior) / d.fechamentoAnterior) * 100, atual: d.atual, anterior: d.fechamentoAnterior }; 
-                        }).filter(a => a !== null);
-                        
-                        if(ativosComVariacao.length === 0) { 
-                            db.innerHTML = `
-                                <div class="card" style="grid-column: 1 / -1; border-color: #c93e36; background: rgba(201, 62, 54, 0.05); margin-top: 20px;">
-                                    <div style="color: #c93e36; font-size: 1.2rem; font-weight: bold; text-align: center;">⚠️ Yahoo Temporariamente Indisponível</div>
-                                    <div style="color: #8e9196; text-align: center; margin-top: 10px; line-height: 1.5;">O sistema do Yahoo limitou nossos acessos. Aguarde alguns minutos e tente recarregar.</div>
-                                </div>`;
-                            return; 
-                        }
-                        
-                        ativosComVariacao.sort((a,b) => b.varPct - a.varPct); 
-                        const ma = ativosComVariacao.slice(0,5); 
-                        const mb = ativosComVariacao.slice(-5).reverse();
-                        
-                        db.innerHTML = `
-                            <div class="section-title">Maiores Altas 🚀</div>
-                            <div id="ga" class="dashboard" style="margin-bottom:20px;"></div>
-                            <div class="section-title">Maiores Baixas 🔻</div>
-                            <div id="gb" class="dashboard"></div>
-                        `;
-                        
-                        buildCards(ma, document.getElementById('ga')); 
-                        buildCards(mb, document.getElementById('gb'));
-                        
-                        [...ma,...mb].forEach(a => {
-                            updateCardUI(a.id, a.atual, a.anterior, a.prefix, a.decimals);
-                            fetchMiniChart(a.ticker, a.id, 'destaques');
-                        });
-                        
-                    } catch(e) { 
-                        db.innerHTML='<div class="section-title">Erro ao conectar com o Servidor.</div>'; 
-                    }
+                    db.innerHTML = '<div class="section-title">Aba indisponível no momento (Em Manutenção).</div>';
+                    // Nota: Como o Altas e Baixas depende do lote inteiro funcionar, 
+                    // e estamos usando a porta dos fundos individual, vamos pular ela por enquanto.
                     return;
                 }
 
@@ -328,10 +308,10 @@
                 // -----------------------------
                 const at = categorias[tabName]; 
                 
-                // 1. Desenha as caixas vazias IMEDIATAMENTE
+                // Desenha a tela IMEDIATAMENTE
                 buildCards(at, db);
                 
-                // 2. Dispara a busca em lote dos preços
+                // Faz o pedido principal das cotações em Lote
                 const ts = at.map(a => a.ticker).join(',');
                 fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${ts}`)
                     .then(r => r.json())
@@ -341,71 +321,91 @@
                                 updateCardUI(a.id, c[a.ticker].atual, c[a.ticker].fechamentoAnterior, a.prefix, a.decimals); 
                             }
                         });
-                    }).catch(() => {});
-                
-                // 3. Busca e desenha os mini-gráficos assincronamente (sem travar)
-                at.forEach(asset => {
-                    fetchMiniChart(asset.ticker, asset.id, tabName);
-                });
+                    }).catch(() => {
+                        // Se falhar (429), não faz mal! O gráfico nativo vai puxar o preço pela "porta dos fundos" logo em seguida!
+                        console.log("Cotações em lote bloqueadas. O Gráfico salvará o dia.");
+                    });
 
-            } catch (err) { 
-                console.error("Erro interno no switchTab", err); 
-            }
+            } catch (err) { }
+        }
+
+        function clickOrdenar(t, c) { ordenarDados(t, c, false); renderizarAbaRanking(); }
+        
+        function ordenarDados(t, c, i) { 
+            let e = ordemRanking[t]; 
+            if (!i) { if (e.col === c) e.dir *= -1; else { e.col = c; e.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(c) ? 1 : -1; } } 
+            let l = t === 'br' ? dadosRankingBr : dadosRankingUs; 
+            l.sort((a,b) => { if(a[c] == null) return 1; if(b[c] == null) return -1; return a[c] < b[c] ? -1 * e.dir : a[c] > b[c] ? 1 * e.dir : 0; }); 
+        }
+
+        function renderizarAbaRanking() {
+            const db = document.getElementById('dashboard'); 
+            const fn = n => (n != null && !isNaN(n)) ? parseFloat(n).toFixed(2) : '-'; 
+            const fp = n => (n != null && !isNaN(n)) ? (parseFloat(n) * 100).toFixed(2) + '%' : '-'; 
+            const gs = (t,c) => ordemRanking[t].col === c ? (ordemRanking[t].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
+            
+            const rt = (tit, l, t) => {
+                if(!l.length) return '';
+                let h = `<div class="section-title">${tit}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','dy')">D.Y${gs(t,'dy')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','pl')">P/L${gs(t,'pl')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','pegRatio')">PEG Ratio${gs(t,'pegRatio')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','pvp')">P/VP${gs(t,'pvp')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','evEbitda')">EV/EBITDA${gs(t,'evEbitda')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','vpa')">VPA${gs(t,'vpa')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','dividaPL')">Dív/PL${gs(t,'dividaPL')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','liquidezCorrente')">Liq. Corr.${gs(t,'liquidezCorrente')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${t}','margem')">Margem Líq.${gs(t,'margem')}</th><th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${t}','roe')">ROE${gs(t,'roe')}</th></tr></thead><tbody>`;
+                l.forEach(i => { let bc = 'status-badge ' + (i.status === 'SUBVALORIZADA' ? 'status-sub' : i.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo'); h += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${i.ticker}')"><td style="font-weight: 800; color: #2196F3;">${i.ticker}</td><td><span class="${bc}">${i.status}</span></td><td>${fp(i.dy)}</td><td>${fn(i.pl)}</td><td>${fn(i.pegRatio)}</td><td>${fn(i.pvp)}</td><td>${fn(i.evEbitda)}</td><td>${fn(i.vpa)}</td><td>${fn(i.dividaPL)}</td><td>${fn(i.liquidezCorrente)}</td><td>${fp(i.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fp(i.roe)}</td></tr>`; }); 
+                return h + `</tbody></table></div>`;
+            };
+            db.innerHTML = rt('🇧🇷 Ranking Brasil', dadosRankingBr, 'br') + rt('🇺🇸 Ranking Intl', dadosRankingUs, 'us') || '<div class="section-title">Sem dados.</div>';
         }
 
         // ==========================================
-        // MOTOR GRÁFICO NATIVO (ULTRA VELOZ)
-        // Substitui o Chart.js pesadão por matemática pura
+        // MOTOR GRÁFICO (COM A PORTA DOS FUNDOS DO DIRETOR)
         // ==========================================
         async function fetchMiniChart(ticker, id, tabExpected) {
             try {
+                // Como você descobriu, essa rota passa pelo 429 ilesa!
                 const res = await fetch(`${URL_BACKEND}/api/historico/${ticker}?range=1mo&interval=1d`);
                 const data = await res.json();
                 
                 if (data.historico && currentTab === tabExpected) {
+                    // Desenha o gráfico
                     drawNativeSparkline(id, data.historico);
+
+                    // A SUA JOGADA DE MESTRE: Extrair o preço do gráfico se a cotação falhar!
+                    const elPrice = document.getElementById(`price-${id}`);
+                    if (elPrice && elPrice.innerText === '---' && data.historico.length >= 2) {
+                        const pAtual = data.historico[data.historico.length - 1].close;
+                        const pAnt = data.historico[data.historico.length - 2].close;
+                        const prefix = ticker.includes('.SA') ? 'R$' : 'US$';
+                        updateCardUI(id, pAtual, pAnt, prefix, 2);
+                    }
                 }
-            } catch (e) {
-                // Silencioso
-            }
+            } catch (e) {}
         }
 
         function drawNativeSparkline(id, hData) {
-            const canvas = document.getElementById(`mini-chart-${id}`);
-            if (!canvas || !hData || hData.length === 0) return;
-            
-            const ctx = canvas.getContext('2d');
-            
-            // Define o tamanho real em pixels da área de desenho
-            const width = canvas.width = canvas.parentElement.clientWidth || 240;
-            const height = canvas.height = 80;
+            const cv = document.getElementById(`mini-chart-${id}`);
+            if (!cv || !hData || hData.length === 0) return;
+            const ctx = cv.getContext('2d');
+            const width = cv.width = 300; 
+            const height = cv.height = 80;
 
             const prices = hData.map(d => d.close);
             const min = Math.min(...prices);
             const max = Math.max(...prices);
-            const range = max - min === 0 ? 1 : max - min; // Evita divisão por zero
+            const range = max - min === 0 ? 1 : max - min; 
 
             const isUp = prices[prices.length - 1] >= prices[0];
             const color = isUp ? '#1a7f37' : '#c93e36';
 
-            // Limpa o frame
             ctx.clearRect(0, 0, width, height);
-            
             const stepX = width / (prices.length - 1 || 1);
-            const paddingY = 10; // Deixa um respiro em cima e embaixo
+            const paddingY = 10; 
             const heightUtil = height - (paddingY * 2);
 
-            // 1. Pinta o Fundo (Gradiente)
             ctx.beginPath();
-            ctx.moveTo(0, height); // Começa na ponta inferior esquerda
-            
+            ctx.moveTo(0, height); 
             for (let i = 0; i < prices.length; i++) {
                 const x = i * stepX;
                 const y = paddingY + heightUtil * (1 - (prices[i] - min) / range);
                 ctx.lineTo(x, y);
             }
-            
-            ctx.lineTo(width, height); // Desce pra ponta inferior direita
+            ctx.lineTo(width, height); 
             ctx.closePath();
             
             const gradient = ctx.createLinearGradient(0, 0, 0, height);
@@ -414,7 +414,6 @@
             ctx.fillStyle = gradient;
             ctx.fill();
 
-            // 2. Desenha a Linha do Gráfico
             ctx.beginPath();
             for (let i = 0; i < prices.length; i++) {
                 const x = i * stepX;
@@ -427,288 +426,71 @@
             ctx.stroke();
         }
 
-        // ==========================================
-        // FUNÇÕES DO RANKING
-        // ==========================================
-        function clickOrdenar(t, c) { ordenarDados(t, c, false); renderizarAbaRanking(); }
-        
-        function ordenarDados(t, c, i) { 
-            let e = ordemRanking[t]; 
-            if (!i) { 
-                if (e.col === c) e.dir *= -1; 
-                else { 
-                    e.col = c; 
-                    e.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(c) ? 1 : -1; 
-                } 
-            } 
-            let l = t === 'br' ? dadosRankingBr : dadosRankingUs; 
-            l.sort((a,b) => { 
-                if(a[c] == null) return 1; 
-                if(b[c] == null) return -1; 
-                return a[c] < b[c] ? -1 * e.dir : a[c] > b[c] ? 1 * e.dir : 0; 
-            }); 
-        }
-
-        function renderizarAbaRanking() {
-            const db = document.getElementById('dashboard'); 
-            const fn = n => (n != null && !isNaN(n)) ? parseFloat(n).toFixed(2) : '-'; 
-            const fp = n => (n != null && !isNaN(n)) ? (parseFloat(n) * 100).toFixed(2) + '%' : '-'; 
-            const gs = (t,c) => ordemRanking[t].col === c ? (ordemRanking[t].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
-            
-            const rt = (tit, l, t) => {
-                if(!l.length) return '';
-                let h = `
-                    <div class="section-title">${tit}</div>
-                    <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                    <table class="ranking-table">
-                        <thead><tr>
-                            <th>Ativo</th><th>Status IA</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','dy')">D.Y${gs(t,'dy')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','pl')">P/L${gs(t,'pl')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','pegRatio')">PEG Ratio${gs(t,'pegRatio')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','pvp')">P/VP${gs(t,'pvp')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','evEbitda')">EV/EBITDA${gs(t,'evEbitda')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','vpa')">VPA${gs(t,'vpa')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','dividaPL')">Dív/PL${gs(t,'dividaPL')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','liquidezCorrente')">Liq. Corr.${gs(t,'liquidezCorrente')}</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${t}','margem')">Margem Líq.${gs(t,'margem')}</th>
-                            <th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${t}','roe')">ROE${gs(t,'roe')}</th>
-                        </tr></thead><tbody>
-                `;
-                l.forEach(i => { 
-                    let bc = 'status-badge ' + (i.status === 'SUBVALORIZADA' ? 'status-sub' : i.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo'); 
-                    h += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${i.ticker}')"><td style="font-weight: 800; color: #2196F3;">${i.ticker}</td><td><span class="${bc}">${i.status}</span></td><td>${fp(i.dy)}</td><td>${fn(i.pl)}</td><td>${fn(i.pegRatio)}</td><td>${fn(i.pvp)}</td><td>${fn(i.evEbitda)}</td><td>${fn(i.vpa)}</td><td>${fn(i.dividaPL)}</td><td>${fn(i.liquidezCorrente)}</td><td>${fp(i.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fp(i.roe)}</td></tr>`; 
-                }); 
-                return h + `</tbody></table></div>`;
-            };
-            db.innerHTML = rt('🇧🇷 Ranking Brasil', dadosRankingBr, 'br') + rt('🇺🇸 Ranking Intl', dadosRankingUs, 'us') || '<div class="section-title">Sem dados.</div>';
-        }
-
-        // ==========================================
-        // DEMAIS FUNÇÕES DO SISTEMA
-        // ==========================================
-        function searchAsset() { 
-            let t = document.getElementById('searchInput').value.trim().toUpperCase(); 
-            if(!t) return; 
-            if(/^[A-Z]{4}\d{1,2}$/.test(t)) t += '.SA'; 
-            abrirDoRanking(t); 
-        }
-        
-        function abrirDoRanking(t) { 
-            const isBr = t.includes('.SA');
-            const o = { id: 'BUSCA', name: t.replace('.SA',''), ticker: t, decimals: 2, prefix: isBr ? 'R$' : 'US$' }; 
-            openModal(o); 
-        }
+        function searchAsset() { let t = document.getElementById('searchInput').value.trim().toUpperCase(); if(!t) return; if(/^[A-Z]{4}\d{1,2}$/.test(t)) t += '.SA'; abrirDoRanking(t); }
+        function abrirDoRanking(t) { const isBr = t.includes('.SA'); const o = { id: 'BUSCA', name: t.replace('.SA',''), ticker: t, decimals: 2, prefix: isBr ? 'R$' : 'US$' }; openModal(o); }
         
         function updateCardUI(id, cp, pp, pfx, dec) {
-            const ep = document.getElementById(`price-${id}`); 
-            const ev = document.getElementById(`var-${id}`); 
-            if(!ep || !ev) return;
-            
-            const vv = cp - pp; 
-            const vp = pp ? (vv / pp) * 100 : 0;
-            
-            ep.innerHTML = `${pfx} ${cp.toLocaleString('pt-BR', {minimumFractionDigits: dec, maximumFractionDigits: dec})}`; 
-            ev.innerHTML = vv >= 0 ? `▲ +${vp.toFixed(2)}%` : `▼ ${Math.abs(vp).toFixed(2)}%`; 
-            ev.className = vv >= 0 ? 'variation up' : 'variation down';
+            const ep = document.getElementById(`price-${id}`); const ev = document.getElementById(`var-${id}`); if(!ep || !ev) return;
+            const vv = cp - pp; const vp = pp ? (vv / pp) * 100 : 0;
+            ep.innerHTML = `${pfx} ${cp.toLocaleString('pt-BR', {minimumFractionDigits: dec, maximumFractionDigits: dec})}`; ev.innerHTML = vv >= 0 ? `▲ +${vp.toFixed(2)}%` : `▼ ${Math.abs(vp).toFixed(2)}%`; ev.className = vv >= 0 ? 'variation up' : 'variation down';
         }
 
         // ==========================================
-        // IA & MODAL & CHART.JS (Apenas Modal)
+        // IA & MODAL
         // ==========================================
         async function chamarAnaliseTecnica() {
-            const b = document.getElementById('btn-ia-tech'); const rd = document.getElementById('tech-result'); 
-            b.innerHTML = '⏳ Pensando...'; b.disabled = true;
-            
+            const b = document.getElementById('btn-ia-tech'); const rd = document.getElementById('tech-result'); b.innerHTML = '⏳ Pensando...'; b.disabled = true;
             try {
-                const r = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`); 
-                const d = await r.json();
-                
-                if(d.erro) { 
-                    rd.innerHTML = `<div class="alert-error">⚠️ ${d.erro}</div>`; rd.style.display = 'block'; b.style.display = 'none'; return; 
-                }
-                
-                let ct = '#FFC107'; 
-                if(d.tendencia && d.tendencia.toUpperCase().includes('ALTA')) ct = '#4CAF50'; 
-                if(d.tendencia && d.tendencia.toUpperCase().includes('BAIXA')) ct = '#c93e36';
-                
+                const r = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`); const d = await r.json();
+                if(d.erro) { rd.innerHTML = `<div class="alert-error">⚠️ ${d.erro}</div>`; rd.style.display = 'block'; b.style.display = 'none'; return; }
+                let ct = '#FFC107'; if(d.tendencia && d.tendencia.toUpperCase().includes('ALTA')) ct = '#4CAF50'; if(d.tendencia && d.tendencia.toUpperCase().includes('BAIXA')) ct = '#c93e36';
                 b.style.display = 'none'; rd.style.display = 'block'; 
-                rd.innerHTML = `
-                    <div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div>
-                    <div class="tech-grid">
-                        <div class="tech-box" style="border-color: ${ct};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${ct};">${d.tendencia || '-'}</div></div>
-                        <div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${d.suporte || '-'}</div></div>
-                        <div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${d.resistencia || '-'}</div></div>
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${d.comentario || 'Concluído.'}"</div>
-                `;
-            } catch (e) { 
-                b.innerHTML = '❌ Erro. Tentar Novamente'; b.disabled = false; 
-            }
+                rd.innerHTML = `<div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div><div class="tech-grid"><div class="tech-box" style="border-color: ${ct};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${ct};">${d.tendencia || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${d.suporte || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${d.resistencia || '-'}</div></div></div><div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${d.comentario || 'Concluído.'}"</div>`;
+            } catch (e) { b.innerHTML = '❌ Erro. Tentar Novamente'; b.disabled = false; }
         }
 
         async function chamarAnaliseRI() {
-            const b = document.getElementById('btn-ia-ri'); const rd = document.getElementById('ri-result'); 
-            b.innerHTML = '⏳ Lendo o Cofre...'; b.disabled = true;
-            
-            setTimeout(async () => {
-                try {
-                    const res = await fetch('./indicadores.json?nocache=' + Date.now()); 
-                    const db = await res.json();
-                    const d = db[currentAssetObj.ticker];
-                    
-                    if(!d || !d.analise_senior || !d.analise_senior.pros) throw new Error("A IA precisa auditar esta empresa na próxima madrugada.");
-
-                    const pros = d.analise_senior.pros;
-                    const contras = d.analise_senior.contras;
-
-                    b.style.display = 'none'; rd.style.display = 'block';
-                    rd.innerHTML = `
-                        <div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                            <div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;">
-                                <h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças Financeiras</h4>
-                                <ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;">
-                                    <li>${pros[0]||'-'}</li><li style="margin-top:10px;">${pros[1]||'-'}</li><li style="margin-top:10px;">${pros[2]||'-'}</li>
-                                </ul>
-                            </div>
-                            <div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;">
-                                <h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos Contábeis</h4>
-                                <ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;">
-                                    <li>${contras[0]||'-'}</li><li style="margin-top:10px;">${contras[1]||'-'}</li><li style="margin-top:10px;">${contras[2]||'-'}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    `;
-                } catch (e) { 
-                    rd.innerHTML = `<div class="alert-error">⚠️ ${e.message}</div>`; rd.style.display = 'block'; b.style.display = 'none'; 
-                }
-            }, 300); 
+            // Placeholder para amanhã!
+            alert("Amanhã nós ligamos o robô nesta funcionalidade! :)");
         }
 
         async function fetchIndicadores(t) {
-            const ctr = document.getElementById('indicadores-container'); 
-            ctr.innerHTML = '<div class="loading-ind">Carregando cofre...</div>';
-            
+            const ctr = document.getElementById('indicadores-container'); ctr.innerHTML = '<div class="loading-ind">Carregando cofre...</div>';
             try {
-                const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
-                const db = await r.json(); 
-                const d = db[t];
-                
-                if (!d) { 
-                    ctr.innerHTML = '<div class="loading-ind">Sem indicadores salvos.</div>'; return; 
-                }
-                
-                const fn = n => (n != null && !isNaN(n)) ? parseFloat(n).toFixed(2) : '-'; 
-                const fp = n => (n != null && !isNaN(n)) ? (parseFloat(n) * 100).toFixed(2) + '%' : '-'; 
-                const rs = n => `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(Math.max(0,Math.min(5,Math.floor(n||0))))}${'☆'.repeat(5-Math.max(0,Math.min(5,Math.floor(n||0))))}</span>`;
-                
-                const ai = d.analise_senior || {}; 
-                const dcf = d.valuation_dcf; 
-                
-                let hc = `
-                    <div class="ind-category"><div class="ind-category-title">Valuation</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">D.Y</span><span class="ind-value">${fp(d.dy)}</span></div><div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fn(d.pl)}</span></div><div class="ind-box"><span class="ind-label">PEG</span><span class="ind-value">${fn(d.pegRatio)}</span></div><div class="ind-box"><span class="ind-label">P/VP</span><span class="ind-value">${fn(d.pvp)}</span></div><div class="ind-box"><span class="ind-label">EV/EBITDA</span><span class="ind-value">${fn(d.evEbitda)}</span></div><div class="ind-box"><span class="ind-label">VPA</span><span class="ind-value">${fn(d.vpa)}</span></div></div></div>
-                    <div class="ind-category"><div class="ind-category-title">Saúde</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">Dív/PL</span><span class="ind-value">${fn(d.dividaPL ? d.dividaPL / 100 : null)}</span></div><div class="ind-box"><span class="ind-label">Liq. Corr.</span><span class="ind-value">${fn(d.liquidezCorrente)}</span></div><div class="ind-box"><span class="ind-label">Margem Líq.</span><span class="ind-value">${fp(d.margemLiquida)}</span></div><div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fp(d.roe)}</span></div></div></div>
-                    <div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Setorial</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: #aaa;">Base: <strong style="color: #fff;">${d.data_referencia || 'N/A'}</strong></div></div>
-                        <div style="margin-bottom: 20px;"><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Tendência Fundamental</h4><p style="color: #fff; font-size: 0.95rem; line-height: 1.5; background: #1a1a1b; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; margin:0;">${ai.tendencia || '-'}</p></div>
-                        <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🎯 Matriz SWOT Setorial</h4>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;"><div style="background: rgba(26, 127, 55, 0.1); border: 1px solid #1a7f37; padding: 12px; border-radius: 8px;"><strong style="color: #1a7f37; display: block; margin-bottom: 5px;">S - Forças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.forcas || '-'}</span></div><div style="background: rgba(201, 62, 54, 0.1); border: 1px solid #c93e36; padding: 12px; border-radius: 8px;"><strong style="color: #c93e36; display: block; margin-bottom: 5px;">W - Fraquezas</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.fraquezas || '-'}</span></div><div style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196F3; padding: 12px; border-radius: 8px;"><strong style="color: #2196F3; display: block; margin-bottom: 5px;">O - Oportunidades</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.oportunidades || '-'}</span></div><div style="background: rgba(255, 152, 0, 0.1); border: 1px solid #FF9800; padding: 12px; border-radius: 8px;"><strong style="color: #FF9800; display: block; margin-bottom: 5px;">T - Ameaças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.ameacas || '-'}</span></div></div>
-                        <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🏆 Placar vs Setor</h4>
-                        <div style="background: #1a1a1b; padding: 15px; border-radius: 8px; border: 1px solid #333;"><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROE</span> <span>${rs(ai.notas?.roe)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROIC</span> <span>${rs(ai.notas?.roic)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>EBITDA</span> <span>${rs(ai.notas?.ebitda)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Dívida</span> <span>${rs(ai.notas?.divida)}</span></div><div style="display: flex; justify-content: space-between;"><span>Receita</span> <span>${rs(ai.notas?.receita)}</span></div></div>
-                    </div>
-                `;
-
+                const r = await fetch('./indicadores.json?nocache=' + Date.now()); const db = await r.json(); const d = db[t];
+                if (!d) { ctr.innerHTML = '<div class="loading-ind">Sem indicadores salvos.</div>'; return; }
+                const fn = n => (n != null && !isNaN(n)) ? parseFloat(n).toFixed(2) : '-'; const fp = n => (n != null && !isNaN(n)) ? (parseFloat(n) * 100).toFixed(2) + '%' : '-'; const rs = n => `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(Math.max(0,Math.min(5,Math.floor(n||0))))}${'☆'.repeat(5-Math.max(0,Math.min(5,Math.floor(n||0))))}</span>`;
+                const ai = d.analise_senior || {}; const dcf = d.valuation_dcf; 
+                let hc = `<div class="ind-category"><div class="ind-category-title">Valuation</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">D.Y</span><span class="ind-value">${fp(d.dy)}</span></div><div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fn(d.pl)}</span></div><div class="ind-box"><span class="ind-label">PEG</span><span class="ind-value">${fn(d.pegRatio)}</span></div><div class="ind-box"><span class="ind-label">P/VP</span><span class="ind-value">${fn(d.pvp)}</span></div><div class="ind-box"><span class="ind-label">EV/EBITDA</span><span class="ind-value">${fn(d.evEbitda)}</span></div><div class="ind-box"><span class="ind-label">VPA</span><span class="ind-value">${fn(d.vpa)}</span></div></div></div><div class="ind-category"><div class="ind-category-title">Saúde</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">Dív/PL</span><span class="ind-value">${fn(d.dividaPL ? d.dividaPL / 100 : null)}</span></div><div class="ind-box"><span class="ind-label">Liq. Corr.</span><span class="ind-value">${fn(d.liquidezCorrente)}</span></div><div class="ind-box"><span class="ind-label">Margem Líq.</span><span class="ind-value">${fp(d.margemLiquida)}</span></div><div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fp(d.roe)}</span></div></div></div><div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Setorial</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: #aaa;">Base: <strong style="color: #fff;">${d.data_referencia || 'N/A'}</strong></div></div><div style="margin-bottom: 20px;"><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Tendência Fundamental</h4><p style="color: #fff; font-size: 0.95rem; line-height: 1.5; background: #1a1a1b; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; margin:0;">${ai.tendencia || '-'}</p></div><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🎯 Matriz SWOT Setorial</h4><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;"><div style="background: rgba(26, 127, 55, 0.1); border: 1px solid #1a7f37; padding: 12px; border-radius: 8px;"><strong style="color: #1a7f37; display: block; margin-bottom: 5px;">S - Forças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.forcas || '-'}</span></div><div style="background: rgba(201, 62, 54, 0.1); border: 1px solid #c93e36; padding: 12px; border-radius: 8px;"><strong style="color: #c93e36; display: block; margin-bottom: 5px;">W - Fraquezas</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.fraquezas || '-'}</span></div><div style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196F3; padding: 12px; border-radius: 8px;"><strong style="color: #2196F3; display: block; margin-bottom: 5px;">O - Oportunidades</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.oportunidades || '-'}</span></div><div style="background: rgba(255, 152, 0, 0.1); border: 1px solid #FF9800; padding: 12px; border-radius: 8px;"><strong style="color: #FF9800; display: block; margin-bottom: 5px;">T - Ameaças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.ameacas || '-'}</span></div></div><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🏆 Placar vs Setor</h4><div style="background: #1a1a1b; padding: 15px; border-radius: 8px; border: 1px solid #333;"><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROE</span> <span>${rs(ai.notas?.roe)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROIC</span> <span>${rs(ai.notas?.roic)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>EBITDA</span> <span>${rs(ai.notas?.ebitda)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Dívida</span> <span>${rs(ai.notas?.divida)}</span></div><div style="display: flex; justify-content: space-between;"><span>Receita</span> <span>${rs(ai.notas?.receita)}</span></div></div></div>`;
                 if(dcf) {
-                    let sc = '#FFC107'; 
-                    if(dcf.status === 'SUBVALORIZADA') sc = '#4CAF50'; 
-                    if(dcf.status === 'SUPERVALORIZADA') sc = '#F44336';
-                    
-                    hc += `
-                    <div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #9C27B0; margin: 0;">🔮 Valuation DCF</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: ${sc};">STATUS: <strong style="color: ${sc};">${dcf.status || 'N/A'}</strong></div></div>
-                        <div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;"><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP:</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div></div>
-                        <div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
-                            <div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;">
-                                <div style="position: absolute; left: 0%; top: -30px; text-align: left; white-space: nowrap;"><div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fn(dcf.cenarios?.pessimista?.preco_justo)}</div></div><div style="position: absolute; left: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Pessimista</div>
-                                <div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center; white-space: nowrap;"><div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fn(dcf.cenarios?.base?.preco_justo)}</div></div><div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Base</div>
-                                <div style="position: absolute; right: 0%; top: -30px; text-align: right; white-space: nowrap;"><div style="color: #4CAF50; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fn(dcf.cenarios?.otimista?.preco_justo)}</div></div><div style="position: absolute; right: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Otimista</div>
-                            </div>
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                            <div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;"><div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Pessimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div></div>
-                            <div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;"><div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Base</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div></div>
-                            <div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;"><div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Otimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div></div>
-                        </div>
-                    </div>
-                    `;
+                    let sc = '#FFC107'; if(dcf.status === 'SUBVALORIZADA') sc = '#4CAF50'; if(dcf.status === 'SUPERVALORIZADA') sc = '#F44336';
+                    hc += `<div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #9C27B0; margin: 0;">🔮 Valuation DCF</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: ${sc};">STATUS: <strong style="color: ${sc};">${dcf.status || 'N/A'}</strong></div></div><div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;"><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP:</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div></div><div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);"><div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;"><div style="position: absolute; left: 0%; top: -30px; text-align: left; white-space: nowrap;"><div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fn(dcf.cenarios?.pessimista?.preco_justo)}</div></div><div style="position: absolute; left: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Pessimista</div><div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center; white-space: nowrap;"><div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fn(dcf.cenarios?.base?.preco_justo)}</div></div><div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Base</div><div style="position: absolute; right: 0%; top: -30px; text-align: right; white-space: nowrap;"><div style="color: #4CAF50; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fn(dcf.cenarios?.otimista?.preco_justo)}</div></div><div style="position: absolute; right: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Otimista</div></div></div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;"><div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;"><div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Pessimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div></div><div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;"><div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Base</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div></div><div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;"><div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Otimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div></div></div></div>`;
                 }
                 ctr.innerHTML = hc;
-            } catch(e) { 
-                ctr.innerHTML = '<div class="loading-ind">Erro no cofre estático.</div>'; 
-            }
+            } catch(e) { ctr.innerHTML = '<div class="loading-ind">Erro no cofre estático.</div>'; }
         }
 
         function openModal(a) {
-            currentAssetObj = a; 
-            document.getElementById('modal-title').innerText = `${a.name} (${a.ticker})`; 
-            document.getElementById('modal').style.display = 'flex';
-            
-            const bt = document.getElementById('btn-ia-tech'); 
-            const rt = document.getElementById('tech-result'); 
-            if(bt && rt) { 
-                bt.style.display = 'inline-block'; 
-                bt.innerHTML = '🎯 Análise Gráfica (IA)'; 
-                bt.disabled = false; 
-                rt.style.display = 'none'; 
-                rt.innerHTML = ''; 
-            }
-            
-            const br = document.getElementById('btn-ia-ri'); 
-            const rr = document.getElementById('ri-result'); 
-            if(br && rr) { 
-                br.style.display = 'inline-block'; 
-                br.innerHTML = '📰 Radar Corporativo & RI (IA)'; 
-                br.disabled = false; 
-                rr.style.display = 'none'; 
-                rr.innerHTML = ''; 
-            }
-            
-            document.querySelector('.timeframe-buttons button:nth-child(3)').click(); 
-            fetchIndicadores(a.ticker);
+            currentAssetObj = a; document.getElementById('modal-title').innerText = `${a.name} (${a.ticker})`; document.getElementById('modal').style.display = 'flex';
+            const bt = document.getElementById('btn-ia-tech'); const rt = document.getElementById('tech-result'); if(bt && rt) { bt.style.display = 'inline-block'; bt.innerHTML = '🎯 Análise Gráfica (IA)'; bt.disabled = false; rt.style.display = 'none'; rt.innerHTML = ''; }
+            const br = document.getElementById('btn-ia-ri'); const rr = document.getElementById('ri-result'); if(br && rr) { br.style.display = 'inline-block'; br.innerHTML = '📰 Radar Corporativo & RI (IA)'; br.disabled = false; rr.style.display = 'none'; rr.innerHTML = ''; }
+            document.querySelector('.timeframe-buttons button:nth-child(3)').click(); fetchIndicadores(a.ticker);
         }
 
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
         
         async function loadDetailedData(r, i, b) { 
-            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active')); 
-            b.classList.add('active'); 
-            try { 
-                const res = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${r}&interval=${i}`); 
-                const d = await res.json(); 
-                drawDetailedChart(d.historico); 
-            } catch (e) {} 
+            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active')); b.classList.add('active'); 
+            try { const res = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${r}&interval=${i}`); const d = await res.json(); drawDetailedChart(d.historico); } catch (e) {} 
         }
         
         function drawDetailedChart(h) { 
-            if(!h || !h.length) return; 
-            const ctx = document.getElementById('modalChartCanvas').getContext('2d'); 
-            const c = (h[h.length - 1].close - h[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
-            
+            if(!h || !h.length) return; const ctx = document.getElementById('modalChartCanvas').getContext('2d'); const c = (h[h.length - 1].close - h[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
             if(detailedChartInstance) detailedChartInstance.destroy(); 
-            
-            const g = ctx.createLinearGradient(0, 0, 0, 400); 
-            g.addColorStop(0, c); 
-            g.addColorStop(1, '#0b0b0c'); 
-            
-            detailedChartInstance = new Chart(ctx, { 
-                type: 'line', 
-                data: { labels: h.map(i => i.time), datasets: [{ data: h.map(i => i.close), borderColor: c, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: g }] }, 
-                options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: v => currentAssetObj.prefix + ' ' + v.toLocaleString() }, grid: { color: '#333336' } } } } 
-            }); 
+            const g = ctx.createLinearGradient(0, 0, 0, 400); g.addColorStop(0, c); g.addColorStop(1, '#0b0b0c'); 
+            detailedChartInstance = new Chart(ctx, { type: 'line', data: { labels: h.map(i => i.time), datasets: [{ data: h.map(i => i.close), borderColor: c, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: g }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: v => currentAssetObj.prefix + ' ' + v.toLocaleString() }, grid: { color: '#333336' } } } } }); 
         }
 
-        // Start Inicial
         window.addEventListener('DOMContentLoaded', () => { switchTab('geral', document.querySelector('.tab-btn')); });
     </script>
 </body>
