@@ -7,25 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root { 
-            --bg-color: #0b0b0c; 
-            --card-bg: #1e1e1f; 
-            --text-main: #ffffff; 
-            --text-muted: #8e9196; 
-            --up-color: #1a7f37; 
-            --down-color: #c93e36; 
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; 
+            --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         }
-        
-        body { 
-            font-family: var(--font-family); 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
-            padding: 30px 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
         
         .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         h1 { margin: 0; font-size: 2rem; }
@@ -73,7 +58,6 @@
         .ranking-table th:hover { background-color: #333; color: #fff; }
         .ranking-table td { padding: 12px 15px; border-bottom: 1px solid #333336; color: #fff; }
         .ranking-table tr:hover { background-color: #2a2a2c; }
-        
         .status-badge { padding: 6px 12px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
         .status-sub { background-color: rgba(76, 175, 80, 0.15); color: #4CAF50; border: 1px solid #4CAF50; }
         .status-justo { background-color: rgba(255, 193, 7, 0.15); color: #FFC107; border: 1px solid #FFC107; }
@@ -89,12 +73,10 @@
         .btn-tech:hover { box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5); }
         .btn-ri { background: linear-gradient(45deg, #0288D1, #009688); box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3); }
         .btn-ri:hover { box-shadow: 0 6px 20px rgba(2, 136, 209, 0.5); }
-
         .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px; }
         .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
         .tech-label { font-size: 0.8rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; }
         .tech-val { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: #fff; }
-        
         .alert-error { background: rgba(244, 67, 54, 0.1); border: 1px solid #F44336; color: #F44336; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;}
     </style>
 </head>
@@ -146,26 +128,16 @@
                 <div id="ri-result" style="display: none; text-align: left;"></div>
             </div>
 
-            <div id="indicadores-container">
-                <div class="loading-ind">Carregando indicadores fundamentais...</div>
-            </div>
+            <div id="indicadores-container"></div>
         </div>
     </div>
 
     <script>
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
-        const ativosGerais = [
-            { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
-            { id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },
-            { id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }
-        ];
-
+        const ativosGerais = [{ id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },{ id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },{ id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },{ id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },{ id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }];
         const listaBrasilRaw = ['AGRO3', 'AMOB3', 'BBAS3', 'BBDC3', 'BBSE3', 'BRSR6', 'B3SA3', 'CMIG3', 'CXSE3', 'EGIE3', 'EQTL3', 'ETHE11', 'EZTC3', 'FLRY3', 'GMAT3', 'GOLD11', 'ITSA4', 'KEPL3', 'KLBN3', 'LEVE3', 'MBRF3', 'PETR3', 'PRIO3', 'PSSA3', 'QBTC11', 'QSOL11', 'RAIZ4', 'RANI3', 'SAPR4', 'SBFG3', 'SMTO3', 'SOJA3', 'SUZB3', 'TAEE11', 'TTEN3', 'VAMO3', 'VIVT3', 'WEGE3'];
         const ativosBrasil = listaBrasilRaw.map(ticker => ({ id: ticker, name: ticker, ticker: `${ticker}.SA`, decimals: 2, prefix: 'R$' }));
-
         const listaIntlRaw = ['GOOGL', 'AMZN', 'NVDA', 'TSM', 'ASML', 'AVGO', 'IRS', 'TSLA', 'MU', 'VZ', 'T', 'HD', 'SHOP', 'DIS', 'SPG', 'ANET', 'ICE', 'KO', 'EQNR', 'EPR', 'WFC', 'VICI', 'O', 'CPRT', 'ASX', 'CEPU', 'NVO', 'PLTR', 'JBL', 'QCOM', 'AAPL', 'MSFT', 'BAC', 'ORCL', 'EQT', 'MNST', 'CVS', 'HUYA', 'GPC', 'PFE', 'ROKU', 'DIBS', 'LEG', 'MBUU', 'FVRR'];
         const ativosIntl = listaIntlRaw.map(ticker => ({ id: ticker, name: ticker, ticker: ticker, decimals: 2, prefix: 'US$' }));
 
@@ -175,119 +147,96 @@
         let miniCharts = {}; 
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
-        let dadosRankingBr = []; 
-        let dadosRankingUs = []; 
-        let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
+        let dadosRankingBr = []; let dadosRankingUs = []; let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
 
         // ==========================================
-        // ⚙️ SISTEMA DE FILA EM SEGUNDO PLANO (ANTI-TRAVAMENTO)
+        // 🎯 O OLHO BIÔNICO: LAZY LOADING DE GRÁFICOS
         // ==========================================
-        let filaGraficos = [];
-        let processandoFila = false;
+        let observadorGraficos = null;
 
-        function iniciarFilaGraficos(ativos, abaDestino) {
-            // Cria a fila de processamento
-            filaGraficos = ativos.map(ativo => ({ asset: ativo, tab: abaDestino }));
-            // Dá a partida no motor se ele estiver parado
-            if (!processandoFila) {
-                processarFila();
-            }
-        }
-
-        async function processarFila() {
-            // Se a fila esvaziou, desliga o motor
-            if (filaGraficos.length === 0) {
-                processandoFila = false;
-                return;
-            }
+        function iniciarObservador() {
+            if (observadorGraficos) observadorGraficos.disconnect(); // Reseta o olho ao mudar de aba
             
-            processandoFila = true;
-            const item = filaGraficos.shift(); // Pega o primeiro da fila
-
-            // Só processa o gráfico se o usuário não tiver mudado de aba!
-            if (currentTab === item.tab) {
-                await fetchMiniChart(item.asset, item.tab);
-            }
-
-            // Descansa o navegador por 100ms e chama o próximo da fila
-            setTimeout(processarFila, 100);
+            observadorGraficos = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // O usuário rolou a tela e viu o cartão?
+                    if (entry.isIntersecting) {
+                        const asset = JSON.parse(entry.target.dataset.asset);
+                        const tab = entry.target.dataset.tab;
+                        
+                        // Busca o gráfico só para esse cartão visível
+                        if (currentTab === tab) {
+                            fetchMiniChart(asset, tab);
+                        }
+                        
+                        // Para de vigiar esse cartão (já carregou)
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '100px' }); // Começa a carregar um pouco antes de aparecer na tela
         }
 
         // ==========================================
-        // CONSTUTOR DE CARTÕES (INSTANTÂNEO)
+        // CONSTRUTOR DE CARTÕES
         // ==========================================
         function buildCards(ativos, container) {
             ativos.forEach(asset => {
                 const card = document.createElement('div'); 
                 card.className = 'card'; 
                 card.onclick = () => openModal(asset);
+                
+                // Salva os dados do ativo escondidos na div para o Olho Biônico ler depois
+                card.dataset.asset = JSON.stringify(asset);
+                card.dataset.tab = currentTab;
+                
                 card.innerHTML = `
                     <div class="card-header">
-                        <div>
-                            <div class="asset-name">${asset.name}</div>
-                            <div class="asset-ticker">${asset.ticker}</div>
-                        </div>
-                        <div>
-                            <div class="price" id="price-${asset.id}">---</div>
-                            <div class="variation" id="var-${asset.id}">--</div>
-                        </div>
+                        <div><div class="asset-name">${asset.name}</div><div class="asset-ticker">${asset.ticker}</div></div>
+                        <div><div class="price" id="price-${asset.id}">---</div><div class="variation" id="var-${asset.id}">--</div></div>
                     </div>
                     <div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>
                 `;
                 container.appendChild(card);
+                
+                // Manda o Olho Biônico vigiar essa nova caixa
+                if (observadorGraficos) observadorGraficos.observe(card);
             });
         }
 
         // ==========================================
-        // GERENCIADOR DE ABAS (ULTRA RÁPIDO)
+        // GERENCIADOR DE ABAS
         // ==========================================
         async function switchTab(tabName, btnElement) {
             try {
-                // 1. Atualiza botões
                 document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active')); 
                 if(btnElement) btnElement.classList.add('active');
                 currentTab = tabName;
                 
-                // 2. Limpa o painel, a Fila e os Gráficos
-                filaGraficos = []; // Zera a fila se trocar de aba
                 const dashboard = document.getElementById('dashboard'); 
                 dashboard.innerHTML = ''; 
                 Object.keys(miniCharts).forEach(id => { if(miniCharts[id]) miniCharts[id].destroy(); }); 
                 miniCharts = {};
 
-                // 3. Define o layout base
-                if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
-                    dashboard.style.display = 'block';
-                } else {
-                    dashboard.style.display = 'grid';
-                }
+                // Inicia o Olho Biônico limpo para a nova aba
+                iniciarObservador();
 
-                // -----------------------------
-                // ABA OPORTUNIDADES
-                // -----------------------------
+                if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') dashboard.style.display = 'block';
+                else dashboard.style.display = 'grid';
+
                 if(tabName === 'oportunidades') {
                     dashboard.innerHTML = '<div class="section-title">Calculando Margem de Segurança... ⏳</div>';
-                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); 
-                    const dadosDaBase = await res.json();
+                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); const dadosDaBase = await res.json();
                     let listaOportunidadesBr = []; let listaOportunidadesUs = [];
-
                     for (const ticker in dadosDaBase) {
-                        const d = dadosDaBase[ticker]; 
-                        const precoAtual = d.precoAtual; 
-                        const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
-                        
+                        const d = dadosDaBase[ticker]; const precoAtual = d.precoAtual; const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
                         if(precoAtual && precoPessimista && precoAtual > 0) {
-                            const margemSeguranca = (precoPessimista - precoAtual) / precoAtual; 
-                            const isBrasil = ticker.includes('.SA');
+                            const margemSeguranca = (precoPessimista - precoAtual) / precoAtual; const isBrasil = ticker.includes('.SA');
                             const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', precoAtual: precoAtual, precoPessimista: precoPessimista, margem: margemSeguranca, prefix: isBrasil ? 'R$' : 'US$' };
                             if (isBrasil) listaOportunidadesBr.push(item); else listaOportunidadesUs.push(item);
                         }
                     }
-                    
-                    listaOportunidadesBr.sort((a, b) => b.margem - a.margem); 
-                    listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
+                    listaOportunidadesBr.sort((a, b) => b.margem - a.margem); listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
                     const fNum = (num) => parseFloat(num).toFixed(2); const fPct = (num) => (parseFloat(num) * 100).toFixed(2) + '%';
-                    
                     const renderTabela = (titulo, lista) => {
                         if (lista.length === 0) return '';
                         let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th>Preço Atual Tela</th><th>Alvo Pessimista IA</th><th style="color: #4CAF50;">Margem vs Pessimista (Upside)</th></tr></thead><tbody>`;
@@ -298,20 +247,14 @@
                         });
                         return html + `</tbody></table></div>`;
                     };
-                    
                     dashboard.innerHTML = renderTabela('🇧🇷 Radar Brasil', listaOportunidadesBr) + renderTabela('🇺🇸 Radar Internacionais', listaOportunidadesUs) || '<div class="section-title">Nenhum dado encontrado no banco.</div>';
                     return;
                 }
 
-                // -----------------------------
-                // ABA RANKING
-                // -----------------------------
                 if(tabName === 'ranking') {
-                    dashboard.innerHTML = '<div class="section-title">Analisando dados fundamentalistas... ⏳</div>';
-                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); 
-                    const dadosDaBase = await res.json();
+                    dashboard.innerHTML = '<div class="section-title">Analisando dados... ⏳</div>';
+                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); const dadosDaBase = await res.json();
                     dadosRankingBr = []; dadosRankingUs = [];
-                    
                     for (const ticker in dadosDaBase) {
                         const d = dadosDaBase[ticker];
                         if(d.roe !== undefined && d.roe !== null) {
@@ -323,231 +266,109 @@
                     return;
                 }
 
-                // -----------------------------
-                // ABA DESTAQUES
-                // -----------------------------
                 if(tabName === 'destaques') {
                     dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
-                    const todosAtivos = [...ativosBrasil, ...ativosIntl]; 
-                    const tickersString = todosAtivos.map(a => a.ticker).join(',');
-                    
+                    const todosAtivos = [...ativosBrasil, ...ativosIntl]; const tickersString = todosAtivos.map(a => a.ticker).join(',');
                     try {
-                        const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`); 
-                        const cotacoes = await res.json();
-                        
+                        const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`); const cotacoes = await res.json();
                         let ativosComVariacao = todosAtivos.map(asset => {
-                            const dados = cotacoes[asset.ticker]; 
-                            if(!dados || !dados.fechamentoAnterior) return null;
+                            const dados = cotacoes[asset.ticker]; if(!dados || !dados.fechamentoAnterior) return null;
                             return { ...asset, varPct: ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100, atual: dados.atual, anterior: dados.fechamentoAnterior };
                         }).filter(a => a !== null);
-                        
                         if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; return; }
-                        
                         ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
                         const maioresAltas = ativosComVariacao.slice(0, 5); const maioresBaixas = ativosComVariacao.slice(-5).reverse();
                         
-                        dashboard.innerHTML = `<div class="section-title">Maiores Altas 🚀</div><div id="gridAltas" class="dashboard" style="display:grid; margin-bottom:20px;"></div><div class="section-title">Maiores Baixas 🔻</div><div id="gridBaixas" class="dashboard" style="display:grid;"></div>`;
+                        dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div><div id="gridAltas" class="dashboard" style="display:grid; margin-bottom:20px;"></div><div class="section-title">Maiores Baixas 🔻</div><div id="gridBaixas" class="dashboard" style="display:grid;"></div>';
+                        buildCards(maioresAltas, document.getElementById('gridAltas')); buildCards(maioresBaixas, document.getElementById('gridBaixas'));
                         
-                        buildCards(maioresAltas, document.getElementById('gridAltas')); 
-                        buildCards(maioresBaixas, document.getElementById('gridBaixas'));
-                        
-                        const ativosDestaque = [...maioresAltas, ...maioresBaixas];
-                        ativosDestaque.forEach(asset => updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals));
-                        
-                        // DELEGA PARA A FILA EM SEGUNDO PLANO
-                        iniciarFilaGraficos(ativosDestaque, 'destaques');
-                        
-                    } catch (e) { 
-                        dashboard.innerHTML = '<div class="section-title">Erro ao carregar destaques. Tente recarregar.</div>'; 
-                    }
+                        // Atualiza as cotações que já vieram da API Lote
+                        [...maioresAltas, ...maioresBaixas].forEach(asset => updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals));
+                    } catch (e) { dashboard.innerHTML = '<div class="section-title">Erro ao carregar destaques. Tente recarregar.</div>'; }
                     return;
                 }
 
-                // -----------------------------
-                // ABAS NORMAIS (Brasil, Intl, Geral)
-                // -----------------------------
+                // ABAS NORMAIS (Geral, Brasil, Intl)
                 const ativosDaAba = categorias[tabName]; 
                 
-                // 1. DESENHA A TELA IMEDIATAMENTE (Sem travar o usuário)
+                // Desenha a tela IMEDIATAMENTE. O Observer fará o resto.
                 buildCards(ativosDaAba, dashboard);
                 
-                // 2. BUSCA OS PREÇOS ATUAIS
                 const tickersString = ativosDaAba.map(a => a.ticker).join(',');
-                fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
-                    .then(r => r.json())
-                    .then(cotacoesAtuais => {
-                        ativosDaAba.forEach(asset => { 
-                            if(cotacoesAtuais[asset.ticker]) {
-                                updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
-                            }
-                        });
-                    }).catch(e => {});
+                fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`).then(r => r.json()).then(cotacoesAtuais => {
+                    ativosDaAba.forEach(asset => { if(cotacoesAtuais[asset.ticker]) updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); });
+                }).catch(e => {});
                 
-                // 3. DELEGA OS GRÁFICOS PARA A FILA EM SEGUNDO PLANO
-                iniciarFilaGraficos(ativosDaAba, tabName);
-
-            } catch (err) { 
-                console.error("Erro interno na aba", err); 
-            }
+            } catch (err) { console.error("Erro interno", err); }
         }
 
         // ==========================================
         // FUNÇÕES DO RANKING
         // ==========================================
         function clickOrdenar(tipo, coluna) { ordenarDados(tipo, coluna, false); renderizarAbaRanking(); }
-        
-        function ordenarDados(tipo, coluna, isInit) {
-            let estado = ordemRanking[tipo];
-            if (!isInit) { 
-                if (estado.col === coluna) estado.dir *= -1; 
-                else { estado.col = coluna; estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; } 
-            }
-            let lista = tipo === 'br' ? dadosRankingBr : dadosRankingUs;
-            lista.sort((a, b) => { if (a[coluna] == null) return 1; if (b[coluna] == null) return -1; if (a[coluna] < b[coluna]) return -1 * estado.dir; if (a[coluna] > b[coluna]) return 1 * estado.dir; return 0; });
-        }
+        function ordenarDados(tipo, coluna, isInit) { let estado = ordemRanking[tipo]; if (!isInit) { if (estado.col === coluna) estado.dir *= -1; else { estado.col = coluna; estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; } } let lista = tipo === 'br' ? dadosRankingBr : dadosRankingUs; lista.sort((a, b) => { if (a[coluna] == null) return 1; if (b[coluna] == null) return -1; if (a[coluna] < b[coluna]) return -1 * estado.dir; if (a[coluna] > b[coluna]) return 1 * estado.dir; return 0; }); }
 
         function renderizarAbaRanking() {
-            const dashboard = document.getElementById('dashboard'); 
-            const fNum = (num) => (num != null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-'; 
-            const fPct = (num) => (num != null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-'; 
-            const getSeta = (tipo, col) => ordemRanking[tipo].col === col ? (ordemRanking[tipo].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
-            
+            const dashboard = document.getElementById('dashboard'); const fNum = (num) => (num != null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-'; const fPct = (num) => (num != null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-'; const getSeta = (tipo, col) => ordemRanking[tipo].col === col ? (ordemRanking[tipo].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
             const renderTabela = (titulo, lista, tipo) => {
                 if (lista.length === 0) return '';
-                let html = `
-                    <div class="section-title">${titulo}</div>
-                    <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                    <table class="ranking-table">
-                        <thead><tr>
-                            <th>Ativo</th><th>Status IA</th>
-                            <th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dy')">D.Y${getSeta(tipo,'dy')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pl')">P/L${getSeta(tipo,'pl')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pegRatio')">PEG Ratio${getSeta(tipo,'pegRatio')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pvp')">P/VP${getSeta(tipo,'pvp')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'evEbitda')">EV/EBITDA${getSeta(tipo,'evEbitda')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'vpa')">VPA${getSeta(tipo,'vpa')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dividaPL')">Dív/PL${getSeta(tipo,'dividaPL')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'liquidezCorrente')">Liq. Corr.${getSeta(tipo,'liquidezCorrente')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'margem')">Margem Líq.${getSeta(tipo,'margem')}</th><th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${tipo}', 'roe')">ROE${getSeta(tipo,'roe')}</th>
-                        </tr></thead><tbody>
-                `;
-                lista.forEach(item => { 
-                    let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo'); 
-                    html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${fPct(item.dy)}</td><td>${fNum(item.pl)}</td><td>${fNum(item.pegRatio)}</td><td>${fNum(item.pvp)}</td><td>${fNum(item.evEbitda)}</td><td>${fNum(item.vpa)}</td><td>${fNum(item.dividaPL)}</td><td>${fNum(item.liquidezCorrente)}</td><td>${fPct(item.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td></tr>`; 
-                }); 
-                return html + `</tbody></table></div>`;
+                let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dy')">D.Y${getSeta(tipo,'dy')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pl')">P/L${getSeta(tipo,'pl')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pegRatio')">PEG Ratio${getSeta(tipo,'pegRatio')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pvp')">P/VP${getSeta(tipo,'pvp')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'evEbitda')">EV/EBITDA${getSeta(tipo,'evEbitda')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'vpa')">VPA${getSeta(tipo,'vpa')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dividaPL')">Dív/PL${getSeta(tipo,'dividaPL')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'liquidezCorrente')">Liq. Corr.${getSeta(tipo,'liquidezCorrente')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'margem')">Margem Líq.${getSeta(tipo,'margem')}</th><th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${tipo}', 'roe')">ROE${getSeta(tipo,'roe')}</th></tr></thead><tbody>`;
+                lista.forEach(item => { let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo'); html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${fPct(item.dy)}</td><td>${fNum(item.pl)}</td><td>${fNum(item.pegRatio)}</td><td>${fNum(item.pvp)}</td><td>${fNum(item.evEbitda)}</td><td>${fNum(item.vpa)}</td><td>${fNum(item.dividaPL)}</td><td>${fNum(item.liquidezCorrente)}</td><td>${fPct(item.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td></tr>`; }); return html + `</tbody></table></div>`;
             };
             dashboard.innerHTML = renderTabela('🇧🇷 Ranking Ações Brasil', dadosRankingBr, 'br') + renderTabela('🇺🇸 Ranking Ações Internacionais', dadosRankingUs, 'us') || '<div class="section-title">Sem dados.</div>';
         }
 
         // ==========================================
-        // GRÁFICOS E INTERAÇÕES
+        // GRÁFICOS (CHAMADOS PELO LAZY LOADING)
         // ==========================================
         async function fetchMiniChart(asset, targetTab) {
             try {
-                const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`); 
-                const histData = await resHist.json();
-                
-                // Só desenha se a pessoa ainda estiver olhando para a aba certa
+                const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`); const histData = await resHist.json();
                 if(histData.historico && currentTab === targetTab) { 
                     drawMiniChart(asset.id, histData.historico, asset);
                     const elPrice = document.getElementById(`price-${asset.id}`);
-                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) { 
-                        const pAtual = histData.historico[histData.historico.length-1].close; 
-                        const pAnt = histData.historico[histData.historico.length-2]?.close || pAtual; 
-                        updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals); 
-                    }
+                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) { const pAtual = histData.historico[histData.historico.length-1].close; const pAnt = histData.historico[histData.historico.length-2]?.close || pAtual; updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals); }
                 }
             } catch (e) { }
         }
 
-        function searchAsset() {
-            let ticker = document.getElementById('searchInput').value.trim().toUpperCase(); 
-            if(!ticker) return;
-            if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; } 
-            abrirDoRanking(ticker);
-        }
+        function searchAsset() { let ticker = document.getElementById('searchInput').value.trim().toUpperCase(); if(!ticker) return; if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; } abrirDoRanking(ticker); }
+        function abrirDoRanking(tickerReal) { const ehBrasil = tickerReal.includes('.SA'); const assetObj = { id: 'BUSCA', name: tickerReal.replace('.SA', ''), ticker: tickerReal, decimals: 2, prefix: ehBrasil ? 'R$' : 'US$' }; openModal(assetObj); }
 
-        function abrirDoRanking(tickerReal) {
-            const ehBrasil = tickerReal.includes('.SA'); 
-            const assetObj = { id: 'BUSCA', name: tickerReal.replace('.SA', ''), ticker: tickerReal, decimals: 2, prefix: ehBrasil ? 'R$' : 'US$' }; 
-            openModal(assetObj);
-        }
-
-        function drawMiniChart(id, historicalData, assetDetails) { 
-            const canvas = document.getElementById(`mini-chart-${id}`); 
-            if(!canvas || !historicalData || historicalData.length === 0) return; 
-            const ctx = canvas.getContext('2d'); 
-            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 80); 
-            gradient.addColorStop(0, color); 
-            gradient.addColorStop(1, '#0b0b0c'); 
-            
-            miniCharts[id] = new Chart(ctx, { 
-                type: 'line', 
-                data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, 
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false }, animation: false } } 
-            }); 
+        function drawMiniChart(id, historicalData, assetDetails) {
+            const canvas = document.getElementById(`mini-chart-${id}`); if(!canvas || !historicalData || historicalData.length === 0) return; const ctx = canvas.getContext('2d');
+            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; const gradient = ctx.createLinearGradient(0, 0, 0, 80); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
+            miniCharts[id] = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } });
         }
         
-        function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) { 
-            const elPrice = document.getElementById(`price-${id}`); 
-            const elVar = document.getElementById(`var-${id}`); 
-            if(!elPrice || !elVar) return; 
-            const varValue = currentPrice - previousPrice; 
-            const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0; 
-            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`; 
-            elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`; 
-            elVar.className = varValue >= 0 ? 'variation up' : 'variation down'; 
-        }
-        
-        function drawDetailedChart(historicalData) { 
-            if(!historicalData || historicalData.length === 0) return; 
-            const ctx = document.getElementById('modalChartCanvas').getContext('2d'); 
-            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
-            if(detailedChartInstance) detailedChartInstance.destroy(); 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400); 
-            gradient.addColorStop(0, color); 
-            gradient.addColorStop(1, '#0b0b0c'); 
-            
-            detailedChartInstance = new Chart(ctx, { 
-                type: 'line', 
-                data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, 
-                options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } } } 
-            }); 
-        }
-
-        async function loadDetailedData(range, interval, btnElement) { 
-            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active')); 
-            btnElement.classList.add('active'); 
-            try { 
-                const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`); 
-                const data = await response.json(); 
-                drawDetailedChart(data.historico); 
-            } catch (error) {} 
+        function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
+            const elPrice = document.getElementById(`price-${id}`); const elVar = document.getElementById(`var-${id}`); if(!elPrice || !elVar) return;
+            const varValue = currentPrice - previousPrice; const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
+            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`; elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`; elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
         }
 
         // ==========================================
-        // BOTÕES MÁGICOS DA INTELIGÊNCIA ARTIFICIAL
+        // IA & MODAL
         // ==========================================
         async function chamarAnaliseTecnica() {
-            const btn = document.getElementById('btn-ia-tech'); const resultDiv = document.getElementById('tech-result');
-            btn.innerHTML = '⏳ Calculando Médias...'; btn.disabled = true;
+            const btn = document.getElementById('btn-ia-tech'); const resultDiv = document.getElementById('tech-result'); btn.innerHTML = '⏳ Calculando Médias...'; btn.disabled = true;
             try {
                 const res = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`); const data = await res.json();
                 if(data.erro) { resultDiv.innerHTML = `<div class="alert-error">⚠️ ${data.erro}</div>`; resultDiv.style.display = 'block'; btn.style.display = 'none'; return; }
                 let corTendencia = '#FFC107'; if(data.tendencia && data.tendencia.toUpperCase().includes('ALTA')) corTendencia = '#4CAF50'; if(data.tendencia && data.tendencia.toUpperCase().includes('BAIXA')) corTendencia = '#c93e36';
-                btn.style.display = 'none'; resultDiv.style.display = 'block';
-                resultDiv.innerHTML = `<div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div><div class="tech-grid"><div class="tech-box" style="border-color: ${corTendencia};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${corTendencia};">${data.tendencia || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${data.suporte || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${data.resistencia || '-'}</div></div></div><div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Concluído.'}"</div>`;
+                btn.style.display = 'none'; resultDiv.style.display = 'block'; resultDiv.innerHTML = `<div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div><div class="tech-grid"><div class="tech-box" style="border-color: ${corTendencia};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${corTendencia};">${data.tendencia || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${data.suporte || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${data.resistencia || '-'}</div></div></div><div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Concluído.'}"</div>`;
             } catch (e) { btn.innerHTML = '❌ Erro. Tentar Novamente'; btn.disabled = false; }
         }
 
         async function chamarAnaliseRI() {
-            const btn = document.getElementById('btn-ia-ri'); const resultDiv = document.getElementById('ri-result');
-            btn.innerHTML = '⏳ Lendo Balanços Financeiros...'; btn.disabled = true;
+            const btn = document.getElementById('btn-ia-ri'); const resultDiv = document.getElementById('ri-result'); btn.innerHTML = '⏳ Lendo Balanços Financeiros...'; btn.disabled = true;
             try {
                 const res = await fetch(`${URL_BACKEND}/api/analise-ri/${currentAssetObj.ticker}`); const data = await res.json();
                 if(data.erro) { resultDiv.innerHTML = `<div class="alert-error">⚠️ ${data.erro}</div>`; resultDiv.style.display = 'block'; btn.style.display = 'none'; return; }
-                btn.style.display = 'none'; resultDiv.style.display = 'block';
-                resultDiv.innerHTML = `<div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;"><div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;"><h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças Financeiras</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.pros[0] || '-'}</li><li style="margin-top:10px;">${data.pros[1] || '-'}</li><li style="margin-top:10px;">${data.pros[2] || '-'}</li></ul></div><div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;"><h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos Contábeis</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.contras[0] || '-'}</li><li style="margin-top:10px;">${data.contras[1] || '-'}</li><li style="margin-top:10px;">${data.contras[2] || '-'}</li></ul></div></div>`;
+                btn.style.display = 'none'; resultDiv.style.display = 'block'; resultDiv.innerHTML = `<div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;"><div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;"><h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças Financeiras</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.pros[0] || '-'}</li><li style="margin-top:10px;">${data.pros[1] || '-'}</li><li style="margin-top:10px;">${data.pros[2] || '-'}</li></ul></div><div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;"><h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos Contábeis</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.contras[0] || '-'}</li><li style="margin-top:10px;">${data.contras[1] || '-'}</li><li style="margin-top:10px;">${data.contras[2] || '-'}</li></ul></div></div>`;
             } catch (e) { btn.innerHTML = '❌ Erro. Tentar Novamente'; btn.disabled = false; }
         }
 
-        // ==========================================
-        // INJEÇÃO DE DADOS ESTÁTICOS
-        // ==========================================
         async function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container'); container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             try {
@@ -572,8 +393,9 @@
         }
 
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        async function loadDetailedData(range, interval, btnElement) { document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active')); btnElement.classList.add('active'); try { const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`); const data = await response.json(); drawDetailedChart(data.historico); } catch (error) {} }
+        function drawDetailedChart(historicalData) { if(!historicalData || historicalData.length === 0) return; const ctx = document.getElementById('modalChartCanvas').getContext('2d'); const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; if(detailedChartInstance) detailedChartInstance.destroy(); const gradient = ctx.createLinearGradient(0, 0, 0, 400); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); detailedChartInstance = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } } }); }
 
-        // Inicialização da Tela
         window.addEventListener('DOMContentLoaded', () => { switchTab('geral', document.querySelector('.tab-btn')); });
     </script>
 </body>
