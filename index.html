@@ -964,10 +964,8 @@
             });
         }
 
-        // Aguarda a tela desenhar para não engasgar o botão
-        window.addEventListener('DOMContentLoaded', () => {
-            switchTab('geral', document.querySelector('.tab-btn'));
-        });
+        // AGORA SIM, A CHAMADA DIRETA E CORRETA!
+        switchTab('geral', document.querySelector('.tab-btn'));
         
     </script>
 </body>
