@@ -6,26 +6,8 @@
     <title>Terminal Financeiro Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root { 
-            --bg-color: #0b0b0c; 
-            --card-bg: #1e1e1f; 
-            --text-main: #ffffff; 
-            --text-muted: #8e9196; 
-            --up-color: #1a7f37; 
-            --down-color: #c93e36; 
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
-        
-        body { 
-            font-family: var(--font-family); 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
-            padding: 30px 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+        :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
         
         .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         h1 { margin: 0; font-size: 2rem; }
@@ -49,7 +31,10 @@
         .price { font-size: 1.6rem; font-weight: 800; margin: 0; text-align: right; }
         .variation { font-size: 0.9rem; font-weight: 600; text-align: right; }
         .up { color: var(--up-color); } .down { color: var(--down-color); }
-        .mini-chart { width: 100%; height: 80px; margin-top: 10px; }
+        .mini-chart { width: 100%; height: 80px; margin-top: 10px; position: relative; }
+        
+        /* Ajuste crucial para os gráficos nativos renderizarem corretamente */
+        .mini-chart canvas { width: 100%; height: 100%; display: block; }
 
         .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: flex-start; overflow-y: auto; padding: 20px 0; }
         .modal-content { background-color: var(--card-bg); padding: 30px; border-radius: 12px; width: 90%; max-width: 900px; border: 1px solid #333336; margin: auto; }
@@ -151,24 +136,15 @@
     <script>
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
-        const ativosGerais = [
-            { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
-            { id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },
-            { id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }
-        ];
-
+        const ativosGerais = [{ id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },{ id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },{ id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },{ id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },{ id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }];
         const listaBrasilRaw = ['AGRO3', 'AMOB3', 'BBAS3', 'BBDC3', 'BBSE3', 'BRSR6', 'B3SA3', 'CMIG3', 'CXSE3', 'EGIE3', 'EQTL3', 'ETHE11', 'EZTC3', 'FLRY3', 'GMAT3', 'GOLD11', 'ITSA4', 'KEPL3', 'KLBN3', 'LEVE3', 'MBRF3', 'PETR3', 'PRIO3', 'PSSA3', 'QBTC11', 'QSOL11', 'RAIZ4', 'RANI3', 'SAPR4', 'SBFG3', 'SMTO3', 'SOJA3', 'SUZB3', 'TAEE11', 'TTEN3', 'VAMO3', 'VIVT3', 'WEGE3'];
         const ativosBrasil = listaBrasilRaw.map(ticker => ({ id: ticker, name: ticker, ticker: `${ticker}.SA`, decimals: 2, prefix: 'R$' }));
-
         const listaIntlRaw = ['GOOGL', 'AMZN', 'NVDA', 'TSM', 'ASML', 'AVGO', 'IRS', 'TSLA', 'MU', 'VZ', 'T', 'HD', 'SHOP', 'DIS', 'SPG', 'ANET', 'ICE', 'KO', 'EQNR', 'EPR', 'WFC', 'VICI', 'O', 'CPRT', 'ASX', 'CEPU', 'NVO', 'PLTR', 'JBL', 'QCOM', 'AAPL', 'MSFT', 'BAC', 'ORCL', 'EQT', 'MNST', 'CVS', 'HUYA', 'GPC', 'PFE', 'ROKU', 'DIBS', 'LEG', 'MBUU', 'FVRR'];
         const ativosIntl = listaIntlRaw.map(ticker => ({ id: ticker, name: ticker, ticker: ticker, decimals: 2, prefix: 'US$' }));
 
         const categorias = { geral: ativosGerais, brasil: ativosBrasil, intl: ativosIntl };
         
-        let currentTab = 'geral';
-        let miniCharts = {}; 
+        let currentTab = 'geral'; 
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
         
@@ -177,39 +153,15 @@
         let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
 
         // ==========================================
-        // OLHO BIÔNICO (LAZY LOADING)
-        // ==========================================
-        let observer = null;
-
-        function startObserver() {
-            if(observer) observer.disconnect();
-            
-            observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        const ticker = entry.target.dataset.ticker; 
-                        const id = entry.target.dataset.id; 
-                        const tab = entry.target.dataset.tab;
-                        
-                        if(currentTab === tab) {
-                            fetchMiniChart(ticker, id, tab);
-                        }
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, {rootMargin: "50px"});
-        }
-
-        // ==========================================
         // CONSTRUTOR DE CARTÕES
         // ==========================================
         function buildCards(ativos, container) {
+            // Usa fragmento para injetar todos os cartões na tela numa tacada só
+            const fragment = document.createDocumentFragment();
+            
             ativos.forEach(asset => {
                 const card = document.createElement('div'); 
                 card.className = 'card'; 
-                card.dataset.ticker = asset.ticker; 
-                card.dataset.id = asset.id; 
-                card.dataset.tab = currentTab;
                 card.onclick = () => openModal(asset);
                 
                 card.innerHTML = `
@@ -225,29 +177,23 @@
                     </div>
                     <div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>
                 `;
-                container.appendChild(card);
-                
-                if(observer) observer.observe(card);
+                fragment.appendChild(card);
             });
+            container.appendChild(fragment);
         }
 
         // ==========================================
-        // GERENCIADOR DE ABAS
+        // GERENCIADOR DE ABAS (ULTRA RÁPIDO)
         // ==========================================
         async function switchTab(tabName, btnElement) {
             try {
-                // Limpeza e Preparação
+                // Atualiza UI dos botões
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); 
                 if(btnElement) btnElement.classList.add('active');
                 
                 currentTab = tabName; 
                 const db = document.getElementById('dashboard'); 
-                db.innerHTML = '';
-                
-                Object.values(miniCharts).forEach(c => c.destroy()); 
-                miniCharts = {};
-                
-                startObserver();
+                db.innerHTML = ''; // Limpa a tela instantaneamente
 
                 if (['ranking', 'destaques', 'oportunidades'].includes(tabName)) {
                     db.style.display = 'block'; 
@@ -260,60 +206,42 @@
                 // -----------------------------
                 if(tabName === 'oportunidades') {
                     db.innerHTML = '<div class="section-title">Calculando... ⏳</div>';
+                    const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
+                    const dBase = await r.json();
+                    let bBr = []; let bUs = [];
                     
-                    try {
-                        const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
-                        const dBase = await r.json();
-                        let bBr = []; 
-                        let bUs = [];
-                        
-                        for(const t in dBase) {
-                            const p = dBase[t].precoAtual; 
-                            const pp = dBase[t].valuation_dcf?.cenarios?.pessimista?.preco_justo;
-                            
-                            if(p && pp && p > 0) {
-                                const m = (pp - p) / p; 
-                                const isBr = t.includes('.SA');
-                                const it = {
-                                    ticker: t, 
-                                    status: dBase[t].valuation_dcf?.status || 'N/A', 
-                                    precoAtual: p, 
-                                    precoPessimista: pp, 
-                                    margem: m, 
-                                    prefix: isBr ? 'R$' : 'US$'
-                                };
-                                isBr ? bBr.push(it) : bUs.push(it);
-                            }
+                    for(const t in dBase) {
+                        const p = dBase[t].precoAtual; 
+                        const pp = dBase[t].valuation_dcf?.cenarios?.pessimista?.preco_justo;
+                        if(p && pp && p > 0) {
+                            const m = (pp - p) / p; 
+                            const isBr = t.includes('.SA');
+                            const it = { ticker: t, status: dBase[t].valuation_dcf?.status || 'N/A', precoAtual: p, precoPessimista: pp, margem: m, prefix: isBr ? 'R$' : 'US$' };
+                            isBr ? bBr.push(it) : bUs.push(it);
                         }
-                        
-                        bBr.sort((a,b) => b.margem - a.margem); 
-                        bUs.sort((a,b) => b.margem - a.margem);
-                        
-                        const fn = n => parseFloat(n).toFixed(2); 
-                        const fp = n => (parseFloat(n) * 100).toFixed(2) + '%';
-                        
-                        const rt = (tit, l) => {
-                            if(!l.length) return '';
-                            let h = `
-                                <div class="section-title">${tit}</div>
-                                <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
-                                <table class="ranking-table">
-                                    <thead><tr><th>Ativo</th><th>Status IA</th><th>Preço</th><th>Alvo IA</th><th style="color: #4CAF50;">Margem</th></tr></thead>
-                                    <tbody>
-                            `;
-                            l.forEach(i => {
-                                let bc = 'status-badge ' + (i.status === 'SUBVALORIZADA' ? 'status-sub' : i.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
-                                let mc = i.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; 
-                                let sm = i.margem > 0 ? '+' : '';
-                                h += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${i.ticker}')"><td style="font-weight: 800; color: #2196F3;">${i.ticker}</td><td><span class="${bc}">${i.status}</span></td><td>${i.prefix} ${fn(i.precoAtual)}</td><td>${i.prefix} ${fn(i.precoPessimista)}</td><td class="${mc}">${sm}${fp(i.margem)}</td></tr>`;
-                            }); 
-                            return h + '</tbody></table></div>';
-                        };
-                        
-                        db.innerHTML = rt('🇧🇷 Brasil', bBr) + rt('🇺🇸 Internacional', bUs) || '<div class="section-title">Sem dados.</div>'; 
-                    } catch (e) {
-                        db.innerHTML = '<div class="section-title">Erro ao carregar banco estático.</div>';
                     }
+                    
+                    bBr.sort((a,b) => b.margem - a.margem); bUs.sort((a,b) => b.margem - a.margem);
+                    const fn = n => parseFloat(n).toFixed(2); const fp = n => (parseFloat(n) * 100).toFixed(2) + '%';
+                    
+                    const rt = (tit, l) => {
+                        if(!l.length) return '';
+                        let h = `
+                            <div class="section-title">${tit}</div>
+                            <div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;">
+                            <table class="ranking-table">
+                                <thead><tr><th>Ativo</th><th>Status IA</th><th>Preço</th><th>Alvo IA</th><th style="color: #4CAF50;">Margem</th></tr></thead>
+                                <tbody>
+                        `;
+                        l.forEach(i => {
+                            let bc = 'status-badge ' + (i.status === 'SUBVALORIZADA' ? 'status-sub' : i.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
+                            let mc = i.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; let sm = i.margem > 0 ? '+' : '';
+                            h += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${i.ticker}')"><td style="font-weight: 800; color: #2196F3;">${i.ticker}</td><td><span class="${bc}">${i.status}</span></td><td>${i.prefix} ${fn(i.precoAtual)}</td><td>${i.prefix} ${fn(i.precoPessimista)}</td><td class="${mc}">${sm}${fp(i.margem)}</td></tr>`;
+                        }); 
+                        return h + '</tbody></table></div>';
+                    };
+                    
+                    db.innerHTML = rt('🇧🇷 Brasil', bBr) + rt('🇺🇸 Internacional', bUs) || '<div class="section-title">Sem dados.</div>'; 
                     return;
                 }
 
@@ -322,38 +250,29 @@
                 // -----------------------------
                 if(tabName === 'ranking') {
                     db.innerHTML = '<div class="section-title">Analisando... ⏳</div>';
+                    const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
+                    const dBase = await r.json();
+                    dadosRankingBr = []; dadosRankingUs = [];
                     
-                    try {
-                        const r = await fetch('./indicadores.json?nocache=' + Date.now()); 
-                        const dBase = await r.json();
-                        dadosRankingBr = []; 
-                        dadosRankingUs = [];
-                        
-                        for(const t in dBase) {
-                            const d = dBase[t];
-                            if(d.roe != null) {
-                                const i = {
-                                    ticker: t, status: d.valuation_dcf?.status || 'N/A', 
-                                    dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, 
-                                    evEbitda: d.evEbitda, vpa: d.vpa, 
-                                    dividaPL: d.dividaPL ? d.dividaPL / 100 : null, 
-                                    liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe
-                                };
-                                t.includes('.SA') ? dadosRankingBr.push(i) : dadosRankingUs.push(i);
-                            }
+                    for(const t in dBase) {
+                        const d = dBase[t];
+                        if(d.roe != null) {
+                            const i = {
+                                ticker: t, status: d.valuation_dcf?.status || 'N/A', 
+                                dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, 
+                                evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, 
+                                liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe
+                            };
+                            t.includes('.SA') ? dadosRankingBr.push(i) : dadosRankingUs.push(i);
                         }
-                        
-                        ordenarDados('br', 'roe', true); 
-                        ordenarDados('us', 'roe', true); 
-                        renderizarAbaRanking(); 
-                    } catch (e) {
-                        db.innerHTML = '<div class="section-title">Erro ao carregar banco estático.</div>';
                     }
+                    
+                    ordenarDados('br', 'roe', true); ordenarDados('us', 'roe', true); renderizarAbaRanking(); 
                     return;
                 }
 
                 // -----------------------------
-                // ABA DESTAQUES (BLINDADA CONTRA 429)
+                // ABA DESTAQUES
                 // -----------------------------
                 if(tabName === 'destaques') {
                     db.innerHTML = '<div class="section-title">Buscando cotações no mercado... ⏳</div>';
@@ -367,22 +286,15 @@
                         let ativosComVariacao = todosAtivos.map(asset => { 
                             const d = c[asset.ticker]; 
                             if(!d || !d.fechamentoAnterior) return null; 
-                            return { 
-                                ...asset, 
-                                varPct: ((d.atual - d.fechamentoAnterior) / d.fechamentoAnterior) * 100, 
-                                atual: d.atual, 
-                                anterior: d.fechamentoAnterior 
-                            }; 
+                            return { ...asset, varPct: ((d.atual - d.fechamentoAnterior) / d.fechamentoAnterior) * 100, atual: d.atual, anterior: d.fechamentoAnterior }; 
                         }).filter(a => a !== null);
                         
-                        // 🛡️ SE O YAHOO DEU 429 E O CACHE ESTÁ VAZIO, AVISA COM ELEGÂNCIA
                         if(ativosComVariacao.length === 0) { 
                             db.innerHTML = `
                                 <div class="card" style="grid-column: 1 / -1; border-color: #c93e36; background: rgba(201, 62, 54, 0.05); margin-top: 20px;">
                                     <div style="color: #c93e36; font-size: 1.2rem; font-weight: bold; text-align: center;">⚠️ Yahoo Temporariamente Indisponível</div>
-                                    <div style="color: #8e9196; text-align: center; margin-top: 10px; line-height: 1.5;">O sistema de segurança do Yahoo limitou nossos acessos (Erro 429) e o servidor reiniciou sem dados recentes no cache.<br>Aguarde alguns minutos para o bloqueio expirar e tente recarregar esta aba.</div>
-                                </div>
-                            `;
+                                    <div style="color: #8e9196; text-align: center; margin-top: 10px; line-height: 1.5;">O sistema do Yahoo limitou nossos acessos. Aguarde alguns minutos e tente recarregar.</div>
+                                </div>`;
                             return; 
                         }
                         
@@ -400,10 +312,13 @@
                         buildCards(ma, document.getElementById('ga')); 
                         buildCards(mb, document.getElementById('gb'));
                         
-                        [...ma,...mb].forEach(a => updateCardUI(a.id, a.atual, a.anterior, a.prefix, a.decimals));
+                        [...ma,...mb].forEach(a => {
+                            updateCardUI(a.id, a.atual, a.anterior, a.prefix, a.decimals);
+                            fetchMiniChart(a.ticker, a.id, 'destaques');
+                        });
                         
                     } catch(e) { 
-                        db.innerHTML='<div class="section-title">Servidor reiniciando. Tente novamente em instantes.</div>'; 
+                        db.innerHTML='<div class="section-title">Erro ao conectar com o Servidor.</div>'; 
                     }
                     return;
                 }
@@ -412,10 +327,12 @@
                 // ABAS NORMAIS (Geral, Brasil, Intl)
                 // -----------------------------
                 const at = categorias[tabName]; 
+                
+                // 1. Desenha as caixas vazias IMEDIATAMENTE
                 buildCards(at, db);
                 
+                // 2. Dispara a busca em lote dos preços
                 const ts = at.map(a => a.ticker).join(',');
-                
                 fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${ts}`)
                     .then(r => r.json())
                     .then(c => {
@@ -424,14 +341,90 @@
                                 updateCardUI(a.id, c[a.ticker].atual, c[a.ticker].fechamentoAnterior, a.prefix, a.decimals); 
                             }
                         });
-                    })
-                    .catch(() => {
-                        console.log("Erro silencioso ao buscar cotações em lote.");
-                    });
+                    }).catch(() => {});
+                
+                // 3. Busca e desenha os mini-gráficos assincronamente (sem travar)
+                at.forEach(asset => {
+                    fetchMiniChart(asset.ticker, asset.id, tabName);
+                });
 
             } catch (err) { 
                 console.error("Erro interno no switchTab", err); 
             }
+        }
+
+        // ==========================================
+        // MOTOR GRÁFICO NATIVO (ULTRA VELOZ)
+        // Substitui o Chart.js pesadão por matemática pura
+        // ==========================================
+        async function fetchMiniChart(ticker, id, tabExpected) {
+            try {
+                const res = await fetch(`${URL_BACKEND}/api/historico/${ticker}?range=1mo&interval=1d`);
+                const data = await res.json();
+                
+                if (data.historico && currentTab === tabExpected) {
+                    drawNativeSparkline(id, data.historico);
+                }
+            } catch (e) {
+                // Silencioso
+            }
+        }
+
+        function drawNativeSparkline(id, hData) {
+            const canvas = document.getElementById(`mini-chart-${id}`);
+            if (!canvas || !hData || hData.length === 0) return;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Define o tamanho real em pixels da área de desenho
+            const width = canvas.width = canvas.parentElement.clientWidth || 240;
+            const height = canvas.height = 80;
+
+            const prices = hData.map(d => d.close);
+            const min = Math.min(...prices);
+            const max = Math.max(...prices);
+            const range = max - min === 0 ? 1 : max - min; // Evita divisão por zero
+
+            const isUp = prices[prices.length - 1] >= prices[0];
+            const color = isUp ? '#1a7f37' : '#c93e36';
+
+            // Limpa o frame
+            ctx.clearRect(0, 0, width, height);
+            
+            const stepX = width / (prices.length - 1 || 1);
+            const paddingY = 10; // Deixa um respiro em cima e embaixo
+            const heightUtil = height - (paddingY * 2);
+
+            // 1. Pinta o Fundo (Gradiente)
+            ctx.beginPath();
+            ctx.moveTo(0, height); // Começa na ponta inferior esquerda
+            
+            for (let i = 0; i < prices.length; i++) {
+                const x = i * stepX;
+                const y = paddingY + heightUtil * (1 - (prices[i] - min) / range);
+                ctx.lineTo(x, y);
+            }
+            
+            ctx.lineTo(width, height); // Desce pra ponta inferior direita
+            ctx.closePath();
+            
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, isUp ? 'rgba(26, 127, 55, 0.4)' : 'rgba(201, 62, 54, 0.4)');
+            gradient.addColorStop(1, 'rgba(11, 11, 12, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // 2. Desenha a Linha do Gráfico
+            ctx.beginPath();
+            for (let i = 0; i < prices.length; i++) {
+                const x = i * stepX;
+                const y = paddingY + heightUtil * (1 - (prices[i] - min) / range);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
         }
 
         // ==========================================
@@ -492,29 +485,8 @@
         }
 
         // ==========================================
-        // GRÁFICOS (CHAMADOS PELO LAZY LOADING)
+        // DEMAIS FUNÇÕES DO SISTEMA
         // ==========================================
-        async function fetchMiniChart(t, id, tab) {
-            try {
-                const r = await fetch(`${URL_BACKEND}/api/historico/${t}?range=1mo&interval=1d`); 
-                const d = await r.json();
-                
-                if(d.historico && currentTab === tab) { 
-                    drawMiniChart(id, d.historico);
-                    const ep = document.getElementById(`price-${id}`);
-                    
-                    if(ep && ep.innerText === '---' && d.historico.length >= 2) {
-                        const pAt = d.historico[d.historico.length - 1].close; 
-                        const pAn = d.historico[d.historico.length - 2]?.close || pAt;
-                        const pfx = t.includes('.SA') ? 'R$' : 'US$'; 
-                        updateCardUI(id, pAt, pAn, pfx, 2);
-                    }
-                }
-            } catch (e) {
-                // Silencia falha de gráfico para não sujar o console
-            }
-        }
-
         function searchAsset() { 
             let t = document.getElementById('searchInput').value.trim().toUpperCase(); 
             if(!t) return; 
@@ -524,47 +496,8 @@
         
         function abrirDoRanking(t) { 
             const isBr = t.includes('.SA');
-            const o = {
-                id: 'BUSCA', 
-                name: t.replace('.SA',''), 
-                ticker: t, 
-                decimals: 2, 
-                prefix: isBr ? 'R$' : 'US$'
-            }; 
+            const o = { id: 'BUSCA', name: t.replace('.SA',''), ticker: t, decimals: 2, prefix: isBr ? 'R$' : 'US$' }; 
             openModal(o); 
-        }
-
-        function drawMiniChart(id, hData) {
-            const cv = document.getElementById(`mini-chart-${id}`); 
-            if(!cv || !hData.length) return; 
-            
-            const ctx = cv.getContext('2d');
-            const c = (hData[hData.length - 1].close - hData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
-            const g = ctx.createLinearGradient(0, 0, 0, 80); 
-            g.addColorStop(0, c); 
-            g.addColorStop(1, '#0b0b0c'); 
-            
-            miniCharts[id] = new Chart(ctx, { 
-                type: 'line', 
-                data: { 
-                    labels: hData.map(i => i.time), 
-                    datasets: [{ 
-                        data: hData.map(i => i.close), 
-                        borderColor: c, 
-                        borderWidth: 2, 
-                        pointRadius: 0, 
-                        fill: true, 
-                        backgroundColor: g 
-                    }] 
-                }, 
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false, 
-                    animation: false, 
-                    plugins: { legend: { display: false }, tooltip: { enabled: false } }, 
-                    scales: { x: { display: false }, y: { display: false } } 
-                } 
-            });
         }
         
         function updateCardUI(id, cp, pp, pfx, dec) {
@@ -581,32 +514,25 @@
         }
 
         // ==========================================
-        // IA & MODAL
+        // IA & MODAL & CHART.JS (Apenas Modal)
         // ==========================================
         async function chamarAnaliseTecnica() {
-            const b = document.getElementById('btn-ia-tech'); 
-            const rd = document.getElementById('tech-result'); 
-            
-            b.innerHTML = '⏳ Pensando...'; 
-            b.disabled = true;
+            const b = document.getElementById('btn-ia-tech'); const rd = document.getElementById('tech-result'); 
+            b.innerHTML = '⏳ Pensando...'; b.disabled = true;
             
             try {
                 const r = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`); 
                 const d = await r.json();
                 
                 if(d.erro) { 
-                    rd.innerHTML = `<div class="alert-error">⚠️ ${d.erro}</div>`; 
-                    rd.style.display = 'block'; 
-                    b.style.display = 'none'; 
-                    return; 
+                    rd.innerHTML = `<div class="alert-error">⚠️ ${d.erro}</div>`; rd.style.display = 'block'; b.style.display = 'none'; return; 
                 }
                 
                 let ct = '#FFC107'; 
                 if(d.tendencia && d.tendencia.toUpperCase().includes('ALTA')) ct = '#4CAF50'; 
                 if(d.tendencia && d.tendencia.toUpperCase().includes('BAIXA')) ct = '#c93e36';
                 
-                b.style.display = 'none'; 
-                rd.style.display = 'block'; 
+                b.style.display = 'none'; rd.style.display = 'block'; 
                 rd.innerHTML = `
                     <div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div>
                     <div class="tech-grid">
@@ -617,57 +543,49 @@
                     <div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${d.comentario || 'Concluído.'}"</div>
                 `;
             } catch (e) { 
-                b.innerHTML = '❌ Erro. Tentar Novamente'; 
-                b.disabled = false; 
+                b.innerHTML = '❌ Erro. Tentar Novamente'; b.disabled = false; 
             }
         }
 
         async function chamarAnaliseRI() {
-            const b = document.getElementById('btn-ia-ri'); 
-            const rd = document.getElementById('ri-result'); 
+            const b = document.getElementById('btn-ia-ri'); const rd = document.getElementById('ri-result'); 
+            b.innerHTML = '⏳ Lendo o Cofre...'; b.disabled = true;
             
-            b.innerHTML = '⏳ Lendo Balanços Financeiros...'; 
-            b.disabled = true;
-            
-            try {
-                const r = await fetch(`${URL_BACKEND}/api/analise-ri/${currentAssetObj.ticker}`); 
-                const data = await r.json();
-                
-                if(data.erro) { 
-                    rd.innerHTML = `<div class="alert-error">⚠️ ${data.erro}</div>`; 
-                    rd.style.display = 'block'; 
-                    b.style.display = 'none'; 
-                    return; 
+            setTimeout(async () => {
+                try {
+                    const res = await fetch('./indicadores.json?nocache=' + Date.now()); 
+                    const db = await res.json();
+                    const d = db[currentAssetObj.ticker];
+                    
+                    if(!d || !d.analise_senior || !d.analise_senior.pros) throw new Error("A IA precisa auditar esta empresa na próxima madrugada.");
+
+                    const pros = d.analise_senior.pros;
+                    const contras = d.analise_senior.contras;
+
+                    b.style.display = 'none'; rd.style.display = 'block';
+                    rd.innerHTML = `
+                        <div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                            <div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;">
+                                <h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças Financeiras</h4>
+                                <ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                                    <li>${pros[0]||'-'}</li><li style="margin-top:10px;">${pros[1]||'-'}</li><li style="margin-top:10px;">${pros[2]||'-'}</li>
+                                </ul>
+                            </div>
+                            <div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;">
+                                <h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos Contábeis</h4>
+                                <ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                                    <li>${contras[0]||'-'}</li><li style="margin-top:10px;">${contras[1]||'-'}</li><li style="margin-top:10px;">${contras[2]||'-'}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                } catch (e) { 
+                    rd.innerHTML = `<div class="alert-error">⚠️ ${e.message}</div>`; rd.style.display = 'block'; b.style.display = 'none'; 
                 }
-                
-                b.style.display = 'none'; 
-                rd.style.display = 'block'; 
-                rd.innerHTML = `
-                    <div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                        <div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças Financeiras</h4>
-                            <ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;">
-                                <li>${data.pros[0] || '-'}</li><li style="margin-top:10px;">${data.pros[1] || '-'}</li><li style="margin-top:10px;">${data.pros[2] || '-'}</li>
-                            </ul>
-                        </div>
-                        <div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos Contábeis</h4>
-                            <ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;">
-                                <li>${data.contras[0] || '-'}</li><li style="margin-top:10px;">${data.contras[1] || '-'}</li><li style="margin-top:10px;">${data.contras[2] || '-'}</li>
-                            </ul>
-                        </div>
-                    </div>
-                `;
-            } catch (e) { 
-                b.innerHTML = '❌ Erro. Tentar Novamente'; 
-                b.disabled = false; 
-            }
+            }, 300); 
         }
 
-        // ==========================================
-        // DADOS ESTÁTICOS
-        // ==========================================
         async function fetchIndicadores(t) {
             const ctr = document.getElementById('indicadores-container'); 
             ctr.innerHTML = '<div class="loading-ind">Carregando cofre...</div>';
@@ -678,8 +596,7 @@
                 const d = db[t];
                 
                 if (!d) { 
-                    ctr.innerHTML = '<div class="loading-ind">Sem indicadores.</div>'; 
-                    return; 
+                    ctr.innerHTML = '<div class="loading-ind">Sem indicadores salvos.</div>'; return; 
                 }
                 
                 const fn = n => (n != null && !isNaN(n)) ? parseFloat(n).toFixed(2) : '-'; 
@@ -777,7 +694,9 @@
             if(!h || !h.length) return; 
             const ctx = document.getElementById('modalChartCanvas').getContext('2d'); 
             const c = (h[h.length - 1].close - h[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
+            
             if(detailedChartInstance) detailedChartInstance.destroy(); 
+            
             const g = ctx.createLinearGradient(0, 0, 0, 400); 
             g.addColorStop(0, c); 
             g.addColorStop(1, '#0b0b0c'); 
@@ -789,6 +708,7 @@
             }); 
         }
 
+        // Start Inicial
         window.addEventListener('DOMContentLoaded', () => { switchTab('geral', document.querySelector('.tab-btn')); });
     </script>
 </body>
