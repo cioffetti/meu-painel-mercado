@@ -6,29 +6,11 @@
     <title>Terminal Financeiro Pro</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root { 
-            --bg-color: #0b0b0c; 
-            --card-bg: #1e1e1f; 
-            --text-main: #ffffff; 
-            --text-muted: #8e9196; 
-            --up-color: #1a7f37; 
-            --down-color: #c93e36; 
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
-        body { 
-            font-family: var(--font-family); 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
-            padding: 30px 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-        }
+        :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; }
         
         .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         h1 { margin: 0; font-size: 2rem; }
-        
         .search-box { display: flex; gap: 10px; }
         .search-box input { padding: 10px 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1b; color: #fff; font-size: 1rem; width: 250px; }
         .search-box button { padding: 10px 20px; border-radius: 8px; border: none; background: #1a7f37; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s; }
@@ -92,6 +74,8 @@
         .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
         .tech-label { font-size: 0.8rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; }
         .tech-val { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: #fff; }
+        
+        .alert-error { background: rgba(244, 67, 54, 0.1); border: 1px solid #F44336; color: #F44336; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;}
     </style>
 </head>
 <body>
@@ -127,116 +111,70 @@
                 <button class="time-btn active" onclick="loadDetailedData('1y', '1d', this)">1 A</button>
                 <button class="time-btn" onclick="loadDetailedData('5y', '1wk', this)">5 A</button>
             </div>
-            <div class="detailed-chart">
-                <canvas id="modalChartCanvas"></canvas>
-            </div>
+            <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
 
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
                 <div class="btn-ia-container">
                     <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
                     <button id="btn-ia-ri" class="btn-ia btn-ri" onclick="chamarAnaliseRI()">📰 Radar Corporativo & RI (IA)</button>
                 </div>
-                
                 <div id="tech-result" style="display: none; text-align: left; margin-bottom: 20px;"></div>
                 <div id="ri-result" style="display: none; text-align: left;"></div>
             </div>
 
-            <div id="indicadores-container">
-                <div class="loading-ind">Carregando indicadores fundamentais...</div>
-            </div>
-
+            <div id="indicadores-container"><div class="loading-ind">Carregando indicadores fundamentais...</div></div>
         </div>
     </div>
 
     <script>
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
-        const ativosGerais = [
-            { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
-            { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
-            { id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },
-            { id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }
-        ];
-
+        const ativosGerais = [{ id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },{ id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },{ id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },{ id: 'XAU', name: 'Ouro', ticker: 'GC=F', decimals: 2, prefix: 'US$' },{ id: 'OIL', name: 'Petróleo', ticker: 'BZ=F', decimals: 2, prefix: 'US$' }];
         const listaBrasilRaw = ['AGRO3', 'AMOB3', 'BBAS3', 'BBDC3', 'BBSE3', 'BRSR6', 'B3SA3', 'CMIG3', 'CXSE3', 'EGIE3', 'EQTL3', 'ETHE11', 'EZTC3', 'FLRY3', 'GMAT3', 'GOLD11', 'ITSA4', 'KEPL3', 'KLBN3', 'LEVE3', 'MBRF3', 'PETR3', 'PRIO3', 'PSSA3', 'QBTC11', 'QSOL11', 'RAIZ4', 'RANI3', 'SAPR4', 'SBFG3', 'SMTO3', 'SOJA3', 'SUZB3', 'TAEE11', 'TTEN3', 'VAMO3', 'VIVT3', 'WEGE3'];
         const ativosBrasil = listaBrasilRaw.map(ticker => ({ id: ticker, name: ticker, ticker: `${ticker}.SA`, decimals: 2, prefix: 'R$' }));
-
         const listaIntlRaw = ['GOOGL', 'AMZN', 'NVDA', 'TSM', 'ASML', 'AVGO', 'IRS', 'TSLA', 'MU', 'VZ', 'T', 'HD', 'SHOP', 'DIS', 'SPG', 'ANET', 'ICE', 'KO', 'EQNR', 'EPR', 'WFC', 'VICI', 'O', 'CPRT', 'ASX', 'CEPU', 'NVO', 'PLTR', 'JBL', 'QCOM', 'AAPL', 'MSFT', 'BAC', 'ORCL', 'EQT', 'MNST', 'CVS', 'HUYA', 'GPC', 'PFE', 'ROKU', 'DIBS', 'LEG', 'MBUU', 'FVRR'];
         const ativosIntl = listaIntlRaw.map(ticker => ({ id: ticker, name: ticker, ticker: ticker, decimals: 2, prefix: 'US$' }));
-
         const categorias = { geral: ativosGerais, brasil: ativosBrasil, intl: ativosIntl };
+        
         let currentTab = 'geral';
         let miniCharts = {}; 
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
-
-        let dadosRankingBr = [];
-        let dadosRankingUs = [];
-        let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
+        let dadosRankingBr = []; let dadosRankingUs = []; let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
 
         function buildCards(ativos, container) {
             ativos.forEach(asset => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.onclick = () => openModal(asset);
-                card.innerHTML = `
-                    <div class="card-header">
-                        <div>
-                            <div class="asset-name">${asset.name}</div>
-                            <div class="asset-ticker">${asset.ticker}</div>
-                        </div>
-                        <div>
-                            <div class="price" id="price-${asset.id}">---</div>
-                            <div class="variation" id="var-${asset.id}">--</div>
-                        </div>
-                    </div>
-                    <div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>
-                `;
+                const card = document.createElement('div'); card.className = 'card'; card.onclick = () => openModal(asset);
+                card.innerHTML = `<div class="card-header"><div><div class="asset-name">${asset.name}</div><div class="asset-ticker">${asset.ticker}</div></div><div><div class="price" id="price-${asset.id}">---</div><div class="variation" id="var-${asset.id}">--</div></div></div><div class="mini-chart"><canvas id="mini-chart-${asset.id}"></canvas></div>`;
                 container.appendChild(card);
             });
         }
 
         async function switchTab(tabName, btnElement) {
             try {
-                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-                if(btnElement) btnElement.classList.add('active');
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active')); if(btnElement) btnElement.classList.add('active');
                 currentTab = tabName;
-                
-                const dashboard = document.getElementById('dashboard');
-                dashboard.innerHTML = ''; 
-                
-                Object.keys(miniCharts).forEach(id => { if(miniCharts[id]) miniCharts[id].destroy(); });
-                miniCharts = {};
+                const dashboard = document.getElementById('dashboard'); dashboard.innerHTML = ''; 
+                Object.keys(miniCharts).forEach(id => { if(miniCharts[id]) miniCharts[id].destroy(); }); miniCharts = {};
 
-                if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
-                    dashboard.style.display = 'block';
-                } else {
-                    dashboard.style.display = 'grid';
-                }
+                if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') dashboard.style.display = 'block';
+                else dashboard.style.display = 'grid';
 
                 if(tabName === 'oportunidades') {
                     dashboard.innerHTML = '<div class="section-title">Calculando Margem de Segurança... ⏳</div>';
-                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                    const dadosDaBase = await res.json();
+                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); const dadosDaBase = await res.json();
                     let listaOportunidadesBr = []; let listaOportunidadesUs = [];
-
                     for (const ticker in dadosDaBase) {
-                        const d = dadosDaBase[ticker];
-                        const precoAtual = d.precoAtual;
-                        const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
+                        const d = dadosDaBase[ticker]; const precoAtual = d.precoAtual; const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
                         if(precoAtual && precoPessimista && precoAtual > 0) {
-                            const margemSeguranca = (precoPessimista - precoAtual) / precoAtual;
-                            const isBrasil = ticker.includes('.SA');
-                            const prefix = isBrasil ? 'R$' : 'US$';
-                            const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', precoAtual: precoAtual, precoPessimista: precoPessimista, margem: margemSeguranca, prefix: prefix };
+                            const margemSeguranca = (precoPessimista - precoAtual) / precoAtual; const isBrasil = ticker.includes('.SA');
+                            const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', precoAtual: precoAtual, precoPessimista: precoPessimista, margem: margemSeguranca, prefix: isBrasil ? 'R$' : 'US$' };
                             if (isBrasil) listaOportunidadesBr.push(item); else listaOportunidadesUs.push(item);
                         }
                     }
                     listaOportunidadesBr.sort((a, b) => b.margem - a.margem); listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
-                    
                     const fNum = (num) => parseFloat(num).toFixed(2); const fPct = (num) => (parseFloat(num) * 100).toFixed(2) + '%';
-                    const renderTabelaOportunidades = (titulo, lista) => {
+                    const renderTabela = (titulo, lista) => {
                         if (lista.length === 0) return '';
                         let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th>Preço Atual Tela</th><th>Alvo Pessimista IA</th><th style="color: #4CAF50;">Margem vs Pessimista (Upside)</th></tr></thead><tbody>`;
                         lista.forEach(item => {
@@ -244,24 +182,16 @@
                             let margemClass = item.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; let sinalMargem = item.margem > 0 ? '+' : '';
                             html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${item.prefix} ${fNum(item.precoAtual)}</td><td>${item.prefix} ${fNum(item.precoPessimista)}</td><td class="${margemClass}">${sinalMargem}${fPct(item.margem)}</td></tr>`;
                         });
-                        html += `</tbody></table></div>`; return html;
+                        return html + `</tbody></table></div>`;
                     };
-                    
-                    let telaCompleta = '';
-                    if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil', listaOportunidadesBr);
-                    if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais', listaOportunidadesUs);
-                    if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado de Valuation encontrado no banco.</div>';
-                    
-                    dashboard.innerHTML = telaCompleta;
+                    dashboard.innerHTML = renderTabela('🇧🇷 Radar Brasil', listaOportunidadesBr) + renderTabela('🇺🇸 Radar Internacionais', listaOportunidadesUs) || '<div class="section-title">Nenhum dado encontrado.</div>';
                     return;
                 }
 
                 if(tabName === 'ranking') {
-                    dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
-                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                    const dadosDaBase = await res.json();
+                    dashboard.innerHTML = '<div class="section-title">Analisando dados... ⏳</div>';
+                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); const dadosDaBase = await res.json();
                     dadosRankingBr = []; dadosRankingUs = [];
-                    
                     for (const ticker in dadosDaBase) {
                         const d = dadosDaBase[ticker];
                         if(d.roe !== undefined && d.roe !== null) {
@@ -275,272 +205,127 @@
 
                 if(tabName === 'destaques') {
                     dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
-                    const todosAtivos = [...ativosBrasil, ...ativosIntl];
-                    const tickersString = todosAtivos.map(a => a.ticker).join(',');
-                    
-                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
-                    const cotacoes = await res.json();
-                    
-                    let ativosComVariacao = todosAtivos.map(asset => {
-                        const dados = cotacoes[asset.ticker];
-                        if(!dados || !dados.fechamentoAnterior) return null;
-                        const varPct = ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100;
-                        return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
-                    }).filter(a => a !== null);
-
-                    if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; return; }
-                    ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
-                    const maioresAltas = ativosComVariacao.slice(0, 5); const maioresBaixas = ativosComVariacao.slice(-5).reverse();
-
-                    dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
-                    const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard'; gridAltas.style.display = 'grid';
-                    buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
-                    
-                    dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
-                    const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
-                    buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
-
-                    const destaquesCards = [...maioresAltas, ...maioresBaixas];
-                    
-                    // 🛡️ CATRACA ANTI-BLOQUEIO (Destaques)
-                    for (let i = 0; i < destaquesCards.length; i++) {
-                        if (currentTab !== 'destaques') break; // Para se mudar de aba
-                        const asset = destaquesCards[i];
-                        updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
-                        await fetchMiniChart(asset, 'destaques'); 
-                        await new Promise(resolve => setTimeout(resolve, 250)); // Pausa de 250ms
-                    }
+                    const todosAtivos = [...ativosBrasil, ...ativosIntl]; const tickersString = todosAtivos.map(a => a.ticker).join(',');
+                    try {
+                        const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`); const cotacoes = await res.json();
+                        let ativosComVariacao = todosAtivos.map(asset => {
+                            const dados = cotacoes[asset.ticker]; if(!dados || !dados.fechamentoAnterior) return null;
+                            return { ...asset, varPct: ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100, atual: dados.atual, anterior: dados.fechamentoAnterior };
+                        }).filter(a => a !== null);
+                        if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; return; }
+                        ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
+                        const maioresAltas = ativosComVariacao.slice(0, 5); const maioresBaixas = ativosComVariacao.slice(-5).reverse();
+                        
+                        dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div><div id="gridAltas" class="dashboard" style="display:grid; margin-bottom:20px;"></div><div class="section-title">Maiores Baixas 🔻</div><div id="gridBaixas" class="dashboard" style="display:grid;"></div>';
+                        buildCards(maioresAltas, document.getElementById('gridAltas')); buildCards(maioresBaixas, document.getElementById('gridBaixas'));
+                        [...maioresAltas, ...maioresBaixas].forEach(asset => { updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); fetchMiniChart(asset, 'destaques'); });
+                    } catch (e) { dashboard.innerHTML = '<div class="section-title">Erro ao carregar destaques. Tente recarregar.</div>'; }
                     return;
                 }
 
-                const ativosDaAba = categorias[tabName];
-                buildCards(ativosDaAba, dashboard);
-                
+                const ativosDaAba = categorias[tabName]; buildCards(ativosDaAba, dashboard);
                 const tickersString = ativosDaAba.map(a => a.ticker).join(',');
-                try {
-                    const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
-                    const cotacoesAtuais = await resCotacoes.json();
-                    ativosDaAba.forEach(asset => { 
-                        if(cotacoesAtuais[asset.ticker]) updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
-                    });
-                } catch (e) { console.error("Erro ao buscar cotacoes", e); }
+                fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`).then(r => r.json()).then(cotacoesAtuais => {
+                    ativosDaAba.forEach(asset => { if(cotacoesAtuais[asset.ticker]) updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); });
+                }).catch(e => {});
                 
-                // 🛡️ CATRACA ANTI-BLOQUEIO (Abas Normais)
-                for (let i = 0; i < ativosDaAba.length; i++) {
-                    if (currentTab !== tabName) break; // Para se o usuario mudar de aba rapido
-                    await fetchMiniChart(ativosDaAba[i], tabName);
-                    await new Promise(resolve => setTimeout(resolve, 250)); // Pausa de 250ms entre graficos
-                }
+                // Rápido e Paralelo, sem catraca. Se der 429, falha silenciosamente.
+                ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
 
-            } catch (err) { console.error("Erro interno na aba", err); }
+            } catch (err) { console.error("Erro interno", err); }
         }
 
         function clickOrdenar(tipo, coluna) { ordenarDados(tipo, coluna, false); renderizarAbaRanking(); }
-
         function ordenarDados(tipo, coluna, isInit) {
             let estado = ordemRanking[tipo];
-            if (!isInit) {
-                if (estado.col === coluna) { estado.dir *= -1; } 
-                else { estado.col = coluna; estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; }
-            }
+            if (!isInit) { if (estado.col === coluna) estado.dir *= -1; else { estado.col = coluna; estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; } }
             let lista = tipo === 'br' ? dadosRankingBr : dadosRankingUs;
-            lista.sort((a, b) => {
-                if (a[coluna] === null || a[coluna] === undefined) return 1;
-                if (b[coluna] === null || b[coluna] === undefined) return -1;
-                if (a[coluna] < b[coluna]) return -1 * estado.dir;
-                if (a[coluna] > b[coluna]) return 1 * estado.dir; return 0;
-            });
+            lista.sort((a, b) => { if (a[coluna] == null) return 1; if (b[coluna] == null) return -1; if (a[coluna] < b[coluna]) return -1 * estado.dir; if (a[coluna] > b[coluna]) return 1 * estado.dir; return 0; });
         }
 
         function renderizarAbaRanking() {
-            const dashboard = document.getElementById('dashboard');
-            const fNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
-            const fPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
-            const getSeta = (tipo, col) => ordemRanking[tipo].col === col ? (ordemRanking[tipo].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
-
+            const dashboard = document.getElementById('dashboard'); const fNum = (num) => (num != null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-'; const fPct = (num) => (num != null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-'; const getSeta = (tipo, col) => ordemRanking[tipo].col === col ? (ordemRanking[tipo].dir === 1 ? ' ↑' : ' ↓') : ' ↕';
             const renderTabela = (titulo, lista, tipo) => {
                 if (lista.length === 0) return '';
                 let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dy')">D.Y${getSeta(tipo,'dy')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pl')">P/L${getSeta(tipo,'pl')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pegRatio')">PEG Ratio${getSeta(tipo,'pegRatio')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'pvp')">P/VP${getSeta(tipo,'pvp')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'evEbitda')">EV/EBITDA${getSeta(tipo,'evEbitda')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'vpa')">VPA${getSeta(tipo,'vpa')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'dividaPL')">Dív/PL${getSeta(tipo,'dividaPL')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'liquidezCorrente')">Liq. Corr.${getSeta(tipo,'liquidezCorrente')}</th><th style="cursor:pointer;" onclick="clickOrdenar('${tipo}', 'margem')">Margem Líq.${getSeta(tipo,'margem')}</th><th style="cursor:pointer; color: #4CAF50;" onclick="clickOrdenar('${tipo}', 'roe')">ROE${getSeta(tipo,'roe')}</th></tr></thead><tbody>`;
-                lista.forEach(item => {
-                    let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
-                    html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${fPct(item.dy)}</td><td>${fNum(item.pl)}</td><td>${fNum(item.pegRatio)}</td><td>${fNum(item.pvp)}</td><td>${fNum(item.evEbitda)}</td><td>${fNum(item.vpa)}</td><td>${fNum(item.dividaPL)}</td><td>${fNum(item.liquidezCorrente)}</td><td>${fPct(item.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td></tr>`;
-                });
-                html += `</tbody></table></div>`; return html;
+                lista.forEach(item => { let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo'); html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${fPct(item.dy)}</td><td>${fNum(item.pl)}</td><td>${fNum(item.pegRatio)}</td><td>${fNum(item.pvp)}</td><td>${fNum(item.evEbitda)}</td><td>${fNum(item.vpa)}</td><td>${fNum(item.dividaPL)}</td><td>${fNum(item.liquidezCorrente)}</td><td>${fPct(item.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td></tr>`; }); return html + `</tbody></table></div>`;
             };
-
-            let telaCompleta = '';
-            if (dadosRankingBr.length > 0) telaCompleta += renderTabela('🇧🇷 Ranking Ações Brasil', dadosRankingBr, 'br');
-            if (dadosRankingUs.length > 0) telaCompleta += renderTabela('🇺🇸 Ranking Ações Internacionais', dadosRankingUs, 'us');
-            if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado fundamentalista encontrado no banco.</div>';
-            dashboard.innerHTML = telaCompleta;
+            dashboard.innerHTML = renderTabela('🇧🇷 Ranking Ações Brasil', dadosRankingBr, 'br') + renderTabela('🇺🇸 Ranking Ações Internacionais', dadosRankingUs, 'us') || '<div class="section-title">Sem dados.</div>';
         }
 
         async function fetchMiniChart(asset, targetTab) {
             try {
-                const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
-                const histData = await resHist.json();
-                
+                const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`); const histData = await resHist.json();
                 if(histData.historico && currentTab === targetTab) { 
                     drawMiniChart(asset.id, histData.historico, asset);
                     const elPrice = document.getElementById(`price-${asset.id}`);
-                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
-                        const precos = histData.historico;
-                        const pAtual = precos[precos.length-1].close;
-                        const pAnt = precos[precos.length-2]?.close || pAtual;
-                        updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
-                    }
+                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) { const pAtual = histData.historico[histData.historico.length-1].close; const pAnt = histData.historico[histData.historico.length-2]?.close || pAtual; updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals); }
                 }
-            } catch (e) { console.error("Erro chart mini", e); }
+            } catch (e) { }
         }
 
         function searchAsset() {
-            let ticker = document.getElementById('searchInput').value.trim().toUpperCase();
-            if(!ticker) return;
-            if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; }
-            abrirDoRanking(ticker);
+            let ticker = document.getElementById('searchInput').value.trim().toUpperCase(); if(!ticker) return;
+            if(/^[A-Z]{4}\d{1,2}$/.test(ticker)) { ticker += '.SA'; } abrirDoRanking(ticker);
         }
 
         function abrirDoRanking(tickerReal) {
-            const ehBrasil = tickerReal.includes('.SA');
-            const nomeLimpo = tickerReal.replace('.SA', '');
-            const assetObj = { id: 'BUSCA', name: nomeLimpo, ticker: tickerReal, decimals: 2, prefix: ehBrasil ? 'R$' : 'US$' };
-            openModal(assetObj);
+            const ehBrasil = tickerReal.includes('.SA'); const assetObj = { id: 'BUSCA', name: tickerReal.replace('.SA', ''), ticker: tickerReal, decimals: 2, prefix: ehBrasil ? 'R$' : 'US$' }; openModal(assetObj);
         }
 
         async function chamarAnaliseTecnica() {
-            const btn = document.getElementById('btn-ia-tech');
-            const resultDiv = document.getElementById('tech-result');
+            const btn = document.getElementById('btn-ia-tech'); const resultDiv = document.getElementById('tech-result');
             btn.innerHTML = '⏳ Calculando Médias...'; btn.disabled = true;
             try {
-                const res = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`);
-                const data = await res.json();
-                if(data.erro) throw new Error(data.erro);
+                const res = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`); const data = await res.json();
+                if(data.erro) { resultDiv.innerHTML = `<div class="alert-error">⚠️ ${data.erro}</div>`; resultDiv.style.display = 'block'; btn.style.display = 'none'; return; }
                 
-                let corTendencia = '#FFC107'; 
-                if(data.tendencia && data.tendencia.toUpperCase().includes('ALTA')) corTendencia = '#4CAF50';
-                if(data.tendencia && data.tendencia.toUpperCase().includes('BAIXA')) corTendencia = '#c93e36';
-                
+                let corTendencia = '#FFC107'; if(data.tendencia && data.tendencia.toUpperCase().includes('ALTA')) corTendencia = '#4CAF50'; if(data.tendencia && data.tendencia.toUpperCase().includes('BAIXA')) corTendencia = '#c93e36';
                 btn.style.display = 'none'; resultDiv.style.display = 'block';
-                resultDiv.innerHTML = `
-                    <div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div>
-                    <div class="tech-grid">
-                        <div class="tech-box" style="border-color: ${corTendencia};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${corTendencia};">${data.tendencia || '-'}</div></div>
-                        <div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${data.suporte || '-'}</div></div>
-                        <div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${data.resistencia || '-'}</div></div>
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Análise concluída.'}"</div>
-                `;
+                resultDiv.innerHTML = `<div style="color: #9C27B0; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🤖 Diagnóstico Gráfico (IA)</div><div class="tech-grid"><div class="tech-box" style="border-color: ${corTendencia};"><div class="tech-label">Tendência Curto Prazo</div><div class="tech-val" style="color: ${corTendencia};">${data.tendencia || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Suporte</div><div class="tech-val" style="color: #4CAF50;">${currentAssetObj.prefix} ${data.suporte || '-'}</div></div><div class="tech-box"><div class="tech-label">Zona de Resistência</div><div class="tech-val" style="color: #c93e36;">${currentAssetObj.prefix} ${data.resistencia || '-'}</div></div></div><div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Concluído.'}"</div>`;
             } catch (e) { btn.innerHTML = '❌ Erro. Tentar Novamente'; btn.disabled = false; }
         }
 
         async function chamarAnaliseRI() {
-            const btn = document.getElementById('btn-ia-ri');
-            const resultDiv = document.getElementById('ri-result');
+            const btn = document.getElementById('btn-ia-ri'); const resultDiv = document.getElementById('ri-result');
             btn.innerHTML = '⏳ Lendo Balanços Financeiros...'; btn.disabled = true;
             try {
-                const res = await fetch(`${URL_BACKEND}/api/analise-ri/${currentAssetObj.ticker}`);
-                const data = await res.json();
-                if(data.erro || !data.pros || !data.contras) throw new Error("Erro nos dados de RI");
+                const res = await fetch(`${URL_BACKEND}/api/analise-ri/${currentAssetObj.ticker}`); const data = await res.json();
+                if(data.erro) { resultDiv.innerHTML = `<div class="alert-error">⚠️ ${data.erro}</div>`; resultDiv.style.display = 'block'; btn.style.display = 'none'; return; }
 
                 btn.style.display = 'none'; resultDiv.style.display = 'block';
-                let html = `<div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">`;
-                html += `<div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;"><h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças e Oportunidades</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.pros[0] || '-'}</li><li style="margin-top:10px;">${data.pros[1] || '-'}</li><li style="margin-top:10px;">${data.pros[2] || '-'}</li></ul></div>`;
-                html += `<div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;"><h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos e Ameaças</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.contras[0] || '-'}</li><li style="margin-top:10px;">${data.contras[1] || '-'}</li><li style="margin-top:10px;">${data.contras[2] || '-'}</li></ul></div></div>`;
-                resultDiv.innerHTML = html;
+                resultDiv.innerHTML = `<div style="color: #03A9F4; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; margin-top: 25px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo & RI (IA)</div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;"><div style="background: rgba(76, 175, 80, 0.05); border: 1px solid #4CAF50; padding: 15px; border-radius: 8px;"><h4 style="color: #4CAF50; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">✅ 3 Forças Financeiras</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.pros[0] || '-'}</li><li style="margin-top:10px;">${data.pros[1] || '-'}</li><li style="margin-top:10px;">${data.pros[2] || '-'}</li></ul></div><div style="background: rgba(244, 67, 54, 0.05); border: 1px solid #F44336; padding: 15px; border-radius: 8px;"><h4 style="color: #F44336; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">⚠️ 3 Riscos Contábeis</h4><ul style="color: #ddd; padding-left: 20px; margin: 0; font-size: 0.9rem; line-height: 1.6;"><li>${data.contras[0] || '-'}</li><li style="margin-top:10px;">${data.contras[1] || '-'}</li><li style="margin-top:10px;">${data.contras[2] || '-'}</li></ul></div></div>`;
             } catch (e) { btn.innerHTML = '❌ Erro. Tentar Novamente'; btn.disabled = false; }
         }
 
         async function fetchIndicadores(ticker) {
-            const container = document.getElementById('indicadores-container');
-            container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
+            const container = document.getElementById('indicadores-container'); container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             try {
-                const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                const todosOsDados = await res.json();
-                const data = todosOsDados[ticker];
+                const res = await fetch('./indicadores.json?nocache=' + new Date().getTime()); const todosOsDados = await res.json(); const data = todosOsDados[ticker];
                 if (!data) { container.innerHTML = '<div class="loading-ind">Indicadores não disponíveis para este ativo.</div>'; return; }
-
-                const fmtNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
-                const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
-                const renderStars = (nota) => { const starsOn = Math.max(0, Math.min(5, Math.floor(nota || 0))); const starsOff = 5 - starsOn; return `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(starsOn)}${'☆'.repeat(starsOff)}</span>`; };
-
+                const fmtNum = (num) => (num != null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-'; const fmtPct = (num) => (num != null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-'; const renderStars = (nota) => `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(Math.max(0, Math.min(5, Math.floor(nota || 0))))}${'☆'.repeat(5-Math.max(0, Math.min(5, Math.floor(nota || 0))))}</span>`;
                 const ai = data.analise_senior || {}; const dcf = data.valuation_dcf; 
-                let htmlContent = `
-                    <div class="ind-category"><div class="ind-category-title">Indicadores de Valuation</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">D.Y</span><span class="ind-value">${fmtPct(data.dy)}</span></div><div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fmtNum(data.pl)}</span></div><div class="ind-box"><span class="ind-label">PEG Ratio</span><span class="ind-value">${fmtNum(data.pegRatio)}</span></div><div class="ind-box"><span class="ind-label">P/VP</span><span class="ind-value">${fmtNum(data.pvp)}</span></div><div class="ind-box"><span class="ind-label">EV/EBITDA</span><span class="ind-value">${fmtNum(data.evEbitda)}</span></div><div class="ind-box"><span class="ind-label">VPA</span><span class="ind-value">${fmtNum(data.vpa)}</span></div></div></div>
-                    <div class="ind-category"><div class="ind-category-title">Indicadores de Endividamento & Rentabilidade</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">Dív. Líquida / PL</span><span class="ind-value">${fmtNum(data.dividaPL ? data.dividaPL / 100 : null)}</span></div><div class="ind-box"><span class="ind-label">Liq. Corrente</span><span class="ind-value">${fmtNum(data.liquidezCorrente)}</span></div><div class="ind-box"><span class="ind-label">Margem Líquida</span><span class="ind-value">${fmtPct(data.margemLiquida)}</span></div><div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div></div></div>
-                    <div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Sênior & Inteligência Setorial</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: #aaa;">Dados de: <strong style="color: #fff;">${data.data_referencia || 'N/A'}</strong></div></div>
-                        <div style="margin-bottom: 20px;"><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Análise de Tendência Fundamental</h4><p style="color: #fff; font-size: 0.95rem; line-height: 1.5; background: #1a1a1b; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; margin:0;">${ai.tendencia || '-'}</p></div>
-                        <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🎯 Matriz SWOT Setorial</h4>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;"><div style="background: rgba(26, 127, 55, 0.1); border: 1px solid #1a7f37; padding: 12px; border-radius: 8px;"><strong style="color: #1a7f37; display: block; margin-bottom: 5px;">S - Forças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.forcas || '-'}</span></div><div style="background: rgba(201, 62, 54, 0.1); border: 1px solid #c93e36; padding: 12px; border-radius: 8px;"><strong style="color: #c93e36; display: block; margin-bottom: 5px;">W - Fraquezas</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.fraquezas || '-'}</span></div><div style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196F3; padding: 12px; border-radius: 8px;"><strong style="color: #2196F3; display: block; margin-bottom: 5px;">O - Oportunidades</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.oportunidades || '-'}</span></div><div style="background: rgba(255, 152, 0, 0.1); border: 1px solid #FF9800; padding: 12px; border-radius: 8px;"><strong style="color: #FF9800; display: block; margin-bottom: 5px;">T - Ameaças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.ameacas || '-'}</span></div></div>
-                        <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🏆 Placar Fundamentalista vs Setor</h4>
-                        <div style="background: #1a1a1b; padding: 15px; border-radius: 8px; border: 1px solid #333;"><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROE (Retorno do Acionista)</span> <span>${renderStars(ai.notas?.roe)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROIC (Retorno s/ Capital)</span> <span>${renderStars(ai.notas?.roic)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Margem EBITDA</span> <span>${renderStars(ai.notas?.ebitda)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Saúde da Dívida</span> <span>${renderStars(ai.notas?.divida)}</span></div><div style="display: flex; justify-content: space-between;"><span>Cresc. Receita Líquida</span> <span>${renderStars(ai.notas?.receita)}</span></div></div>
-                    </div>`;
-
+                let htmlContent = `<div class="ind-category"><div class="ind-category-title">Indicadores de Valuation</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">D.Y</span><span class="ind-value">${fmtPct(data.dy)}</span></div><div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fmtNum(data.pl)}</span></div><div class="ind-box"><span class="ind-label">PEG Ratio</span><span class="ind-value">${fmtNum(data.pegRatio)}</span></div><div class="ind-box"><span class="ind-label">P/VP</span><span class="ind-value">${fmtNum(data.pvp)}</span></div><div class="ind-box"><span class="ind-label">EV/EBITDA</span><span class="ind-value">${fmtNum(data.evEbitda)}</span></div><div class="ind-box"><span class="ind-label">VPA</span><span class="ind-value">${fmtNum(data.vpa)}</span></div></div></div><div class="ind-category"><div class="ind-category-title">Indicadores de Endividamento & Rentabilidade</div><div class="indicadores-grid"><div class="ind-box"><span class="ind-label">Dív. Líquida / PL</span><span class="ind-value">${fmtNum(data.dividaPL ? data.dividaPL / 100 : null)}</span></div><div class="ind-box"><span class="ind-label">Liq. Corrente</span><span class="ind-value">${fmtNum(data.liquidezCorrente)}</span></div><div class="ind-box"><span class="ind-label">Margem Líquida</span><span class="ind-value">${fmtPct(data.margemLiquida)}</span></div><div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div></div></div><div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Sênior & Inteligência Setorial</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: #aaa;">Dados de: <strong style="color: #fff;">${data.data_referencia || 'N/A'}</strong></div></div><div style="margin-bottom: 20px;"><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Análise de Tendência Fundamental</h4><p style="color: #fff; font-size: 0.95rem; line-height: 1.5; background: #1a1a1b; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; margin:0;">${ai.tendencia || '-'}</p></div><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🎯 Matriz SWOT Setorial</h4><div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;"><div style="background: rgba(26, 127, 55, 0.1); border: 1px solid #1a7f37; padding: 12px; border-radius: 8px;"><strong style="color: #1a7f37; display: block; margin-bottom: 5px;">S - Forças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.forcas || '-'}</span></div><div style="background: rgba(201, 62, 54, 0.1); border: 1px solid #c93e36; padding: 12px; border-radius: 8px;"><strong style="color: #c93e36; display: block; margin-bottom: 5px;">W - Fraquezas</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.fraquezas || '-'}</span></div><div style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196F3; padding: 12px; border-radius: 8px;"><strong style="color: #2196F3; display: block; margin-bottom: 5px;">O - Oportunidades</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.oportunidades || '-'}</span></div><div style="background: rgba(255, 152, 0, 0.1); border: 1px solid #FF9800; padding: 12px; border-radius: 8px;"><strong style="color: #FF9800; display: block; margin-bottom: 5px;">T - Ameaças</strong><span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.ameacas || '-'}</span></div></div><h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🏆 Placar Fundamentalista vs Setor</h4><div style="background: #1a1a1b; padding: 15px; border-radius: 8px; border: 1px solid #333;"><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROE (Retorno do Acionista)</span> <span>${renderStars(ai.notas?.roe)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>ROIC (Retorno s/ Capital)</span> <span>${renderStars(ai.notas?.roic)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Margem EBITDA</span> <span>${renderStars(ai.notas?.ebitda)}</span></div><div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;"><span>Saúde da Dívida</span> <span>${renderStars(ai.notas?.divida)}</span></div><div style="display: flex; justify-content: space-between;"><span>Cresc. Receita Líquida</span> <span>${renderStars(ai.notas?.receita)}</span></div></div></div>`;
                 if (dcf) {
                     let statusColor = '#FFC107'; if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50'; if(dcf.status === 'SUPERVALORIZADA') statusColor = '#F44336';
-                    htmlContent += `
-                    <div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #9C27B0; margin: 0;">🔮 Valuation DCF & Projeções</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: ${statusColor};">STATUS: <strong style="color: ${statusColor};">${dcf.status || 'N/A'}</strong></div></div>
-                        <div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;"><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP (g):</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div></div>
-                        <div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
-                            <div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;"><div style="position: absolute; left: 0%; top: -30px; text-align: left; white-space: nowrap;"><div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.pessimista?.preco_justo)}</div></div><div style="position: absolute; left: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Pessimista</div><div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center; white-space: nowrap;"><div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.base?.preco_justo)}</div></div><div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Alvo Base</div><div style="position: absolute; right: 0%; top: -30px; text-align: right; white-space: nowrap;"><div style="color: #4CAF50; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.otimista?.preco_justo)}</div></div><div style="position: absolute; right: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Otimista</div></div>
-                        </div>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;"><div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;"><div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Tese Pessimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div></div><div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;"><div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Tese Base</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div></div><div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;"><div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Tese Otimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div></div></div>
-                    </div>`;
+                    htmlContent += `<div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;"><div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;"><div class="ind-category-title" style="color: #9C27B0; margin: 0;">🔮 Valuation DCF & Projeções</div><div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: ${statusColor};">STATUS: <strong style="color: ${statusColor};">${dcf.status || 'N/A'}</strong></div></div><div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;"><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP (g):</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div><div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div></div><div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);"><div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;"><div style="position: absolute; left: 0%; top: -30px; text-align: left; white-space: nowrap;"><div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.pessimista?.preco_justo)}</div></div><div style="position: absolute; left: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Pessimista</div><div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center; white-space: nowrap;"><div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.base?.preco_justo)}</div></div><div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Alvo Base</div><div style="position: absolute; right: 0%; top: -30px; text-align: right; white-space: nowrap;"><div style="color: #4CAF50; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.otimista?.preco_justo)}</div></div><div style="position: absolute; right: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Otimista</div></div></div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;"><div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;"><div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Tese Pessimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div></div><div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;"><div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Tese Base</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div></div><div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;"><div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Tese Otimista</div><div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div></div></div></div>`;
                 }
                 container.innerHTML = htmlContent;
             } catch(e) { container.innerHTML = '<div class="loading-ind">Erro a ler o ficheiro estático.</div>'; }
         }
 
         function openModal(asset) {
-            currentAssetObj = asset;
-            document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
-            document.getElementById('modal').style.display = 'flex';
-            
-            const btnTech = document.getElementById('btn-ia-tech'); const resultTech = document.getElementById('tech-result');
-            if (btnTech && resultTech) { btnTech.style.display = 'inline-block'; btnTech.innerHTML = '🎯 Análise Gráfica (IA)'; btnTech.disabled = false; resultTech.style.display = 'none'; resultTech.innerHTML = ''; }
-            
-            const btnRI = document.getElementById('btn-ia-ri'); const resultRI = document.getElementById('ri-result');
-            if (btnRI && resultRI) { btnRI.style.display = 'inline-block'; btnRI.innerHTML = '📰 Radar Corporativo & RI (IA)'; btnRI.disabled = false; resultRI.style.display = 'none'; resultRI.innerHTML = ''; }
-
-            document.querySelector('.timeframe-buttons button:nth-child(3)').click();
-            fetchIndicadores(asset.ticker);
+            currentAssetObj = asset; document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`; document.getElementById('modal').style.display = 'flex';
+            const btnTech = document.getElementById('btn-ia-tech'); const resultTech = document.getElementById('tech-result'); if (btnTech && resultTech) { btnTech.style.display = 'inline-block'; btnTech.innerHTML = '🎯 Análise Gráfica (IA)'; btnTech.disabled = false; resultTech.style.display = 'none'; resultTech.innerHTML = ''; }
+            const btnRI = document.getElementById('btn-ia-ri'); const resultRI = document.getElementById('ri-result'); if (btnRI && resultRI) { btnRI.style.display = 'inline-block'; btnRI.innerHTML = '📰 Radar Corporativo & RI (IA)'; btnRI.disabled = false; resultRI.style.display = 'none'; resultRI.innerHTML = ''; }
+            document.querySelector('.timeframe-buttons button:nth-child(3)').click(); fetchIndicadores(asset.ticker);
         }
 
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
-        async function loadDetailedData(range, interval, btnElement) {
-            document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
-            btnElement.classList.add('active');
-            try {
-                const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`);
-                const data = await response.json(); drawDetailedChart(data.historico);
-            } catch (error) { console.error("Erro detailed data", error); }
-        }
-
-        function drawMiniChart(id, historicalData, assetDetails) {
-            const canvas = document.getElementById(`mini-chart-${id}`); 
-            if(!canvas || !historicalData || historicalData.length === 0) return; 
-            const ctx = canvas.getContext('2d');
-            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 80); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
-            miniCharts[id] = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } });
-        }
-        
-        function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
-            const elPrice = document.getElementById(`price-${id}`); const elVar = document.getElementById(`var-${id}`); if(!elPrice || !elVar) return;
-            const varValue = currentPrice - previousPrice; const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0;
-            elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`; elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`; elVar.className = varValue >= 0 ? 'variation up' : 'variation down';
-        }
-
-        function drawDetailedChart(historicalData) {
-            if(!historicalData || historicalData.length === 0) return;
-            const ctx = document.getElementById('modalChartCanvas').getContext('2d');
-            const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
-            if(detailedChartInstance) detailedChartInstance.destroy(); 
-            const gradient = ctx.createLinearGradient(0, 0, 0, 400); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c');
-            detailedChartInstance = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } } });
-        }
+        async function loadDetailedData(range, interval, btnElement) { document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active')); btnElement.classList.add('active'); try { const response = await fetch(`${URL_BACKEND}/api/historico/${currentAssetObj.ticker}?range=${range}&interval=${interval}`); const data = await response.json(); drawDetailedChart(data.historico); } catch (error) {} }
+        function drawMiniChart(id, historicalData, assetDetails) { const canvas = document.getElementById(`mini-chart-${id}`); if(!canvas || !historicalData || historicalData.length === 0) return; const ctx = canvas.getContext('2d'); const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; const gradient = ctx.createLinearGradient(0, 0, 0, 80); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); miniCharts[id] = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } }); }
+        function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) { const elPrice = document.getElementById(`price-${id}`); const elVar = document.getElementById(`var-${id}`); if(!elPrice || !elVar) return; const varValue = currentPrice - previousPrice; const varPct = previousPrice ? (varValue / previousPrice) * 100 : 0; elPrice.innerHTML = `${prefix} ${currentPrice.toLocaleString('pt-BR', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`; elVar.innerHTML = varValue >= 0 ? `▲ +${varPct.toFixed(2)}%` : `▼ ${Math.abs(varPct).toFixed(2)}%`; elVar.className = varValue >= 0 ? 'variation up' : 'variation down'; }
+        function drawDetailedChart(historicalData) { if(!historicalData || historicalData.length === 0) return; const ctx = document.getElementById('modalChartCanvas').getContext('2d'); const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; if(detailedChartInstance) detailedChartInstance.destroy(); const gradient = ctx.createLinearGradient(0, 0, 0, 400); gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); detailedChartInstance = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, interaction: { intersect: false, mode: 'index' }, plugins: { legend: { display: false }, tooltip: { backgroundColor: '#1a1a1b', titleColor: '#fff', bodyColor: '#fff', borderColor: '#444', borderWidth: 1 } }, scales: { x: { display: false }, y: { display: true, position: 'left', ticks: { color: '#8e9196', callback: function(value) { return currentAssetObj.prefix + ' ' + value.toLocaleString(); } }, grid: { color: '#333336' } } } }); }
 
         window.addEventListener('DOMContentLoaded', () => { switchTab('geral', document.querySelector('.tab-btn')); });
     </script>
