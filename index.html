@@ -67,6 +67,8 @@
         .btn-ia:hover { transform: translateY(-2px); }
         .btn-tech { background: linear-gradient(45deg, #9C27B0, #3f51b5); box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); }
         .btn-tech:hover { box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5); }
+        .btn-ri { background: linear-gradient(45deg, #0288D1, #009688); box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3); }
+        .btn-ri:hover { box-shadow: 0 6px 20px rgba(2, 136, 209, 0.5); }
 
         .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 15px; }
         .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
@@ -116,8 +118,10 @@
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
                 <div class="btn-ia-container">
                     <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                    <button id="btn-ia-ri" class="btn-ia btn-ri" onclick="chamarAnaliseRI()">📰 Radar Corporativo & RI</button>
                 </div>
-                <div id="tech-result" style="display: none; text-align: left;"></div>
+                <div id="tech-result" style="display: none; text-align: left; margin-bottom: 15px;"></div>
+                <div id="ri-result" style="display: none; text-align: left; margin-top: 15px;"></div>
             </div>
 
             <div id="indicadores-container">
@@ -137,7 +141,7 @@
 
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
-        // 🌍 A NOVA LISTA GLOBAL MACRO DO DIRETOR
+        // 🌍 MACRO GLOBAL ATUALIZADO 
         const ativosGerais = [
             { id: 'IBOV', name: 'Ibovespa (Brasil)', ticker: '^BVSP', decimals: 0, prefix: 'Pts' },
             { id: 'SP500', name: 'S&P 500 (EUA)', ticker: '^GSPC', decimals: 2, prefix: 'Pts' },
@@ -339,6 +343,7 @@
                     return;
                 }
 
+                // ABAS NORMAIS
                 const ativosDaAba = categorias[tabName];
                 buildCards(ativosDaAba, dashboard);
                 
@@ -435,6 +440,10 @@
             openModal(assetObj);
         }
 
+        // ===============================================
+        // BOTÕES DE INTELIGÊNCIA ARTIFICIAL (O PALCO)
+        // ===============================================
+
         async function chamarAnaliseTecnica() {
             const btn = document.getElementById('btn-ia-tech');
             const resultDiv = document.getElementById('tech-result');
@@ -463,6 +472,74 @@
             } catch (e) { 
                 btn.innerHTML = '❌ Erro. Tentar Novamente'; 
                 btn.disabled = false; 
+            }
+        }
+
+        async function chamarAnaliseRI() {
+            const btn = document.getElementById('btn-ia-ri');
+            const resultDiv = document.getElementById('ri-result');
+            btn.innerHTML = '⏳ Abrindo Cofre...'; 
+            btn.disabled = true;
+
+            try {
+                // Vai no cofre pescar a análise de RI que o seu robô noturno gerou
+                const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
+                if (!res.ok) throw new Error("Cofre não encontrado");
+                
+                const todosOsDados = await res.json();
+                const dataAtivo = todosOsDados[currentAssetObj.ticker];
+
+                if (!dataAtivo || !dataAtivo.radar_ri) {
+                    throw new Error("Aviso: O Robô ainda não gerou o Radar de RI para este ativo.");
+                }
+
+                const ri = dataAtivo.radar_ri;
+
+                // Monta a UI Profissional com Duas Colunas (Balanço e Notícias)
+                let html = `
+                    <div style="color: #0288D1; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo Sênior</div>
+                    <div style="font-size: 0.75rem; color: #8e9196; text-align: center; margin-bottom: 20px;">Atualizado: ${ri.data_analise || 'Recente'}</div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        
+                        <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
+                            <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">📊 Leitura do Balanço</h4>
+                            
+                            <strong style="color: #4CAF50; font-size: 0.9rem;">🟢 Pontos Fortes:</strong>
+                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">
+                                ${ri.balanco.fortes.map(i => `<li>${i}</li>`).join('')}
+                            </ul>
+                            
+                            <strong style="color: #FFC107; font-size: 0.9rem;">🟡 Pontos de Atenção:</strong>
+                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">
+                                ${ri.balanco.atencao.map(i => `<li>${i}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
+                            <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">🌐 Sentimento de Mercado</h4>
+                            
+                            <strong style="color: #4CAF50; font-size: 0.9rem;">📈 Fatos Positivos:</strong>
+                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">
+                                ${ri.noticias.positivas.map(i => `<li>${i}</li>`).join('')}
+                            </ul>
+                            
+                            <strong style="color: #F44336; font-size: 0.9rem;">📉 Fatos Negativos:</strong>
+                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">
+                                ${ri.noticias.negativas.map(i => `<li>${i}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                    </div>
+                `;
+
+                btn.style.display = 'none'; 
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = html;
+
+            } catch (erro) {
+                btn.innerHTML = `❌ ${erro.message.includes('Aviso') ? erro.message : 'Erro. Tente novamente'}`;
+                btn.disabled = false;
             }
         }
 
@@ -633,15 +710,25 @@
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
             
+            // RESET DOS BOTÕES DE IA AO ABRIR O MODAL
             const btnTech = document.getElementById('btn-ia-tech'); 
             const resultTech = document.getElementById('tech-result');
-            
             if (btnTech && resultTech) { 
                 btnTech.style.display = 'block'; 
                 btnTech.innerHTML = '🎯 Análise Gráfica (IA)'; 
                 btnTech.disabled = false; 
                 resultTech.style.display = 'none'; 
                 resultTech.innerHTML = ''; 
+            }
+
+            const btnRi = document.getElementById('btn-ia-ri'); 
+            const resultRi = document.getElementById('ri-result');
+            if (btnRi && resultRi) { 
+                btnRi.style.display = 'block'; 
+                btnRi.innerHTML = '📰 Radar Corporativo & RI'; 
+                btnRi.disabled = false; 
+                resultRi.style.display = 'none'; 
+                resultRi.innerHTML = ''; 
             }
             
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
