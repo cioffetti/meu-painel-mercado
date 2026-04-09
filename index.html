@@ -143,7 +143,6 @@
         const ativosIntl = listaIntlRaw.map(ticker => ({ id: ticker, name: ticker, ticker: ticker, decimals: 2, prefix: 'US$' }));
 
         const categorias = { geral: ativosGerais, brasil: ativosBrasil, intl: ativosIntl };
-        
         let currentTab = 'geral';
         let miniCharts = {}; 
         let detailedChartInstance = null; 
@@ -255,6 +254,7 @@
                 dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
                 const todosAtivos = [...ativosBrasil, ...ativosIntl];
                 const tickersString = todosAtivos.map(a => a.ticker).join(',');
+                
                 try {
                     const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
                     const cotacoes = await res.json();
@@ -265,7 +265,7 @@
                         return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
                     }).filter(a => a !== null);
 
-                    if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; return; }
+                    if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados (Possível Bloqueio 429 do Yahoo)...</div>'; return; }
                     ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
                     const maioresAltas = ativosComVariacao.slice(0, 5); 
                     const maioresBaixas = ativosComVariacao.slice(-5).reverse();
@@ -282,15 +282,17 @@
                         updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
                         fetchMiniChart(asset, 'destaques'); 
                     });
-                } catch (e) { dashboard.innerHTML = '<div class="section-title">Aguardando Servidor...</div>'; }
+                } catch (e) { dashboard.innerHTML = '<div class="section-title">Erro ao carregar os dados.</div>'; }
                 return;
             }
 
-            // O Fluxo Original que funcionava perfeito e liso
+            // Abas Normais: Geral, Brasil, Intl
             const ativosDaAba = categorias[tabName];
             buildCards(ativosDaAba, dashboard);
             
             const tickersString = ativosDaAba.map(a => a.ticker).join(',');
+            
+            // Busca Cotações
             fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
                 .then(r => r.json())
                 .then(cotacoesAtuais => {
@@ -299,8 +301,9 @@
                             updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
                         }
                     });
-                }).catch(e => {});
+                }).catch(e => console.log("Erro ao buscar cotações"));
 
+            // Busca Gráficos (Maneira original assíncrona, rápida e funcional)
             ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
         }
 
@@ -348,17 +351,8 @@
             try {
                 const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
                 const histData = await resHist.json();
-                if(histData.historico && currentTab === targetTab) { 
-                    drawMiniChart(asset.id, histData.historico, asset);
-                    
-                    // Atualiza o preço da tela se a cotação principal tiver falhado
-                    const elPrice = document.getElementById(`price-${asset.id}`);
-                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
-                        const precos = histData.historico;
-                        const pAtual = precos[precos.length-1].close;
-                        const pAnt = precos[precos.length-2]?.close || pAtual;
-                        updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
-                    }
+                if(histData.historico && histData.historico.length > 0 && currentTab === targetTab) { 
+                    drawMiniChart(asset.id, histData.historico);
                 }
             } catch (e) { }
         }
@@ -413,6 +407,7 @@
             container.innerHTML = '<div class="loading-ind">A ler banco de dados estático...</div>';
             try {
                 const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
+                if (!res.ok) throw new Error("Arquivo ausente");
                 const todosOsDados = await res.json();
                 const data = todosOsDados[ticker];
                 if (!data) { container.innerHTML = '<div class="loading-ind">Indicadores não disponíveis para este ativo.</div>'; return; }
@@ -565,7 +560,7 @@
                 container.innerHTML = htmlContent;
                 
             } catch(e) { 
-                container.innerHTML = '<div class="loading-ind">Erro a ler o ficheiro estático.</div>'; 
+                container.innerHTML = '<div class="loading-ind">Nenhum dado salvo encontrado.</div>'; 
             }
         }
 
@@ -603,14 +598,19 @@
             } catch (error) {}
         }
 
-        function drawMiniChart(id, historicalData, assetDetails) {
+        function drawMiniChart(id, historicalData) {
             const canvas = document.getElementById(`mini-chart-${id}`); 
             if(!canvas || !historicalData || historicalData.length === 0) return; 
             const ctx = canvas.getContext('2d');
             const color = (historicalData[historicalData.length - 1].close - historicalData[0].close) >= 0 ? '#1a7f37' : '#c93e36'; 
             const gradient = ctx.createLinearGradient(0, 0, 0, 80); 
             gradient.addColorStop(0, color); gradient.addColorStop(1, '#0b0b0c'); 
-            miniCharts[id] = new Chart(ctx, { type: 'line', data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } });
+            
+            miniCharts[id] = new Chart(ctx, { 
+                type: 'line', 
+                data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, 
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } 
+            });
         }
         
         function updateCardUI(id, currentPrice, previousPrice, prefix, decimals) {
