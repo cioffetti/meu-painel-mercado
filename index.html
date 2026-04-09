@@ -137,7 +137,17 @@
 
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
+        // 🌍 A NOVA LISTA GLOBAL MACRO DO DIRETOR
         const ativosGerais = [
+            { id: 'IBOV', name: 'Ibovespa (Brasil)', ticker: '^BVSP', decimals: 0, prefix: 'Pts' },
+            { id: 'SP500', name: 'S&P 500 (EUA)', ticker: '^GSPC', decimals: 2, prefix: 'Pts' },
+            { id: 'DOW', name: 'Dow Jones (EUA)', ticker: '^DJI', decimals: 2, prefix: 'Pts' },
+            { id: 'NASDAQ', name: 'Nasdaq (EUA)', ticker: '^IXIC', decimals: 2, prefix: 'Pts' },
+            { id: 'DAX', name: 'DAX (Alemanha)', ticker: '^GDAXI', decimals: 2, prefix: 'Pts' },
+            { id: 'NIKKEI', name: 'Nikkei 225 (Japão)', ticker: '^N225', decimals: 2, prefix: 'Pts' },
+            { id: 'SHANGHAI', name: 'Shanghai Comp. (China)', ticker: '000001.SS', decimals: 2, prefix: 'Pts' },
+            { id: 'HANGSENG', name: 'Hang Seng (Hong Kong)', ticker: '^HSI', decimals: 2, prefix: 'Pts' },
+            { id: 'MERVAL', name: 'Merval (Argentina)', ticker: '^MERV', decimals: 0, prefix: 'Pts' },
             { id: 'USD', name: 'Dólar', ticker: 'BRL=X', decimals: 3, prefix: 'R$' },
             { id: 'EUR', name: 'Euro', ticker: 'EURBRL=X', decimals: 3, prefix: 'R$' },
             { id: 'BTC', name: 'Bitcoin', ticker: 'BTC-USD', decimals: 2, prefix: 'US$' },
@@ -197,9 +207,6 @@
                     dashboard.style.display = 'grid';
                 }
 
-                // ==========================================
-                // 🔥 NOVA ABA OPORTUNIDADES DINÂMICA 🔥
-                // ==========================================
                 if(tabName === 'oportunidades') {
                     dashboard.innerHTML = '<div class="section-title">Sincronizando Valuation com Cotações ao Vivo... ⏳</div>';
                     try {
@@ -207,7 +214,6 @@
                         if (!resCofre.ok) throw new Error("Cofre não encontrado");
                         const dadosDaBase = await resCofre.json();
                         
-                        // Busca os preços em tempo real para cruzar com os alvos do cofre!
                         const todosTickers = Object.keys(dadosDaBase);
                         let cotacoesVivas = {};
                         try {
@@ -224,8 +230,6 @@
 
                         for (const ticker in dadosDaBase) {
                             const d = dadosDaBase[ticker];
-                            
-                            // PULO DO GATO: Se o servidor devolveu o preço online, usamos ele. Se não, usamos o do cofre!
                             const precoAtual = cotacoesVivas[ticker]?.atual || d.precoAtual;
                             const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
                             
@@ -335,7 +339,6 @@
                     return;
                 }
 
-                // ABAS NORMAIS
                 const ativosDaAba = categorias[tabName];
                 buildCards(ativosDaAba, dashboard);
                 
