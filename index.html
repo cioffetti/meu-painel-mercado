@@ -61,7 +61,8 @@
         .margem-positiva { color: #4CAF50; font-weight: bold; }
         .margem-negativa { color: #c93e36; font-weight: bold; }
 
-        .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; display: block; margin: 0 auto; margin-bottom: 20px;}
+        .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; max-width: 320px;}
         .btn-ia:disabled { background: #333 !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
         .btn-ia:hover { transform: translateY(-2px); }
         .btn-tech { background: linear-gradient(45deg, #9C27B0, #3f51b5); box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); }
@@ -71,6 +72,7 @@
         .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
         .tech-label { font-size: 0.8rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; }
         .tech-val { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: #fff; }
+        .alert-error { background: rgba(244, 67, 54, 0.1); border: 1px solid #F44336; color: #F44336; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;}
     </style>
 </head>
 <body>
@@ -109,7 +111,9 @@
             <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
 
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
-                <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                <div class="btn-ia-container">
+                    <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                </div>
                 <div id="tech-result" style="display: none; text-align: left;"></div>
             </div>
 
@@ -169,7 +173,7 @@
             
             const dashboard = document.getElementById('dashboard');
             dashboard.innerHTML = ''; 
-            Object.keys(miniCharts).forEach(id => miniCharts[id].destroy());
+            Object.keys(miniCharts).forEach(id => { if(miniCharts[id]) miniCharts[id].destroy(); });
             miniCharts = {};
 
             if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
@@ -275,26 +279,24 @@
                         updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
                         fetchMiniChart(asset, 'destaques'); 
                     });
-                } catch (e) { dashboard.innerHTML = '<div class="section-title">Aguardando Servidor...</div>'; }
+                } catch (e) { dashboard.innerHTML = '<div class="section-title">Servidor processando...</div>'; }
                 return;
             }
 
             const ativosDaAba = categorias[tabName];
             buildCards(ativosDaAba, dashboard);
             
-            // BUSCA PARALELA CLÁSSICA (Rápida e sem travar a tela)
             const tickersString = ativosDaAba.map(a => a.ticker).join(',');
-            fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
-                .then(r => r.json())
-                .then(cotacoesAtuais => {
-                    ativosDaAba.forEach(asset => { 
-                        if(cotacoesAtuais[asset.ticker]) {
-                            updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
-                        }
-                    });
-                }).catch(e => {});
-
-            // GERA OS GRÁFICOS PARALELAMENTE (Como era antes)
+            try {
+                const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
+                const cotacoesAtuais = await resCotacoes.json();
+                ativosDaAba.forEach(asset => { 
+                    if(cotacoesAtuais[asset.ticker]) {
+                        updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
+                    }
+                });
+            } catch (e) {}
+            
             ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
         }
 
@@ -342,11 +344,12 @@
             try {
                 const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
                 const histData = await resHist.json();
-                
-                if(histData.historico && histData.historico.length > 0 && currentTab === targetTab) { 
+                if(histData.historico && currentTab === targetTab) { 
                     drawMiniChart(asset.id, histData.historico, asset);
                     
-                    // A PORTA DOS FUNDOS DO DIRETOR: Salva o dia se o lote der 429
+                    // A MÁGICA DA AGRO3 (PORTA DOS FUNDOS): 
+                    // Se o servidor deu erro 429 na cotação, a tela ficou com "---". 
+                    // Mas como o gráfico carregou, nós roubamos o preço do gráfico e escrevemos na tela!
                     const elPrice = document.getElementById(`price-${asset.id}`);
                     if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
                         const precos = histData.historico;
@@ -375,7 +378,7 @@
         async function chamarAnaliseTecnica() {
             const btn = document.getElementById('btn-ia-tech');
             const resultDiv = document.getElementById('tech-result');
-            btn.innerHTML = '⏳ Calculando Médias...'; 
+            btn.innerHTML = '⏳ Analisando Gráfico...'; 
             btn.disabled = true;
             try {
                 const res = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`);
