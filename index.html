@@ -61,7 +61,9 @@
         .margem-positiva { color: #4CAF50; font-weight: bold; }
         .margem-negativa { color: #c93e36; font-weight: bold; }
 
-        .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; display: block; margin: 0 auto; margin-bottom: 20px;}
+        /* Botão da IA Restaurado */
+        .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; max-width: 320px;}
         .btn-ia:disabled { background: #333 !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
         .btn-ia:hover { transform: translateY(-2px); }
         .btn-tech { background: linear-gradient(45deg, #9C27B0, #3f51b5); box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); }
@@ -109,13 +111,16 @@
             <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
 
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
-                <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                <div class="btn-ia-container">
+                    <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                </div>
                 <div id="tech-result" style="display: none; text-align: left;"></div>
             </div>
 
             <div id="indicadores-container">
                 <div class="loading-ind">Carregando indicadores fundamentais...</div>
             </div>
+
         </div>
     </div>
 
@@ -258,7 +263,7 @@
                         return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
                     }).filter(a => a !== null);
 
-                    if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; return; }
+                    if (ativosComVariacao.length === 0) { dashboard.innerHTML = '<div class="section-title">Aguardando dados ou Cotações Temporariamente Bloqueadas (429)...</div>'; return; }
                     ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
                     const maioresAltas = ativosComVariacao.slice(0, 5); 
                     const maioresBaixas = ativosComVariacao.slice(-5).reverse();
@@ -365,10 +370,11 @@
             openModal(assetObj);
         }
 
+        // BOTÃO DA ANÁLISE GRÁFICA (IA) RESTAURADO!
         async function chamarAnaliseTecnica() {
             const btn = document.getElementById('btn-ia-tech');
             const resultDiv = document.getElementById('tech-result');
-            btn.innerHTML = '⏳ Calculando Médias...'; 
+            btn.innerHTML = '⏳ Analisando Gráfico...'; 
             btn.disabled = true;
             try {
                 const res = await fetch(`${URL_BACKEND}/api/analise-tecnica/${currentAssetObj.ticker}`);
