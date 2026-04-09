@@ -72,7 +72,6 @@
         .tech-box { background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px; text-align: center; }
         .tech-label { font-size: 0.8rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; }
         .tech-val { font-size: 1.2rem; font-weight: bold; margin-top: 5px; color: #fff; }
-        .alert-error { background: rgba(244, 67, 54, 0.1); border: 1px solid #F44336; color: #F44336; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;}
     </style>
 </head>
 <body>
@@ -94,6 +93,8 @@
         <button class="tab-btn" onclick="switchTab('oportunidades', this)">🎯 Oportunidades</button>
     </div>
 
+    <div id="erroGlobalContainer" style="width: 100%; max-width: 1400px; display:none;"></div>
+
     <div class="dashboard" id="dashboard"></div>
 
     <div class="modal-overlay" id="modal">
@@ -110,9 +111,7 @@
                 <button class="time-btn" onclick="loadDetailedData('5y', '1wk', this)">5 A</button>
             </div>
             
-            <div class="detailed-chart">
-                <canvas id="modalChartCanvas"></canvas>
-            </div>
+            <div class="detailed-chart"><canvas id="modalChartCanvas"></canvas></div>
 
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
                 <div class="btn-ia-container">
@@ -128,6 +127,14 @@
     </div>
 
     <script>
+        window.addEventListener('error', function(event) {
+            const erroDiv = document.getElementById('erroGlobalContainer');
+            if(erroDiv) {
+                erroDiv.style.display = 'block';
+                erroDiv.innerHTML = `<div style="background: rgba(244, 67, 54, 0.1); border: 2px solid #F44336; color: #F44336; padding: 20px; border-radius: 8px; margin-top: 20px;"><b>🚨 ALERTA CRÍTICO:</b> Falha no carregamento. Motivo: ${event.message}</div>`;
+            }
+        });
+
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
         const ativosGerais = [
@@ -145,7 +152,6 @@
         const ativosIntl = listaIntlRaw.map(ticker => ({ id: ticker, name: ticker, ticker: ticker, decimals: 2, prefix: 'US$' }));
 
         const categorias = { geral: ativosGerais, brasil: ativosBrasil, intl: ativosIntl };
-        
         let currentTab = 'geral';
         let miniCharts = {}; 
         let detailedChartInstance = null; 
@@ -172,186 +178,203 @@
         }
 
         async function switchTab(tabName, btnElement) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
-            currentTab = tabName;
-            
-            const dashboard = document.getElementById('dashboard');
-            dashboard.innerHTML = ''; 
-            Object.keys(miniCharts).forEach(id => {
-                if(miniCharts[id]) miniCharts[id].destroy();
-            });
-            miniCharts = {};
+            try {
+                if (typeof Chart === 'undefined') throw new Error("A biblioteca gráfica foi bloqueada.");
 
-            if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
-                dashboard.style.display = 'block';
-            } else {
-                dashboard.style.display = 'grid';
-            }
-
-            if(tabName === 'oportunidades') {
-                dashboard.innerHTML = '<div class="section-title">Calculando Margem de Segurança... ⏳</div>';
-                try {
-                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                    const dadosDaBase = await res.json();
-                    let listaOportunidadesBr = []; 
-                    let listaOportunidadesUs = [];
-
-                    for (const ticker in dadosDaBase) {
-                        const d = dadosDaBase[ticker];
-                        const precoAtual = d.precoAtual;
-                        const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
-                        if(precoAtual && precoPessimista && precoAtual > 0) {
-                            const margemSeguranca = (precoPessimista - precoAtual) / precoAtual;
-                            const isBrasil = ticker.includes('.SA');
-                            const prefix = isBrasil ? 'R$' : 'US$';
-                            const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', precoAtual: precoAtual, precoPessimista: precoPessimista, margem: margemSeguranca, prefix: prefix };
-                            if (isBrasil) listaOportunidadesBr.push(item); else listaOportunidadesUs.push(item);
-                        }
-                    }
-                    listaOportunidadesBr.sort((a, b) => b.margem - a.margem); 
-                    listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
-                    
-                    const fNum = (num) => parseFloat(num).toFixed(2); 
-                    const fPct = (num) => (parseFloat(num) * 100).toFixed(2) + '%';
-
-                    const renderTabelaOportunidades = (titulo, lista) => {
-                        if (lista.length === 0) return '';
-                        let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th>Preço Atual Tela</th><th>Alvo Pessimista IA</th><th style="color: #4CAF50;">Margem vs Pessimista (Upside)</th></tr></thead><tbody>`;
-                        lista.forEach(item => {
-                            let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
-                            let margemClass = item.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; 
-                            let sinalMargem = item.margem > 0 ? '+' : '';
-                            html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${item.prefix} ${fNum(item.precoAtual)}</td><td>${item.prefix} ${fNum(item.precoPessimista)}</td><td class="${margemClass}">${sinalMargem}${fPct(item.margem)}</td></tr>`;
-                        });
-                        html += `</tbody></table></div>`; 
-                        return html;
-                    };
-                    
-                    let telaCompleta = '';
-                    if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil', listaOportunidadesBr);
-                    if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais', listaOportunidadesUs);
-                    
-                    if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado de Valuation encontrado no banco.</div>';
-                    dashboard.innerHTML = telaCompleta;
-                } catch(e) { 
-                    dashboard.innerHTML = '<div class="section-title">Erro ao ler arquivo indicadores.json.</div>'; 
-                }
-                return;
-            }
-
-            if(tabName === 'ranking') {
-                dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
-                try {
-                    const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                    const dadosDaBase = await res.json();
-                    dadosRankingBr = []; 
-                    dadosRankingUs = [];
-                    for (const ticker in dadosDaBase) {
-                        const d = dadosDaBase[ticker];
-                        if(d.roe !== undefined && d.roe !== null) {
-                            const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe };
-                            if (ticker.includes('.SA')) dadosRankingBr.push(item); else dadosRankingUs.push(item);
-                        }
-                    }
-                    ordenarDados('br', 'roe', true); 
-                    ordenarDados('us', 'roe', true); 
-                    renderizarAbaRanking();
-                } catch(e) { 
-                    dashboard.innerHTML = '<div class="section-title">Erro ao ler arquivo indicadores.json.</div>'; 
-                }
-                return;
-            }
-
-            if(tabName === 'destaques') {
-                dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
-                const todosAtivos = [...ativosBrasil, ...ativosIntl];
-                const tickersString = todosAtivos.map(a => a.ticker).join(',');
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                if(btnElement) btnElement.classList.add('active');
+                currentTab = tabName;
                 
-                try {
-                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
-                    const cotacoes = await res.json();
-                    
-                    let ativosComVariacao = todosAtivos.map(asset => {
-                        const dados = cotacoes[asset.ticker];
-                        if(!dados || !dados.fechamentoAnterior) return null;
-                        const varPct = ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100;
-                        return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
-                    }).filter(a => a !== null);
+                const dashboard = document.getElementById('dashboard');
+                dashboard.innerHTML = ''; 
+                
+                Object.keys(miniCharts).forEach(id => { if(miniCharts[id]) miniCharts[id].destroy(); });
+                miniCharts = {};
 
-                    if (ativosComVariacao.length === 0) { 
-                        dashboard.innerHTML = '<div class="section-title">Aguardando dados...</div>'; 
-                        return; 
-                    }
-                    
-                    ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
-                    const maioresAltas = ativosComVariacao.slice(0, 5); 
-                    const maioresBaixas = ativosComVariacao.slice(-5).reverse();
-
-                    dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
-                    const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard'; gridAltas.style.display = 'grid';
-                    buildCards(maioresAltas, gridAltas); 
-                    dashboard.appendChild(gridAltas);
-                    
-                    dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
-                    const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
-                    buildCards(maioresBaixas, gridBaixas); 
-                    dashboard.appendChild(gridBaixas);
-
-                    [...maioresAltas, ...maioresBaixas].forEach(asset => { 
-                        updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
-                        fetchMiniChart(asset, 'destaques'); 
-                    });
-                } catch (e) { 
-                    dashboard.innerHTML = '<div class="section-title">Erro ao carregar dados do servidor.</div>'; 
+                if (tabName === 'ranking' || tabName === 'destaques' || tabName === 'oportunidades') {
+                    dashboard.style.display = 'block';
+                } else {
+                    dashboard.style.display = 'grid';
                 }
-                return;
-            }
 
-            const ativosDaAba = categorias[tabName];
-            buildCards(ativosDaAba, dashboard);
-            
-            const tickersString = ativosDaAba.map(a => a.ticker).join(',');
-            
-            fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
-                .then(r => r.json())
-                .then(cotacoesAtuais => {
-                    ativosDaAba.forEach(asset => { 
-                        if(cotacoesAtuais[asset.ticker]) {
-                            updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
+                // ==========================================
+                // 🔥 NOVA ABA OPORTUNIDADES DINÂMICA 🔥
+                // ==========================================
+                if(tabName === 'oportunidades') {
+                    dashboard.innerHTML = '<div class="section-title">Sincronizando Valuation com Cotações ao Vivo... ⏳</div>';
+                    try {
+                        const resCofre = await fetch('./indicadores.json?nocache=' + new Date().getTime());
+                        if (!resCofre.ok) throw new Error("Cofre não encontrado");
+                        const dadosDaBase = await resCofre.json();
+                        
+                        // Busca os preços em tempo real para cruzar com os alvos do cofre!
+                        const todosTickers = Object.keys(dadosDaBase);
+                        let cotacoesVivas = {};
+                        try {
+                            const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${todosTickers.join(',')}`);
+                            if(resCotacoes.ok) {
+                                cotacoesVivas = await resCotacoes.json();
+                            }
+                        } catch (e) {
+                            console.log("Erro ao buscar cotações ao vivo. Fallback para cofre estático.");
                         }
-                    });
-                }).catch(e => {
-                    console.log("Aguardando Cotações");
-                });
 
-            ativosDaAba.forEach(asset => {
-                fetchMiniChart(asset, tabName);
-            });
+                        let listaOportunidadesBr = []; 
+                        let listaOportunidadesUs = [];
+
+                        for (const ticker in dadosDaBase) {
+                            const d = dadosDaBase[ticker];
+                            
+                            // PULO DO GATO: Se o servidor devolveu o preço online, usamos ele. Se não, usamos o do cofre!
+                            const precoAtual = cotacoesVivas[ticker]?.atual || d.precoAtual;
+                            const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
+                            
+                            if(precoAtual && precoPessimista && precoAtual > 0) {
+                                const margemSeguranca = (precoPessimista - precoAtual) / precoAtual;
+                                const isBrasil = ticker.includes('.SA');
+                                const prefix = isBrasil ? 'R$' : 'US$';
+                                const item = { 
+                                    ticker: ticker, 
+                                    status: d.valuation_dcf?.status || 'N/A', 
+                                    precoAtual: precoAtual, 
+                                    precoPessimista: precoPessimista, 
+                                    margem: margemSeguranca, 
+                                    prefix: prefix 
+                                };
+                                if (isBrasil) listaOportunidadesBr.push(item); else listaOportunidadesUs.push(item);
+                            }
+                        }
+                        
+                        listaOportunidadesBr.sort((a, b) => b.margem - a.margem); 
+                        listaOportunidadesUs.sort((a, b) => b.margem - a.margem);
+                        
+                        const fNum = (num) => parseFloat(num).toFixed(2); 
+                        const fPct = (num) => (parseFloat(num) * 100).toFixed(2) + '%';
+
+                        const renderTabelaOportunidades = (titulo, lista) => {
+                            if (lista.length === 0) return '';
+                            let html = `<div class="section-title">${titulo}</div><div style="width: 100%; max-width: 1400px; overflow-x: auto; background: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 10px; margin-bottom: 40px;"><table class="ranking-table"><thead><tr><th>Ativo</th><th>Status IA</th><th>Preço Atual <span style="font-size: 0.7rem; color: #8e9196;">(Em Tela)</span></th><th>Alvo Pessimista IA</th><th style="color: #4CAF50;">Margem vs Pessimista (Upside)</th></tr></thead><tbody>`;
+                            lista.forEach(item => {
+                                let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
+                                let margemClass = item.margem >= 0 ? 'margem-positiva' : 'margem-negativa'; 
+                                let sinalMargem = item.margem > 0 ? '+' : '';
+                                html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${item.prefix} ${fNum(item.precoAtual)}</td><td>${item.prefix} ${fNum(item.precoPessimista)}</td><td class="${margemClass}">${sinalMargem}${fPct(item.margem)}</td></tr>`;
+                            });
+                            html += `</tbody></table></div>`; return html;
+                        };
+                        
+                        let telaCompleta = '';
+                        if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil (Live)', listaOportunidadesBr);
+                        if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais (Live)', listaOportunidadesUs);
+                        dashboard.innerHTML = telaCompleta || '<div class="section-title">Nenhum dado de Valuation encontrado no banco.</div>';
+                    } catch(e) { dashboard.innerHTML = '<div class="section-title">Aguardando atualização de dados da IA.</div>'; }
+                    return;
+                }
+
+                if(tabName === 'ranking') {
+                    dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
+                    try {
+                        const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
+                        if (!res.ok) throw new Error("Arquivo não encontrado");
+                        const dadosDaBase = await res.json();
+                        dadosRankingBr = []; dadosRankingUs = [];
+                        for (const ticker in dadosDaBase) {
+                            const d = dadosDaBase[ticker];
+                            if(d.roe !== undefined && d.roe !== null) {
+                                const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe };
+                                if (ticker.includes('.SA')) dadosRankingBr.push(item); else dadosRankingUs.push(item);
+                            }
+                        }
+                        ordenarDados('br', 'roe', true); 
+                        ordenarDados('us', 'roe', true); 
+                        renderizarAbaRanking();
+                    } catch(e) { dashboard.innerHTML = '<div class="section-title">Aguardando atualização de dados da IA.</div>'; }
+                    return;
+                }
+
+                if(tabName === 'destaques') {
+                    dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
+                    const todosAtivos = [...ativosBrasil, ...ativosIntl];
+                    const tickersString = todosAtivos.map(a => a.ticker).join(',');
+                    try {
+                        const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
+                        if (!res.ok) throw new Error("Falha no servidor");
+                        const cotacoes = await res.json();
+                        
+                        let ativosComVariacao = todosAtivos.map(asset => {
+                            const dados = cotacoes[asset.ticker];
+                            if(!dados || !dados.fechamentoAnterior) return null;
+                            const varPct = ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100;
+                            return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
+                        }).filter(a => a !== null);
+
+                        if (ativosComVariacao.length === 0) { 
+                            dashboard.innerHTML = '<div class="section-title">Aguardando dados (Servidor protegendo contra 429). Tente novamente em instantes.</div>'; 
+                            return; 
+                        }
+                        
+                        ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
+                        const maioresAltas = ativosComVariacao.slice(0, 5); 
+                        const maioresBaixas = ativosComVariacao.slice(-5).reverse();
+
+                        dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
+                        const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard'; gridAltas.style.display = 'grid';
+                        buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
+                        
+                        dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
+                        const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
+                        buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
+
+                        [...maioresAltas, ...maioresBaixas].forEach(asset => { 
+                            updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
+                            fetchMiniChart(asset, 'destaques'); 
+                        });
+                    } catch (e) { 
+                        dashboard.innerHTML = '<div class="section-title">Erro ao conectar com o Servidor Principal.</div>'; 
+                    }
+                    return;
+                }
+
+                // ABAS NORMAIS
+                const ativosDaAba = categorias[tabName];
+                buildCards(ativosDaAba, dashboard);
+                
+                const tickersString = ativosDaAba.map(a => a.ticker).join(',');
+                fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
+                    .then(r => r.json())
+                    .then(cotacoesAtuais => {
+                        ativosDaAba.forEach(asset => { 
+                            if(cotacoesAtuais[asset.ticker]) {
+                                updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
+                            }
+                        });
+                    }).catch(e => console.log("Cotações indisponíveis no momento."));
+
+                ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
+
+            } catch (err) {
+                const erroDiv = document.getElementById('erroGlobalContainer');
+                if(erroDiv) {
+                    erroDiv.style.display = 'block';
+                    erroDiv.innerHTML = `<div style="background: rgba(244, 67, 54, 0.1); border: 2px solid #F44336; color: #F44336; padding: 20px; border-radius: 8px; margin-top: 20px;"><b>🚨 ERRO LOCAL:</b> ${err.message}</div>`;
+                }
+            }
         }
 
-        function clickOrdenar(tipo, coluna) { 
-            ordenarDados(tipo, coluna, false); 
-            renderizarAbaRanking(); 
-        }
+        function clickOrdenar(tipo, coluna) { ordenarDados(tipo, coluna, false); renderizarAbaRanking(); }
 
         function ordenarDados(tipo, coluna, isInit) {
             let estado = ordemRanking[tipo];
             if (!isInit) {
-                if (estado.col === coluna) { 
-                    estado.dir *= -1; 
-                } else { 
-                    estado.col = coluna; 
-                    estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; 
-                }
+                if (estado.col === coluna) { estado.dir *= -1; } 
+                else { estado.col = coluna; estado.dir = ['pl', 'pegRatio', 'pvp', 'evEbitda', 'dividaPL'].includes(coluna) ? 1 : -1; }
             }
             let lista = tipo === 'br' ? dadosRankingBr : dadosRankingUs;
             lista.sort((a, b) => {
                 if (a[coluna] === null || a[coluna] === undefined) return 1;
                 if (b[coluna] === null || b[coluna] === undefined) return -1;
                 if (a[coluna] < b[coluna]) return -1 * estado.dir;
-                if (a[coluna] > b[coluna]) return 1 * estado.dir; 
-                return 0;
+                if (a[coluna] > b[coluna]) return 1 * estado.dir; return 0;
             });
         }
 
@@ -368,8 +391,7 @@
                     let badgeClass = 'status-badge ' + (item.status === 'SUBVALORIZADA' ? 'status-sub' : item.status === 'SUPERVALORIZADA' ? 'status-super' : 'status-justo');
                     html += `<tr style="cursor:pointer;" onclick="abrirDoRanking('${item.ticker}')"><td style="font-weight: 800; color: #2196F3; font-size: 1.1rem;">${item.ticker}</td><td><span class="${badgeClass}">${item.status}</span></td><td>${fPct(item.dy)}</td><td>${fNum(item.pl)}</td><td>${fNum(item.pegRatio)}</td><td>${fNum(item.pvp)}</td><td>${fNum(item.evEbitda)}</td><td>${fNum(item.vpa)}</td><td>${fNum(item.dividaPL)}</td><td>${fNum(item.liquidezCorrente)}</td><td>${fPct(item.margem)}</td><td style="font-weight: bold; color: #4CAF50;">${fPct(item.roe)}</td></tr>`;
                 });
-                html += `</tbody></table></div>`; 
-                return html;
+                html += `</tbody></table></div>`; return html;
             };
 
             let telaCompleta = '';
@@ -383,15 +405,13 @@
             try {
                 const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
                 const histData = await resHist.json();
-                
-                if(histData.historico && histData.historico.length > 0 && currentTab === targetTab) { 
+                if(histData.historico && currentTab === targetTab) { 
                     drawMiniChart(asset.id, histData.historico);
                     
                     const elPrice = document.getElementById(`price-${asset.id}`);
                     if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
-                        const precos = histData.historico;
-                        const pAtual = precos[precos.length-1].close;
-                        const pAnt = precos[precos.length-2]?.close || pAtual;
+                        const pAtual = histData.historico[histData.historico.length-1].close;
+                        const pAnt = histData.historico[histData.historico.length-2]?.close || pAtual;
                         updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
                     }
                 }
