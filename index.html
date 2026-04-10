@@ -204,7 +204,14 @@
                     const res = await fetch(`${URL_BACKEND}/api/fmp?tickers=${us.join(',')}`);
                     const data = await res.json();
                     if(Array.isArray(data)) {
-                        data.forEach(item => { cotacoes[item.symbol] = { atual: item.price, fechamentoAnterior: item.previousClose }; });
+                        data.forEach(item => { 
+                            // 🛡️ O ESCUDO: Pega o preço de ontem do cofre, já que o quote-short não traz!
+                            const fechamentoCofre = cofreDataGlobal[item.symbol]?.fechamentoAnterior;
+                            cotacoes[item.symbol] = { 
+                                atual: item.price, 
+                                fechamentoAnterior: fechamentoCofre || item.price 
+                            }; 
+                        });
                     }
                 } catch(e) { console.log("Erro FMP Proxy"); }
             }
