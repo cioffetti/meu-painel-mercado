@@ -1,6 +1,6 @@
 {
     "AGRO3.SA": {
-        "precoAtual": 20.73,
+        "precoAtual": 20.43,
         "pvp": 0.9874886,
         "dy": 0.0363,
         "evEbitda": -35.561,
@@ -52,10 +52,11 @@
                     "descricao": "O cenário otimista pressupõe uma reviravolta bem-sucedida, com a AGRO3.SA atingindo um ponto de inflexão e retornando à lucratividade. Melhorias significativas nas margens, impulsionadas por gestão eficiente, condições de mercado favoráveis e possível expansão, levam a uma reavaliação positiva por parte do mercado. O preço justo reflete a expectativa de recuperação e crescimento futuro."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 21.04
     },
     "AMOB3.SA": {
-        "precoAtual": 13.91,
+        "precoAtual": 14,
         "pvp": 0.25689623,
         "evEbitda": 9.93,
         "vpa": 53.29,
@@ -106,10 +107,11 @@
                     "descricao": "No cenário otimista, a AMOB3.SA executa uma estratégia de turnaround eficaz, resultando em forte crescimento de receita e rápida recuperação das margens de lucro. A empresa atinge níveis de rentabilidade sustentáveis e gera fluxos de caixa robustos, o que justificaria um preço justo superior ao preço de tela atual, refletindo um prêmio pelo sucesso da reestruturação."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 14
     },
     "BBAS3.SA": {
-        "precoAtual": 23.39,
+        "precoAtual": 24.73,
         "pl": 9.7625,
         "pvp": 0.7276623,
         "dy": 0.012,
@@ -186,10 +188,11 @@
                 ]
             },
             "data_analise": "11/06/2024"
-        }
+        },
+        "fechamentoAnterior": 24.72
     },
     "BBDC3.SA": {
-        "precoAtual": 16.76,
+        "precoAtual": 17.67,
         "pl": 7.8920183,
         "pvp": 0.9965615,
         "dy": 0.0124,
@@ -239,10 +242,11 @@
                     "descricao": "Cenário de forte crescimento econômico, controle inflacionário e redução de juros, impulsionando o volume de crédito e a rentabilidade. O P/L poderia atingir cerca de 9.5x, refletindo um otimismo elevado e forte performance operacional."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 17.57
     },
     "BBSE3.SA": {
-        "precoAtual": 35.43,
+        "precoAtual": 36.41,
         "pl": 7.621505,
         "pvp": 6.6255374,
         "dy": 0.1472,
@@ -294,10 +298,11 @@
                     "descricao": "Cenário de um ambiente macroeconômico favorável, expansão bem-sucedida em novas frentes e maior reconhecimento do mercado para os fundamentos excepcionais da BBSE3, levando a uma expansão dos múltiplos de valuation."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 35.9
     },
     "BRSR6.SA": {
-        "precoAtual": 17.85,
+        "precoAtual": 18.7,
         "pl": 4.2577567,
         "pvp": 0.6365745,
         "dy": 0.0519,
@@ -347,10 +352,11 @@
                     "descricao": "Neste cenário, o mercado passa a reconhecer plenamente a qualidade e a sustentabilidade dos lucros da BRSR6, atribuindo-lhe um múltiplo P/L de 9x. Este valor é condizente com instituições financeiras bem geridas e rentáveis, indicando um re-rating substancial da ação, impulsionado por resultados consistentes e melhoria da percepção de risco e perspectivas de crescimento."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 18.65
     },
     "B3SA3.SA": {
-        "precoAtual": 18.59,
+        "precoAtual": 19.51,
         "pl": 22.20482,
         "pvp": 5.320439,
         "dy": 0.0326,
@@ -403,10 +409,11 @@
                     "descricao": "Cenário de forte recuperação econômica, aumento significativo nos volumes de negociação e no número de participantes do mercado, impulsionando o crescimento da receita e expansão dos múltiplos de valuation."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 19.16
     },
     "CMIG3.SA": {
-        "precoAtual": 17.1,
+        "precoAtual": 19.62,
         "pl": 10.087719,
         "pvp": 1.7268995,
         "dy": 0.0809,
@@ -459,10 +466,11 @@
                     "descricao": "No cenário otimista, consideramos uma melhoria no ambiente regulatório, execução bem-sucedida de planos de expansão e otimização de custos, ou um crescimento da demanda por energia acima do esperado. Tal cenário justifica uma expansão dos múltiplos, com um P/L de 12.0x, refletindo maior confiança do mercado e maior percepção de valor para a CMIG3.SA."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 19.58
     },
     "CXSE3.SA": {
-        "precoAtual": 18.46,
+        "precoAtual": 19.61,
         "pl": 13.132868,
         "pvp": 4.1576266,
         "dy": 0.071100004,
@@ -515,10 +523,11 @@
                     "descricao": "No cenário otimista, prevemos uma recuperação econômica robusta no Brasil, com melhoria do poder de compra e maior demanda por seguros e previdência. A CXSE3.SA conseguiria expandir significativamente sua base de clientes através de novos canais e produtos inovadores, além de otimizar ainda mais sua estrutura de custos. O mercado reconheceria este desempenho superior com uma expansão dos múltiplos de valuation, dada a capacidade da empresa de gerar valor e manter sua liderança de mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 19.41
     },
     "EGIE3.SA": {
-        "precoAtual": 33.28,
+        "precoAtual": 36.06,
         "pl": 14.734513,
         "pvp": 2.9817333,
         "dy": 0.055,
@@ -571,10 +580,11 @@
                     "descricao": "Expectativas de aceleração da demanda por energia, sucesso na implantação de novos projetos rentáveis, otimização da dívida e um ambiente macroeconômico e regulatório favorável, impulsionando a valorização dos múltiplos, com P/L de aproximadamente 17.5x."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 34.46
     },
     "EQTL3.SA": {
-        "precoAtual": 40.5,
+        "precoAtual": 44.77,
         "pl": 42.145832,
         "pvp": 1.976744,
         "dy": 0.0586,
@@ -627,10 +637,11 @@
                     "descricao": "No cenário otimista, assumimos que a Equatorial continua a superar as expectativas de crescimento via aquisições estratégicas e eficiência, justificando um múltiplo P/L de 35x. Embora reflita um otimismo considerável e um crescimento robusto, ainda está abaixo do múltiplo atual do mercado, sugerindo que mesmo as perspectivas otimistas já estão amplamente precificadas ou que o mercado está pagando um prêmio ainda maior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 43.8
     },
     "ETHE11.SA": {
-        "precoAtual": 30.99,
+        "precoAtual": 32.84,
         "margemBruta": 0,
         "margemOperacional": 0,
         "margemLiquida": 0,
@@ -651,10 +662,11 @@
                 "receita": 2
             }
         },
-        "valuation_dcf": null
+        "valuation_dcf": null,
+        "fechamentoAnterior": 32.45
     },
     "EZTC3.SA": {
-        "precoAtual": 14.18,
+        "precoAtual": 15.01,
         "pl": 7.5052633,
         "pvp": 0.78623813,
         "dy": 0.0862,
@@ -707,10 +719,11 @@
                     "descricao": "Potencial de valorização plena em um cenário de forte recuperação econômica, expansão bem-sucedida de projetos e total reconhecimento dos fortes diferenciais de rentabilidade e eficiência da EZTC3.SA pelo mercado, justificando um múltiplo P/L mais elevado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 15.05
     },
     "FLRY3.SA": {
-        "precoAtual": 15.88,
+        "precoAtual": 16.92,
         "pl": 14.214286,
         "pvp": 1.7347717,
         "dy": 0.118999995,
@@ -763,10 +776,11 @@
                     "descricao": "No cenário otimista, projetamos um crescimento anual de lucros robusto de 10% impulsionado por uma forte demanda, eficiência operacional aprimorada e sucesso em iniciativas de expansão e inovação. O múltiplo P/L se expande para 18x, refletindo uma percepção de maior valor e crescimento futuro pelos investidores."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 16.78
     },
     "GMAT3.SA": {
-        "precoAtual": 4.6,
+        "precoAtual": 4.57,
         "pl": 5.573171,
         "pvp": 0.98789454,
         "dy": 0.0542,
@@ -819,10 +833,11 @@
                     "descricao": "No cenário otimista, a empresa consegue melhorar suas margens ou demonstrar um crescimento de lucros mais robusto, levando a uma expansão do múltiplo P/L para 11.0x. Isso resultaria em um preço justo substancialmente maior, refletindo um otimismo significativo do mercado e um reconhecimento mais pleno de seu valor."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 4.67
     },
     "GOLD11.SA": {
-        "precoAtual": 25.11,
+        "precoAtual": 24.84,
         "margemBruta": 0,
         "margemOperacional": 0,
         "margemLiquida": 0,
@@ -843,10 +858,11 @@
                 "receita": 1
             }
         },
-        "valuation_dcf": null
+        "valuation_dcf": null,
+        "fechamentoAnterior": 25.15
     },
     "ITSA4.SA": {
-        "precoAtual": 13.92,
+        "precoAtual": 14.81,
         "pl": 9.378378,
         "pvp": 1.7531894,
         "dy": 0.0069999998,
@@ -899,10 +915,11 @@
                     "descricao": "No cenário otimista, o mercado reconhece plenamente o valor intrínseco e o potencial de crescimento da Itaúsa, resultando em uma expansão do múltiplo P/L para 13.5x. Isso poderia ser impulsionado por uma melhora robusta da economia, novas aquisições estratégicas bem-sucedidas, ou uma percepção de menor risco e maior previsibilidade para suas operações."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 14.74
     },
     "KEPL3.SA": {
-        "precoAtual": 8.24,
+        "precoAtual": 8.25,
         "pl": 8.922222,
         "pvp": 1.797627,
         "dy": 0.0655,
@@ -955,10 +972,11 @@
                     "descricao": "No cenário otimista, o mercado reconhece plenamente a alta rentabilidade (ROE de 20.63%) da empresa, resultando em uma expansão do múltiplo P/L para 10.5x. Isso poderia ser impulsionado por um crescimento de receita acima do esperado ou melhoria do sentimento do mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 8.22
     },
     "KLBN3.SA": {
-        "precoAtual": 3.88,
+        "precoAtual": 3.8,
         "pl": 16.47826,
         "pvp": 0.5896997,
         "dy": 0.084300004,
@@ -1011,10 +1029,11 @@
                     "descricao": "Melhora significativa na demanda global por produtos de base florestal, aumento dos preços da celulose e papel acima do esperado, e ganhos de eficiência operacional impulsionados por novos projetos. Considera uma expansão do múltiplo P/L devido ao otimismo do mercado e maiores projeções de lucros."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 3.79
     },
     "LEVE3.SA": {
-        "precoAtual": 35.12,
+        "precoAtual": 37.03,
         "pl": 7.8463254,
         "pvp": 5.542794,
         "dy": 0.081199996,
@@ -1067,10 +1086,11 @@
                     "descricao": "Um cenário otimista onde a empresa supera as expectativas de crescimento, fortalece sua posição de mercado e o P/L se expande significativamente (e.g., 10.0x o LPA atual), alinhando-se melhor com empresas de alta rentabilidade."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 37.66
     },
     "MBRF3.SA": {
-        "precoAtual": 20.79,
+        "precoAtual": 19.83,
         "pl": 56.97222,
         "pvp": 2.5525825,
         "dy": 0.2715,
@@ -1123,10 +1143,11 @@
                     "descricao": "Crescimento robusto de receita acompanhado por melhorias substanciais na eficiência operacional, resultando em margens líquidas mais saudáveis e um ROE aprimorado. O mercado mantém um múltiplo P/L elevado (cerca de 50x), justificado pela forte execução e perspectivas de lucro futuro, porém ainda indicando que o preço atual já reflete um otimismo muito alto."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 19.25
     },
     "PETR3.SA": {
-        "precoAtual": 53.1,
+        "precoAtual": 54,
         "pl": 6.6803484,
         "pvp": 1.6649102,
         "dy": 0.0736,
@@ -1179,10 +1200,11 @@
                     "descricao": "Em um cenário otimista, o P/L se expande para 9.0x, impulsionado por preços de petróleo favoráveis, redução do risco político no Brasil, sucesso nos projetos de exploração e desinvestimentos, e um maior apreço do mercado pelos fundamentos da empresa."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 52.69
     },
     "PRIO3.SA": {
-        "precoAtual": 67.77,
+        "precoAtual": 67.65,
         "pl": 24.29603,
         "pvp": 2.1143577,
         "evEbitda": 9.953,
@@ -1234,10 +1256,11 @@
                     "descricao": "O cenário otimista contempla a concretização de novas aquisições estratégicas com sucesso, um aumento sustentado nos preços do petróleo, e uma aceleração na produção e na eficiência. O Preço Justo reflete a plena realização do potencial de crescimento e de geração de caixa da empresa."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 65.45
     },
     "PSSA3.SA": {
-        "precoAtual": 50.54,
+        "precoAtual": 53.23,
         "pl": 9.642995,
         "pvp": 2.043772,
         "dy": 0.059,
@@ -1290,10 +1313,11 @@
                     "descricao": "No cenário otimista, prevemos uma recuperação econômica robusta, impulsionando o mercado de seguros e serviços financeiros. A PSSA3 capitaliza sobre novas oportunidades de mercado, expande sua base de clientes e otimiza sua estrutura de custos. O mercado reconhece plenamente o valor de sua alta rentabilidade e potencial de crescimento, levando a uma expansão significativa do múltiplo P/L e uma reavaliação positiva de seus ativos e fluxos de caixa futuros."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 52.42
     },
     "QBTC11.SA": {
-        "precoAtual": 21.04,
+        "precoAtual": 22.43,
         "margemBruta": 0,
         "margemOperacional": 0,
         "margemLiquida": 0,
@@ -1314,19 +1338,21 @@
                 "receita": 4
             }
         },
-        "valuation_dcf": null
+        "valuation_dcf": null,
+        "fechamentoAnterior": 22.25
     },
     "QSOL11.SA": {
-        "precoAtual": 5.06,
+        "precoAtual": 5.22,
         "margemBruta": 0,
         "margemOperacional": 0,
         "margemLiquida": 0,
         "data_referencia": "29/03/2026",
         "analise_senior": {},
-        "valuation_dcf": null
+        "valuation_dcf": null,
+        "fechamentoAnterior": 5.18
     },
     "RAIZ4.SA": {
-        "precoAtual": 0.54,
+        "precoAtual": 0.58,
         "evEbitda": 104.394,
         "vpa": -0.154,
         "lpa": -2.15,
@@ -1375,10 +1401,11 @@
                     "descricao": "Baseado em uma reestruturação bem-sucedida, com reversão efetiva das margens negativas, ganhos expressivos de eficiência operacional e um cenário macroeconômico favorável. A empresa retorna à lucratividade consistente e atrai maior interesse dos investidores, refletindo um valor intrínseco superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 0.54
     },
     "RANI3.SA": {
-        "precoAtual": 9.55,
+        "precoAtual": 9.54,
         "pl": 8.572727,
         "pvp": 1.4970632,
         "dy": 0.0477,
@@ -1431,10 +1458,11 @@
                     "descricao": "No cenário otimista, a empresa consegue acelerar seu crescimento, expandir margens ou o mercado reavalia positivamente seus múltiplos, reconhecendo plenamente seu potencial de geração de valor. Com um P/L de 12.0x sobre os lucros atuais, o preço justo é significativamente superior ao valor de tela, indicando forte upside."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 9.54
     },
     "SAPR4.SA": {
-        "precoAtual": 8.75,
+        "precoAtual": 8.74,
         "pl": 6.744186,
         "pvp": 0.21295343,
         "dy": 0.0257,
@@ -1487,10 +1515,11 @@
                     "descricao": "Cenário com crescimento de longo prazo otimista de 3% e custo de capital próprio de 11%, impulsionado por expansão agressiva, ganhos de eficiência inesperados e ambiente regulatório favorável."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 8.74
     },
     "SBFG3.SA": {
-        "precoAtual": 12.44,
+        "precoAtual": 12.88,
         "pl": 8.771428,
         "pvp": 0.8668031,
         "dy": 0.0436,
@@ -1543,10 +1572,11 @@
                     "descricao": "Cenário otimista prevê uma aceleração no crescimento da receita e lucratividade, impulsionada por iniciativas estratégicas bem-sucedidas (e.g., expansão digital, novas parcerias) e um ambiente macroeconômico favorável. Isso leva a uma expansão do múltiplo P/L para 13x e captura de maior valor pelo mercado, refletindo a força da gestão e a capacidade de execução."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 13.08
     },
     "SMTO3.SA": {
-        "precoAtual": 20.35,
+        "precoAtual": 18.44,
         "pl": 8.487069,
         "pvp": 0.8778813,
         "dy": 0.044899996,
@@ -1599,10 +1629,11 @@
                     "descricao": "Cenário favorável, com crescimento robusto dos lucros ou expansão dos múltiplos de valuation, impulsionado por condições de mercado positivas ou iniciativas estratégicas da empresa. Assumimos um P/L de 12x."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 18.31
     },
     "SOJA3.SA": {
-        "precoAtual": 7.49,
+        "precoAtual": 7.47,
         "pl": 52.714287,
         "pvp": 0.7820282,
         "dy": 0.0586,
@@ -1655,10 +1686,11 @@
                     "descricao": "Assume uma recuperação substancial da rentabilidade e margens, com a empresa atingindo patamares de ROE e Margem Líquida mais robustos, juntamente com um crescimento de lucros acelerado. Mesmo com este otimismo, o preço atual já precifica um cenário de sucesso extremo."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 7.58
     },
     "SUZB3.SA": {
-        "precoAtual": 50.85,
+        "precoAtual": 47.16,
         "pl": 4.5841036,
         "pvp": 1.3991932,
         "dy": 0.022,
@@ -1711,10 +1743,11 @@
                     "descricao": "No cenário otimista, a SUZB3.SA é precificada de forma mais alinhada com empresas de alta rentabilidade e margens robustas, com o mercado atribuindo um P/L de aproximadamente 10x. Isso pode ser impulsionado por um ciclo positivo da celulose, crescimento robusto da demanda e sucesso na diversificação de produtos, gerando um potencial de valorização expressivo."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 47.6
     },
     "TAEE11.SA": {
-        "precoAtual": 42.83,
+        "precoAtual": 45.22,
         "pl": 39.394493,
         "pvp": 1.94413,
         "dy": 0.0746,
@@ -1767,10 +1800,11 @@
                     "descricao": "Neste cenário otimista, a Taesa se beneficia de um ambiente de taxas de juros em queda, reduzindo o custo de capital e o serviço da dívida. A empresa obtém sucesso expressivo em novos leilões de transmissão com condições favoráveis, expandindo sua RAP e elevando seu ROE. Ganhos adicionais de eficiência operacional e uma percepção positiva do mercado sobre o setor de transmissão impulsionam uma reavaliação dos múltiplos, resultando em um valor justo superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 44.9
     },
     "TTEN3.SA": {
-        "precoAtual": 15.95,
+        "precoAtual": 16.07,
         "pl": 9.869565,
         "pvp": 1.6906054,
         "dy": 0.0234,
@@ -1823,10 +1857,11 @@
                     "descricao": "No cenário otimista, observa-se uma aceleração do crescimento, expansão das margens e/ou maior eficiência operacional. O mercado reavalia a empresa positivamente, expandindo o múltiplo P/L (ex: 12.5x) em função das perspectivas futuras de lucro."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 16.4
     },
     "VAMO3.SA": {
-        "precoAtual": 3.69,
+        "precoAtual": 3.97,
         "pl": 11.548387,
         "pvp": 1.4898043,
         "dy": 0.038,
@@ -1879,10 +1914,11 @@
                     "descricao": "Em um cenário otimista, a VAMO3.SA supera as expectativas de mercado, impulsionada por uma forte recuperação econômica, expansão agressiva para novos mercados e ganhos significativos de eficiência operacional. Isso resultaria em um crescimento superior dos lucros e fluxo de caixa, com o Preço Justo atingindo R$4,35."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 4
     },
     "VIVT3.SA": {
-        "precoAtual": 41.31,
+        "precoAtual": 42.94,
         "pl": 21.314137,
         "pvp": 1.8930482,
         "dy": 0.0559,
@@ -1935,10 +1971,11 @@
                     "descricao": "Cenário que assume forte adoção de novas tecnologias (e.g., 5G), expansão bem-sucedida em novos segmentos (e.g., IoT, B2B), otimização de custos e um prêmio nos múltiplos de mercado pela liderança e resiliência, com P/L de aproximadamente 24.92x."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 42.75
     },
     "WEGE3.SA": {
-        "precoAtual": 50.31,
+        "precoAtual": 52.88,
         "pl": 33.30263,
         "pvp": 12.194652,
         "dy": 0.008,
@@ -2018,10 +2055,11 @@
                 ]
             },
             "data_analise": "09/04/2026"
-        }
+        },
+        "fechamentoAnterior": 52.5
     },
     "GOOGL": {
-        "precoAtual": 295.77,
+        "precoAtual": 317.24,
         "pl": 27.77685,
         "pvp": 8.732571,
         "dy": 0.0028,
@@ -2074,10 +2112,11 @@
                     "descricao": "Reflete um cenário de aceleração do crescimento do Google Cloud, inovações disruptivas gerando novas fontes de receita e uma resolução favorável de desafios regulatórios. O mercado reconheceria o potencial de longo prazo e expandiria os múltiplos de avaliação da empresa."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 318.475
     },
     "AMZN": {
-        "precoAtual": 209.77,
+        "precoAtual": 238.38,
         "pl": 29.677822,
         "pvp": 5.555004,
         "evEbitda": 15.833,
@@ -2156,10 +2195,11 @@
                 ]
             },
             "data_analise": "10 de junho de 2024"
-        }
+        },
+        "fechamentoAnterior": 233.65
     },
     "NVDA": {
-        "precoAtual": 177.39,
+        "precoAtual": 188.63,
         "pl": 36.25306,
         "pvp": 27.447466,
         "dy": 0.0002,
@@ -2235,10 +2275,11 @@
                 "negativas": []
             },
             "data_analise": "09/04/2026"
-        }
+        },
+        "fechamentoAnterior": 183.937
     },
     "TSM": {
-        "precoAtual": 339.04,
+        "precoAtual": 370.6,
         "pl": 32.956608,
         "pvp": 52.278038,
         "dy": 0.0104,
@@ -2291,10 +2332,11 @@
                     "descricao": "O cenário otimista prevê uma aceleração robusta na demanda por tecnologias emergentes como IA e HPC, uma resolução favorável das tensões geopolíticas na Ásia, e a TSM solidificando ainda mais sua posição de liderança de mercado com sucesso na execução de seus planos de expansão global."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 365.49
     },
     "ASML": {
-        "precoAtual": 1317.23,
+        "precoAtual": 1478.28,
         "pl": 45.626663,
         "pvp": 22.142244,
         "dy": 0.0067000003,
@@ -2347,10 +2389,11 @@
                     "descricao": "Assume uma aceleração robusta na transição tecnológica global, com ASML superando as expectativas de crescimento de mercado, ganhando participação e eficiência adicionais, o que resultaria em uma expansão do múltiplo P/L e lucratividade."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 1448.64
     },
     "AVGO": {
-        "precoAtual": 314.55,
+        "precoAtual": 371.55,
         "pl": 61.292397,
         "pvp": 18.643936,
         "dy": 0.0083,
@@ -2403,10 +2446,11 @@
                     "descricao": "No cenário otimista, a AVGO acelera seu crescimento com a expansão agressiva em novas tecnologias (IA, Cloud), ganhos de market share significativos e sinergias de aquisições superando as expectativas. Isso resulta em expansão de margens, forte geração de fluxo de caixa e um prêmio contínuo no P/L, impulsionando o valor da ação."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 354.91
     },
     "IRS": {
-        "precoAtual": 16.65,
+        "precoAtual": 15.99,
         "pl": 3.8976743,
         "pvp": 9.53199,
         "dy": 0.144,
@@ -2459,10 +2503,11 @@
                     "descricao": "Pressupõe que a empresa conseguirá, por um período, manter suas margens de lucro elevadas ou mitigar alguns dos riscos percebidos, resultando em uma modesta reavaliação positiva do seu múltiplo P/L pelo mercado (4.5x), ainda que de forma conservadora. Calculado a partir de um EPS de 4.2716."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 16.65
     },
     "TSLA": {
-        "precoAtual": 360.59,
+        "precoAtual": 348.95,
         "pl": 326.68518,
         "pvp": 16.11271,
         "evEbitda": 126.105,
@@ -2541,10 +2586,11 @@
                 ]
             },
             "data_analise": "09/04/2026"
-        }
+        },
+        "fechamentoAnterior": 345.575
     },
     "MU": {
-        "precoAtual": 366.24,
+        "precoAtual": 420.59,
         "pl": 17.810469,
         "pvp": 5.880723,
         "dy": 0.0016,
@@ -2597,10 +2643,11 @@
                     "descricao": "No cenário otimista, a empresa supera as expectativas, impulsionada por inovação, expansão de mercado ou um ambiente econômico favorável, justificando uma expansão do múltiplo P/L para 25x. A percepção do mercado sobre o crescimento e a sustentabilidade de sua alta rentabilidade melhora significativamente."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 421.51
     },
     "VZ": {
-        "precoAtual": 49.4,
+        "precoAtual": 46.04,
         "pl": 12.105912,
         "pvp": 1.9842552,
         "dy": 0.0573,
@@ -2653,10 +2700,11 @@
                     "descricao": "No cenário otimista, a empresa consegue expandir sua base de clientes, realizar ganhos de eficiência adicionais ou se beneficia de uma reavaliação positiva do setor, levando a uma expansão dos múltiplos de avaliação e um crescimento acima das expectativas."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 47.0725
     },
     "T": {
-        "precoAtual": 28.33,
+        "precoAtual": 26.46,
         "pl": 9.315789,
         "pvp": 1.8031325,
         "dy": 0.0392,
@@ -2709,10 +2757,11 @@
                     "descricao": "No cenário otimista, a empresa consegue acelerar seu crescimento ou o mercado reavalia positivamente seus múltiplos devido à sustentação da alta rentabilidade e melhoria do sentimento dos investidores, levando a um P/L de 12.0x. Isso indica um potencial de valorização significativo."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 26.5625
     },
     "HD": {
-        "precoAtual": 321.63,
+        "precoAtual": 337.34,
         "pl": 22.971167,
         "pvp": 25.392567,
         "dy": 0.029000001,
@@ -2765,10 +2814,11 @@
                     "descricao": "Considera que a empresa consegue não apenas sustentar seu ROE elevado, mas também expandir sua participação de mercado e margens, impulsionando um crescimento acelerado dos lucros. O mercado premia essa performance com uma expansão dos múltiplos de valuation, elevando significativamente o preço-alvo."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 339.58
     },
     "SHOP": {
-        "precoAtual": 118.25,
+        "precoAtual": 110.79,
         "pl": 127.741936,
         "pvp": 11.497145,
         "evEbitda": 77.01,
@@ -2821,10 +2871,11 @@
                     "descricao": "Cenário de forte aceleração do crescimento, sucesso na expansão de novos negócios ou mercados, e uma contínua aceitação de múltiplos elevados pelo mercado devido à liderança e inovação contínua da empresa."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 112.306
     },
     "DIS": {
-        "precoAtual": 96.61,
+        "precoAtual": 99.17,
         "pl": 14.179676,
         "pvp": 1.5763192,
         "dy": 0.0155,
@@ -2877,10 +2928,11 @@
                     "descricao": "No cenário otimista, a Disney excede as expectativas, alcançando lucratividade consistente no streaming, forte desempenho dos parques e sucesso em novas iniciativas de conteúdo. A execução da estratégia de otimização de custos e crescimento leva a uma expansão significativa do múltiplo P/L para 18x, refletindo a confiança dos investidores na liderança de mercado e no potencial de crescimento acelerado. Este valor sugere uma valorização substancial."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 99.79
     },
     "SPG": {
-        "precoAtual": 188.67,
+        "precoAtual": 200.57,
         "pl": 13.424841,
         "pvp": 11.97168,
         "dy": 0.0458,
@@ -2933,10 +2985,11 @@
                     "descricao": "O cenário otimista prevê uma recuperação robusta do varejo físico, sucesso nas iniciativas de redesenvolvimento, crescimento acima do esperado nos aluguéis e uma revalorização do setor. Assume-se um P/L de 15,0x, refletindo maior otimismo do mercado e a sustentabilidade das altas margens."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 198.97
     },
     "ANET": {
-        "precoAtual": 126.68,
+        "precoAtual": 147.35,
         "pl": 45.909092,
         "pvp": 12.823768,
         "evEbitda": 37.805,
@@ -2988,10 +3041,11 @@
                     "descricao": "Projeção de crescimento acelerado das receitas e lucros, expansão das margens, ou atribuição de um múltiplo de mercado ainda maior devido a inovações disruptivas, ganhos de participação de mercado ou superação significativa das expectativas."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 146.05
     },
     "ICE": {
-        "precoAtual": 162.98,
+        "precoAtual": 160.6,
         "pl": 28.837088,
         "pvp": 3.262805,
         "dy": 0.0128,
@@ -3044,10 +3098,11 @@
                     "descricao": "Prevê um crescimento robusto impulsionado por expansão em novos mercados, aquisições bem-sucedidas e contínua demanda por seus serviços de dados e tecnologia. Sustenta um múltiplo P/L de 30x, indicando forte confiança no futuro e superação das expectativas de mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 161.97
     },
     "KO": {
-        "precoAtual": 76.72,
+        "precoAtual": 77.47,
         "pl": 25.401316,
         "pvp": 10.32629,
         "dy": 0.0269,
@@ -3100,10 +3155,11 @@
                     "descricao": "No cenário otimista, o múltiplo P/L se expande para 27.5x. Isso seria impulsionado por um ambiente macroeconômico favorável, aceleração da diversificação de produtos, forte crescimento em mercados emergentes ou uma reavaliação positiva do prêmio de estabilidade e resiliência da KO pelo mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 78.18
     },
     "EQNR": {
-        "precoAtual": 41.75,
+        "precoAtual": 38.96,
         "pl": 21.62371,
         "pvp": 2.5946314,
         "dy": 0.0374,
@@ -3156,10 +3212,11 @@
                     "descricao": "Este cenário contempla um ambiente favorável com alta sustentada nos preços de commodities, aceleração bem-sucedida da transição energética com projetos de baixo carbono altamente rentáveis e expansão de margens. O mercado premia a EQNR com um P/L expandido, reconhecendo sua liderança e sucesso na reorientação estratégica."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 38.55
     },
     "EPR": {
-        "precoAtual": 51.16,
+        "precoAtual": 53.44,
         "pl": 15.521341,
         "pvp": 1.6644326,
         "dy": 0.0695,
@@ -3213,10 +3270,11 @@
                     "descricao": "O cenário otimista contempla um crescimento acelerado dos lucros, expansão de mercado ou uma reavaliação positiva do setor pela bolsa. Projetamos uma expansão dos múltiplos de avaliação para aproximadamente 20.0x P/L, refletindo um otimismo considerável em relação às perspectivas futuras da EPR."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 53.11
     },
     "WFC": {
-        "precoAtual": 80.6,
+        "precoAtual": 85.4,
         "pl": 13.075079,
         "pvp": 1.5387074,
         "dy": 0.0223,
@@ -3266,10 +3324,11 @@
                     "descricao": "Cenário onde o P/L se expande para 15x, impulsionado por uma melhora significativa no ambiente econômico, desfecho positivo de questões regulatórias e forte execução estratégica da WFC, superando as expectativas do mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 86.02
     },
     "VICI": {
-        "precoAtual": 27.66,
+        "precoAtual": 28.11,
         "pl": 10.597701,
         "pvp": 1.0635189,
         "dy": 0.0644,
@@ -3322,10 +3381,11 @@
                     "descricao": "Neste cenário, assume-se que o mercado irá premiar a VICI por sua excepcional margem líquida e eficiência, resultando em uma expansão do múltiplo P/L para 12.0x. Um crescimento de lucros acima do esperado ou a melhoria do sentimento de mercado global impulsionariam essa valorização."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 28.06
     },
     "O": {
-        "precoAtual": 62.21,
+        "precoAtual": 63.75,
         "pl": 52.846157,
         "pvp": 1.4642291,
         "dy": 0.051999997,
@@ -3378,10 +3438,11 @@
                     "descricao": "A empresa atinge ou supera as expectativas de crescimento mais agressivas implícitas em seu P/L. Há uma melhora substancial e sustentável no ROE, com a alta margem líquida sendo convertida eficientemente em retorno para o acionista. Neste cenário, o preço atual seria justificado, e haveria um potencial de valorização adicional de aproximadamente 10% a 15%."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 63.2
     },
     "CPRT": {
-        "precoAtual": 33.4,
+        "precoAtual": 32.76,
         "pl": 20.654087,
         "pvp": 3.2316475,
         "evEbitda": 13.985,
@@ -3433,10 +3494,11 @@
                     "descricao": "Cenário projeta um desempenho superior, com aceleração do crescimento ou expansão de margens, levando a uma reavaliação dos múltiplos para um P/L de 26x, refletindo otimismo do mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 32.99
     },
     "ASX": {
-        "precoAtual": 22.28,
+        "precoAtual": 24.84,
         "pl": 40.999996,
         "pvp": 9.091635,
         "dy": 0.016,
@@ -3489,10 +3551,11 @@
                     "descricao": "Neste cenário otimista, a empresa supera as expectativas de crescimento de mercado, obtém ganhos significativos de eficiência operacional que elevam a margem líquida e/ou expande para novos mercados com sucesso. Isso justificaria um múltiplo P/L ainda maior ou um crescimento mais acelerado do EPS, adicionando valor para o acionista."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 24.51
     },
     "CEPU": {
-        "precoAtual": 17.06,
+        "precoAtual": 16.71,
         "pl": 10.053893,
         "pvp": 13.652091,
         "evEbitda": 0.531,
@@ -3544,10 +3607,11 @@
                     "descricao": "Em um cenário otimista, com melhora das perspectivas de crescimento, reconhecimento do mercado pela sua forte rentabilidade e eficiência, o múltiplo P/L poderia atingir 14x, resultando em um preço justo significativamente acima do valor de tela, indicando um potencial de alta considerável."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 16.79
     },
     "NVO": {
-        "precoAtual": 36.98,
+        "precoAtual": 37.52,
         "pl": 10.300562,
         "pvp": 5.423998,
         "dy": 0.048699997,
@@ -3600,10 +3664,11 @@
                     "descricao": "O cenário otimista prevê que a NVO continue a entregar resultados excepcionais e que o mercado a reavalie para um P/L de 20x. Este múltiplo é comum para empresas de alta qualidade e rentabilidade, assumindo que a NVO mantém sua vantagem competitiva e sustenta seu alto desempenho operacional a longo prazo."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 37.44
     },
     "PLTR": {
-        "precoAtual": 148.46,
+        "precoAtual": 128.06,
         "pl": 238.59676,
         "pvp": 47.889282,
         "evEbitda": 241.793,
@@ -3655,10 +3720,11 @@
                     "descricao": "Em um cenário otimista, a aceleração da adoção de produtos, a expansão de mercados e um crescimento de receita e lucros acima do esperado poderiam justificar uma expansão ainda maior do múltiplo P/L (para cerca de 280x), impulsionando o preço da ação."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 130.537
     },
     "JBL": {
-        "precoAtual": 268.55,
+        "precoAtual": 299.5,
         "pl": 36.095818,
         "pvp": 21.095512,
         "dy": 0.0011999999,
@@ -3711,10 +3777,11 @@
                     "descricao": "Um cenário otimista considera a superação das expectativas de crescimento da JBL, melhorias significativas na margem líquida através de eficiência operacional ou inovação de produtos, ou a consolidação da liderança de mercado. Estes fatores justificariam uma expansão do múltiplo P/L e, consequentemente, um preço justo superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 293.02
     },
     "QCOM": {
-        "precoAtual": 126.8,
+        "precoAtual": 128.06,
         "pl": 25.348791,
         "pvp": 5.852535,
         "dy": 0.028099999,
@@ -3767,10 +3834,11 @@
                     "descricao": "Aqui, projetamos uma aceleração significativa na adoção do 5G e do seu ecossistema, sucesso robusto na diversificação para segmentos automotivos e IoT com altas margens, e uma resolução favorável de potenciais disputas regulatórias ou de patentes. Uma execução superior da gestão, inovação disruptiva e um cenário macro favorável impulsionariam um múltiplo de valuation premium e um valor justo bem acima do preço atual."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 127.75
     },
     "AAPL": {
-        "precoAtual": 255.92,
+        "precoAtual": 260.48,
         "pl": 32.725662,
         "pvp": 43.157715,
         "dy": 0.0041,
@@ -3850,10 +3918,11 @@
                 ]
             },
             "data_analise": "09/04/2026"
-        }
+        },
+        "fechamentoAnterior": 260.49
     },
     "MSFT": {
-        "precoAtual": 373.46,
+        "precoAtual": 370.87,
         "pl": 23.33417,
         "pvp": 7.086952,
         "dy": 0.0097,
@@ -3933,10 +4002,11 @@
                 ]
             },
             "data_analise": "2024-07-28"
-        }
+        },
+        "fechamentoAnterior": 373.07
     },
     "BAC": {
-        "precoAtual": 49.38,
+        "precoAtual": 52.54,
         "pl": 13.139108,
         "pvp": 1.3022554,
         "dy": 0.0227,
@@ -3986,10 +4056,11 @@
                     "descricao": "Este cenário contempla uma aceleração do crescimento da BAC, impulsionada por iniciativas estratégicas bem-sucedidas, expansão de mercado ou um ambiente econômico mais favorável. A expectativa é de que a empresa consiga expandir suas margens e ROE, justificando múltiplos de valuation mais elevados e um preço-alvo superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 52.71
     },
     "ORCL": {
-        "precoAtual": 146.38,
+        "precoAtual": 138.09,
         "pl": 26.082436,
         "pvp": 12.475569,
         "dy": 0.0137,
@@ -4043,10 +4114,11 @@
                     "descricao": "Cenário onde a Oracle acelera significativamente sua participação de mercado na nuvem (OCI), impulsionada por inovações em IA e parcerias estratégicas, ou superando as expectativas de crescimento de lucros. O P/L aplicado é de 30x, refletindo um prêmio de mercado por performance superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 137.86
     },
     "EQT": {
-        "precoAtual": 59.7,
+        "precoAtual": 58.68,
         "pl": 18.247734,
         "pvp": 1.5869262,
         "dy": 0.0111,
@@ -4099,10 +4171,11 @@
                     "descricao": "Neste cenário, a EQT se beneficia de um aumento significativo nos preços do gás natural, expansão bem-sucedida em novos mercados (ex: exportação de GNL) ou uma melhora na eficiência operacional que impulsiona o ROE e a margem líquida. O mercado reage positivamente a um crescimento de lucros acima do esperado e à redução de riscos, atribuindo um múltiplo P/L superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 59.47
     },
     "MNST": {
-        "precoAtual": 72.37,
+        "precoAtual": 75.72,
         "pl": 38.226807,
         "pvp": 8.787771,
         "evEbitda": 25.615,
@@ -4154,10 +4227,11 @@
                     "descricao": "Este cenário otimista considera uma aceleração no crescimento da empresa através de expansão de mercado bem-sucedida, sucesso em novos produtos/categorias ou aquisições estratégicas. Tal performance justificaria a manutenção ou até uma expansão dos múltiplos de mercado (P/L de 40)."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 76.19
     },
     "CVS": {
-        "precoAtual": 73.49,
+        "precoAtual": 79.33,
         "pl": 52.719425,
         "pvp": 1.2383189,
         "dy": 0.036199998,
@@ -4210,10 +4284,11 @@
                     "descricao": "Assume uma execução excepcional das estratégias de crescimento e uma expansão significativa das margens, impulsionada pela inovação e eficiência nos serviços de saúde. Isso justifica o atual múltiplo de P/L e oferece um pequeno potencial de valorização, indicando que o mercado antecipa um forte e rápido turnaround."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 78.84
     },
     "HUYA": {
-        "precoAtual": 3.41,
+        "precoAtual": 3.15,
         "pvp": 1.037624,
         "evEbitda": 35.068,
         "vpa": 3.112881,
@@ -4264,10 +4339,11 @@
                     "descricao": "No cenário otimista, a HUYA implementa com sucesso estratégias de reestruturação e monetização, retornando à lucratividade. Há um crescimento significativo de receita e margens, com a empresa capitalizando sua base de usuários e expandindo para novas verticais ou geografias. Isso justificaria uma valorização acima do preço atual, refletindo a expectativa de geração futura de caixa positivo e sustentável."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 3.24
     },
     "GPC": {
-        "precoAtual": 103.47,
+        "precoAtual": 107.51,
         "pl": 223.7234,
         "pvp": 3.2716243,
         "dy": 0.041100003,
@@ -4320,10 +4396,11 @@
                     "descricao": "No cenário otimista, a GPC consegue superar levemente as já elevadas expectativas de mercado, ou a especulação se intensifica, permitindo uma pequena expansão do múltiplo P/L (aproximadamente 246x). Pequenas melhorias operacionais, anúncios estratégicos ou um ambiente de mercado favorável podem sustentar esse otimismo, elevando o preço em cerca de 12% acima do patamar atual."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 108.56
     },
     "PFE": {
-        "precoAtual": 28.32,
+        "precoAtual": 26.92,
         "pl": 20.463236,
         "pvp": 1.8298377,
         "dy": 0.060700003,
@@ -4376,10 +4453,11 @@
                     "descricao": "No cenário otimista, a PFE se beneficiaria de lançamentos bem-sucedidos de novos medicamentos, expansão agressiva em mercados de alto crescimento, eficiências operacionais resultando em margens elevadas, e uma percepção positiva do mercado. Este cenário justificaria um múltiplo P/L mais elevado, refletindo expectativas de crescimento e rentabilidade acima da média."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 27.22
     },
     "ROKU": {
-        "precoAtual": 97.66,
+        "precoAtual": 102.47,
         "pl": 166.44067,
         "pvp": 5.4625354,
         "evEbitda": 45.309,
@@ -4431,10 +4509,11 @@
                     "descricao": "A ROKU supera as expectativas, impulsionando um crescimento robusto de usuários e, crucialmente, uma expansão significativa da margem líquida e do ROE. Novas iniciativas de monetização são um grande sucesso, e a empresa solidifica sua liderança de mercado. Este desempenho excepcional justifica a manutenção de um múltiplo P/L muito elevado, validando um preço justo próximo ou ligeiramente acima do preço atual."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 100.04
     },
     "DIBS": {
-        "precoAtual": 5.41,
+        "precoAtual": 5.49,
         "pvp": 2.1929135,
         "evEbitda": -6.666,
         "vpa": 2.54,
@@ -4485,10 +4564,11 @@
                     "descricao": "Este cenário pressupõe uma reviravolta bem-sucedida, com a DIBS alcançando a lucratividade em um futuro próximo e apresentando crescimento sustentável de receitas e margens. Há uma melhoria significativa na margem líquida e no ROE, indicando maior eficiência operacional e gestão eficaz. O preço justo reflete a concretização desse potencial de crescimento e rentabilidade, validando a aposta do mercado."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 5.55
     },
     "LEG": {
-        "precoAtual": 9.69,
+        "precoAtual": 9.99,
         "pl": 5.775148,
         "pvp": 1.2939149,
         "dy": 0.020599999,
@@ -4541,10 +4621,11 @@
                     "descricao": "O cenário otimista prevê que o mercado reconheça plenamente a excelência operacional da LEG, elevando seu P/L para 13.5x, compatível com empresas de forte rentabilidade e bom histórico. Representa um potencial de valorização substancial em relação ao preço atual de tela."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 10.07
     },
     "MBUU": {
-        "precoAtual": 24.48,
+        "precoAtual": 25.48,
         "pl": 32.81081,
         "pvp": 0.91233605,
         "evEbitda": 7.256,
@@ -4596,10 +4677,11 @@
                     "descricao": "Mesmo em um cenário otimista, a margem de crescimento do preço é limitada pela já alta valoração (P/L) frente aos fracos fundamentos atuais. Assume-se que a empresa consegue manter seu P/L atual por meio de uma pequena melhoria marginal na rentabilidade ou expectativas positivas não explicitadas, permitindo um leve crescimento sobre o preço de tela atual."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 25.35
     },
     "FVRR": {
-        "precoAtual": 10.03,
+        "precoAtual": 10.31,
         "pl": 18.357141,
         "pvp": 0.90064836,
         "evEbitda": 2.565,
@@ -4651,7 +4733,8 @@
                     "descricao": "Projeta uma recuperação robusta da rentabilidade e eficiência operacional, com o mercado recompensando o potencial de crescimento e expansão da empresa, justificando um preço ligeiramente superior."
                 }
             }
-        }
+        },
+        "fechamentoAnterior": 10.19
     },
     "PETR4.SA": {
         "radar_ri": {
@@ -4727,5 +4810,61 @@
             },
             "data_analise": "29/05/2024"
         }
+    },
+    "^BVSP": {
+        "precoAtual": 197323.88,
+        "fechamentoAnterior": 195129.25
+    },
+    "^GSPC": {
+        "precoAtual": 6816.89,
+        "fechamentoAnterior": 6824.66
+    },
+    "^DJI": {
+        "precoAtual": 47916.57,
+        "fechamentoAnterior": 48185.8
+    },
+    "^IXIC": {
+        "precoAtual": 22902.895,
+        "fechamentoAnterior": 22822.418
+    },
+    "^GDAXI": {
+        "precoAtual": 23803.95,
+        "fechamentoAnterior": 23806.99
+    },
+    "^N225": {
+        "precoAtual": 56924.11,
+        "fechamentoAnterior": 55895.32
+    },
+    "000001.SS": {
+        "precoAtual": 3986.2246,
+        "fechamentoAnterior": 3890.17
+    },
+    "^HSI": {
+        "precoAtual": 25893.54,
+        "fechamentoAnterior": 25752.4
+    },
+    "^MERV": {
+        "precoAtual": 2998770,
+        "fechamentoAnterior": 2999607.5
+    },
+    "BRL=X": {
+        "precoAtual": 5.0031,
+        "fechamentoAnterior": 5.0698
+    },
+    "EURBRL=X": {
+        "precoAtual": 5.8658,
+        "fechamentoAnterior": 5.9322
+    },
+    "BTC-USD": {
+        "precoAtual": 73017,
+        "fechamentoAnterior": 71783.516
+    },
+    "GC=F": {
+        "precoAtual": 4771,
+        "fechamentoAnterior": 4818
+    },
+    "BZ=F": {
+        "precoAtual": 94.45,
+        "fechamentoAnterior": 95.92
     }
 }

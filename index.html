@@ -141,7 +141,6 @@
 
         const URL_BACKEND = 'https://api-financeira-8yu7.onrender.com';
 
-        // 🌍 MACRO GLOBAL ATUALIZADO 
         const ativosGerais = [
             { id: 'IBOV', name: 'Ibovespa (Brasil)', ticker: '^BVSP', decimals: 0, prefix: 'Pts' },
             { id: 'SP500', name: 'S&P 500 (EUA)', ticker: '^GSPC', decimals: 2, prefix: 'Pts' },
@@ -211,29 +210,29 @@
                     dashboard.style.display = 'grid';
                 }
 
+                // 🛡️ A MÁGICA: O ESCUDO DO COFRE!
+                // Antes de qualquer coisa, ele baixa o Cofre para salvar a tela se o Servidor falhar.
+                let cofreData = {};
+                try {
+                    const resCofre = await fetch('./indicadores.json?nocache=' + new Date().getTime());
+                    if (resCofre.ok) cofreData = await resCofre.json();
+                } catch(e) { console.log("Cofre offline."); }
+
                 if(tabName === 'oportunidades') {
-                    dashboard.innerHTML = '<div class="section-title">Sincronizando Valuation com Cotações ao Vivo... ⏳</div>';
+                    dashboard.innerHTML = '<div class="section-title">Analisando Radar de Oportunidades... ⏳</div>';
                     try {
-                        const resCofre = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                        if (!resCofre.ok) throw new Error("Cofre não encontrado");
-                        const dadosDaBase = await resCofre.json();
-                        
-                        const todosTickers = Object.keys(dadosDaBase);
                         let cotacoesVivas = {};
+                        const todosTickers = Object.keys(cofreData);
                         try {
                             const resCotacoes = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${todosTickers.join(',')}`);
-                            if(resCotacoes.ok) {
-                                cotacoesVivas = await resCotacoes.json();
-                            }
-                        } catch (e) {
-                            console.log("Erro ao buscar cotações ao vivo. Fallback para cofre estático.");
-                        }
+                            if(resCotacoes.ok) cotacoesVivas = await resCotacoes.json();
+                        } catch (e) { }
 
                         let listaOportunidadesBr = []; 
                         let listaOportunidadesUs = [];
 
-                        for (const ticker in dadosDaBase) {
-                            const d = dadosDaBase[ticker];
+                        for (const ticker in cofreData) {
+                            const d = cofreData[ticker];
                             const precoAtual = cotacoesVivas[ticker]?.atual || d.precoAtual;
                             const precoPessimista = d.valuation_dcf?.cenarios?.pessimista?.preco_justo;
                             
@@ -241,14 +240,7 @@
                                 const margemSeguranca = (precoPessimista - precoAtual) / precoAtual;
                                 const isBrasil = ticker.includes('.SA');
                                 const prefix = isBrasil ? 'R$' : 'US$';
-                                const item = { 
-                                    ticker: ticker, 
-                                    status: d.valuation_dcf?.status || 'N/A', 
-                                    precoAtual: precoAtual, 
-                                    precoPessimista: precoPessimista, 
-                                    margem: margemSeguranca, 
-                                    prefix: prefix 
-                                };
+                                const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', precoAtual: precoAtual, precoPessimista: precoPessimista, margem: margemSeguranca, prefix: prefix };
                                 if (isBrasil) listaOportunidadesBr.push(item); else listaOportunidadesUs.push(item);
                             }
                         }
@@ -272,8 +264,8 @@
                         };
                         
                         let telaCompleta = '';
-                        if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil (Live)', listaOportunidadesBr);
-                        if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais (Live)', listaOportunidadesUs);
+                        if (listaOportunidadesBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Radar de Oportunidades Brasil (Live/Cofre)', listaOportunidadesBr);
+                        if (listaOportunidadesUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Radar de Oportunidades Internacionais (Live/Cofre)', listaOportunidadesUs);
                         dashboard.innerHTML = telaCompleta || '<div class="section-title">Nenhum dado de Valuation encontrado no banco.</div>';
                     } catch(e) { dashboard.innerHTML = '<div class="section-title">Aguardando atualização de dados da IA.</div>'; }
                     return;
@@ -282,12 +274,9 @@
                 if(tabName === 'ranking') {
                     dashboard.innerHTML = '<div class="section-title">Analisando e ordenando dados fundamentalistas... ⏳</div>';
                     try {
-                        const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
-                        if (!res.ok) throw new Error("Arquivo não encontrado");
-                        const dadosDaBase = await res.json();
                         dadosRankingBr = []; dadosRankingUs = [];
-                        for (const ticker in dadosDaBase) {
-                            const d = dadosDaBase[ticker];
+                        for (const ticker in cofreData) {
+                            const d = cofreData[ticker];
                             if(d.roe !== undefined && d.roe !== null) {
                                 const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe };
                                 if (ticker.includes('.SA')) dadosRankingBr.push(item); else dadosRankingUs.push(item);
@@ -303,60 +292,79 @@
                 if(tabName === 'destaques') {
                     dashboard.innerHTML = '<div class="section-title">Analisando 80+ ativos do mercado... ⏳</div>';
                     const todosAtivos = [...ativosBrasil, ...ativosIntl];
+                    let cotacoes = {};
+
+                    // 1. O Escudo (Carrega do Cofre primeiro)
+                    todosAtivos.forEach(a => {
+                        if(cofreData[a.ticker] && cofreData[a.ticker].precoAtual) {
+                            cotacoes[a.ticker] = { atual: cofreData[a.ticker].precoAtual, fechamentoAnterior: cofreData[a.ticker].fechamentoAnterior || cofreData[a.ticker].precoAtual };
+                        }
+                    });
+
+                    // 2. Tenta sobrescrever com o Vivo (Se der 429, os dados do cofre continuam intactos na variável!)
                     const tickersString = todosAtivos.map(a => a.ticker).join(',');
                     try {
                         const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
-                        if (!res.ok) throw new Error("Falha no servidor");
-                        const cotacoes = await res.json();
-                        
-                        let ativosComVariacao = todosAtivos.map(asset => {
-                            const dados = cotacoes[asset.ticker];
-                            if(!dados || !dados.fechamentoAnterior) return null;
-                            const varPct = ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100;
-                            return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
-                        }).filter(a => a !== null);
-
-                        if (ativosComVariacao.length === 0) { 
-                            dashboard.innerHTML = '<div class="section-title">Aguardando dados (Servidor protegendo contra 429). Tente novamente em instantes.</div>'; 
-                            return; 
+                        if (res.ok) {
+                            const liveData = await res.json();
+                            Object.assign(cotacoes, liveData); 
                         }
-                        
-                        ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
-                        const maioresAltas = ativosComVariacao.slice(0, 5); 
-                        const maioresBaixas = ativosComVariacao.slice(-5).reverse();
+                    } catch(e) { console.log("Usando dados do Cofre para Altas e Baixas."); }
 
-                        dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
-                        const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard'; gridAltas.style.display = 'grid';
-                        buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
-                        
-                        dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
-                        const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
-                        buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
+                    let ativosComVariacao = todosAtivos.map(asset => {
+                        const dados = cotacoes[asset.ticker];
+                        if(!dados || !dados.fechamentoAnterior) return null;
+                        const varPct = ((dados.atual - dados.fechamentoAnterior) / dados.fechamentoAnterior) * 100;
+                        return { ...asset, varPct, atual: dados.atual, anterior: dados.fechamentoAnterior };
+                    }).filter(a => a !== null);
 
-                        [...maioresAltas, ...maioresBaixas].forEach(asset => { 
-                            updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
-                            fetchMiniChart(asset, 'destaques'); 
-                        });
-                    } catch (e) { 
-                        dashboard.innerHTML = '<div class="section-title">Erro ao conectar com o Servidor Principal.</div>'; 
+                    if (ativosComVariacao.length === 0) { 
+                        dashboard.innerHTML = '<div class="section-title">O Cofre ainda não tem preços salvos para montar o Ranking.</div>'; 
+                        return; 
                     }
+                    
+                    ativosComVariacao.sort((a, b) => b.varPct - a.varPct); 
+                    const maioresAltas = ativosComVariacao.slice(0, 5); 
+                    const maioresBaixas = ativosComVariacao.slice(-5).reverse();
+
+                    dashboard.innerHTML = '<div class="section-title">Maiores Altas 🚀</div>';
+                    const gridAltas = document.createElement('div'); gridAltas.className = 'dashboard'; gridAltas.style.display = 'grid';
+                    buildCards(maioresAltas, gridAltas); dashboard.appendChild(gridAltas);
+                    
+                    dashboard.innerHTML += '<div class="section-title">Maiores Baixas 🔻</div>';
+                    const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
+                    buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
+
+                    [...maioresAltas, ...maioresBaixas].forEach(asset => { 
+                        updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
+                        fetchMiniChart(asset, 'destaques'); 
+                    });
+                    
                     return;
                 }
 
-                // ABAS NORMAIS
+                // ABAS NORMAIS (Geral, Brasil, Intl)
                 const ativosDaAba = categorias[tabName];
                 buildCards(ativosDaAba, dashboard);
                 
+                // 🛡️ 1. O ESCUDO: Preenche a tela instantaneamente com os preços do Cofre
+                ativosDaAba.forEach(asset => {
+                    if(cofreData[asset.ticker] && cofreData[asset.ticker].precoAtual) {
+                        updateCardUI(asset.id, cofreData[asset.ticker].precoAtual, cofreData[asset.ticker].fechamentoAnterior || cofreData[asset.ticker].precoAtual, asset.prefix, asset.decimals);
+                    }
+                });
+
+                // 🚀 2. O ATAQUE: Tenta buscar os preços frescos do servidor ao vivo
                 const tickersString = ativosDaAba.map(a => a.ticker).join(',');
                 fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
                     .then(r => r.json())
                     .then(cotacoesAtuais => {
                         ativosDaAba.forEach(asset => { 
-                            if(cotacoesAtuais[asset.ticker]) {
+                            if(cotacoesAtuais[asset.ticker] && cotacoesAtuais[asset.ticker].atual) {
                                 updateCardUI(asset.id, cotacoesAtuais[asset.ticker].atual, cotacoesAtuais[asset.ticker].fechamentoAnterior, asset.prefix, asset.decimals); 
                             }
                         });
-                    }).catch(e => console.log("Cotações indisponíveis no momento."));
+                    }).catch(e => console.log("Servidor Vivo caiu. Os dados do Cofre continuam na tela."));
 
                 ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
 
@@ -415,7 +423,7 @@
                 const histData = await resHist.json();
                 if(histData.historico && currentTab === targetTab) { 
                     drawMiniChart(asset.id, histData.historico);
-                    
+                    // O Gráfico também atualiza o preço de quebra, garantindo ainda mais resiliência!
                     const elPrice = document.getElementById(`price-${asset.id}`);
                     if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
                         const pAtual = histData.historico[histData.historico.length-1].close;
@@ -439,10 +447,6 @@
             const assetObj = { id: 'BUSCA', name: nomeLimpo, ticker: tickerReal, decimals: 2, prefix: ehBrasil ? 'R$' : 'US$' };
             openModal(assetObj);
         }
-
-        // ===============================================
-        // BOTÕES DE INTELIGÊNCIA ARTIFICIAL (O PALCO)
-        // ===============================================
 
         async function chamarAnaliseTecnica() {
             const btn = document.getElementById('btn-ia-tech');
@@ -482,7 +486,6 @@
             btn.disabled = true;
 
             try {
-                // Vai no cofre pescar a análise de RI que o seu robô noturno gerou
                 const res = await fetch('./indicadores.json?nocache=' + new Date().getTime());
                 if (!res.ok) throw new Error("Cofre não encontrado");
                 
@@ -495,41 +498,33 @@
 
                 const ri = dataAtivo.radar_ri;
 
-                // Monta a UI Profissional com Duas Colunas (Balanço e Notícias)
                 let html = `
                     <div style="color: #0288D1; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo Sênior</div>
                     <div style="font-size: 0.75rem; color: #8e9196; text-align: center; margin-bottom: 20px;">Atualizado: ${ri.data_analise || 'Recente'}</div>
                     
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                        
                         <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                             <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">📊 Leitura do Balanço</h4>
-                            
                             <strong style="color: #4CAF50; font-size: 0.9rem;">🟢 Pontos Fortes:</strong>
                             <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">
                                 ${ri.balanco.fortes.map(i => `<li>${i}</li>`).join('')}
                             </ul>
-                            
                             <strong style="color: #FFC107; font-size: 0.9rem;">🟡 Pontos de Atenção:</strong>
                             <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">
                                 ${ri.balanco.atencao.map(i => `<li>${i}</li>`).join('')}
                             </ul>
                         </div>
-
                         <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                             <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">🌐 Sentimento de Mercado</h4>
-                            
                             <strong style="color: #4CAF50; font-size: 0.9rem;">📈 Fatos Positivos:</strong>
                             <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">
                                 ${ri.noticias.positivas.map(i => `<li>${i}</li>`).join('')}
                             </ul>
-                            
                             <strong style="color: #F44336; font-size: 0.9rem;">📉 Fatos Negativos:</strong>
                             <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">
                                 ${ri.noticias.negativas.map(i => `<li>${i}</li>`).join('')}
                             </ul>
                         </div>
-
                     </div>
                 `;
 
@@ -710,7 +705,6 @@
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
             
-            // RESET DOS BOTÕES DE IA AO ABRIR O MODAL
             const btnTech = document.getElementById('btn-ia-tech'); 
             const resultTech = document.getElementById('tech-result');
             if (btnTech && resultTech) { 
