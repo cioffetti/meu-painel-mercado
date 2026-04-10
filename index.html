@@ -211,7 +211,6 @@
                 }
 
                 // 🛡️ A MÁGICA: O ESCUDO DO COFRE!
-                // Antes de qualquer coisa, ele baixa o Cofre para salvar a tela se o Servidor falhar.
                 let cofreData = {};
                 try {
                     const resCofre = await fetch('./indicadores.json?nocache=' + new Date().getTime());
@@ -301,7 +300,7 @@
                         }
                     });
 
-                    // 2. Tenta sobrescrever com o Vivo (Se der 429, os dados do cofre continuam intactos na variável!)
+                    // 2. Tenta sobrescrever com o Vivo
                     const tickersString = todosAtivos.map(a => a.ticker).join(',');
                     try {
                         const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
@@ -335,9 +334,12 @@
                     const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
                     buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
 
-                    [...maioresAltas, ...maioresBaixas].forEach(asset => { 
+                    // 🌊 O EFEITO CASCATA APLICADO AQUI 🌊
+                    [...maioresAltas, ...maioresBaixas].forEach((asset, index) => { 
                         updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
-                        fetchMiniChart(asset, 'destaques'); 
+                        setTimeout(() => {
+                            if(currentTab === 'destaques') fetchMiniChart(asset, 'destaques'); 
+                        }, index * 250); // Delay de 250ms por gráfico
                     });
                     
                     return;
@@ -347,14 +349,14 @@
                 const ativosDaAba = categorias[tabName];
                 buildCards(ativosDaAba, dashboard);
                 
-                // 🛡️ 1. O ESCUDO: Preenche a tela instantaneamente com os preços do Cofre
+                // 🛡️ 1. O ESCUDO
                 ativosDaAba.forEach(asset => {
                     if(cofreData[asset.ticker] && cofreData[asset.ticker].precoAtual) {
                         updateCardUI(asset.id, cofreData[asset.ticker].precoAtual, cofreData[asset.ticker].fechamentoAnterior || cofreData[asset.ticker].precoAtual, asset.prefix, asset.decimals);
                     }
                 });
 
-                // 🚀 2. O ATAQUE: Tenta buscar os preços frescos do servidor ao vivo
+                // 🚀 2. O ATAQUE
                 const tickersString = ativosDaAba.map(a => a.ticker).join(',');
                 fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
                     .then(r => r.json())
@@ -366,7 +368,15 @@
                         });
                     }).catch(e => console.log("Servidor Vivo caiu. Os dados do Cofre continuam na tela."));
 
-                ativosDaAba.forEach(asset => fetchMiniChart(asset, tabName));
+                // 🌊 O EFEITO CASCATA APLICADO NAS ABAS GERAIS 🌊
+                ativosDaAba.forEach((asset, index) => {
+                    setTimeout(() => {
+                        // Verifica se o usuário não mudou de aba antes de baixar o gráfico
+                        if(currentTab === tabName) {
+                            fetchMiniChart(asset, tabName);
+                        }
+                    }, index * 250); // A MÁGICA ESTÁ AQUI: 250ms de pausa entre cada pedido!
+                });
 
             } catch (err) {
                 const erroDiv = document.getElementById('erroGlobalContainer');
