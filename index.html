@@ -170,6 +170,54 @@
         let detailedChartInstance = null; 
         let currentAssetObj = null; 
 
+        // 🛡️ A NOVA ARQUITETURA: FILA INDIANA DE GRÁFICOS
+        let chartQueue = [];
+        let isFetchingChart = false;
+
+        function processChartQueue() {
+            if (chartQueue.length === 0) {
+                isFetchingChart = false;
+                return;
+            }
+            isFetchingChart = true;
+            const task = chartQueue.shift();
+
+            // Se o usuário já mudou de aba, cancela a busca deste gráfico e pula pro próximo
+            if (currentTab !== task.targetTab) {
+                processChartQueue();
+                return;
+            }
+
+            fetch(`${URL_BACKEND}/api/historico/${task.asset.ticker}?range=1mo&interval=1d`)
+                .then(res => {
+                    if (!res.ok) throw new Error("429 ou Falha");
+                    return res.json();
+                })
+                .then(histData => {
+                    if (histData.historico && currentTab === task.targetTab) {
+                        drawMiniChart(task.asset.id, histData.historico);
+                        // Atualiza a cotação se ela estava vazia
+                        const elPrice = document.getElementById(`price-${task.asset.id}`);
+                        if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
+                            const pAtual = histData.historico[histData.historico.length-1].close;
+                            const pAnt = histData.historico[histData.historico.length-2]?.close || pAtual;
+                            updateCardUI(task.asset.id, parseFloat(pAtual), parseFloat(pAnt), task.asset.prefix, task.asset.decimals);
+                        }
+                    }
+                })
+                .catch(e => console.log(`Gráfico omitido via proteção: ${task.asset.ticker}`))
+                .finally(() => {
+                    // O SEGREDO DO SUCESSO: Espera 1.2 segundos inteiros antes de pedir o próximo!
+                    setTimeout(processChartQueue, 1200);
+                });
+        }
+
+        function queueMiniChart(asset, targetTab) {
+            chartQueue.push({ asset, targetTab });
+            if (!isFetchingChart) processChartQueue();
+        }
+
+
         let dadosRankingBr = [];
         let dadosRankingUs = [];
         let ordemRanking = { br: { col: 'roe', dir: -1 }, us: { col: 'roe', dir: -1 } };
@@ -198,6 +246,10 @@
                 if(btnElement) btnElement.classList.add('active');
                 currentTab = tabName;
                 
+                // Limpa a fila de gráficos da aba anterior
+                chartQueue = [];
+                isFetchingChart = false;
+
                 const dashboard = document.getElementById('dashboard');
                 dashboard.innerHTML = ''; 
                 
@@ -210,7 +262,7 @@
                     dashboard.style.display = 'grid';
                 }
 
-                // 🛡️ A MÁGICA: O ESCUDO DO COFRE!
+                // 🛡️ O ESCUDO DO COFRE (Carrega os preços salvos)
                 let cofreData = {};
                 try {
                     const resCofre = await fetch('./indicadores.json?nocache=' + new Date().getTime());
@@ -277,7 +329,7 @@
                         for (const ticker in cofreData) {
                             const d = cofreData[ticker];
                             if(d.roe !== undefined && d.roe !== null) {
-                                const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, liquidezCorrente: d.liquidezCorrente, margem: d.margemLiquida, roe: d.roe };
+                                const item = { ticker: ticker, status: d.valuation_dcf?.status || 'N/A', dy: d.dy, pl: d.pl, pegRatio: d.pegRatio, pvp: d.pvp, evEbitda: d.evEbitda, vpa: d.vpa, dividaPL: d.dividaPL ? d.dividaPL / 100 : null, liquidezCorrente: d.margemLiquida, margem: d.margemLiquida, roe: d.roe };
                                 if (ticker.includes('.SA')) dadosRankingBr.push(item); else dadosRankingUs.push(item);
                             }
                         }
@@ -293,14 +345,12 @@
                     const todosAtivos = [...ativosBrasil, ...ativosIntl];
                     let cotacoes = {};
 
-                    // 1. O Escudo (Carrega do Cofre primeiro)
                     todosAtivos.forEach(a => {
                         if(cofreData[a.ticker] && cofreData[a.ticker].precoAtual) {
                             cotacoes[a.ticker] = { atual: cofreData[a.ticker].precoAtual, fechamentoAnterior: cofreData[a.ticker].fechamentoAnterior || cofreData[a.ticker].precoAtual };
                         }
                     });
 
-                    // 2. Tenta sobrescrever com o Vivo
                     const tickersString = todosAtivos.map(a => a.ticker).join(',');
                     try {
                         const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`);
@@ -334,12 +384,10 @@
                     const gridBaixas = document.createElement('div'); gridBaixas.className = 'dashboard'; gridBaixas.style.display = 'grid';
                     buildCards(maioresBaixas, gridBaixas); dashboard.appendChild(gridBaixas);
 
-                    // 🌊 O EFEITO CASCATA APLICADO AQUI 🌊
-                    [...maioresAltas, ...maioresBaixas].forEach((asset, index) => { 
+                    // 🚶‍♂️ COLOCA OS GRÁFICOS DE DESTAQUE NA FILA INDIANA
+                    [...maioresAltas, ...maioresBaixas].forEach(asset => { 
                         updateCardUI(asset.id, asset.atual, asset.anterior, asset.prefix, asset.decimals); 
-                        setTimeout(() => {
-                            if(currentTab === 'destaques') fetchMiniChart(asset, 'destaques'); 
-                        }, index * 250); // Delay de 250ms por gráfico
+                        queueMiniChart(asset, 'destaques');
                     });
                     
                     return;
@@ -349,14 +397,14 @@
                 const ativosDaAba = categorias[tabName];
                 buildCards(ativosDaAba, dashboard);
                 
-                // 🛡️ 1. O ESCUDO
+                // 🛡️ 1. O ESCUDO PREENCHE OS PREÇOS IMEDIATAMENTE
                 ativosDaAba.forEach(asset => {
                     if(cofreData[asset.ticker] && cofreData[asset.ticker].precoAtual) {
                         updateCardUI(asset.id, cofreData[asset.ticker].precoAtual, cofreData[asset.ticker].fechamentoAnterior || cofreData[asset.ticker].precoAtual, asset.prefix, asset.decimals);
                     }
                 });
 
-                // 🚀 2. O ATAQUE
+                // 🚀 2. TENTA A ATUALIZAÇÃO AO VIVO
                 const tickersString = ativosDaAba.map(a => a.ticker).join(',');
                 fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${tickersString}`)
                     .then(r => r.json())
@@ -368,14 +416,9 @@
                         });
                     }).catch(e => console.log("Servidor Vivo caiu. Os dados do Cofre continuam na tela."));
 
-                // 🌊 O EFEITO CASCATA APLICADO NAS ABAS GERAIS 🌊
-                ativosDaAba.forEach((asset, index) => {
-                    setTimeout(() => {
-                        // Verifica se o usuário não mudou de aba antes de baixar o gráfico
-                        if(currentTab === tabName) {
-                            fetchMiniChart(asset, tabName);
-                        }
-                    }, index * 250); // A MÁGICA ESTÁ AQUI: 250ms de pausa entre cada pedido!
+                // 🚶‍♂️ 3. COLOCA TODOS OS GRÁFICOS DA ABA NA FILA INDIANA 
+                ativosDaAba.forEach(asset => {
+                    queueMiniChart(asset, tabName);
                 });
 
             } catch (err) {
@@ -425,23 +468,6 @@
             if (dadosRankingUs.length > 0) telaCompleta += renderTabela('🇺🇸 Ranking Ações Internacionais', dadosRankingUs, 'us');
             if(telaCompleta === '') telaCompleta = '<div class="section-title">Nenhum dado fundamentalista encontrado.</div>';
             dashboard.innerHTML = telaCompleta;
-        }
-
-        async function fetchMiniChart(asset, targetTab) {
-            try {
-                const resHist = await fetch(`${URL_BACKEND}/api/historico/${asset.ticker}?range=1mo&interval=1d`);
-                const histData = await resHist.json();
-                if(histData.historico && currentTab === targetTab) { 
-                    drawMiniChart(asset.id, histData.historico);
-                    // O Gráfico também atualiza o preço de quebra, garantindo ainda mais resiliência!
-                    const elPrice = document.getElementById(`price-${asset.id}`);
-                    if (elPrice && elPrice.innerText === '---' && histData.historico.length >= 2) {
-                        const pAtual = histData.historico[histData.historico.length-1].close;
-                        const pAnt = histData.historico[histData.historico.length-2]?.close || pAtual;
-                        updateCardUI(asset.id, parseFloat(pAtual), parseFloat(pAnt), asset.prefix, asset.decimals);
-                    }
-                }
-            } catch (e) { }
         }
 
         function searchAsset() {
