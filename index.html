@@ -168,14 +168,13 @@
             let cotacoes = {};
             let br = [], criptoMoeda = [], euaEIndices = [];
 
-            // 1. Separa a Carga
             ativosList.forEach(a => {
                 if (a.ticker.includes('.SA')) br.push(a.ticker);
                 else if (['BRL=X', 'EURBRL=X', 'BTC-USD', 'ETH-USD', 'SOL-USD'].includes(a.ticker)) criptoMoeda.push(a.ticker);
                 else euaEIndices.push(a.ticker); 
             });
 
-            // 2. Resolve Criptos e Moedas (AwesomeAPI)
+            // 1. Criptos (AwesomeAPI)
             if (criptoMoeda.length > 0) {
                 try {
                     const mapaReq = { 'BRL=X': 'USD-BRL', 'EURBRL=X': 'EUR-BRL', 'BTC-USD': 'BTC-USD', 'ETH-USD': 'ETH-USD', 'SOL-USD': 'SOL-USD' };
@@ -190,24 +189,44 @@
                 } catch(e) { console.log("Erro AwesomeAPI"); }
             }
 
-            // 3. Resolve Ações Brasil (Brapi via nosso Proxy)
+            // 2. Ações Brasil (Brapi em Lotes de 10)
             if (br.length > 0) {
                 try {
-                    const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${br.join(',')}`);
-                    const data = await res.json();
-                    if(data.results) {
-                        data.results.forEach(item => { 
-                            // 🔥 A CORREÇÃO: A Brapi devolve sem o .SA, nós colocamos de volta para o painel reconhecer!
-                            const simboloCorrigido = item.symbol.includes('.SA') ? item.symbol : `${item.symbol}.SA`;
-                            cotacoes[simboloCorrigido] = { atual: item.regularMarketPrice, fechamentoAnterior: item.regularMarketPreviousClose }; 
-                        });
+                    for (let i = 0; i < br.length; i += 10) {
+                        const lote = br.slice(i, i + 10);
+                        const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${lote.join(',')}`);
+                        const data = await res.json();
+                        if(data.results) {
+                            data.results.forEach(item => { 
+                                const simboloCorrigido = item.symbol.includes('.SA') ? item.symbol : `${item.symbol}.SA`;
+                                cotacoes[simboloCorrigido] = { atual: item.regularMarketPrice, fechamentoAnterior: item.regularMarketPreviousClose }; 
+                            });
+                        }
                     }
                 } catch(e) { console.log("Erro Brapi Proxy"); }
             }
 
-            // 4. Resolve EUA, Índices e Faltantes (O Nosso Servidor Blindado assume!)
+            // 3. Ações EUA (Finnhub)
+            let eua = euaEIndices.filter(t => !t.startsWith('^') && t !== '000001.SS' && t !== 'GC=F' && t !== 'BZ=F');
+            if (eua.length > 0) {
+                try {
+                    const res = await fetch(`${URL_BACKEND}/api/finnhub?tickers=${eua.join(',')}`);
+                    const data = await res.json();
+                    if(Array.isArray(data)) {
+                        data.forEach(item => { 
+                            const fechamentoCofre = cofreDataGlobal[item.symbol]?.fechamentoAnterior;
+                            cotacoes[item.symbol] = { atual: item.price, fechamentoAnterior: item.previousClose || fechamentoCofre || item.price }; 
+                        });
+                    }
+                } catch(e) { console.log("Erro Finnhub Proxy"); }
+            }
+
+            // 4. Índices e Faltantes (O Servidor Render/Yahoo assume o que sobrou)
+            let indices = euaEIndices.filter(t => t.startsWith('^') || t === '000001.SS' || t === 'GC=F' || t === 'BZ=F');
             let faltantesBrasil = br.filter(ticker => !cotacoes[ticker]);
-            let cargaFinalServidor = [...euaEIndices, ...faltantesBrasil];
+            let faltantesEua = eua.filter(ticker => !cotacoes[ticker]);
+            
+            let cargaFinalServidor = [...indices, ...faltantesBrasil, ...faltantesEua];
 
             if (cargaFinalServidor.length > 0) {
                 try {
