@@ -186,24 +186,27 @@
                         const chave = mapaRes[t];
                         if(data[chave]) cotacoes[t] = { atual: parseFloat(data[chave].bid), fechamentoAnterior: parseFloat(data[chave].bid) }; 
                     });
-                } catch(e) { console.log("Erro AwesomeAPI"); }
+                } catch(e) { console.error("Erro AwesomeAPI:", e); }
             }
 
             // 2. Ações Brasil (Brapi em Lotes de 10)
             if (br.length > 0) {
                 try {
                     for (let i = 0; i < br.length; i += 10) {
-                        const lote = br.slice(i, i + 10);
-                        const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${lote.join(',')}`);
+                        // CORTANDO O .SA PARA A BRAPI NÃO RECLAMAR
+                        const loteLimpo = br.slice(i, i + 10).map(t => t.replace('.SA', ''));
+                        
+                        const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${loteLimpo.join(',')}`);
                         const data = await res.json();
                         if(data.results) {
                             data.results.forEach(item => { 
+                                // DEVOLVENDO O .SA PARA O PAINEL RECONHECER
                                 const simboloCorrigido = item.symbol.includes('.SA') ? item.symbol : `${item.symbol}.SA`;
                                 cotacoes[simboloCorrigido] = { atual: item.regularMarketPrice, fechamentoAnterior: item.regularMarketPreviousClose }; 
                             });
                         }
                     }
-                } catch(e) { console.log("Erro Brapi Proxy"); }
+                } catch(e) { console.error("Erro Brapi Proxy:", e); }
             }
 
             // 3. Ações EUA (Finnhub)
@@ -218,7 +221,7 @@
                             cotacoes[item.symbol] = { atual: item.price, fechamentoAnterior: item.previousClose || fechamentoCofre || item.price }; 
                         });
                     }
-                } catch(e) { console.log("Erro Finnhub Proxy"); }
+                } catch(e) { console.error("Erro Finnhub Proxy:", e); }
             }
 
             // 4. Índices e Faltantes (O Servidor Render/Yahoo assume o que sobrou)
@@ -235,7 +238,7 @@
                         const data = await res.json();
                         Object.assign(cotacoes, data);
                     }
-                } catch(e) { console.log("Erro Yahoo Proxy"); }
+                } catch(e) { console.error("Erro Yahoo Proxy:", e); }
             }
 
             return cotacoes;
