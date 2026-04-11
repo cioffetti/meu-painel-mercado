@@ -164,7 +164,7 @@
         let currentAssetObj = null; 
         let cofreDataGlobal = {}; // Variável Global para o Modal enxergar o histórico 
 
-      async function getPrecosAoVivoDescentralizado(ativosList) {
+ async function getPrecosAoVivoDescentralizado(ativosList) {
             let cotacoes = {};
             let br = [], criptoMoeda = [], euaEIndices = [];
 
@@ -172,7 +172,7 @@
             ativosList.forEach(a => {
                 if (a.ticker.includes('.SA')) br.push(a.ticker);
                 else if (['BRL=X', 'EURBRL=X', 'BTC-USD', 'ETH-USD', 'SOL-USD'].includes(a.ticker)) criptoMoeda.push(a.ticker);
-                else euaEIndices.push(a.ticker); // Todo o resto (EUA e Índices Globais) vai pra essa fila
+                else euaEIndices.push(a.ticker); 
             });
 
             // 2. Resolve Criptos e Moedas (AwesomeAPI)
@@ -196,14 +196,18 @@
                     const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${br.join(',')}`);
                     const data = await res.json();
                     if(data.results) {
-                        data.results.forEach(item => { cotacoes[item.symbol] = { atual: item.regularMarketPrice, fechamentoAnterior: item.regularMarketPreviousClose }; });
+                        data.results.forEach(item => { 
+                            // 🔥 A CORREÇÃO: A Brapi devolve sem o .SA, nós colocamos de volta para o painel reconhecer!
+                            const simboloCorrigido = item.symbol.includes('.SA') ? item.symbol : `${item.symbol}.SA`;
+                            cotacoes[simboloCorrigido] = { atual: item.regularMarketPrice, fechamentoAnterior: item.regularMarketPreviousClose }; 
+                        });
                     }
                 } catch(e) { console.log("Erro Brapi Proxy"); }
             }
 
             // 4. Resolve EUA, Índices e Faltantes (O Nosso Servidor Blindado assume!)
             let faltantesBrasil = br.filter(ticker => !cotacoes[ticker]);
-            let cargaFinalServidor = [...euaEIndices, ...faltantesBrasil]; // Junta EUA + O que a Brapi não achou
+            let cargaFinalServidor = [...euaEIndices, ...faltantesBrasil];
 
             if (cargaFinalServidor.length > 0) {
                 try {
