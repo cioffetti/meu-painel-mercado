@@ -164,17 +164,18 @@
         let currentAssetObj = null; 
         let cofreDataGlobal = {}; // Variável Global para o Modal enxergar o histórico 
 
-        async function getPrecosAoVivoDescentralizado(ativosList) {
+      async function getPrecosAoVivoDescentralizado(ativosList) {
             let cotacoes = {};
-            let br = [], us = [], criptoMoeda = [], indices = [];
+            let br = [], criptoMoeda = [], euaEIndices = [];
 
+            // 1. Separa a Carga
             ativosList.forEach(a => {
                 if (a.ticker.includes('.SA')) br.push(a.ticker);
                 else if (['BRL=X', 'EURBRL=X', 'BTC-USD', 'ETH-USD', 'SOL-USD'].includes(a.ticker)) criptoMoeda.push(a.ticker);
-                else if (a.ticker.startsWith('^') || a.ticker === '000001.SS' || a.ticker === 'GC=F' || a.ticker === 'BZ=F') indices.push(a.ticker);
-                else us.push(a.ticker);
+                else euaEIndices.push(a.ticker); // Todo o resto (EUA e Índices Globais) vai pra essa fila
             });
 
+            // 2. Resolve Criptos e Moedas (AwesomeAPI)
             if (criptoMoeda.length > 0) {
                 try {
                     const mapaReq = { 'BRL=X': 'USD-BRL', 'EURBRL=X': 'EUR-BRL', 'BTC-USD': 'BTC-USD', 'ETH-USD': 'ETH-USD', 'SOL-USD': 'SOL-USD' };
@@ -189,6 +190,7 @@
                 } catch(e) { console.log("Erro AwesomeAPI"); }
             }
 
+            // 3. Resolve Ações Brasil (Brapi via nosso Proxy)
             if (br.length > 0) {
                 try {
                     const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${br.join(',')}`);
@@ -199,33 +201,20 @@
                 } catch(e) { console.log("Erro Brapi Proxy"); }
             }
 
-            if (us.length > 0) {
-                try {
-                    const res = await fetch(`${URL_BACKEND}/api/fmp?tickers=${us.join(',')}`);
-                    const data = await res.json();
-                    if(Array.isArray(data)) {
-                        data.forEach(item => { 
-                            // 🛡️ O ESCUDO: Pega o preço de ontem do cofre, já que o quote-short não traz!
-                            const fechamentoCofre = cofreDataGlobal[item.symbol]?.fechamentoAnterior;
-                            cotacoes[item.symbol] = { 
-                                atual: item.price, 
-                                fechamentoAnterior: fechamentoCofre || item.price 
-                            }; 
-                        });
-                    }
-                } catch(e) { console.log("Erro FMP Proxy"); }
-            }
+            // 4. Resolve EUA, Índices e Faltantes (O Nosso Servidor Blindado assume!)
+            let faltantesBrasil = br.filter(ticker => !cotacoes[ticker]);
+            let cargaFinalServidor = [...euaEIndices, ...faltantesBrasil]; // Junta EUA + O que a Brapi não achou
 
-            let faltantes = ativosList.filter(a => !cotacoes[a.ticker]).map(a => a.ticker);
-            if (faltantes.length > 0) {
+            if (cargaFinalServidor.length > 0) {
                 try {
-                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${faltantes.join(',')}`);
+                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${cargaFinalServidor.join(',')}`);
                     if(res.ok) {
                         const data = await res.json();
                         Object.assign(cotacoes, data);
                     }
                 } catch(e) { console.log("Erro Yahoo Proxy"); }
             }
+
             return cotacoes;
         }
 
