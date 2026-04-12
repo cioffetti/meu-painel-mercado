@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Financeiro Pro v3.1 - Diretoria</title>
+    <title>Terminal Financeiro Pro v3.1</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -12,7 +12,6 @@
         .top-bar { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
         h1 { margin: 0; font-size: 2rem; }
         
-        /* PAINEL DA DIRETORIA */
         .admin-controls { display: flex; gap: 10px; align-items: center; }
         .btn-sync { padding: 10px 20px; border-radius: 8px; border: 1px solid #4CAF50; background: rgba(76, 175, 80, 0.1); color: #4CAF50; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px;}
         .btn-sync:hover { background: #4CAF50; color: #fff; }
@@ -68,13 +67,14 @@
         .margem-positiva { color: #4CAF50; font-weight: bold; }
         .margem-negativa { color: #c93e36; font-weight: bold; }
 
-        .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
         .btn-ia { padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; flex: 1; min-width: 250px;}
         .btn-ia:disabled { background: #333 !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
         .btn-ia:hover { transform: translateY(-2px); }
         .btn-tech { background: linear-gradient(45deg, #9C27B0, #3f51b5); box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); }
         .btn-tech:hover { box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5); }
-        
+        .btn-ri { background: linear-gradient(45deg, #0288D1, #009688); box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3); }
+        .btn-ri:hover { box-shadow: 0 6px 20px rgba(2, 136, 209, 0.5); }
         .btn-modelos { background: linear-gradient(45deg, #FF9800, #E91E63); box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3); }
         .btn-modelos:hover { box-shadow: 0 6px 20px rgba(255, 152, 0, 0.5); }
         .btn-balanco { background: linear-gradient(45deg, #4CAF50, #009688); box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); }
@@ -95,7 +95,7 @@
         </div>
         
         <div class="admin-controls">
-            <button class="btn-sync" onclick="fluxoComandoDiretor()">🔄 Sincronizar Ativos</button>
+            <button class="btn-sync" onclick="sincronizarAtivos()">🔄 Sincronizar Ativos</button>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="Buscar ativo (Ex: PETR4, AAPL)" onkeypress="if(event.key === 'Enter') searchAsset()">
                 <button onclick="searchAsset()">Buscar</button>
@@ -134,11 +134,15 @@
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
                 <div class="btn-ia-container">
                     <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
+                    <button id="btn-ia-ri" class="btn-ia btn-ri" onclick="chamarAnaliseRI()">📰 Radar Corporativo & RI</button>
+                </div>
+                <div class="btn-ia-container" style="margin-top: 15px;">
                     <button id="btn-modelos" class="btn-ia btn-modelos" onclick="chamarModelosValuation()">⚖️ Graham, Bazin & F. Mágica</button>
                     <button id="btn-balanco" class="btn-ia btn-balanco" onclick="chamarDadosBalanco()">🏦 Balanço & Notícias</button>
                 </div>
-                
+
                 <div id="tech-result" style="display: none; text-align: left; margin-top: 20px;"></div>
+                <div id="ri-result" style="display: none; text-align: left; margin-top: 20px;"></div>
                 <div id="modelos-result" style="display: none; text-align: left; margin-top: 20px;"></div>
                 <div id="balanco-result" style="display: none; text-align: left; margin-top: 20px;"></div>
             </div>
@@ -184,74 +188,75 @@
         let currentAssetObj = null; 
         let cofreDataGlobal = {};
 
-        async function fluxoComandoDiretor() {
+        // 🔄 NOVO FLUXO DE SINCRONIZAÇÃO (Sem telas extras)
+        async function sincronizarAtivos() {
+            if (!confirm("Deseja sincronizar todos os ativos em segundo plano agora?")) return;
+            
             const btn = document.querySelector('.btn-sync');
-            const confirmacao1 = confirm("Deseja atualizar os ativos desta tela?");
-            if (confirmacao1) {
-                const confirmacao2 = confirm("Gostaria de além de atualizar as notícias, também os indicadores para cálculo de valuation, etc?");
-                if (confirmacao2) {
-                    const confirmacaoFinal = confirm("TEM CERTEZA QUE DESEJA PROSSEGUIR? (Isso fará consultas ao Yahoo e Gemini Paid Tier)");
-                    if (confirmacaoFinal) {
-                        btn.innerHTML = "⏳ Processando Completo...";
-                        executarSincronizacaoBackend(true);
-                    }
-                } else {
-                    const confirmacaoNoticias = confirm("Deseja prosseguir apenas com a atualização de notícias?");
-                    if (confirmacaoNoticias) {
-                        btn.innerHTML = "⏳ Processando Notícias...";
-                        executarSincronizacaoBackend(false);
-                    }
-                }
-            }
-        }
-
-        async function executarSincronizacaoBackend(completo) {
+            const textoOriginal = btn.innerHTML;
+            btn.innerHTML = "⏳ Sincronizando...";
             document.getElementById('label-fonte-status').innerText = "TRATOR EM CURSO... 🚜";
+            
             try {
-                const modo = completo ? 'full' : 'news';
-                const response = await fetch(`${URL_BACKEND}/api/sincronizar?modo=${modo}`);
+                const response = await fetch(`${URL_BACKEND}/api/sincronizar?modo=full`);
                 if (response.ok) {
-                    alert(`Atualizado com sucesso! Fonte: ${completo ? 'Yahoo + API' : 'API'}`);
+                    alert("Ativos sincronizados com sucesso!");
                     location.reload(); 
                 } else {
-                    throw new Error("Erro na API.");
+                    throw new Error("Erro na API de sincronização.");
                 }
             } catch (err) {
-                alert("Não foi possível atualizar por limitações do sistema.");
-                document.querySelector('.btn-sync').innerHTML = "🔄 Sincronizar Ativos";
+                alert("Falha na sincronização. Verifique se o servidor backend está rodando.");
+                btn.innerHTML = textoOriginal;
                 document.getElementById('label-fonte-status').innerText = "Cofre (Offline)";
             }
         }
 
+        // 📊 NOVO MOTOR DE COTAÇÕES (Cascata de Fallbacks Inteligente)
         async function getPrecosAoVivoDescentralizado(ativosList) {
             let cotacoes = {};
-            let br = [], criptoMoeda = [], euaEIndices = [];
+            let br = [], criptoMoeda = [], euaEIndices = [], indicesYahoo = [];
+            let yahooFallback = []; // Guarda quem falhou para tentar no final
 
+            // 1. CARREGA O COFRE PRIMEIRO (Garante que nunca fica vazio)
             ativosList.forEach(a => {
+                if(cofreDataGlobal[a.ticker] && cofreDataGlobal[a.ticker].precoAtual) {
+                    cotacoes[a.ticker] = {
+                        atual: cofreDataGlobal[a.ticker].precoAtual,
+                        fechamentoAnterior: cofreDataGlobal[a.ticker].fechamentoAnterior || cofreDataGlobal[a.ticker].precoAtual
+                    };
+                }
+                
                 if (a.ticker.includes('.SA')) br.push(a.ticker);
                 else if (['BRL=X', 'EURBRL=X', 'BTC-USD', 'ETH-USD', 'SOL-USD'].includes(a.ticker)) criptoMoeda.push(a.ticker);
+                else if (a.ticker.startsWith('^') || ['000001.SS', 'GC=F', 'BZ=F'].includes(a.ticker)) indicesYahoo.push(a.ticker);
                 else euaEIndices.push(a.ticker); 
             });
 
+            // 2. AWESOME API (Câmbio e Criptos - Grátis e Direto)
             if (criptoMoeda.length > 0) {
                 try {
                     const mapaReq = { 'BRL=X': 'USD-BRL', 'EURBRL=X': 'EUR-BRL', 'BTC-USD': 'BTC-USD', 'ETH-USD': 'ETH-USD', 'SOL-USD': 'SOL-USD' };
                     const mapaRes = { 'BRL=X': 'USDBRL', 'EURBRL=X': 'EURBRL', 'BTC-USD': 'BTCUSD', 'ETH-USD': 'ETHUSD', 'SOL-USD': 'SOLUSD' };
                     const pares = criptoMoeda.map(t => mapaReq[t]).join(',');
                     const res = await fetch(`https://economia.awesomeapi.com.br/json/last/${pares}`);
+                    if (!res.ok) throw new Error("AwesomeAPI falhou");
                     const data = await res.json();
                     criptoMoeda.forEach(t => {
                         const chave = mapaRes[t];
                         if(data[chave]) cotacoes[t] = { atual: parseFloat(data[chave].bid), fechamentoAnterior: parseFloat(data[chave].bid) }; 
                     });
-                } catch(e) { console.error("Erro AwesomeAPI:", e); }
+                } catch(e) { yahooFallback.push(...criptoMoeda); }
             }
 
+            // 3. BRAPI (Ações BR - Lotes)
             if (br.length > 0) {
                 try {
                     for (let i = 0; i < br.length; i += 10) {
-                        const loteLimpo = br.slice(i, i + 10).map(t => t.replace('.SA', ''));
+                        const lote = br.slice(i, i + 10);
+                        const loteLimpo = lote.map(t => t.replace('.SA', ''));
                         const res = await fetch(`${URL_BACKEND}/api/brapi?tickers=${loteLimpo.join(',')}`);
+                        if (!res.ok) throw new Error("Brapi falhou");
                         const data = await res.json();
                         if(data.results) {
                             data.results.forEach(item => { 
@@ -259,38 +264,42 @@
                                 cotacoes[simboloCorrigido] = { atual: item.regularMarketPrice, fechamentoAnterior: item.regularMarketPreviousClose }; 
                             });
                         }
+                        // Verifica falhas neste lote
+                        lote.forEach(t => { if(!cotacoes[t] || cotacoes[t].atual === undefined) yahooFallback.push(t); });
                     }
-                } catch(e) { console.error("Erro Brapi Proxy:", e); }
+                } catch(e) { yahooFallback.push(...br); }
             }
 
-            let eua = euaEIndices.filter(t => !t.startsWith('^') && t !== '000001.SS' && t !== 'GC=F' && t !== 'BZ=F');
-            if (eua.length > 0) {
+            // 4. FINNHUB (Ações EUA)
+            if (euaEIndices.length > 0) {
                 try {
-                    const res = await fetch(`${URL_BACKEND}/api/finnhub?tickers=${eua.join(',')}`);
+                    const res = await fetch(`${URL_BACKEND}/api/finnhub?tickers=${euaEIndices.join(',')}`);
+                    if (!res.ok) throw new Error("Finnhub falhou");
                     const data = await res.json();
                     if(Array.isArray(data)) {
                         data.forEach(item => { 
-                            const fechamentoCofre = cofreDataGlobal[item.symbol]?.fechamentoAnterior;
-                            cotacoes[item.symbol] = { atual: item.price, fechamentoAnterior: item.previousClose || fechamentoCofre || item.price }; 
+                            if(item.price && item.price > 0) {
+                                cotacoes[item.symbol] = { atual: item.price, fechamentoAnterior: item.previousClose || item.price }; 
+                            } else {
+                                yahooFallback.push(item.symbol);
+                            }
                         });
                     }
-                } catch(e) { console.error("Erro Finnhub Proxy:", e); }
+                } catch(e) { yahooFallback.push(...euaEIndices); }
             }
 
-            let indices = euaEIndices.filter(t => t.startsWith('^') || t === '000001.SS' || t === 'GC=F' || t === 'BZ=F');
-            let faltantesBrasil = br.filter(ticker => !cotacoes[ticker]);
-            let faltantesEua = eua.filter(ticker => !cotacoes[ticker]);
-            
-            let cargaFinalServidor = [...indices, ...faltantesBrasil, ...faltantesEua];
+            // 5. YAHOO FINANCE (Fallback e Índices)
+            yahooFallback.push(...indicesYahoo);
+            yahooFallback = [...new Set(yahooFallback)]; // Remove duplicadas
 
-            if (cargaFinalServidor.length > 0) {
+            if (yahooFallback.length > 0) {
                 try {
-                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${cargaFinalServidor.join(',')}`);
+                    const res = await fetch(`${URL_BACKEND}/api/cotacoes-lote?tickers=${yahooFallback.join(',')}`);
                     if(res.ok) {
                         const data = await res.json();
                         Object.assign(cotacoes, data);
                     }
-                } catch(e) { console.error("Erro Yahoo Proxy:", e); }
+                } catch(e) { console.warn("Fallback final do Yahoo também falhou. Mantendo dados do Cofre."); }
             }
 
             return cotacoes;
@@ -378,7 +387,7 @@
                             };
                             if (listaBr.length > 0) telaCompleta += renderTabelaOportunidades('🇧🇷 Oportunidades Brasil', listaBr);
                             if (listaUs.length > 0) telaCompleta += renderTabelaOportunidades('🇺🇸 Oportunidades EUA', listaUs);
-                            dashboard.innerHTML = telaCompleta || '<div class="section-title">Dados indisponíveis.</div>';
+                            dashboard.innerHTML = telaCompleta || '<div class="section-title">Dados indisponíveis no cofre.</div>';
                         } else {
                             dadosRankingBr = listaBr; dadosRankingUs = listaUs;
                             ordenarDados('br', 'roe', true); ordenarDados('us', 'roe', true); 
@@ -528,11 +537,11 @@
         }
 
         // =========================================================================
-        // 🚀 LÓGICA DOS BOTÕES DE INTELIGÊNCIA NO MODAL
+        // 🚀 BOTÕES DE INTELIGÊNCIA NO MODAL (Ajustados para não limpar a tela)
         // =========================================================================
 
         function ocultarTodosOsResultados() {
-            ['tech-result', 'modelos-result', 'balanco-result'].forEach(id => {
+            ['tech-result', 'ri-result', 'modelos-result', 'balanco-result'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) { el.style.display = 'none'; el.innerHTML = ''; }
             });
@@ -563,8 +572,46 @@
                     </div>
                     <div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Análise concluída.'}"</div>
                 `;
-            } catch (e) { alert("Erro ao carregar análise técnica da API."); }
+            } catch (e) { 
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<div style="padding: 20px; color: #FFC107; text-align: center;">⚠️ Erro ao carregar análise técnica. Verifique se o servidor está online.</div>';
+            }
             finally { btn.innerHTML = textoOriginal; }
+        }
+
+        function chamarAnaliseRI() {
+            ocultarTodosOsResultados();
+            const resultDiv = document.getElementById('ri-result');
+            const dataAtivo = cofreDataGlobal[currentAssetObj.ticker];
+            
+            if (!dataAtivo || !dataAtivo.radar_ri) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<div style="padding: 20px; color: #FFC107; text-align: center; background: rgba(255,193,7,0.1); border-radius: 8px; border: 1px solid #FFC107;">⚠️ O Robô ainda não gerou o Radar de RI para este ativo no Cofre.</div>';
+                return;
+            }
+
+            const ri = dataAtivo.radar_ri;
+            let html = `
+                <div style="color: #0288D1; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo Sênior</div>
+                <div style="font-size: 0.75rem; color: #8e9196; text-align: center; margin-bottom: 20px;">Atualizado: ${ri.data_analise || 'Recente'}</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">📊 Leitura do Balanço</h4>
+                        <strong style="color: #4CAF50; font-size: 0.9rem;">🟢 Pontos Fortes:</strong>
+                        <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">${(ri.balanco?.fortes || []).map(i => `<li>${i}</li>`).join('')}</ul>
+                        <strong style="color: #FFC107; font-size: 0.9rem;">🟡 Pontos de Atenção:</strong>
+                        <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">${(ri.balanco?.atencao || []).map(i => `<li>${i}</li>`).join('')}</ul>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">🌐 Sentimento de Mercado</h4>
+                        <strong style="color: #4CAF50; font-size: 0.9rem;">📈 Fatos Positivos:</strong>
+                        <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">${(ri.noticias?.positivas || []).map(i => `<li>${i}</li>`).join('')}</ul>
+                        <strong style="color: #F44336; font-size: 0.9rem;">📉 Fatos Negativos:</strong>
+                        <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">${(ri.noticias?.negativas || []).map(i => `<li>${i}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            `;
+            resultDiv.style.display = 'block'; resultDiv.innerHTML = html;
         }
 
         // NOVO BOTÃO: Graham, Bazin e Fórmula Mágica
@@ -573,10 +620,15 @@
             const resultDiv = document.getElementById('modelos-result');
             const dataAtivo = cofreDataGlobal[currentAssetObj.ticker] || {};
 
-            // Mapeando as chaves conforme solicitado e evitando quebra se vier nulo
-            const graham = dataAtivo.graham || dataAtivo.metodo_graham || {};
-            const bazin = dataAtivo.bazin || dataAtivo.metodo_bazin || {};
-            const magica = dataAtivo.formula_magica || dataAtivo.magica || {};
+            const graham = dataAtivo.graham || dataAtivo.metodo_graham;
+            const bazin = dataAtivo.bazin || dataAtivo.metodo_bazin;
+            const magica = dataAtivo.formula_magica || dataAtivo.magica;
+
+            if (!graham && !bazin && !magica) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<div style="padding: 20px; color: #FFC107; text-align: center; background: rgba(255,193,7,0.1); border-radius: 8px; border: 1px solid #FFC107;">⚠️ Modelos de valuation não calculados no cofre para este ativo.</div>';
+                return;
+            }
 
             const fmtNum = (num) => (num !== null && num !== undefined && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
             const prefix = currentAssetObj.prefix;
@@ -587,23 +639,23 @@
                     
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <div style="color: #fff; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Benjamin Graham</div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Justo:</span> <span style="color: #4CAF50; font-weight: bold;">${graham.preco_justo ? prefix + ' ' + fmtNum(graham.preco_justo) : '-'}</span></div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${graham.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${graham.margem ? fmtNum(graham.margem) + '%' : '-'}</span></div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">VPA: ${fmtNum(graham.vpa)} | LPA: ${fmtNum(graham.lpa)}</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Justo:</span> <span style="color: #4CAF50; font-weight: bold;">${graham?.preco_justo ? prefix + ' ' + fmtNum(graham.preco_justo) : '-'}</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${graham?.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${graham?.margem ? fmtNum(graham.margem) + '%' : '-'}</span></div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">VPA: ${fmtNum(graham?.vpa)} | LPA: ${fmtNum(graham?.lpa)}</div>
                     </div>
 
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <div style="color: #fff; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Décio Bazin</div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Teto:</span> <span style="color: #2196F3; font-weight: bold;">${bazin.preco_teto ? prefix + ' ' + fmtNum(bazin.preco_teto) : '-'}</span></div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${bazin.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${bazin.margem ? fmtNum(bazin.margem) + '%' : '-'}</span></div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">DPA: ${fmtNum(bazin.dpa_projetado)} | Yield: ${bazin.yield_projetado ? fmtNum(bazin.yield_projetado) + '%' : '6%'}</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Teto:</span> <span style="color: #2196F3; font-weight: bold;">${bazin?.preco_teto ? prefix + ' ' + fmtNum(bazin.preco_teto) : '-'}</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${bazin?.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${bazin?.margem ? fmtNum(bazin.margem) + '%' : '-'}</span></div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">DPA: ${fmtNum(bazin?.dpa_projetado)} | Yield: ${bazin?.yield_projetado ? fmtNum(bazin.yield_projetado) + '%' : '6%'}</div>
                     </div>
 
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <div style="color: #fff; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Fórmula Mágica</div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Ranking:</span> <span style="color: #E91E63; font-weight: bold;">${magica.posicao_ranking ? '#' + magica.posicao_ranking : '-'}</span></div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Status:</span> <span style="color: #fff; font-weight: bold;">${magica.status || '-'}</span></div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">EV/EBIT: ${fmtNum(magica.ev_ebit)} | ROIC: ${magica.roic ? fmtNum(magica.roic) + '%' : '-'}</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Ranking:</span> <span style="color: #E91E63; font-weight: bold;">${magica?.posicao_ranking ? '#' + magica.posicao_ranking : '-'}</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Status:</span> <span style="color: #fff; font-weight: bold;">${magica?.status || '-'}</span></div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">EV/EBIT: ${fmtNum(magica?.ev_ebit)} | ROIC: ${magica?.roic ? fmtNum(magica.roic) + '%' : '-'}</div>
                     </div>
 
                 </div>
@@ -618,7 +670,13 @@
             const dataAtivo = cofreDataGlobal[currentAssetObj.ticker] || {};
 
             const balanco = dataAtivo.balanco || {};
-            const noticias = dataAtivo.noticias || [];
+            const noticias = dataAtivo.noticias || dataAtivo.news || [];
+
+            if (Object.keys(balanco).length === 0 && noticias.length === 0) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = '<div style="padding: 20px; color: #FFC107; text-align: center; background: rgba(255,193,7,0.1); border-radius: 8px; border: 1px solid #FFC107;">⚠️ Sem dados de Balanço ou Notícias para este ativo no cofre.</div>';
+                return;
+            }
 
             let noticiasHtml = '';
             if (Array.isArray(noticias) && noticias.length > 0) {
@@ -628,8 +686,10 @@
                     return `<li style="margin-bottom: 8px; border-bottom: 1px dotted #444; padding-bottom: 5px;">${dataNoticia}${titulo}</li>`;
                 }).join('');
             } else {
-                noticiasHtml = '<li>Nenhuma notícia mapeada no cofre para este ativo.</li>';
+                noticiasHtml = '<li>Nenhuma notícia recente no cofre.</li>';
             }
+
+            const balancoResumo = typeof balanco === 'string' ? balanco : (balanco.resumo || balanco.analise || 'Resumo da saúde financeira não detalhado no cofre.');
 
             let html = `
                 <div style="color: #4CAF50; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🏦 Balanço & Notícias (Resumo do Cofre)</div>
@@ -637,20 +697,22 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">📊 Último Balanço</h4>
-                        <p style="color: #ccc; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px;">${balanco.resumo || 'Resumo da saúde financeira não detalhado no cofre.'}</p>
+                        <p style="color: #ccc; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; max-height: 200px; overflow-y: auto;">${balancoResumo}</p>
                         
                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; border-top: 1px solid #444; padding-top: 10px;">
-                            <span style="color: #aaa;">Receita Liq: <strong style="color:#fff">${balanco.receita_liquida || '-'}</strong></span>
-                            <span style="color: #aaa;">Lucro Liq: <strong style="color:#fff">${balanco.lucro_liquido || '-'}</strong></span>
-                            <span style="color: #aaa;">Caixa: <strong style="color:#fff">${balanco.caixa || '-'}</strong></span>
+                            <span style="color: #aaa;">Receita Liq: <strong style="color:#fff">${balanco.receita_liquida || balanco.receita || '-'}</strong></span>
+                            <span style="color: #aaa;">Lucro Liq: <strong style="color:#fff">${balanco.lucro_liquido || balanco.lucro || '-'}</strong></span>
+                            <span style="color: #aaa;">Caixa: <strong style="color:#fff">${balanco.caixa || balanco.disponibilidades || '-'}</strong></span>
                         </div>
                     </div>
 
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">📰 Principais Manchetes</h4>
-                        <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">
-                            ${noticiasHtml}
-                        </ul>
+                        <div style="max-height: 250px; overflow-y: auto; padding-right: 10px;">
+                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">
+                                ${noticiasHtml}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             `;
@@ -660,10 +722,10 @@
         // =========================================================================
         // 🚀 O CORAÇÃO DO MODAL ORIGINAL RESTAURADO (COM A DCF E SWOT)
         // =========================================================================
-        async function fetchIndicadores(ticker) {
+        function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container');
             const data = cofreDataGlobal[ticker];
-            if (!data) { container.innerHTML = '<div class="loading-ind">Indicadores não arquivados no cofre.</div>'; return; }
+            if (!data) { container.innerHTML = '<div class="loading-ind" style="padding:20px; text-align:center;">Nenhum dado fundamentalista encontrado no cofre para este ativo.</div>'; return; }
 
             const fmtNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
             const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
@@ -697,7 +759,11 @@
                         <div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div>
                     </div>
                 </div>
-                
+            `;
+
+            // SE EXISTIR A ANÁLISE SÊNIOR NO COFRE (SWOT)
+            if (Object.keys(ai).length > 0) {
+                htmlContent += `
                 <div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                         <div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Sênior & Inteligência Setorial</div>
@@ -748,8 +814,10 @@
                         </div>
                     </div>
                 </div>
-            `;
+                `;
+            }
 
+            // SE EXISTIR A VALUATION DCF NO COFRE
             if (dcf) {
                 let statusColor = '#FFC107'; 
                 if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50'; 
@@ -816,7 +884,7 @@
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
             
-            ocultarTodosOsResultados(); // Limpa as abas de botões antes de carregar o novo
+            ocultarTodosOsResultados(); // Limpa as abas de botões antes de carregar o novo ativo
             
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
             fetchIndicadores(asset.ticker);
@@ -824,6 +892,9 @@
 
         function closeModal() { document.getElementById('modal').style.display = 'none'; }
 
+        // =========================================================================
+        // 🚀 O NOVO MOTOR DO MODAL DE GRÁFICO
+        // =========================================================================
         function loadDetailedData(range, btnElement) {
             document.querySelectorAll('.time-btn').forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
@@ -851,7 +922,10 @@
             
             miniCharts[id] = new Chart(ctx, { 
                 type: 'line', 
-                data: { labels: historicalData.map(i => i.time), datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] }, 
+                data: { 
+                    labels: historicalData.map(i => i.time), 
+                    datasets: [{ data: historicalData.map(i => i.close), borderColor: color, borderWidth: 2, pointRadius: 0, fill: true, backgroundColor: gradient }] 
+                }, 
                 options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } 
             });
         }
