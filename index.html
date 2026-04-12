@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Financeiro Pro v3.1</title>
+    <title>Terminal Financeiro Pro v3.1 - Diretoria</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root { --bg-color: #0b0b0c; --card-bg: #1e1e1f; --text-main: #ffffff; --text-muted: #8e9196; --up-color: #1a7f37; --down-color: #c93e36; --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -68,15 +68,13 @@
         .margem-positiva { color: #4CAF50; font-weight: bold; }
         .margem-negativa { color: #c93e36; font-weight: bold; }
 
-        .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 10px; }
-        .btn-ia { padding: 12px 25px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; width: 100%; max-width: 320px;}
+        .btn-ia-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .btn-ia { padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer; transition: 0.3s; border: none; color: #fff; flex: 1; min-width: 250px;}
         .btn-ia:disabled { background: #333 !important; cursor: not-allowed; box-shadow: none !important; transform: none !important; }
         .btn-ia:hover { transform: translateY(-2px); }
         .btn-tech { background: linear-gradient(45deg, #9C27B0, #3f51b5); box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); }
         .btn-tech:hover { box-shadow: 0 6px 20px rgba(156, 39, 176, 0.5); }
-        .btn-ri { background: linear-gradient(45deg, #0288D1, #009688); box-shadow: 0 4px 15px rgba(2, 136, 209, 0.3); }
-        .btn-ri:hover { box-shadow: 0 6px 20px rgba(2, 136, 209, 0.5); }
-        /* Novos Botões (Modelos e Balanço) */
+        
         .btn-modelos { background: linear-gradient(45deg, #FF9800, #E91E63); box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3); }
         .btn-modelos:hover { box-shadow: 0 6px 20px rgba(255, 152, 0, 0.5); }
         .btn-balanco { background: linear-gradient(45deg, #4CAF50, #009688); box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3); }
@@ -136,15 +134,11 @@
             <div style="background: #1a1a1b; padding: 20px; border-radius: 8px; border: 1px solid #333; margin-bottom: 30px;">
                 <div class="btn-ia-container">
                     <button id="btn-ia-tech" class="btn-ia btn-tech" onclick="chamarAnaliseTecnica()">🎯 Análise Gráfica (IA)</button>
-                    <button id="btn-ia-ri" class="btn-ia btn-ri" onclick="chamarAnaliseRI()">📰 Radar Corporativo & RI</button>
+                    <button id="btn-modelos" class="btn-ia btn-modelos" onclick="chamarModelosValuation()">⚖️ Graham, Bazin & F. Mágica</button>
+                    <button id="btn-balanco" class="btn-ia btn-balanco" onclick="chamarDadosBalanco()">🏦 Balanço & Notícias</button>
                 </div>
-                <div class="btn-ia-container" style="margin-top: 15px;">
-                    <button id="btn-ia-modelos" class="btn-ia btn-modelos" onclick="chamarModelosValuation()">⚖️ Graham, Bazin & F. Mágica</button>
-                    <button id="btn-ia-balanco" class="btn-ia btn-balanco" onclick="chamarDadosBalanco()">🏦 Balanço & Notícias</button>
-                </div>
-
+                
                 <div id="tech-result" style="display: none; text-align: left; margin-top: 20px;"></div>
-                <div id="ri-result" style="display: none; text-align: left; margin-top: 20px;"></div>
                 <div id="modelos-result" style="display: none; text-align: left; margin-top: 20px;"></div>
                 <div id="balanco-result" style="display: none; text-align: left; margin-top: 20px;"></div>
             </div>
@@ -533,12 +527,12 @@
             openModal(assetObj);
         }
 
-        // =====================================================================
-        // 🚀 FUNÇÕES DOS NOVOS E ANTIGOS BOTÕES DE INTELIGÊNCIA
-        // =====================================================================
+        // =========================================================================
+        // 🚀 LÓGICA DOS BOTÕES DE INTELIGÊNCIA NO MODAL
+        // =========================================================================
 
         function ocultarTodosOsResultados() {
-            ['tech-result', 'ri-result', 'modelos-result', 'balanco-result'].forEach(id => {
+            ['tech-result', 'modelos-result', 'balanco-result'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) { el.style.display = 'none'; el.innerHTML = ''; }
             });
@@ -569,78 +563,47 @@
                     </div>
                     <div style="margin-top: 15px; font-size: 0.95rem; color: #ccc; text-align: center; font-style: italic; background: #2a2a2c; padding: 12px; border-radius: 8px;">"${data.comentario || 'Análise concluída.'}"</div>
                 `;
-            } catch (e) { alert("Erro ao carregar análise técnica."); }
+            } catch (e) { alert("Erro ao carregar análise técnica da API."); }
             finally { btn.innerHTML = textoOriginal; }
         }
 
-        async function chamarAnaliseRI() {
-            ocultarTodosOsResultados();
-            const resultDiv = document.getElementById('ri-result');
-            try {
-                const dataAtivo = cofreDataGlobal[currentAssetObj.ticker];
-                if (!dataAtivo || !dataAtivo.radar_ri) throw new Error("Aviso: O Robô ainda não gerou o Radar de RI para este ativo no Cofre.");
-                const ri = dataAtivo.radar_ri;
-
-                let html = `
-                    <div style="color: #0288D1; font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">📰 Radar Corporativo Sênior</div>
-                    <div style="font-size: 0.75rem; color: #8e9196; text-align: center; margin-bottom: 20px;">Atualizado: ${ri.data_analise || 'Recente'}</div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                        <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">📊 Leitura do Balanço</h4>
-                            <strong style="color: #4CAF50; font-size: 0.9rem;">🟢 Pontos Fortes:</strong>
-                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">${(ri.balanco?.fortes || []).map(i => `<li>${i}</li>`).join('')}</ul>
-                            <strong style="color: #FFC107; font-size: 0.9rem;">🟡 Pontos de Atenção:</strong>
-                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">${(ri.balanco?.atencao || []).map(i => `<li>${i}</li>`).join('')}</ul>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
-                            <h4 style="color: #fff; margin-top: 0; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px;">🌐 Sentimento de Mercado</h4>
-                            <strong style="color: #4CAF50; font-size: 0.9rem;">📈 Fatos Positivos:</strong>
-                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 15px;">${(ri.noticias?.positivas || []).map(i => `<li>${i}</li>`).join('')}</ul>
-                            <strong style="color: #F44336; font-size: 0.9rem;">📉 Fatos Negativos:</strong>
-                            <ul style="color: #ccc; font-size: 0.85rem; padding-left: 20px; margin-bottom: 0;">${(ri.noticias?.negativas || []).map(i => `<li>${i}</li>`).join('')}</ul>
-                        </div>
-                    </div>
-                `;
-                resultDiv.style.display = 'block'; resultDiv.innerHTML = html;
-            } catch (erro) { alert(erro.message); }
-        }
-
-        // 🆕 NOVAS FUNÇÕES DO COFRE: GRAHAM, BAZIN E BALANÇO
+        // NOVO BOTÃO: Graham, Bazin e Fórmula Mágica
         function chamarModelosValuation() {
             ocultarTodosOsResultados();
             const resultDiv = document.getElementById('modelos-result');
             const dataAtivo = cofreDataGlobal[currentAssetObj.ticker] || {};
 
-            const graham = dataAtivo.graham || {};
-            const bazin = dataAtivo.bazin || {};
-            const magica = dataAtivo.formula_magica || {};
+            // Mapeando as chaves conforme solicitado e evitando quebra se vier nulo
+            const graham = dataAtivo.graham || dataAtivo.metodo_graham || {};
+            const bazin = dataAtivo.bazin || dataAtivo.metodo_bazin || {};
+            const magica = dataAtivo.formula_magica || dataAtivo.magica || {};
 
             const fmtNum = (num) => (num !== null && num !== undefined && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
             const prefix = currentAssetObj.prefix;
 
             let html = `
-                <div style="color: #FF9800; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">⚖️ Modelos Clássicos de Valuation</div>
+                <div style="color: #FF9800; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">⚖️ Modelos Clássicos de Valuation (Cofre)</div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                     
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <div style="color: #fff; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Benjamin Graham</div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Justo:</span> <span style="color: #4CAF50; font-weight: bold;">${prefix} ${fmtNum(graham.preco_justo)}</span></div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${graham.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${fmtNum(graham.margem)}%</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Justo:</span> <span style="color: #4CAF50; font-weight: bold;">${graham.preco_justo ? prefix + ' ' + fmtNum(graham.preco_justo) : '-'}</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${graham.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${graham.margem ? fmtNum(graham.margem) + '%' : '-'}</span></div>
                         <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">VPA: ${fmtNum(graham.vpa)} | LPA: ${fmtNum(graham.lpa)}</div>
                     </div>
 
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <div style="color: #fff; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Décio Bazin</div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Teto:</span> <span style="color: #2196F3; font-weight: bold;">${prefix} ${fmtNum(bazin.preco_teto)}</span></div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${bazin.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${fmtNum(bazin.margem)}%</span></div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">DPA: ${fmtNum(bazin.dpa_projetado)} | Yield: 6%</div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Preço Teto:</span> <span style="color: #2196F3; font-weight: bold;">${bazin.preco_teto ? prefix + ' ' + fmtNum(bazin.preco_teto) : '-'}</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Margem:</span> <span style="color: ${bazin.margem > 0 ? '#4CAF50' : '#c93e36'}; font-weight: bold;">${bazin.margem ? fmtNum(bazin.margem) + '%' : '-'}</span></div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">DPA: ${fmtNum(bazin.dpa_projetado)} | Yield: ${bazin.yield_projetado ? fmtNum(bazin.yield_projetado) + '%' : '6%'}</div>
                     </div>
 
                     <div style="background: rgba(255,255,255,0.05); border: 1px solid #333; padding: 15px; border-radius: 8px;">
                         <div style="color: #fff; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px;">Fórmula Mágica</div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Ranking:</span> <span style="color: #E91E63; font-weight: bold;">#${magica.posicao_ranking || '-'}</span></div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Ranking:</span> <span style="color: #E91E63; font-weight: bold;">${magica.posicao_ranking ? '#' + magica.posicao_ranking : '-'}</span></div>
                         <div style="display: flex; justify-content: space-between; margin-bottom: 5px;"><span style="color: #aaa;">Status:</span> <span style="color: #fff; font-weight: bold;">${magica.status || '-'}</span></div>
-                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">EV/EBIT: ${fmtNum(magica.ev_ebit)} | ROIC: ${fmtNum(magica.roic)}%</div>
+                        <div style="font-size: 0.8rem; color: #888; margin-top: 10px;">EV/EBIT: ${fmtNum(magica.ev_ebit)} | ROIC: ${magica.roic ? fmtNum(magica.roic) + '%' : '-'}</div>
                     </div>
 
                 </div>
@@ -648,6 +611,7 @@
             resultDiv.style.display = 'block'; resultDiv.innerHTML = html;
         }
 
+        // NOVO BOTÃO: Balanço e Notícias
         function chamarDadosBalanco() {
             ocultarTodosOsResultados();
             const resultDiv = document.getElementById('balanco-result');
@@ -657,14 +621,14 @@
             const noticias = dataAtivo.noticias || [];
 
             let noticiasHtml = '';
-            if (noticias.length > 0) {
+            if (Array.isArray(noticias) && noticias.length > 0) {
                 noticiasHtml = noticias.map(n => {
-                    const dataNoticia = n.data ? `<strong>${n.data}:</strong> ` : '';
+                    const dataNoticia = n.data ? `<strong style="color:#aaa;">${n.data}:</strong> ` : '';
                     const titulo = n.manchete || n.titulo || n;
                     return `<li style="margin-bottom: 8px; border-bottom: 1px dotted #444; padding-bottom: 5px;">${dataNoticia}${titulo}</li>`;
                 }).join('');
             } else {
-                noticiasHtml = '<li>Nenhuma notícia recente encontrada no cofre.</li>';
+                noticiasHtml = '<li>Nenhuma notícia mapeada no cofre para este ativo.</li>';
             }
 
             let html = `
@@ -693,6 +657,9 @@
             resultDiv.style.display = 'block'; resultDiv.innerHTML = html;
         }
 
+        // =========================================================================
+        // 🚀 O CORAÇÃO DO MODAL ORIGINAL RESTAURADO (COM A DCF E SWOT)
+        // =========================================================================
         async function fetchIndicadores(ticker) {
             const container = document.getElementById('indicadores-container');
             const data = cofreDataGlobal[ticker];
@@ -700,10 +667,17 @@
 
             const fmtNum = (num) => (num !== null && !isNaN(num)) ? parseFloat(num).toFixed(2) : '-';
             const fmtPct = (num) => (num !== null && !isNaN(num)) ? (parseFloat(num) * 100).toFixed(2) + '%' : '-';
+            const renderStars = (nota) => {
+                const starsOn = Math.max(0, Math.min(5, Math.floor(nota || 0)));
+                return `<span style="color: #ffd700; font-size: 1.2rem; letter-spacing: 2px;">${'★'.repeat(starsOn)}${'☆'.repeat(5 - starsOn)}</span>`;
+            };
+
+            const ai = data.analise_senior || {}; 
+            const dcf = data.valuation_dcf; 
             
-            container.innerHTML = `
+            let htmlContent = `
                 <div class="ind-category">
-                    <div class="ind-category-title">Indicadores de Valuation (Base do Cofre)</div>
+                    <div class="ind-category-title">Indicadores de Valuation</div>
                     <div class="indicadores-grid">
                         <div class="ind-box"><span class="ind-label">D.Y</span><span class="ind-value">${fmtPct(data.dy)}</span></div>
                         <div class="ind-box"><span class="ind-label">P/L</span><span class="ind-value">${fmtNum(data.pl)}</span></div>
@@ -713,7 +687,128 @@
                         <div class="ind-box"><span class="ind-label">VPA</span><span class="ind-value">${fmtNum(data.vpa)}</span></div>
                     </div>
                 </div>
+                
+                <div class="ind-category">
+                    <div class="ind-category-title">Indicadores de Endividamento & Rentabilidade</div>
+                    <div class="indicadores-grid">
+                        <div class="ind-box"><span class="ind-label">Dív. Líquida / PL</span><span class="ind-value">${fmtNum(data.dividaPL ? data.dividaPL / 100 : null)}</span></div>
+                        <div class="ind-box"><span class="ind-label">Liq. Corrente</span><span class="ind-value">${fmtNum(data.liquidezCorrente)}</span></div>
+                        <div class="ind-box"><span class="ind-label">Margem Líquida</span><span class="ind-value">${fmtPct(data.margemLiquida)}</span></div>
+                        <div class="ind-box"><span class="ind-label">ROE</span><span class="ind-value">${fmtPct(data.roe)}</span></div>
+                    </div>
+                </div>
+                
+                <div class="ind-category" style="border-top: 2px dashed #4CAF50; padding-top: 20px; margin-top: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <div class="ind-category-title" style="color: #4CAF50; margin: 0;">🤖 Diagnóstico Sênior & Inteligência Setorial</div>
+                        <div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: #aaa;">Dados de: <strong style="color: #fff;">${data.data_referencia || 'N/A'}</strong></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">📈 Análise de Tendência Fundamental</h4>
+                        <p style="color: #fff; font-size: 0.95rem; line-height: 1.5; background: #1a1a1b; padding: 15px; border-radius: 8px; border-left: 4px solid #4CAF50; margin:0;">${ai.tendencia || '-'}</p>
+                    </div>
+                    
+                    <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🎯 Matriz SWOT Setorial</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                        <div style="background: rgba(26, 127, 55, 0.1); border: 1px solid #1a7f37; padding: 12px; border-radius: 8px;">
+                            <strong style="color: #1a7f37; display: block; margin-bottom: 5px;">S - Forças</strong>
+                            <span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.forcas || '-'}</span>
+                        </div>
+                        <div style="background: rgba(201, 62, 54, 0.1); border: 1px solid #c93e36; padding: 12px; border-radius: 8px;">
+                            <strong style="color: #c93e36; display: block; margin-bottom: 5px;">W - Fraquezas</strong>
+                            <span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.fraquezas || '-'}</span>
+                        </div>
+                        <div style="background: rgba(33, 150, 243, 0.1); border: 1px solid #2196F3; padding: 12px; border-radius: 8px;">
+                            <strong style="color: #2196F3; display: block; margin-bottom: 5px;">O - Oportunidades</strong>
+                            <span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.oportunidades || '-'}</span>
+                        </div>
+                        <div style="background: rgba(255, 152, 0, 0.1); border: 1px solid #FF9800; padding: 12px; border-radius: 8px;">
+                            <strong style="color: #FF9800; display: block; margin-bottom: 5px;">T - Ameaças</strong>
+                            <span style="color: #ddd; font-size: 0.9rem;">${ai.swot?.ameacas || '-'}</span>
+                        </div>
+                    </div>
+                    
+                    <h4 style="color: #ccc; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase;">🏆 Placar Fundamentalista vs Setor</h4>
+                    <div style="background: #1a1a1b; padding: 15px; border-radius: 8px; border: 1px solid #333;">
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                            <span>ROE (Retorno do Acionista)</span> <span>${renderStars(ai.notas?.roe)}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                            <span>ROIC (Retorno s/ Capital)</span> <span>${renderStars(ai.notas?.roic)}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                            <span>Margem EBITDA</span> <span>${renderStars(ai.notas?.ebitda)}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 8px; margin-bottom: 8px;">
+                            <span>Saúde da Dívida</span> <span>${renderStars(ai.notas?.divida)}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Cresc. Receita Líquida</span> <span>${renderStars(ai.notas?.receita)}</span>
+                        </div>
+                    </div>
+                </div>
             `;
+
+            if (dcf) {
+                let statusColor = '#FFC107'; 
+                if(dcf.status === 'SUBVALORIZADA') statusColor = '#4CAF50'; 
+                if(dcf.status === 'SUPERVALORIZADA') statusColor = '#F44336';
+                
+                htmlContent += `
+                <div class="ind-category" style="border-top: 2px dashed #9C27B0; padding-top: 20px; margin-top: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <div class="ind-category-title" style="color: #9C27B0; margin: 0;">🔮 Valuation DCF & Projeções</div>
+                        <div style="font-size: 0.8rem; background: #2a2a2c; padding: 4px 10px; border-radius: 4px; color: ${statusColor};">
+                            STATUS: <strong style="color: ${statusColor};">${dcf.status || 'N/A'}</strong>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;">
+                        <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>WACC:</strong> ${dcf.parametros?.wacc || '-'}</div>
+                        <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Cresc. LP (g):</strong> ${dcf.parametros?.crescimento_longo_prazo || '-'}</div>
+                        <div style="background: #1a1a1b; padding: 8px 12px; border-radius: 6px; border: 1px solid #333;"><strong>Margem Seg.:</strong> ${dcf.parametros?.margem_seguranca || '-'}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px; padding: 35px 20px 25px 20px; background: #121212; border-radius: 8px; border: 1px solid #333; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
+                        <div style="position: relative; height: 12px; background: linear-gradient(to right, #c93e36, #FFC107, #1a7f37); border-radius: 6px; margin: 0 5px;">
+                            
+                            <div style="position: absolute; left: 0%; top: -30px; text-align: left; white-space: nowrap;">
+                                <div style="color: #c93e36; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.pessimista?.preco_justo)}</div>
+                            </div>
+                            <div style="position: absolute; left: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Pessimista</div>
+                            
+                            <div style="position: absolute; left: 50%; top: -30px; transform: translateX(-50%); text-align: center; white-space: nowrap;">
+                                <div style="color: #FFC107; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.base?.preco_justo)}</div>
+                            </div>
+                            <div style="position: absolute; left: 50%; top: 22px; transform: translateX(-50%); font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Alvo Base</div>
+                            
+                            <div style="position: absolute; right: 0%; top: -30px; text-align: right; white-space: nowrap;">
+                                <div style="color: #4CAF50; font-weight: 900; font-size: 1.1rem;">${currentAssetObj.prefix} ${fmtNum(dcf.cenarios?.otimista?.preco_justo)}</div>
+                            </div>
+                            <div style="position: absolute; right: 0%; top: 22px; font-size: 0.75rem; color: #8e9196; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Otimista</div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background: rgba(201, 62, 54, 0.05); border: 1px solid #c93e36; padding: 15px; border-radius: 8px;">
+                            <div style="color: #c93e36; font-weight: bold; margin-bottom: 5px;">Tese Pessimista</div>
+                            <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.pessimista?.descricao || '-'}</div>
+                        </div>
+                        <div style="background: rgba(33, 150, 243, 0.05); border: 1px solid #2196F3; padding: 15px; border-radius: 8px;">
+                            <div style="color: #2196F3; font-weight: bold; margin-bottom: 5px;">Tese Base</div>
+                            <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.base?.descricao || '-'}</div>
+                        </div>
+                        <div style="background: rgba(26, 127, 55, 0.05); border: 1px solid #1a7f37; padding: 15px; border-radius: 8px;">
+                            <div style="color: #1a7f37; font-weight: bold; margin-bottom: 5px;">Tese Otimista</div>
+                            <div style="font-size: 0.8rem; color: #bbb; line-height: 1.4;">${dcf.cenarios?.otimista?.descricao || '-'}</div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
+            container.innerHTML = htmlContent;
         }
 
         function openModal(asset) {
@@ -721,8 +816,8 @@
             document.getElementById('modal-title').innerText = `${asset.name} (${asset.ticker})`;
             document.getElementById('modal').style.display = 'flex';
             
-            ocultarTodosOsResultados(); // Limpa as abas de resultado antigas
-
+            ocultarTodosOsResultados(); // Limpa as abas de botões antes de carregar o novo
+            
             document.querySelector('.timeframe-buttons button:nth-child(3)').click();
             fetchIndicadores(asset.ticker);
         }
